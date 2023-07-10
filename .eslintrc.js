@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    jest: true,
   },
   extends: [
     'eslint:recommended',
@@ -37,6 +38,8 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-props-no-spreading': 'off',
-    'react/jsx-filename-extension': ['warn', { extensions: ['.tsx'] }],
+    'react/jsx-filename-extension': ['warn', { extensions: ['.ts', '.tsx'] }],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'import/extensions': ['error', 'ignorePackages'],
   },
 };
