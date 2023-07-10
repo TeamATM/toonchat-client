@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# 깃헙액션을 확인하기 위해 잠시 꺼놓기
-# yarn lint-staged
+yarn lint-staged
