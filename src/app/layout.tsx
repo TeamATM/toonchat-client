@@ -4,7 +4,7 @@ import * as React from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
-const num = 1
+const num = 1;
 
 export const metadata = {
   title: 'Create Next App',
