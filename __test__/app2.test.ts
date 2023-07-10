@@ -1,5 +1,5 @@
 test('should be true', () => {
-  expect(false).toBe(false);
+  expect(true).toBe(false);
 });
 
 export {};
