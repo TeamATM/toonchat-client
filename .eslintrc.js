@@ -36,6 +36,9 @@ module.exports = {
     'react',
   ],
   rules: {
+    'no-use-before-define': 'off',
+    '@emotion/jsx-import': 'off',
+    'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/jsx-filename-extension': ['warn', { extensions: ['.ts', '.tsx'] }],
