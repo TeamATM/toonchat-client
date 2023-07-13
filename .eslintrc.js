@@ -44,6 +44,12 @@ module.exports = {
       { namedComponents: 'arrow-function', unnamedComponents: 'arrow-function' },
     ],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
-    'import/extensions': ['error', 'ignorePackages'],
+    'import/extensions': [
+      'error',
+      'ignorePackages', // 패키지는 무시하도록 설정
+      {
+        js: 'never', jsx: 'never', ts: 'never', tsx: 'never',
+      },
+    ],
   },
 };
