@@ -29,21 +29,22 @@ const Leeyj = () => {
   };
 
   return (
-    <main css={mainCss}>
+    <section css={pageCss}>
       <Header />
       <Main chatContents={chatContents} />
       <Footer addChatContents={addChatContent} />
-    </main>
+    </section>
   );
 };
 
 export default Leeyj;
 
-const mainCss = css`
+const pageCss = css`
+  box-sizing: border-box;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 100vh;
-  background-color: green;
+  padding: 10px;
 `;
