@@ -4,12 +4,16 @@ import Main from '@/components/chat/Main';
 import { css } from '@emotion/react';
 import { useState } from 'react';
 
+interface chatContentsState {
+  id: number, speaker: string, content: string
+}
+
 const Leeyj = () => {
-  const [chatContents, setChatContents] = useState<{id: number, content: string}[]>([]);
+  const [chatContents, setChatContents] = useState<chatContentsState[]>([]);
   const [idCounter, setIdCounter] = useState<number>(0);
 
   const addChatContent = (message: string) => {
-    setChatContents([...chatContents, { id: idCounter, content: message }]);
+    setChatContents([...chatContents, { id: idCounter, speaker: 'me', content: message }]);
     setIdCounter(idCounter + 1);
   };
 
