@@ -43,7 +43,6 @@ const FriendShip:FC<UserStatusProps> = ({ friendShipExp, maxFriendShipExp, frien
       css={css`
         position: absolute;
         border-top: 4px solid #cdd1d0;
-        box-sizing: border-box;
         width: 60px;
         height: 4px;
         opacity: 0.5;
@@ -54,7 +53,6 @@ const FriendShip:FC<UserStatusProps> = ({ friendShipExp, maxFriendShipExp, frien
       css={css`
         position: absolute;
         border-top: 4px solid #20a090;
-        box-sizing: border-box;
         width: ${(friendShipExp / maxFriendShipExp) * 60}px;
         height: 4px;
         border-radius: 5px;

@@ -40,7 +40,6 @@ const Leeyj = () => {
 export default Leeyj;
 
 const pageCss = css`
-  box-sizing: border-box;
   height: 100vh;
   display: flex;
   flex-direction: column;
