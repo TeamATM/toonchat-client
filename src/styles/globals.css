@@ -4,9 +4,11 @@
 }
 html {
   display: flex;
+  background-color: #D9D9D9;
 }
 
 body {
   width: 400px;
   margin: auto;
+  background-color: #FFFFFF;
 }
