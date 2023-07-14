@@ -10,7 +10,7 @@ const Header = () => {
     friendShipExp: 0, maxFriendShipExp: 0, friendShipLv: 0,
   });
   useEffect(() => {
-    fetch('http://localhost:3000/api/userStatusToLeeyj')
+    fetch('/api/userStatusToLeeyj')
       .then((res) => res.json())
       .then((data) => { setUserStatus(data); });
   }, []);

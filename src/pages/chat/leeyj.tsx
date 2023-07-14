@@ -22,7 +22,7 @@ const Leeyj = () => {
   };
 
   const callLeeyjAPI = async (message : string) => {
-    const response = await fetch('http://localhost:3000/api/hello');
+    const response = await fetch('/api/hello');
     const jsonData = await response.json();
     setChatContents([...chatContents, { id: idCounter, speaker: 'me', content: message }, { id: idCounter + 1, speaker: '이영준', content: jsonData.say }]);
     setIdCounter(idCounter + 2);
