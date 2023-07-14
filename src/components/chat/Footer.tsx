@@ -28,8 +28,8 @@ const Footer: FC<FooterProps> = ({ addChatContents }) => {
 
   return (
     <footer css={footerCSS}>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={message} onChange={handleChange} required />
+      <form css={formCSS} onSubmit={handleSubmit}>
+        <input css={inputCSS} type="text" value={message} onChange={handleChange} required />
         <button css={buttonCSS} type="submit">
           <Image
             src="/send.svg"
@@ -48,12 +48,35 @@ export default Footer;
 
 const footerCSS = css`
   width: 100%;
-  height: 80px;
   text-align: left;
   font-size: 12px;
   color: #0F0C22;
 `;
 
+const formCSS = css`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  padding-left: 5px;
+  padding-right: 5px;
+`;
+
 const buttonCSS = css`
+  background: none;
   border: none;
+`;
+
+const inputCSS = css`
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  background-color: #f3f6f6;
+  height: 40px;
+  padding: 12px;
+  margin-right: 10px;
+
+  &:focus {
+    outline: none;
+  }
 `;
