@@ -7,7 +7,7 @@ import CharacterInfoHeader from './CharacterInfoHeader';
 const Header = () => {
   // TODO: 친밀도를 API로 받아와야 작업이 가능함!
   const [userStatus, setUserStatus] = useState({
-    friendShipExp: 0, maxFriendShipExp: 0, friendShipLv: 0,
+    friendShipExp: 0, maxFriendShipExp: 1, friendShipLv: 0,
   });
   useEffect(() => {
     fetch('/api/userStatusToLeeyj')
