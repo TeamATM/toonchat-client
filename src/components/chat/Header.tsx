@@ -27,10 +27,11 @@ const Header = () => {
         />
       </Link>
       <Image
-        src="/AI.png"
-        width={30}
-        height={30}
-        alt="이영준이될 사진"
+        src="/leeyj.png"
+        width={44}
+        height={44}
+        style={imageStyle}
+        alt="이영준"
       />
       <div>이영준</div>
       <div>#네이버웹툰 #김비서가왜그럴까</div>
@@ -44,3 +45,7 @@ const Header = () => {
 };
 
 export default Header;
+
+const imageStyle = {
+  borderRadius: '50%',
+};
