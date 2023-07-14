@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { css } from '@emotion/react';
 import FriendShip from './FriendShip';
 import CharacterInfoHeader from './CharacterInfoHeader';
 
@@ -15,7 +16,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header>
+    <header css={headerCSS}>
       <CharacterInfoHeader />
       <FriendShip
         friendShipExp={userStatus.friendShipExp}
@@ -27,3 +28,12 @@ const Header = () => {
 };
 
 export default Header;
+
+const headerCSS = css`
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+`;
