@@ -1,6 +1,20 @@
 // 주요 채팅 내용이 들어올 예정
-const Main = () => (
-  <main>채팅 내용</main>
+import type { FC } from 'react';
+
+interface MainProps {
+  chatContents: {id: number, content: string}[];
+}
+
+const Main: FC<MainProps> = ({ chatContents }) => (
+  <main>
+    {chatContents.map(
+      (chat) => (
+        <li key={chat.id}>
+          {chat.content}
+        </li>
+      ),
+    )}
+  </main>
 );
 
 export default Main;
