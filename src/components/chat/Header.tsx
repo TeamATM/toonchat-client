@@ -1,7 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import FriendShip from './FriendShip';
+import CharacterInfoHeader from './CharacterInfoHeader';
 
 // TODO: Back 버튼을 누르면 지금 홈으로 돌아가지만 채팅 리스트뷰가 완성되면 그쪽으로 Link 될 예정
 const Header = () => {
@@ -17,24 +16,7 @@ const Header = () => {
 
   return (
     <header>
-      <Link href="/">
-        <Image
-          src="/back.svg"
-          alt="back"
-          width={24}
-          height={24}
-          priority
-        />
-      </Link>
-      <Image
-        src="/leeyj.png"
-        width={44}
-        height={44}
-        style={imageStyle}
-        alt="이영준"
-      />
-      <div>이영준</div>
-      <div>#네이버웹툰 #김비서가왜그럴까</div>
+      <CharacterInfoHeader />
       <FriendShip
         friendShipExp={userStatus.friendShipExp}
         maxFriendShipExp={userStatus.maxFriendShipExp}
@@ -45,7 +27,3 @@ const Header = () => {
 };
 
 export default Header;
-
-const imageStyle = {
-  borderRadius: '50%',
-};
