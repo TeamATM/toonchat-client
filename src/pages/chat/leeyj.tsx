@@ -12,9 +12,20 @@ const Leeyj = () => {
   const [chatContents, setChatContents] = useState<chatContentsState[]>([]);
   const [idCounter, setIdCounter] = useState<number>(0);
 
-  const addChatContent = (message: string) => {
+  const addChatContent = async (message: string) => {
+    // TODO: AI 대답 API나 소켓 통신이 가능하게 되면 다시 돌려놓을 코드
     setChatContents([...chatContents, { id: idCounter, speaker: 'me', content: message }]);
-    setIdCounter(idCounter + 1);
+    // setIdCounter(idCounter + 1);
+
+    // TODO: AI의 대답으로 수정될 부분 (API 호출했다고 가정)
+    return callLeeyjAPI(message);
+  };
+
+  const callLeeyjAPI = async (message : string) => {
+    const response = await fetch('http://localhost:3000/api/hello');
+    const jsonData = await response.json();
+    setChatContents([...chatContents, { id: idCounter, speaker: 'me', content: message }, { id: idCounter + 1, speaker: '이영준', content: jsonData.say }]);
+    setIdCounter(idCounter + 2);
   };
 
   return (
