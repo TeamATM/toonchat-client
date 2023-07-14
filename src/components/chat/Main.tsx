@@ -2,7 +2,7 @@
 import type { FC } from 'react';
 
 interface MainProps {
-  chatContents: {id: number, content: string}[];
+  chatContents: {id: number, speaker: string, content: string}[];
 }
 
 const Main: FC<MainProps> = ({ chatContents }) => (
@@ -10,6 +10,9 @@ const Main: FC<MainProps> = ({ chatContents }) => (
     {chatContents.map(
       (chat) => (
         <li key={chat.id}>
+          {chat.speaker}
+          {' '}
+          :
           {chat.content}
         </li>
       ),
