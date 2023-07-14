@@ -1,8 +1,18 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 // 이영준의 이미지, 소속, 이름이 있을 예정
 const Header = () => (
   <header>
+    <Link href="/">
+      <Image
+        src="/back.svg"
+        alt="back"
+        width={24}
+        height={24}
+        priority
+      />
+    </Link>
     <Image
       src="/AI.png"
       width={30}
