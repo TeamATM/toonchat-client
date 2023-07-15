@@ -7,7 +7,7 @@ interface CharacterSpeakProps {
 }
 
 const CharacterSpeak: FC<CharacterSpeakProps> = ({ speaker, content }) => (
-  <span css={css`width:100%; margin-top:3px; display:flex; `}>
+  <span css={css`width:100%; margin-top:3px; margin-bottom: 10px; display:flex; `}>
     <Image
       src="/leeyj.png"
       width={40}
