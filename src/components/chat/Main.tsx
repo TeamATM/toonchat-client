@@ -13,7 +13,7 @@ const Main: FC<MainProps> = ({ chatContents }) => (
     {chatContents.map(
       (chat) => {
         if (chat.speaker === 'me') {
-          return <MySpeak key={chat.id} content={chat.content} />;
+          return <MySpeak key={chat.id} content={chat.content} date={chat.date} />;
         }
         return (
           <CharacterSpeak
