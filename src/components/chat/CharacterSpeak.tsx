@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
+import TimeStamp from './TimeStamp';
 
 interface CharacterSpeakProps {
   speaker:string, content: string, date: number
@@ -20,7 +21,7 @@ const CharacterSpeak: FC<CharacterSpeakProps> = ({ speaker, content, date }) => 
       <span css={characterSpeakCSS}>
         {content}
       </span>
-      <span css={timestampCSS}>{makeDate(date)}</span>
+      <TimeStamp timestamp={date} />
     </span>
   </span>
 );
@@ -40,23 +41,4 @@ const characterSpeakCSS = css`
 const imageStyle = {
   borderRadius: '50%',
   margin: '5px',
-};
-
-const timestampCSS = css`
-  color: #797C7B;
-  font-size: 10px;
-  padding: 3px;
-`;
-
-const makeDate = (date : number) => {
-  const dateObject = new Date(date);
-  let hour = dateObject.getHours();
-  const ampm = hour > 12 ? 'PM' : 'AM';
-  if (hour > 12) {
-    hour -= 12;
-  } else if (hour === 0) {
-    hour += 12;
-  }
-  const minute = dateObject.getMinutes();
-  return `${hour}:${minute} ${ampm}`;
 };
