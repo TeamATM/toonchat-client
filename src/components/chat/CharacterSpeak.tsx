@@ -4,10 +4,10 @@ import { css } from '@emotion/react';
 import TimeStamp from './TimeStamp';
 
 interface CharacterSpeakProps {
-  speaker:string, content: string, date: number
+  speaker:string, content: string, timestamp: number
 }
 
-const CharacterSpeak: FC<CharacterSpeakProps> = ({ speaker, content, date }) => (
+const CharacterSpeak: FC<CharacterSpeakProps> = ({ speaker, content, timestamp }) => (
   <span css={css`width:100%; margin-top:3px; margin-bottom: 10px; display:flex; `}>
     <Image
       src="/leeyj.png"
@@ -21,7 +21,7 @@ const CharacterSpeak: FC<CharacterSpeakProps> = ({ speaker, content, date }) => 
       <span css={characterSpeakCSS}>
         {content}
       </span>
-      <TimeStamp timestamp={date} />
+      <TimeStamp timestamp={timestamp} />
     </span>
   </span>
 );

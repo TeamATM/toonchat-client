@@ -3,16 +3,16 @@ import { css } from '@emotion/react';
 import TimeStamp from './TimeStamp';
 
 interface MySpeakProps {
-  content: string, date: number
+  content: string, timestamp: number
 }
 
-const MySpeak: FC<MySpeakProps> = ({ content, date }) => (
+const MySpeak: FC<MySpeakProps> = ({ content, timestamp }) => (
   <span css={css`width:100%; margin-top:3px; margin-right:15px;`}>
     <div css={css`display: flex; flex-direction: column; align-items: flex-end;`}>
       <span css={mySpeakCSS}>
         {content}
       </span>
-      <TimeStamp timestamp={date} />
+      <TimeStamp timestamp={timestamp} />
     </div>
   </span>
 );
