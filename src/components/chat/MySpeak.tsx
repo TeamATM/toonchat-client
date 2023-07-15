@@ -18,9 +18,9 @@ export default MySpeak;
 const mySpeakCSS = css`
   float:right;
   text-align: right;
-  font-size: 15px;
+  font-size: 12px;
   color: #fff;
   background-color: #20A090;
   border-radius: 10px 0px 10px 10px;
-  padding: 15px;
+  padding: 12px;
 `;
