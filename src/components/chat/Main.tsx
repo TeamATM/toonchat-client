@@ -12,11 +12,17 @@ const Main: FC<MainProps> = ({ chatContents }) => (
   <main css={mainCSS}>
     {chatContents.map(
       (chat) => {
-        console.log(chat.date, chat.content);
         if (chat.speaker === 'me') {
           return <MySpeak key={chat.id} content={chat.content} />;
         }
-        return <CharacterSpeak key={chat.id} speaker={chat.speaker} content={chat.content} />;
+        return (
+          <CharacterSpeak
+            key={chat.id}
+            speaker={chat.speaker}
+            content={chat.content}
+            date={chat.date}
+          />
+        );
       },
     )}
   </main>
