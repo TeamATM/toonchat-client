@@ -5,13 +5,14 @@ import MySpeak from './MySpeak';
 import CharacterSpeak from './CharacterSpeak';
 
 interface MainProps {
-  chatContents: {id: number, speaker: string, content: string}[];
+  chatContents: {id: number, speaker: string, content: string, date: number}[];
 }
 
 const Main: FC<MainProps> = ({ chatContents }) => (
   <main css={mainCSS}>
     {chatContents.map(
       (chat) => {
+        console.log(chat.date, chat.content);
         if (chat.speaker === 'me') {
           return <MySpeak key={chat.id} content={chat.content} />;
         }

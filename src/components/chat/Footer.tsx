@@ -7,7 +7,7 @@ import Image from 'next/image';
 interface FooterProps {
   // TODO: 혜성 엑스퍼트의 HELP. message 변수를 잘 쓰고 있는데 ESLint가 억까하는 중입니다.
   // eslint-disable-next-line no-unused-vars
-  addChatContents: (message: string) => void;
+  addChatContents: (message: string, date: number) => void;
 }
 
 const Footer: FC<FooterProps> = ({ addChatContents }) => {
@@ -17,7 +17,7 @@ const Footer: FC<FooterProps> = ({ addChatContents }) => {
     e.preventDefault();
 
     if (message) {
-      addChatContents(message);
+      addChatContents(message, Date.now());
       setMessage('');
     }
   };
