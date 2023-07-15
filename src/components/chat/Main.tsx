@@ -2,6 +2,7 @@
 import type { FC } from 'react';
 import { css } from '@emotion/react';
 import MySpeak from './MySpeak';
+import CharacterSpeak from './CharacterSpeak';
 
 interface MainProps {
   chatContents: {id: number, speaker: string, content: string}[];
@@ -10,9 +11,12 @@ interface MainProps {
 const Main: FC<MainProps> = ({ chatContents }) => (
   <main css={mainCSS}>
     {chatContents.map(
-      (chat) => (
-        <MySpeak key={chat.id} id={chat.id} content={chat.content} />
-      ),
+      (chat) => {
+        if (chat.speaker === 'me') {
+          return <MySpeak key={chat.id} content={chat.content} />;
+        }
+        return <CharacterSpeak key={chat.id} speaker={chat.speaker} content={chat.content} />;
+      },
     )}
   </main>
 );

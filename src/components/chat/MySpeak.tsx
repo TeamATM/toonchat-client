@@ -2,12 +2,12 @@ import type { FC } from 'react';
 import { css } from '@emotion/react';
 
 interface MySpeakProps {
-  id: number, content: string
+  content: string
 }
 
-const MySpeak: FC<MySpeakProps> = ({ id, content }) => (
+const MySpeak: FC<MySpeakProps> = ({ content }) => (
   <span css={css`width:100%; margin-top:3px;`}>
-    <span key={id} css={mySpeakCSS}>
+    <span css={mySpeakCSS}>
       {content}
     </span>
   </span>
