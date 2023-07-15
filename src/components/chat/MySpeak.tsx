@@ -16,6 +16,7 @@ const MySpeak: FC<MySpeakProps> = ({ content }) => (
 export default MySpeak;
 
 const mySpeakCSS = css`
+  max-width: 80%;
   float:right;
   text-align: right;
   font-size: 12px;
