@@ -6,7 +6,7 @@ interface MySpeakProps {
 }
 
 const MySpeak: FC<MySpeakProps> = ({ content, date }) => (
-  <span css={css`width:100%; margin-top:3px;`}>
+  <span css={css`width:100%; margin-top:3px; margin-right:15px;`}>
     <div css={css`display: flex; flex-direction: column; align-items: flex-end;`}>
       <span css={mySpeakCSS}>
         {content}
