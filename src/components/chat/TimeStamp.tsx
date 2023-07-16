@@ -21,7 +21,7 @@ const makeDate = (timestamp : number) => {
     hour += 12;
   }
   const minute = dateObject.getMinutes();
-  return `${hour}:${minute} ${ampm}`;
+  return `${hour}:${minute.toString().padStart(2, '0')} ${ampm}`;
 };
 
 const timestampCSS = css`
