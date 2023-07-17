@@ -30,7 +30,7 @@ const Footer: FC<FooterProps> = ({ addChatContents }) => {
   return (
     <footer css={footerCSS}>
       <form css={formCSS} onSubmit={handleSubmit}>
-        <input css={inputCSS} type="text" value={message} onChange={handleChange} required />
+        <input css={inputCSS} type="text" maxLength={100} value={message} onChange={handleChange} required />
         <button css={buttonCSS} type="submit">
           <Image
             src="/send.svg"
