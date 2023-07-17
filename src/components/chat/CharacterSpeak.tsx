@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
+import color from '@/styles/color';
 import TimeStamp from './TimeStamp';
 
 interface CharacterSpeakProps {
@@ -32,7 +33,7 @@ const characterSpeakCSS = css`
   float:left;
   text-align: left;
   font-size: 12px;
-  color: #000E08;
+  color: ${color.black};
   background-color: #F2F7FB;
   border-radius: 0px 10px 10px 10px;
   padding: 12px;

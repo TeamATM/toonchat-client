@@ -3,6 +3,7 @@ import { useState, ChangeEvent, FormEvent } from 'react';
 import type { FC } from 'react';
 import { css } from '@emotion/react';
 import Image from 'next/image';
+import color from '@/styles/color';
 
 interface FooterProps {
   // TODO: 혜성 엑스퍼트의 HELP. message 변수를 잘 쓰고 있는데 ESLint가 억까하는 중입니다.
@@ -50,7 +51,7 @@ const footerCSS = css`
   width: 100%;
   text-align: left;
   font-size: 12px;
-  color: #0F0C22;
+  color: ${color.black};
 `;
 
 const formCSS = css`
@@ -71,7 +72,7 @@ const inputCSS = css`
   width: 100%;
   border: none;
   border-radius: 12px;
-  background-color: #f3f6f6;
+  background-color: ${color.offWhite};
   height: 40px;
   padding: 12px;
   margin-right: 10px;
