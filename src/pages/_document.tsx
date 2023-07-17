@@ -4,7 +4,9 @@ import {
 
 const Document = () => (
   <Html lang="en">
-    <Head />
+    <Head>
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
     <body>
       <Main />
       <NextScript />
