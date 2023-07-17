@@ -9,7 +9,7 @@ interface CharacterSpeakProps {
 }
 
 const CharacterSpeak: FC<CharacterSpeakProps> = ({ speaker, content, timestamp }) => (
-  <span css={css`width:100%; margin-top:3px; margin-bottom: 10px; display:flex; `}>
+  <span css={characterSpeakCSS}>
     <Image
       src="/leeyj.png"
       width={40}
@@ -17,8 +17,8 @@ const CharacterSpeak: FC<CharacterSpeakProps> = ({ speaker, content, timestamp }
       style={imageStyle}
       alt="이영준"
     />
-    <span css={css`display: flex; flex-direction: column;   margin-right: 5%;`}>
-      <span css={css`font-size:14px; padding:1px;`}>{speaker}</span>
+    <span css={chatContainerCSS}>
+      <span css={characterNameCSS}>{speaker}</span>
       <span css={characterChatBoxCSS}>
         {content}
       </span>
@@ -29,8 +29,26 @@ const CharacterSpeak: FC<CharacterSpeakProps> = ({ speaker, content, timestamp }
 
 export default CharacterSpeak;
 
+const characterSpeakCSS = css`
+  width: 100%;
+  margin-top: 3px;
+  margin-bottom: 10px;
+  display: flex;
+`;
+
+const chatContainerCSS = css`
+  display: flex;
+  flex-direction: column;
+  margin-right: 5%;
+`;
+
+const characterNameCSS = css`
+  font-size: 14px;
+  padding: 1px;
+`;
+
 const characterChatBoxCSS = css`
-  float:left;
+  float: left;
   text-align: left;
   font-size: 12px;
   color: ${color.black};
