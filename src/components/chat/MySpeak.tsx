@@ -8,8 +8,8 @@ interface MySpeakProps {
 }
 
 const MySpeak: FC<MySpeakProps> = ({ content, timestamp }) => (
-  <span css={css`width:100%; margin-top:3px; margin-right:15px;`}>
-    <div css={css`display: flex; flex-direction: column; align-items: flex-end;`}>
+  <span css={css`width:100%; margin-top:3px;`}>
+    <div css={css`display: flex; flex-direction: column; align-items: flex-end; margin-right:15px;`}>
       <span css={mySpeakCSS}>
         {content}
       </span>
@@ -21,7 +21,7 @@ const MySpeak: FC<MySpeakProps> = ({ content, timestamp }) => (
 export default MySpeak;
 
 const mySpeakCSS = css`
-  max-width: 80%;
+  margin-left: 5%;
   text-align: right;
   font-size: 12px;
   color: #fff;

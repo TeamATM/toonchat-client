@@ -17,7 +17,7 @@ const CharacterSpeak: FC<CharacterSpeakProps> = ({ speaker, content, timestamp }
       style={imageStyle}
       alt="이영준"
     />
-    <span css={css`display: flex; flex-direction: column;`}>
+    <span css={css`display: flex; flex-direction: column;   margin-right: 5%;`}>
       <span css={css`font-size:14px; padding:1px;`}>{speaker}</span>
       <span css={characterSpeakCSS}>
         {content}
