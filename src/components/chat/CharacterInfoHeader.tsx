@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { css } from '@emotion/react';
+import color from '@/styles/color';
 
 const CharacterInfoHeader = () => (
   <>
@@ -37,10 +38,10 @@ const imageStyle = {
 const characterNameCSS = css`
   text-align: left;
   font-size: 16px;
-  color: #000e08;
+  color: ${color.black};
 `;
 
 const characterBackgroundCSS = css`
   font-size: 12px;
-  color: #797C7B;
+  color: ${color.greenGray};
 `;

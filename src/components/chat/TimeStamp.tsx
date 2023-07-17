@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import { css } from '@emotion/react';
+import color from '@/styles/color';
 
 interface TimestampProps {
   timestamp: number
@@ -25,7 +26,7 @@ const makeDate = (timestamp : number) => {
 };
 
 const timestampCSS = css`
-  color: #797C7B;
+  color: ${color.greenGray};
   font-size: 10px;
   padding: 3px;
 `;

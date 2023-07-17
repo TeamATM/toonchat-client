@@ -1,3 +1,4 @@
+import color from '@/styles/color';
 import { css } from '@emotion/react';
 import type { FC } from 'react';
 
@@ -36,7 +37,7 @@ const FriendShipCSS = css`
   height: 23px;
   text-align: left;
   font-size: 10px;
-  color:  #797C7B;
+  color:  ${color.greenGray};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,7 +62,7 @@ border-radius: 5px;
 `;
 
 const expBarCSS = (friendShipExp : number, maxFriendShipExp : number) => css`
-border-top: 4px solid #20a090;
+border-top: 4px solid ${color.lightGreen};
 width: ${(friendShipExp / maxFriendShipExp) * 60}px;
 height: 4px;
 border-radius: 5px;
