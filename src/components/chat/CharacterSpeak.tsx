@@ -19,7 +19,7 @@ const CharacterSpeak: FC<CharacterSpeakProps> = ({ speaker, content, timestamp }
     />
     <span css={css`display: flex; flex-direction: column;   margin-right: 5%;`}>
       <span css={css`font-size:14px; padding:1px;`}>{speaker}</span>
-      <span css={characterSpeakCSS}>
+      <span css={characterChatBoxCSS}>
         {content}
       </span>
       <TimeStamp timestamp={timestamp} />
@@ -29,7 +29,7 @@ const CharacterSpeak: FC<CharacterSpeakProps> = ({ speaker, content, timestamp }
 
 export default CharacterSpeak;
 
-const characterSpeakCSS = css`
+const characterChatBoxCSS = css`
   float:left;
   text-align: left;
   font-size: 12px;
