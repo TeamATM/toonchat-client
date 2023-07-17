@@ -10,7 +10,7 @@ interface MySpeakProps {
 const MySpeak: FC<MySpeakProps> = ({ content, timestamp }) => (
   <span css={css`width:100%; margin-top:3px;`}>
     <div css={css`display: flex; flex-direction: column; align-items: flex-end; margin-right:15px;`}>
-      <span css={mySpeakCSS}>
+      <span css={myChatBoxCSS}>
         {content}
       </span>
       <TimeStamp timestamp={timestamp} />
@@ -20,7 +20,7 @@ const MySpeak: FC<MySpeakProps> = ({ content, timestamp }) => (
 
 export default MySpeak;
 
-const mySpeakCSS = css`
+const myChatBoxCSS = css`
   margin-left: 5%;
   text-align: right;
   font-size: 12px;
