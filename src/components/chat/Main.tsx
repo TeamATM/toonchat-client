@@ -4,7 +4,6 @@ import { css } from '@emotion/react';
 import useChatStore from '@/store/chat';
 import MySpeak from './messageBox/MySpeak';
 import CharacterSpeak from './messageBox/CharacterSpeak';
-import CharacterLoading from './messageBox/CharacterLoading';
 
 const Main = () => {
   const { chatContents } = useChatStore();
@@ -21,20 +20,13 @@ const Main = () => {
           if (chat.speaker === 'me') {
             return <MySpeak key={chat.id} content={chat.content} timestamp={chat.timestamp} />;
           }
-          if (chat.loading) {
-            return (
-              <CharacterLoading
-                key={chat.id}
-                speaker={chat.speaker}
-              />
-            );
-          }
           return (
             <CharacterSpeak
               key={chat.id}
               speaker={chat.speaker}
               content={chat.content}
               timestamp={chat.timestamp}
+              loading={chat.loading}
             />
           );
         },
