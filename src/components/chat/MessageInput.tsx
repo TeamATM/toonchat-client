@@ -13,11 +13,13 @@ interface CharacterState {
 }
 
 const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
-  const { addChatContents } = useChatStore();
+  const { addChatContents, loadedChat } = useChatStore();
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setLoading(true);
     let result = null;
     if (message) {
       const timestamp = Date.now();
@@ -27,19 +29,21 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
       // TODO: AI의 대답으로 수정될 부분 (API 호출했다고 가정)
       result = await callLeeyjAPI(timestamp);
     }
+    setLoading(false);
     return result;
   };
 
   const callLeeyjAPI = async (timestamp: number) => {
+    const index = addChatContents({
+      speaker: characterName, content: 'loading', timestamp: 0, loading: true,
+    });
     const response = await fetch(`/api/${characterId}`);
     const jsonData = await response.json();
 
     // 함수의 input값인 message, timestamp를 아직 안쓰고 있어서 콘솔로그 찍어놓음
     console.log(message, timestamp);
 
-    addChatContents({
-      speaker: characterName, content: jsonData.say, timestamp: Date.now(),
-    });
+    loadedChat(index, jsonData.say, Date.now());
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -50,7 +54,7 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
     <footer css={footerCSS}>
       <form css={formCSS} onSubmit={handleSubmit}>
         <input css={inputCSS} type="text" maxLength={100} value={message} onChange={handleChange} required />
-        <button css={buttonCSS} type="submit">
+        <button css={buttonCSS} type="submit" disabled={loading}>
           <Image
             src="/send.svg"
             alt="send"
