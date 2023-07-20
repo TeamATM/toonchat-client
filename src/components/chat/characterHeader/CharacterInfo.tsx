@@ -2,8 +2,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { css } from '@emotion/react';
 import color from '@/styles/color';
+import { FC } from 'react';
 
-const CharacterInfo = () => (
+interface CharacterNameState {
+  characterId: string,
+  characterName: string
+}
+
+const CharacterInfo: FC<CharacterNameState> = ({ characterId, characterName }) => (
   <>
     <Link href="/">
       <Image
@@ -15,14 +21,14 @@ const CharacterInfo = () => (
       />
     </Link>
     <Image
-      src="/leeyj.png"
+      src={`/${characterId}.png`}
       width={44}
       height={44}
       style={imageStyle}
-      alt="이영준"
+      alt={`/${characterName}`}
     />
     <div>
-      <div css={characterNameCSS}>이영준</div>
+      <div css={characterNameCSS}>{characterName}</div>
       <div css={characterBackgroundCSS}>#네이버웹툰 #김비서가왜그럴까</div>
     </div>
   </>
