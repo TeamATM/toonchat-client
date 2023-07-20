@@ -3,7 +3,7 @@ import Header from '@/components/chat/Header';
 import Main from '@/components/chat/Main';
 import { css } from '@emotion/react';
 
-const Leeyj = () => (
+const Character = () => (
   <section css={pageCSS}>
     <Header />
     <Main />
@@ -11,7 +11,7 @@ const Leeyj = () => (
   </section>
 );
 
-export default Leeyj;
+export default Character;
 
 const pageCSS = css`
   height: 100vh;
