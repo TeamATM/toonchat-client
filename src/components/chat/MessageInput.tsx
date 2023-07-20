@@ -23,7 +23,9 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
     let result = null;
     if (message) {
       const timestamp = Date.now();
-      addChatContents({ speaker: 'me', content: message, timestamp });
+      addChatContents({
+        speaker: 'me', content: message, timestamp, loading: true,
+      });
       setMessage('');
 
       // TODO: AI의 대답으로 수정될 부분 (API 호출했다고 가정)

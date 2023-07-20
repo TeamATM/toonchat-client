@@ -1,11 +1,11 @@
 import { create } from 'zustand';
 
 interface ChatContentsState {
-  id: number, speaker: string, content: string, timestamp: number, loading?: boolean,
+  id: number, speaker: string, content: string, timestamp: number, loading: boolean,
 }
 
 interface NewChatContentState {
-  speaker: string, content: string, timestamp: number, loading?: boolean,
+  speaker: string, content: string, timestamp: number, loading: boolean,
 }
 
 interface ChatState {
