@@ -7,12 +7,12 @@ import Image from 'next/image';
 import color from '@/styles/color';
 import useChatStore from '@/store/chat';
 
-interface CharacterNameState {
+interface CharacterState {
   characterId: string,
   characterName: string
 }
 
-const MessageInput : FC<CharacterNameState> = ({ characterId, characterName }) => {
+const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
   const { addChatContents } = useChatStore();
   const [message, setMessage] = useState('');
 
