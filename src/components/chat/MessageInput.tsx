@@ -1,11 +1,18 @@
 // 채팅 입력하는 부분이 생길 예정
-import { useState, ChangeEvent, FormEvent } from 'react';
+import {
+  useState, ChangeEvent, FormEvent, FC,
+} from 'react';
 import { css } from '@emotion/react';
 import Image from 'next/image';
 import color from '@/styles/color';
 import useChatStore from '@/store/chat';
 
-const MessageInput = () => {
+interface CharacterNameState {
+  characterId: string,
+  characterName: string
+}
+
+const MessageInput : FC<CharacterNameState> = ({ characterId, characterName }) => {
   const { addChatContents } = useChatStore();
   const [message, setMessage] = useState('');
 
@@ -24,14 +31,14 @@ const MessageInput = () => {
   };
 
   const callLeeyjAPI = async (timestamp: number) => {
-    const response = await fetch('/api/hello');
+    const response = await fetch(`/api/${characterId}`);
     const jsonData = await response.json();
 
     // 함수의 input값인 message, timestamp를 아직 안쓰고 있어서 콘솔로그 찍어놓음
     console.log(message, timestamp);
 
     addChatContents({
-      speaker: '이영준', content: jsonData.say, timestamp: Date.now(),
+      speaker: characterName, content: jsonData.say, timestamp: Date.now(),
     });
   };
 
