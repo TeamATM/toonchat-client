@@ -16,7 +16,7 @@ const Character = ({ characterId }: CharacterProps) => {
     <section css={pageCSS}>
       <Header characterId={characterId} characterName={characterName} />
       <Main />
-      <MessageInput />
+      <MessageInput characterId={characterId} characterName={characterName} />
     </section>
   );
 };
