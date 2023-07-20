@@ -2,8 +2,8 @@
 import { useRef, useEffect } from 'react';
 import { css } from '@emotion/react';
 import useChatStore from '@/store/chat';
-import MySpeak from './MySpeak';
-import CharacterSpeak from './CharacterSpeak';
+import MySpeak from './messageBox/MySpeak';
+import CharacterSpeak from './messageBox/CharacterSpeak';
 
 const Main = () => {
   const { chatContents } = useChatStore();
