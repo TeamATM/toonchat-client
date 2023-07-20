@@ -5,7 +5,7 @@ import Image from 'next/image';
 import color from '@/styles/color';
 import useChatStore from '@/store/chat';
 
-const Footer = () => {
+const MessageInput = () => {
   const {
     addChatContents, idCounter, increaseIdCounter,
   } = useChatStore();
@@ -63,7 +63,7 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default MessageInput;
 
 const footerCSS = css`
   width: 100%;
