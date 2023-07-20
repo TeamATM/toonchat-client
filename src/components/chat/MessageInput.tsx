@@ -15,11 +15,15 @@ interface CharacterState {
 const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
   const { addChatContents, loadedChat } = useChatStore();
   const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  // TODO: input이 많아서 loading이 쌓인 경우 false로 풀어줘야함.
+  console.log(loading);
+  setLoading(false);
+  console.log(loading);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     let result = null;
     if (message) {
       const timestamp = Date.now();
@@ -31,7 +35,6 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
       // TODO: AI의 대답으로 수정될 부분 (API 호출했다고 가정)
       result = await callLeeyjAPI(timestamp);
     }
-    setLoading(false);
     return result;
   };
 
