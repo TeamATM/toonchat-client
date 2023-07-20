@@ -1,14 +1,12 @@
 // 주요 채팅 내용이 들어올 예정
-import { useRef, type FC, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { css } from '@emotion/react';
+import useChatStore from '@/store/chat';
 import MySpeak from './MySpeak';
 import CharacterSpeak from './CharacterSpeak';
 
-interface MainProps {
-  chatContents: {id: number, speaker: string, content: string, timestamp: number}[];
-}
-
-const Main: FC<MainProps> = ({ chatContents }) => {
+const Main = () => {
+  const { chatContents } = useChatStore();
   const messageEndRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
