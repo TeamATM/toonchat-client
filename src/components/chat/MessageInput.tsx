@@ -15,7 +15,7 @@ interface CharacterState {
 const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
   const { addChatContents, loadedChat } = useChatStore();
   const [message, setMessage] = useState('');
-  const [loading] = useState(true);
+  const [loading] = useState(false);
 
   // TODO: input이 많아서 loading이 쌓인 경우 false로 풀어줘야함.
   console.log(loading);
