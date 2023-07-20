@@ -6,7 +6,7 @@ const Document = () => (
   <Html lang="kr">
     <Head>
       <meta charSet="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <link rel="icon" href="/favicon.ico" />
       <meta name="author" content="Team ATM" />
       <meta name="description" content="최애 캐릭터와의 1:1 대화 | ToonChat" />
