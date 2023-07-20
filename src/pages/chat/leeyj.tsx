@@ -1,4 +1,4 @@
-import Footer from '@/components/chat/Footer';
+import MessageInput from '@/components/chat/MessageInput';
 import Header from '@/components/chat/Header';
 import Main from '@/components/chat/Main';
 import { css } from '@emotion/react';
@@ -7,7 +7,7 @@ const Leeyj = () => (
   <section css={pageCSS}>
     <Header />
     <Main />
-    <Footer />
+    <MessageInput />
   </section>
 );
 
