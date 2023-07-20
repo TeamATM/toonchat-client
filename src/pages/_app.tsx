@@ -1,4 +1,4 @@
-import ToonChatHead from '@/components/Head/ToonChatHead';
+import ToonChatHead from '@/components/head/ToonChatHead';
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 
