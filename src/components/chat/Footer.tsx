@@ -1,26 +1,44 @@
 // 채팅 입력하는 부분이 생길 예정
 import { useState, ChangeEvent, FormEvent } from 'react';
-import type { FC } from 'react';
 import { css } from '@emotion/react';
 import Image from 'next/image';
 import color from '@/styles/color';
+import useChatStore from '@/store/chat';
 
-interface FooterProps {
-  // TODO: 혜성 엑스퍼트의 HELP. message 변수를 잘 쓰고 있는데 ESLint가 억까하는 중입니다.
-  // eslint-disable-next-line no-unused-vars
-  addChatContents: (message: string, timestamp: number) => void;
-}
-
-const Footer: FC<FooterProps> = ({ addChatContents }) => {
+const Footer = () => {
+  const {
+    addChatContents, idCounter, increaseIdCounter,
+  } = useChatStore();
   const [message, setMessage] = useState('');
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
+    let result = null;
     if (message) {
-      addChatContents(message, Date.now());
+      const timestamp = Date.now();
+      addChatContents({
+        id: idCounter, speaker: 'me', content: message, timestamp,
+      });
+      increaseIdCounter();
       setMessage('');
+
+      // TODO: AI의 대답으로 수정될 부분 (API 호출했다고 가정)
+      result = await callLeeyjAPI(timestamp);
     }
+    return result;
+  };
+
+  const callLeeyjAPI = async (timestamp: number) => {
+    const response = await fetch('/api/hello');
+    const jsonData = await response.json();
+
+    // 함수의 input값인 message, timestamp를 아직 안쓰고 있어서 콘솔로그 찍어놓음
+    console.log(message, timestamp);
+
+    addChatContents({
+      id: idCounter + 1, speaker: '이영준', content: jsonData.say, timestamp: Date.now(),
+    });
+    increaseIdCounter();
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
