@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 import color from '@/styles/color';
 
-const CharacterInfoHeader = () => (
+const CharacterInfo = () => (
   <>
     <Link href="/">
       <Image
@@ -28,7 +28,7 @@ const CharacterInfoHeader = () => (
   </>
 );
 
-export default CharacterInfoHeader;
+export default CharacterInfo;
 
 const imageStyle = {
   borderRadius: '50%',

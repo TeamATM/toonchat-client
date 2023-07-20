@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
-import FriendShip from './FriendShip';
-import CharacterInfoHeader from './CharacterInfoHeader';
+import FriendShip from './characterHeader/FriendShip';
+import CharacterInfo from './characterHeader/CharacterInfo';
 
 // TODO: Back 버튼을 누르면 지금 홈으로 돌아가지만 채팅 리스트뷰가 완성되면 그쪽으로 Link 될 예정
 const Header = () => {
@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <header css={headerCSS}>
-      <CharacterInfoHeader />
+      <CharacterInfo />
       <FriendShip
         friendShipExp={userStatus.friendShipExp}
         maxFriendShipExp={userStatus.maxFriendShipExp}
