@@ -6,9 +6,7 @@ import color from '@/styles/color';
 import useChatStore from '@/store/chat';
 
 const MessageInput = () => {
-  const {
-    addChatContents, idCounter, increaseIdCounter,
-  } = useChatStore();
+  const { addChatContents } = useChatStore();
   const [message, setMessage] = useState('');
 
   const handleSubmit = async (e: FormEvent) => {
@@ -16,10 +14,7 @@ const MessageInput = () => {
     let result = null;
     if (message) {
       const timestamp = Date.now();
-      addChatContents({
-        id: idCounter, speaker: 'me', content: message, timestamp,
-      });
-      increaseIdCounter();
+      addChatContents({ speaker: 'me', content: message, timestamp });
       setMessage('');
 
       // TODO: AI의 대답으로 수정될 부분 (API 호출했다고 가정)
@@ -36,9 +31,8 @@ const MessageInput = () => {
     console.log(message, timestamp);
 
     addChatContents({
-      id: idCounter + 1, speaker: '이영준', content: jsonData.say, timestamp: Date.now(),
+      speaker: '이영준', content: jsonData.say, timestamp: Date.now(),
     });
-    increaseIdCounter();
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
