@@ -2,13 +2,17 @@ import type { FC } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import color from '@/styles/color';
+import LoadingContent from './characterChatContent/LoadingContent';
+import ChatContent from './characterChatContent/ChatContent';
 import TimeStamp from './TimeStamp';
 
 interface CharacterSpeakProps {
-  speaker:string, content: string, timestamp: number
+  speaker:string, content: string, timestamp: number, loading: boolean,
 }
 
-const CharacterSpeak: FC<CharacterSpeakProps> = ({ speaker, content, timestamp }) => (
+const CharacterSpeak: FC<CharacterSpeakProps> = ({
+  speaker, content, timestamp, loading = false,
+}) => (
   <span css={characterSpeakCSS}>
     <Image
       src="/leeyj.png"
@@ -20,9 +24,15 @@ const CharacterSpeak: FC<CharacterSpeakProps> = ({ speaker, content, timestamp }
     <span css={chatContainerCSS}>
       <span css={characterNameCSS}>{speaker}</span>
       <span css={characterChatBoxCSS}>
-        {content}
+        {loading
+          ? <LoadingContent />
+          : (
+            <>
+              <ChatContent content={content} />
+              <TimeStamp timestamp={timestamp} />
+            </>
+          )}
       </span>
-      <TimeStamp timestamp={timestamp} />
     </span>
   </span>
 );
