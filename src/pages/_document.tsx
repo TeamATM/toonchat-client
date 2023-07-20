@@ -3,7 +3,7 @@ import {
 } from 'next/document';
 
 const Document = () => (
-  <Html lang="en">
+  <Html lang="kr">
     <Head>
       <meta charSet="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,12 +15,12 @@ const Document = () => (
       <meta name="apple-mobile-web-app-title" content="ToonChat" />
 
       {/* OG */}
-      <meta name="og:site_name" content="ToonChat" />
-      <meta name="og:title" content="ToonChat" />
-      <meta name="og:type" content="website" />
-      <meta name="og:url" content="/thumbnail.png" />
+      <meta property="og:site_name" content="ToonChat" />
+      <meta property="og:title" content="ToonChat" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="/thumbnail.png" />
       <meta property="og:image" content="/thumbnail.png" />
-      <meta name="og:description" content="최애 캐릭터와의 1:1 대화 | ToonChat" />
+      <meta property="og:description" content="최애 캐릭터와의 1:1 대화 | ToonChat" />
 
       {/* 트위터 */}
       <meta name="twitter:card" content="summary" />
