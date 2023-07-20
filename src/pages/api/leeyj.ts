@@ -11,7 +11,7 @@ export default function handler(
 ) {
   setTimeout(() => {
     res.status(200).json({ say: jySay() });
-  }, Math.random() * 3000);
+  }, Math.random() * 8000);
 }
 
 const jySay = () => {
