@@ -12,6 +12,7 @@ interface ChatState {
   chatContents: ChatContentsState[],
   addChatContents: (newChat: NewChatContentState) => number;
   loadedChat: (loadedIndex: number, message: string, timestamp: number) => void;
+  sortingChat: () => void;
 }
 
 const useChatStore = create<ChatState>((set, get) => ({
@@ -22,6 +23,7 @@ const useChatStore = create<ChatState>((set, get) => ({
         chatContents: [...state.chatContents, { ...newChat, id: state.chatContents.length + 1 }],
       }),
     );
+    get().sortingChat();
     return get().chatContents.length - 1;
   },
   loadedChat: (loadedIndex, message, timestamp) => set(
@@ -32,8 +34,16 @@ const useChatStore = create<ChatState>((set, get) => ({
             ...chatContent, loading: false, content: message, timestamp,
           };
         }
+        get().sortingChat();
         return chatContent;
       }),
+    }),
+  ),
+  sortingChat: () => set(
+    (state) => ({
+      chatContents: state.chatContents.sort(
+        (a, b) => a.timestamp - b.timestamp,
+      ),
     }),
   ),
 }));

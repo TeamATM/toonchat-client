@@ -38,7 +38,7 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
 
   const callLeeyjAPI = async (timestamp: number) => {
     const index = addChatContents({
-      speaker: characterName, content: 'loading', timestamp: 0, loading: true,
+      speaker: characterName, content: 'loading', timestamp: new Date('2100-12-31 00:00:00').getTime(), loading: true,
     });
     const response = await fetch(`/api/${characterId}`);
     const jsonData = await response.json();
