@@ -37,8 +37,8 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
   };
 
   const callLeeyjAPI = async (timestamp: number) => {
-    const index = addChatContents({
-      speaker: characterName, content: 'loading', timestamp: new Date('2100-12-31 00:00:00').getTime(), loading: true,
+    const loadingTimestamp = addChatContents({
+      speaker: characterName, content: 'loading', timestamp: Date.now() + new Date('2100-12-31 00:00:00').getTime(), loading: true,
     });
     const response = await fetch(`/api/${characterId}`);
     const jsonData = await response.json();
@@ -46,7 +46,7 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
     // 함수의 input값인 message, timestamp를 아직 안쓰고 있어서 콘솔로그 찍어놓음
     console.log(message, timestamp);
 
-    loadedChat(index, jsonData.say, Date.now());
+    loadedChat(loadingTimestamp, jsonData.say, Date.now());
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
