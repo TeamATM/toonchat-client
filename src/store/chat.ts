@@ -24,12 +24,12 @@ const useChatStore = create<ChatState>((set, get) => ({
       }),
     );
     get().sortingChat();
-    return get().chatContents.length - 1;
+    return newChat.timestamp;
   },
-  loadedChat: (loadedIndex, message, timestamp) => set(
+  loadedChat: (loadingTimestamp, message, timestamp) => set(
     (state) => ({
-      chatContents: state.chatContents.map((chatContent, index) => {
-        if (index === loadedIndex) {
+      chatContents: state.chatContents.map((chatContent) => {
+        if (chatContent.timestamp === loadingTimestamp) {
           return {
             ...chatContent, loading: false, content: message, timestamp,
           };
