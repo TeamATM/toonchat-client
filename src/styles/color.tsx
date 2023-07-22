@@ -3,6 +3,7 @@ const color = {
   darkGreen: '#24786D',
   lightGreen: '#20A090',
   greenGray: '#797C7B',
+  lightGray: '#CDD1D0',
   offWhite: '#F3F6F6',
 };
 
