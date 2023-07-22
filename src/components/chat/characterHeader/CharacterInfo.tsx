@@ -11,7 +11,7 @@ interface CharacterNameState {
 
 const CharacterInfo: FC<CharacterNameState> = ({ characterId, characterName }) => (
   <>
-    <Link href="/">
+    <Link href="/user/login">
       <Image
         src="/back.svg"
         alt="back"
