@@ -20,6 +20,7 @@ const lineContainerCSS = css`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 30px;
   width: 100%;
   color:  ${color.lightGray};
   font-size: 14px;
@@ -28,6 +29,7 @@ const lineContainerCSS = css`
 const lineCSS = css`
   display: block;
   margin: 10px;
+  margin-top: 0;
   height: 1px;
   background: ${color.lightGray};
   width: 100%;

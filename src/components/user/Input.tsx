@@ -25,11 +25,11 @@ const inputTagCSS = css`
   display: block;
   width: 100%;
   margin-top: 14px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   padding: 5px;
   font-size: 16px;
   outline: none;
   background: none;
   border: none;
-  border-bottom: 1px solid ${color.greenGray};
+  border-bottom: 1px solid ${color.lightGray};
 `;

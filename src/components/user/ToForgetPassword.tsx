@@ -31,4 +31,5 @@ const textCSS = css`
   margin: auto;
   text-align: center;
   font-size: 14px;
+  padding:10px;
 `;
