@@ -1,3 +1,4 @@
+import Button from '@/components/user/Button';
 import color from '@/styles/color';
 import { css } from '@emotion/react';
 import Link from 'next/link';
@@ -13,7 +14,7 @@ const login = () => (
         or email to continue us
       </h2>
     </header>
-    <main>
+    <main css={css`width: 100%;`}>
       {/* main은 본격적인 로그인 절차를 할 수 있도록 하는 부분 */}
       <div>
         <button type="submit">google</button>
@@ -30,9 +31,9 @@ const login = () => (
         <input type="email" required />
         <div>Password</div>
         <input type="password" required />
-        <button type="submit">
-          login
-        </button>
+        <Button>
+          Log in
+        </Button>
         <div>Forget password?</div>
 
         <div css={divLineCSS} />
@@ -42,9 +43,9 @@ const login = () => (
       {/* footer는 로그인이 아니라 가입을 하고 싶은 사람이 있다면 이용할 태그 */}
       <div>You don&apos;t have an acount?</div>
       <Link href="/">
-        <button type="submit">
+        <Button>
           Sign up
-        </button>
+        </Button>
       </Link>
     </footer>
   </section>
