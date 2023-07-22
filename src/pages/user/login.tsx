@@ -1,4 +1,5 @@
 import Button from '@/components/user/Button';
+import Input from '@/components/user/Input';
 import color from '@/styles/color';
 import { css } from '@emotion/react';
 import Link from 'next/link';
@@ -26,11 +27,9 @@ const login = () => (
         <div>OR</div>
         <div css={divLineCSS} />
       </div>
-      <form>
-        <div>Your email</div>
-        <input type="email" required />
-        <div>Password</div>
-        <input type="password" required />
+      <form css={css`padding: 24px;`}>
+        <Input text="Your email" inputType="email" />
+        <Input text="Password" inputType="password" />
         <Button>
           Log in
         </Button>
