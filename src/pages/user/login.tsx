@@ -5,6 +5,7 @@ import Input from '@/components/user/Input';
 import PageDescribe from '@/components/user/PageDescribe';
 import PageTitle from '@/components/user/PageTitle';
 import SocialLoginButtons from '@/components/user/SocialLoginButtons';
+import ToForgetPassword from '@/components/user/ToForgetPassword';
 import TitleText from '@/components/user/pageTitle/TitleText';
 import TitleUnderLineText from '@/components/user/pageTitle/TitleUnderLineText';
 import { css } from '@emotion/react';
@@ -36,14 +37,13 @@ const login = () => (
         <Button>
           Log in
         </Button>
-        <div>Forget password?</div>
+        <ToForgetPassword />
 
       </form>
     </main>
     <footer css={css`width: 100%; padding: 24px;`}>
       {/* footer는 로그인이 아니라 가입을 하고 싶은 사람이 있다면 이용할 태그 */}
       <DivideLine />
-      <div>You don&apos;t have an acount?</div>
       <Link href="/">
         <Button>
           Sign up
