@@ -34,7 +34,7 @@ const login = () => (
       <form>
         <Input text="Your email" inputType="email" />
         <Input text="Password" inputType="password" />
-        <Button>
+        <Button theme="green">
           Log in
         </Button>
         <ToForgetPassword />
@@ -45,7 +45,7 @@ const login = () => (
       {/* footer는 로그인이 아니라 가입을 하고 싶은 사람이 있다면 이용할 태그 */}
       <DivideLine />
       <Link href="/">
-        <Button>
+        <Button theme="white">
           Sign up
         </Button>
       </Link>
