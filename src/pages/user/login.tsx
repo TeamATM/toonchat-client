@@ -2,6 +2,7 @@ import Button from '@/components/user/Button';
 import DivideLine from '@/components/user/DivideLine';
 import DivideLineText from '@/components/user/DivideLineText';
 import Input from '@/components/user/Input';
+import SocialLoginButtons from '@/components/user/SocialLoginButtons';
 import { css } from '@emotion/react';
 import Link from 'next/link';
 
@@ -18,11 +19,7 @@ const login = () => (
     </header>
     <main css={css`width: 100%; padding: 24px;`}>
       {/* main은 본격적인 로그인 절차를 할 수 있도록 하는 부분 */}
-      <div>
-        <button type="submit">google</button>
-        <button type="submit">naver</button>
-        <button type="submit">apple</button>
-      </div>
+      <SocialLoginButtons />
 
       <DivideLineText>OR</DivideLineText>
 
