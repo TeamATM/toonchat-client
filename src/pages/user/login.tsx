@@ -2,6 +2,7 @@ import Button from '@/components/user/Button';
 import DivideLine from '@/components/user/DivideLine';
 import DivideLineText from '@/components/user/DivideLineText';
 import Input from '@/components/user/Input';
+import PageDescribe from '@/components/user/PageDescribe';
 import SocialLoginButtons from '@/components/user/SocialLoginButtons';
 import { css } from '@emotion/react';
 import Link from 'next/link';
@@ -11,11 +12,11 @@ const login = () => (
     <header>
       {/* header는 이 페이지에 대한 설명(로그인 페이지 이후에 회원가입 페이지에서도 사용할 수 있도록해야함) */}
       <h1>Login to ToonChat</h1>
-      <h2>
+      <PageDescribe>
         Welcome back!
         Sign in using your social account
         or email to continue us
-      </h2>
+      </PageDescribe>
     </header>
     <main css={css`width: 100%; padding: 24px;`}>
       {/* main은 본격적인 로그인 절차를 할 수 있도록 하는 부분 */}
