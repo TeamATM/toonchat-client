@@ -34,7 +34,7 @@ const ButtonCSS = (theme: Theme) => css`
   border: none;
   padding: 16px;
   border-radius: 16px;
-
+  margin-top: 10px;
   font-size: 16px;
   font-weight: 400;
   color: ${themeTable[theme].color};

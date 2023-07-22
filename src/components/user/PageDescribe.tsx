@@ -14,8 +14,8 @@ export default PageDescribe;
 
 const textCSS = css`
   width: 80%;
-  margin: auto;
   padding: 16px;
+  margin: auto;
   border-radius: 16px;
   text-align: center;
   font-size: 14px;
