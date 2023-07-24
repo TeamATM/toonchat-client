@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import {
-  FC, ReactNode,
+  FC, ReactNode, useEffect, useRef,
 } from 'react';
 
 interface DialogProps {
@@ -8,20 +8,30 @@ interface DialogProps {
   children: ReactNode,
 }
 
-const Dialog: FC<DialogProps> = ({ closeModal, children }) => (
-  <div css={dialogCSS}>
-    <div css={dialogContentsCSS}>
-      {children}
-      <button type="button" onClick={closeModal}>Close</button>
+const Dialog: FC<DialogProps> = ({ closeModal, children }) => {
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (closeButtonRef.current) {
+      closeButtonRef.current.focus();
+    }
+  }, []);
+
+  return (
+    <div css={dialogCSS}>
+      <div css={dialogContentsCSS}>
+        {children}
+        <button type="button" onClick={closeModal} ref={closeButtonRef}>Close</button>
+      </div>
+      <button
+        type="button"
+        css={dialogBackdropCSS}
+        onClick={closeModal}
+        aria-label="close modal"
+      />
     </div>
-    <button
-      type="button"
-      css={dialogBackdropCSS}
-      onClick={closeModal}
-      aria-label="close modal"
-    />
-  </div>
-);
+  );
+};
 
 export default Dialog;
 
