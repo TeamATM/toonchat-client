@@ -6,6 +6,7 @@ import { css } from '@emotion/react';
 import Image from 'next/image';
 import color from '@/styles/color';
 import useChatStore from '@/store/chat';
+import Dialog from '../dialog/Dialog';
 
 interface CharacterState {
   characterId: string,
@@ -16,12 +17,16 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
   const { addChatContents, loadedChat } = useChatStore();
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (isModalOpen) {
+      return;
+    }
 
     if (loading) {
-      alert('영준이가 생각하는 중이에요!');
+      openModal();
       return;
     }
     if (message) {
@@ -36,6 +41,14 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
       await callLeeyjAPI(timestamp);
       setLoading(false);
     }
+  };
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
   };
 
   const callLeeyjAPI = async (timestamp: number) => {
@@ -59,7 +72,7 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
     <footer css={footerCSS}>
       <form css={formCSS} onSubmit={handleSubmit}>
         <input css={inputCSS} type="text" maxLength={100} value={message} onChange={handleChange} required />
-        <button css={buttonCSS} type="submit">
+        <button css={buttonCSS} type="submit" disabled={isModalOpen}>
           <Image
             src="/send.svg"
             alt="send"
@@ -69,6 +82,8 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
           />
         </button>
       </form>
+
+      {isModalOpen && <Dialog closeModal={closeModal}>영준이가 대답을 생각하는 중이에요!</Dialog>}
     </footer>
   );
 };
