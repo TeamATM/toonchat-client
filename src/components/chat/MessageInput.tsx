@@ -1,6 +1,6 @@
 // 채팅 입력하는 부분이 생길 예정
 import {
-  useState, ChangeEvent, FormEvent, FC,
+  useState, ChangeEvent, FormEvent, FC, useRef,
 } from 'react';
 import { css } from '@emotion/react';
 import Image from 'next/image';
@@ -18,6 +18,7 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -49,6 +50,7 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
 
   const closeModal = () => {
     setModalOpen(false);
+    inputRef.current?.focus();
   };
 
   const callLeeyjAPI = async (timestamp: number) => {
@@ -71,7 +73,7 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
   return (
     <footer css={footerCSS}>
       <form css={formCSS} onSubmit={handleSubmit}>
-        <input css={inputCSS} type="text" maxLength={100} value={message} onChange={handleChange} required />
+        <input css={inputCSS} type="text" maxLength={100} value={message} onChange={handleChange} ref={inputRef} required />
         <button css={buttonCSS} type="submit" disabled={isModalOpen}>
           <Image
             src="/send.svg"
