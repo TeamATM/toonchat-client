@@ -15,15 +15,17 @@ interface CharacterState {
 const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
   const { addChatContents, loadedChat } = useChatStore();
   const [message, setMessage] = useState('');
-  const [loading] = useState(false);
-
-  // TODO: input이 많아서 loading이 쌓인 경우 false로 풀어줘야함.
-  console.log(loading);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    let result = null;
+
+    if (loading) {
+      alert('영준이가 생각하는 중이에요!');
+      return;
+    }
     if (message) {
+      setLoading(true);
       const timestamp = Date.now();
       addChatContents({
         speaker: 'me', content: message, timestamp, loading: true,
@@ -31,9 +33,9 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
       setMessage('');
 
       // TODO: AI의 대답으로 수정될 부분 (API 호출했다고 가정)
-      result = await callLeeyjAPI(timestamp);
+      await callLeeyjAPI(timestamp);
+      setLoading(false);
     }
-    return result;
   };
 
   const callLeeyjAPI = async (timestamp: number) => {
@@ -57,7 +59,7 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
     <footer css={footerCSS}>
       <form css={formCSS} onSubmit={handleSubmit}>
         <input css={inputCSS} type="text" maxLength={100} value={message} onChange={handleChange} required />
-        <button css={buttonCSS} type="submit" disabled={loading}>
+        <button css={buttonCSS} type="submit">
           <Image
             src="/send.svg"
             alt="send"
