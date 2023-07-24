@@ -85,7 +85,7 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
         </button>
       </form>
 
-      {isModalOpen && <Dialog closeModal={closeModal}>영준이가 대답을 생각하는 중이에요!</Dialog>}
+      {isModalOpen && <Dialog closeModal={closeModal} theme="white">영준이가 대답을 생각하는 중이에요!</Dialog>}
     </footer>
   );
 };

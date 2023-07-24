@@ -1,14 +1,33 @@
+import color from '@/styles/color';
 import { css } from '@emotion/react';
 import {
   FC, ReactNode, useEffect, useRef,
 } from 'react';
 
+type Theme = 'green' | 'white'
+
 interface DialogProps {
   closeModal: () => void,
+  theme: Theme,
   children: ReactNode,
 }
 
-const Dialog: FC<DialogProps> = ({ closeModal, children }) => {
+const themeTable = {
+  green: {
+    backgroundColor: color.darkGreen,
+    color: color.offWhite,
+    subBackgroundColor: color.offWhite,
+    subColor: color.greenGray,
+  },
+  white: {
+    backgroundColor: color.offWhite,
+    color: color.greenGray,
+    subBackgroundColor: color.darkGreen,
+    subColor: color.offWhite,
+  },
+};
+
+const Dialog: FC<DialogProps> = ({ closeModal, theme, children }) => {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -19,9 +38,9 @@ const Dialog: FC<DialogProps> = ({ closeModal, children }) => {
 
   return (
     <div css={dialogCSS}>
-      <div css={dialogContentsCSS}>
-        {children}
-        <button type="button" onClick={closeModal} ref={closeButtonRef}>Close</button>
+      <div css={dialogContentsCSS(theme)}>
+        <div css={dialogTextCSS}>{children}</div>
+        <button type="button" onClick={closeModal} ref={closeButtonRef} css={buttonCSS(theme)}>ENTER</button>
       </div>
       <button
         type="button"
@@ -46,12 +65,22 @@ const dialogCSS = css`
   justify-content: center;
 `;
 
-const dialogContentsCSS = css`
+const dialogContentsCSS = (theme: Theme) => css`
   position: relative;
-  width: 500px;
-  padding: 20px;
-  background: white;
   z-index: 2;
+
+  border-radius: 16px;
+  padding: 20px;
+  background-color: ${themeTable[theme].backgroundColor};
+  color: ${themeTable[theme].color};
+
+  text-align: center;
+`;
+
+const dialogTextCSS = css`
+  font-size: 14px;
+  padding: 10px;
+  padding-bottom: 20px;
 `;
 
 const dialogBackdropCSS = css`
@@ -60,6 +89,24 @@ const dialogBackdropCSS = css`
   left: 0;
   width: 100%;
   height: 100%;
+  font-size: 20px;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1;
+`;
+
+const buttonCSS = (theme: Theme) => css`
+  width: 80%;
+  background-color: ${themeTable[theme].subBackgroundColor};
+  border: none;
+  padding: 10px;
+  margin-top: 30px;
+  border-radius: 12px;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 400;
+  color: ${themeTable[theme].subColor};
+
+  &:focus {
+    outline: none;
+  }
 `;
