@@ -3,6 +3,7 @@ import MessageInput from '@/components/chat/MessageInput';
 import Header from '@/components/chat/Header';
 import Main from '@/components/chat/Main';
 import { css } from '@emotion/react';
+import ToonChatHead from '@/components/head/ToonChatHead';
 
 interface CharacterProps {
   characterId: string;
@@ -13,11 +14,14 @@ const Character = ({ characterId }: CharacterProps) => {
   const characterName = '이영준';
 
   return (
-    <section css={pageCSS}>
-      <Header characterId={characterId} characterName={characterName} />
-      <Main />
-      <MessageInput characterId={characterId} characterName={characterName} />
-    </section>
+    <>
+      <ToonChatHead title={`대화 with ${characterName}`} />
+      <section css={pageCSS}>
+        <Header characterId={characterId} characterName={characterName} />
+        <Main />
+        <MessageInput characterId={characterId} characterName={characterName} />
+      </section>
+    </>
   );
 };
 
