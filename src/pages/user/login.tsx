@@ -1,3 +1,4 @@
+import ToonChatHead from '@/components/head/ToonChatHead';
 import Button from '@/components/user/Button';
 import DivideLine from '@/components/user/DivideLine';
 import DivideLineText from '@/components/user/DivideLineText';
@@ -13,6 +14,7 @@ import Link from 'next/link';
 const login = () => (
   <section css={pageCSS}>
     {/* header : 로그인 페이지에 대한 설명 */}
+    <ToonChatHead title="Log in" />
     <header>
       <PageTitle>
         <UnderLineText>Log in</UnderLineText>
