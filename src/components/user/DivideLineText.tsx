@@ -29,7 +29,6 @@ const lineContainerCSS = css`
 const lineCSS = css`
   display: block;
   margin: 10px;
-  margin-top: 0;
   height: 1px;
   background: ${color.lightGray};
   width: 100%;
