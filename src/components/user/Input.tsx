@@ -3,10 +3,10 @@ import { css } from '@emotion/react';
 import { FC } from 'react';
 
 interface InputProps {
-  text: string, inputType: 'email' | 'password' | 'text',
+  text: string, inputType: 'email' | 'text',
 }
 
-// TODO: 회원가입, 로그인시 비밀번호 길이, 닉네임 길이 등 제약이 필요함
+// TODO: 회원가입, 로그인시 닉네임 길이 등 제약이 필요함
 const Input: FC<InputProps> = ({ text, inputType }) => (
   <>
     <div css={textCSS}>{text}</div>
