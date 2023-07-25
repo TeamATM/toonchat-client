@@ -5,6 +5,7 @@ import DivideLineText from '@/components/user/DivideLineText';
 import Input from '@/components/user/Input';
 import PageDescribe from '@/components/user/PageDescribe';
 import PageTitle from '@/components/user/PageTitle';
+import PasswordInput from '@/components/user/PasswordInput';
 import SocialLoginButtons from '@/components/user/SocialLoginButtons';
 import ToForgetPassword from '@/components/user/ToForgetPassword';
 import UnderLineText from '@/components/user/pageTitle/UnderLineText';
@@ -32,7 +33,7 @@ const login = () => (
       <DivideLineText>OR</DivideLineText>
       <form>
         <Input text="Your email" inputType="email" />
-        <Input text="Password" inputType="password" />
+        <PasswordInput text="Password" />
         <Button theme="green">
           Log in
         </Button>
