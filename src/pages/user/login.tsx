@@ -6,8 +6,7 @@ import PageDescribe from '@/components/user/PageDescribe';
 import PageTitle from '@/components/user/PageTitle';
 import SocialLoginButtons from '@/components/user/SocialLoginButtons';
 import ToForgetPassword from '@/components/user/ToForgetPassword';
-import TitleText from '@/components/user/pageTitle/TitleText';
-import TitleUnderLineText from '@/components/user/pageTitle/TitleUnderLineText';
+import UnderLineText from '@/components/user/pageTitle/UnderLineText';
 import { css } from '@emotion/react';
 import Link from 'next/link';
 
@@ -16,8 +15,8 @@ const login = () => (
     {/* header : 로그인 페이지에 대한 설명 */}
     <header>
       <PageTitle>
-        <TitleUnderLineText>Login</TitleUnderLineText>
-        <TitleText> to ToonChat</TitleText>
+        <UnderLineText>Log in</UnderLineText>
+        <span> to ToonChat</span>
       </PageTitle>
       <PageDescribe>
         Welcome back!
