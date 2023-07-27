@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 interface NextApiRequestWithId extends NextApiRequest {
   query: {
-    id: string;
+    character_id: string;
   };
 }
 
@@ -15,17 +15,15 @@ export default function handler(
   req: NextApiRequestWithId,
   res: NextApiResponse<Data>,
 ) {
-  const {
-    query: { id },
-  } = req;
+  const characterId = req.query.character_id;
 
   setTimeout(() => {
-    res.status(200).json({ say: Say(id) });
+    res.status(200).json({ say: Say(characterId) });
   }, Math.random() * 5000);
 }
 
-const Say = (id: string) => {
-  if (id === '0') {
+const Say = (characterId: string) => {
+  if (characterId === '0') {
     return sayList['0'][Math.floor(Math.random() * sayList[0].length)];
   }
   return sayList[1][Math.floor(Math.random() * sayList[1].length)];
