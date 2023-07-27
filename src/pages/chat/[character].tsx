@@ -43,7 +43,7 @@ export const getServerSideProps
       notFound: true,
     };
   }
-  const res = await fetch(`http://localhost:3000/api/character/info/${characterId}`);
+  const res = await fetch(`/api/character/info/${characterId}`);
   const dataSet = await res.json();
 
   if (dataSet.error) {
