@@ -19,7 +19,7 @@ const Header : FC<CharacterState> = ({
     friendShipExp: 0, maxFriendShipExp: 1, friendShipLv: 0,
   });
   useEffect(() => {
-    fetch(`/api/userStatusTo${characterId}`)
+    fetch(`/api/userStatus/${characterId}`)
       .then((res) => res.json())
       .then((data) => { setUserStatus(data); });
   }, []);
