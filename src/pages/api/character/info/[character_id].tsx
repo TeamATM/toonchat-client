@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 interface NextApiRequestWithId extends NextApiRequest {
   query: {
-    id: string;
+    character_id: string;
   };
 }
 
@@ -30,11 +30,8 @@ export default function handler(
   req: NextApiRequestWithId,
   res: NextApiResponse<DataSet>,
 ) {
-  const {
-    query: { id },
-  } = req;
-
-  const idNumber = parseInt(id, 10);
+  const characterId = req.query.character_id;
+  const idNumber = parseInt(characterId, 10);
 
   if (Number.isNaN(idNumber) || idNumber < 0 || idNumber >= characterDataSet.length) {
     res.status(400).json({ error: 'Character id가 다름' });

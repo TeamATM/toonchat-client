@@ -8,9 +8,14 @@ const Home = () => (
     <ToonChatHead title="Home" />
     <section css={pageCSS}>
       <main css={css`width: 100%; padding: 24px;`}>
-        <Link href="/chat/leeyj">
+        <Link href="/chat/0">
           <Button theme="green">
-            바로 영준이와 대화하기
+            영준이와 대화하기
+          </Button>
+        </Link>
+        <Link href="/chat/1">
+          <Button theme="green">
+            미소와 대화하기
           </Button>
         </Link>
         <Link href="/user/login">
