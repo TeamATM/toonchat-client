@@ -17,9 +17,7 @@ const Character = ({
     characterName, characterId, hashTag, imageUrl,
   },
 }
-  : { characterProps: CharacterProps }) => {
-  console.log(characterName, hashTag, imageUrl);
-  return (
+  : { characterProps: CharacterProps }) => (
     <>
       <ToonChatHead title={`대화 with ${characterName}`} />
       <section css={pageCSS}>
@@ -33,8 +31,7 @@ const Character = ({
         <MessageInput characterId={characterId} characterName={characterName} />
       </section>
     </>
-  );
-};
+);
 export default Character;
 
 export const getServerSideProps
