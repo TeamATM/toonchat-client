@@ -6,13 +6,19 @@ import { css } from '@emotion/react';
 import ToonChatHead from '@/components/head/ToonChatHead';
 
 interface CharacterProps {
-  characterId: string;
+  characterName: string,
+  characterId: string,
+  hashTag: string,
+  imageUrl: string,
 }
 
-const Character = ({ characterId }: CharacterProps) => {
-  // 이영준 이름은 페이지 로딩끝나면 API로 받아와야함
-  const characterName = '이영준';
-
+const Character = ({
+  characterProps: {
+    characterName, characterId, hashTag, imageUrl,
+  },
+}
+  : { characterProps: CharacterProps }) => {
+  console.log(characterName, hashTag, imageUrl);
   return (
     <>
       <ToonChatHead title={`대화 with ${characterName}`} />
@@ -24,22 +30,37 @@ const Character = ({ characterId }: CharacterProps) => {
     </>
   );
 };
-
 export default Character;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps
+:GetServerSideProps<{characterProps:CharacterProps}> = async (context) => {
   const characterId = context.query.character;
-  console.log(characterId);
 
   if (Array.isArray(characterId) || !characterId) {
     return {
       notFound: true,
     };
   }
+  const res = await fetch(`http://localhost:3000/api/character/info/${characterId}`);
+  const dataSet = await res.json();
+
+  if (dataSet.error) {
+    return {
+      notFound: true,
+    };
+  }
+
+  console.log(dataSet);
 
   return {
-    // TODO: 이영준을 잘 받아올 수 있도록 수정해야함
-    props: { characterId: 'leeyj' },
+    props: {
+      characterProps: {
+        characterName: dataSet['bot-name'],
+        characterId,
+        hashTag: dataSet['hash-tag'],
+        imageUrl: dataSet['image-url'],
+      },
+    },
   };
 };
 
