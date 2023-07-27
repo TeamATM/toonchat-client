@@ -25,11 +25,12 @@ const historyToContents = (histories: (
 }));
 
 const Main:FC<MainProps> = ({ characterId, characterName, imageUrl }) => {
-  const { chatContents, initChatContents } = useChatStore();
+  const { chatContents, clearChatContents, initChatContents } = useChatStore();
   const messageEndRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     // TODO: Loading으로 채팅을 못치게 막아야할 것 같음
+    clearChatContents();
     fetch(`/api/chat/${characterId}`)
       .then((res) => res.json())
       .then((data) => {
