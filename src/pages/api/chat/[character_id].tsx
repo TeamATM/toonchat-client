@@ -17,8 +17,14 @@ export default function handler(
 ) {
   const characterId = req.query.character_id;
 
+  if (req.method === 'POST') {
+    setTimeout(() => {
+      res.status(200).json({ say: Say(characterId) });
+    }, Math.random() * 5000);
+  }
+
   setTimeout(() => {
-    res.status(200).json({ say: Say(characterId) });
+    res.status(200).json({ say: '히스토리를 가져와야하는 곳' });
   }, Math.random() * 5000);
 }
 

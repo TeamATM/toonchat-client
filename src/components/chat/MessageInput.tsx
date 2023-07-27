@@ -58,7 +58,7 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
       speaker: characterName, content: 'loading', timestamp: Date.now() + new Date('2100-12-31 00:00:00').getTime(), loading: true,
     });
 
-    const response = await fetch(`/api/chat/${characterId}`);
+    const response = await fetch(`/api/chat/${characterId}`, { method: 'POST' });
     const jsonData = await response.json();
 
     // 함수의 input값인 message, timestamp를 아직 안쓰고 있어서 콘솔로그 찍어놓음
