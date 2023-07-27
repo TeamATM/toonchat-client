@@ -29,7 +29,7 @@ const Character = ({
           characterName={characterName}
           hashTag={hashTag}
         />
-        <Main />
+        <Main imageUrl={imageUrl} />
         <MessageInput characterId={characterId} characterName={characterName} />
       </section>
     </>
@@ -54,8 +54,6 @@ export const getServerSideProps
       notFound: true,
     };
   }
-
-  console.log(dataSet);
 
   return {
     props: {

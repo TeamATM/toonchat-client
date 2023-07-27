@@ -1,11 +1,15 @@
 // 주요 채팅 내용이 들어올 예정
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, FC } from 'react';
 import { css } from '@emotion/react';
 import useChatStore from '@/store/chat';
 import MySpeak from './messageBox/MySpeak';
 import CharacterSpeak from './messageBox/CharacterSpeak';
 
-const Main = () => {
+interface MainProps {
+  imageUrl: string
+}
+
+const Main:FC<MainProps> = ({ imageUrl }) => {
   const { chatContents } = useChatStore();
   const messageEndRef = useRef<HTMLDivElement | null>(null);
 
@@ -24,6 +28,7 @@ const Main = () => {
             <CharacterSpeak
               key={chat.id}
               speaker={chat.speaker}
+              imageUrl={imageUrl}
               content={chat.content}
               timestamp={chat.timestamp}
               loading={chat.loading}
