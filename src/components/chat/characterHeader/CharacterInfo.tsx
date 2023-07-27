@@ -4,14 +4,15 @@ import { css } from '@emotion/react';
 import color from '@/styles/color';
 import { FC } from 'react';
 
-interface CharacterNameState {
-  characterId: string,
-  characterName: string
+interface CharacterInfoProps {
+  characterName: string,
+  hashTag: string,
+  imageUrl: string,
 }
 
-const CharacterInfo: FC<CharacterNameState> = ({ characterId, characterName }) => (
+const CharacterInfo: FC<CharacterInfoProps> = ({ characterName, hashTag, imageUrl }) => (
   <>
-    <Link href="/user/login">
+    <Link href="/">
       <Image
         src="/back.svg"
         alt="back"
@@ -21,7 +22,7 @@ const CharacterInfo: FC<CharacterNameState> = ({ characterId, characterName }) =
       />
     </Link>
     <Image
-      src={`/${characterId}.png`}
+      src={imageUrl}
       width={44}
       height={44}
       style={imageStyle}
@@ -29,7 +30,7 @@ const CharacterInfo: FC<CharacterNameState> = ({ characterId, characterName }) =
     />
     <div>
       <div css={characterNameCSS}>{characterName}</div>
-      <div css={characterBackgroundCSS}>#네이버웹툰 #김비서가왜그럴까</div>
+      <div css={characterBackgroundCSS}>{hashTag}</div>
     </div>
   </>
 );
