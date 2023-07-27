@@ -1,9 +1,12 @@
 // 주요 채팅 내용이 들어올 예정
-import { useRef, useEffect, FC } from 'react';
+import {
+  useRef, useEffect, FC, useState,
+} from 'react';
 import { css } from '@emotion/react';
 import useChatStore from '@/store/chat';
 import MySpeak from './messageBox/MySpeak';
 import CharacterSpeak from './messageBox/CharacterSpeak';
+import Loading from '../dialog/Loading';
 
 interface MainProps {
   characterId: string,
@@ -27,22 +30,27 @@ const historyToContents = (histories: (
 const Main:FC<MainProps> = ({ characterId, characterName, imageUrl }) => {
   const { chatContents, clearChatContents, initChatContents } = useChatStore();
   const messageEndRef = useRef<HTMLDivElement | null>(null);
+  const [loadingHistory, setLoadingHistory] = useState(false);
 
   useEffect(() => {
     // TODO: Loading으로 채팅을 못치게 막아야할 것 같음
     clearChatContents();
+    setLoadingHistory(true);
     fetch(`/api/chat/${characterId}`)
       .then((res) => res.json())
       .then((data) => {
+        setLoadingHistory(false);
         initChatContents(historyToContents(data.history, characterName));
       });
-  }, [characterId, characterName, initChatContents]);
+    // setLoadingHistory(false);
+  }, [characterId, characterName, clearChatContents, initChatContents]);
   useEffect(() => {
     messageEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [chatContents]);
 
   return (
     <main css={mainCSS}>
+      {loadingHistory && <Loading />}
       {chatContents.map(
         (chat) => {
           if (chat.speaker === 'me') {
