@@ -23,7 +23,12 @@ const Character = ({
     <>
       <ToonChatHead title={`대화 with ${characterName}`} />
       <section css={pageCSS}>
-        <Header characterId={characterId} characterName={characterName} />
+        <Header
+          characterId={characterId}
+          imageUrl={imageUrl}
+          characterName={characterName}
+          hashTag={hashTag}
+        />
         <Main />
         <MessageInput characterId={characterId} characterName={characterName} />
       </section>
