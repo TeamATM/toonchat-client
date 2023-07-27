@@ -5,19 +5,19 @@ import LoadingContent from './characterChatContent/LoadingContent';
 import ChatContent from './characterChatContent/ChatContent';
 
 interface CharacterSpeakProps {
-  speaker:string, content: string, timestamp: number, loading: boolean,
+  speaker:string, content: string, timestamp: number, imageUrl: string, loading: boolean,
 }
 
 const CharacterSpeak: FC<CharacterSpeakProps> = ({
-  speaker, content, timestamp, loading = false,
+  speaker, content, timestamp, imageUrl, loading = false,
 }) => (
   <span css={characterSpeakCSS}>
     <Image
-      src="/leeyj.png"
+      src={imageUrl}
       width={40}
       height={40}
       style={imageStyle}
-      alt="이영준"
+      alt={speaker}
     />
     <span css={chatContainerCSS}>
       <span css={characterNameCSS}>{speaker}</span>
