@@ -34,6 +34,20 @@ const Character = ({
 );
 export default Character;
 
+// TODO: vercel 배포에서 임시API로는 서버사이드 랜더링이
+// 잘 안되는 상황이었음. 더미데이터를 여기에서 따로 뽑고 이후 서버 연결하면 지울 예정
+const characterDataSet = [
+  {
+    'bot-name': '이영준',
+    'hash-tag': '#카카오페이지 #김비서가왜그럴까',
+    'image-url': '/leeyj.png',
+  }, {
+    'bot-name': '김미소',
+    'hash-tag': '#카카오페이지 #김비서가왜그럴까',
+    'image-url': '/kimms.png',
+  },
+];
+
 export const getServerSideProps
 :GetServerSideProps<{characterProps:CharacterProps}> = async (context) => {
   const characterId = context.query.character;
@@ -43,14 +57,17 @@ export const getServerSideProps
       notFound: true,
     };
   }
-  const res = await fetch(`/api/character/info/${characterId}`);
-  const dataSet = await res.json();
+  // TODO: 서버가 구축되면 이 부분을 살릴 예정
+  // const res = await fetch(`/api/character/info/${characterId}`);
+  // const dataSet = await res.json();
 
-  if (dataSet.error) {
+  const idNumber = parseInt(characterId, 10);
+  if (Number.isNaN(idNumber) || idNumber < 0 || idNumber >= characterDataSet.length) {
     return {
       notFound: true,
     };
   }
+  const dataSet = characterDataSet[idNumber];
 
   return {
     props: {
