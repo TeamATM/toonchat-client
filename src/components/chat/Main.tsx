@@ -6,13 +6,36 @@ import MySpeak from './messageBox/MySpeak';
 import CharacterSpeak from './messageBox/CharacterSpeak';
 
 interface MainProps {
+  characterId: string,
+  characterName: string,
   imageUrl: string
 }
 
-const Main:FC<MainProps> = ({ imageUrl }) => {
-  const { chatContents } = useChatStore();
+type BotChat = { bot: string, timestamp: number }
+type HumanChat = { human: string, timestamp: number }
+
+// TODO: util같은 폴더에 따로 모아둬야할 것 같은 기능.
+const historyToContents = (histories: (
+  BotChat|HumanChat)[], characterName: string) => histories.map((history, index) => ({
+  id: index,
+  speaker: 'bot' in history ? characterName : 'me',
+  content: 'bot' in history ? history.bot : history.human,
+  timestamp: history.timestamp,
+  loading: false,
+}));
+
+const Main:FC<MainProps> = ({ characterId, characterName, imageUrl }) => {
+  const { chatContents, initChatContents } = useChatStore();
   const messageEndRef = useRef<HTMLDivElement | null>(null);
 
+  useEffect(() => {
+    // TODO: Loading으로 채팅을 못치게 막아야할 것 같음
+    fetch(`/api/chat/${characterId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        initChatContents(historyToContents(data.history, characterName));
+      });
+  }, [characterId, characterName, initChatContents]);
   useEffect(() => {
     messageEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [chatContents]);

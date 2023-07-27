@@ -27,7 +27,7 @@ const Character = ({
           characterName={characterName}
           hashTag={hashTag}
         />
-        <Main imageUrl={imageUrl} />
+        <Main characterId={characterId} characterName={characterName} imageUrl={imageUrl} />
         <MessageInput characterId={characterId} characterName={characterName} />
       </section>
     </>
