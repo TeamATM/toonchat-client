@@ -10,6 +10,7 @@ interface NewChatContentState {
 
 interface ChatState {
   chatContents: ChatContentsState[],
+  clearChatContents: () => void;
   initChatContents: (history: ChatContentsState[]) => void;
   addChatContents: (newChat: NewChatContentState) => number;
   loadedChat: (loadedIndex: number, message: string, timestamp: number) => void;
@@ -18,6 +19,9 @@ interface ChatState {
 
 const useChatStore = create<ChatState>((set, get) => ({
   chatContents: [],
+  clearChatContents: () => set(() => ({
+    chatContents: [],
+  })),
   initChatContents: (history) => set(() => ({
     chatContents: [...history],
   })),
