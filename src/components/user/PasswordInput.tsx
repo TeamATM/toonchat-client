@@ -1,7 +1,7 @@
 import color from '@/styles/color';
 import { css } from '@emotion/react';
 import {
-  FC, useState, ChangeEvent, Dispatch, SetStateAction,
+  FC, ChangeEvent, Dispatch, SetStateAction,
 } from 'react';
 
 interface PasswordInputProps {
@@ -10,11 +10,8 @@ interface PasswordInputProps {
 
 // TODO: 회원가입, 로그인시 비밀번호 길이 제약이 필요함
 const PasswordInput: FC<PasswordInputProps> = ({ text, value, setState }) => {
-  const [display, setDisplay] = useState('');
-
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setState(e.target.value);
-    setDisplay('*'.repeat(e.target.value.length));
   };
 
   return (
@@ -23,13 +20,6 @@ const PasswordInput: FC<PasswordInputProps> = ({ text, value, setState }) => {
       <input
         type="password"
         value={value}
-        onChange={handleInputChange}
-        style={{ display: 'none' }}
-        required
-      />
-      <input
-        type="text"
-        value={display}
         onChange={handleInputChange}
         css={inputTagCSS}
         required

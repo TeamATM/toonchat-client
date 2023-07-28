@@ -18,7 +18,13 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const loginRes = await fetch('/api/users/login', { method: 'POST', body: JSON.stringify({ email, password }) });
+    const loginRes = await fetch('/api/users/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     const loginData = await loginRes.json();
 
     if ('error' in loginData) {
