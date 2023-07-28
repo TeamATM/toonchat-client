@@ -16,9 +16,16 @@ import { FormEvent, useState } from 'react';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert(`email : ${email} / password : ${password}`);
+    const loginRes = await fetch('/api/users/login', { method: 'POST', body: JSON.stringify({ email, password }) });
+    const loginData = await loginRes.json();
+
+    if ('error' in loginData) {
+      alert('로그인 실패');
+      return;
+    }
+    alert('로그인 성공');
   };
   return (
     <section css={pageCSS}>
