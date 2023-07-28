@@ -15,10 +15,10 @@ import { FormEvent, useState } from 'react';
 
 const Login = () => {
   const [email, setEmail] = useState('');
-
+  const [password, setPassword] = useState('');
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert(`email : ${email}`);
+    alert(`email : ${email} / password : ${password}`);
   };
   return (
     <section css={pageCSS}>
@@ -41,7 +41,7 @@ const Login = () => {
         <DivideLineText>OR</DivideLineText>
         <form onSubmit={handleSubmit}>
           <Input text="Your email" inputType="email" value={email} setState={setEmail} />
-          <PasswordInput text="Password" />
+          <PasswordInput text="Password" value={password} setState={setPassword} />
           <Button theme="green">
             Log in
           </Button>
