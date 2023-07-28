@@ -13,12 +13,12 @@ import { FormEvent, useState } from 'react';
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [confirmPassword, setConfirmPassword] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert(`username : ${username} / email : ${email}`);
+    alert(`username : ${username} / email : ${email} / password : ${password} / confirm : ${confirmPassword}`);
   };
 
   return (
@@ -42,8 +42,8 @@ const Signup = () => {
           <form onSubmit={handleSubmit}>
             <Input text="Your email" inputType="email" value={email} setState={setEmail} />
             <Input text="Your name" inputType="text" value={username} setState={setUsername} />
-            <PasswordInput text="Password" />
-            <PasswordInput text="Confirm Password" />
+            <PasswordInput text="Password" value={password} setState={setPassword} />
+            <PasswordInput text="Confirm Password" value={confirmPassword} setState={setConfirmPassword} />
             <Button theme="white">
               Create an account
             </Button>
