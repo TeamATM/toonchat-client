@@ -43,7 +43,7 @@ const login = () => (
     {/* footer : 회원가입 작업 */}
     <footer css={wrapperCSS}>
       <DivideLine />
-      <Link href="/">
+      <Link href="/user/signup">
         <Button theme="white">
           Sign up
         </Button>
