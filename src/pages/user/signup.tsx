@@ -9,16 +9,36 @@ import Input from '@/components/user/Input';
 import PasswordInput from '@/components/user/PasswordInput';
 import Button from '@/components/user/Button';
 import { FormEvent, useState } from 'react';
+import { useRouter } from 'next/router';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const router = useRouter();
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert(`username : ${username} / email : ${email} / password : ${password} / confirm : ${confirmPassword}`);
+    const signupRes = await fetch('/api/users', {
+      method: 'POST',
+      body: JSON.stringify({
+        email, username, password, confirmPassword,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const signupData = await signupRes.json();
+    if ('error' in signupData) {
+      // TODO: 회원가입 실패시 알려주는 UI가 필요함
+      alert('회원가입 실패');
+      return;
+    }
+    // 회원가입 성공!
+    router.push({
+      pathname: '/user/login',
+    });
   };
 
   return (
