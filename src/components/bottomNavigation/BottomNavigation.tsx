@@ -6,6 +6,7 @@ import ChatIcon from '../icons/ChatIcon';
 import CommunityIcon from '../icons/CommunityIcon';
 import ProfileIcon from '../icons/ProfileIcon';
 import NavButtonWrapper from './NavButton/NavButtonWrapper';
+import SectionLine from '../main/SectionLine';
 
 interface NavProps {
   pageName: 'Home' | 'Chat' | 'Community' | 'Profile'
@@ -31,7 +32,7 @@ const BottomNavigation: FC<NavProps> = ({ pageName }) => {
 
   return (
     <div css={navContainerCSS}>
-      <div css={lineCSS} />
+      <SectionLine />
       <div css={BottomNavCSS}>
         <NavButtonWrapper color={homeColor} linkUrl="/user">
           <HomeIcon color={homeColor} />
@@ -64,12 +65,6 @@ const navContainerCSS = css`
   flex-direction: column;
   align-items: center;
   width: 100%;
-`;
-
-const lineCSS = css`
-  height: 1px;
-  background: ${color.lightGray};
-  width: 350px;
 `;
 
 const BottomNavCSS = css`
