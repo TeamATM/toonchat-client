@@ -56,7 +56,7 @@ const BottomNavigation: FC<NavProps> = ({ pageName }) => {
 export default BottomNavigation;
 
 const BottomNavCSS = css`
-  position: fixed;
+  position: sticky;
   bottom: 0;
   width: 400px;
   padding: 15px;
