@@ -5,6 +5,7 @@ import SectionTitle from '@/components/main/SectionTitle';
 import SectionLine from '@/components/main/SectionLine';
 import Recommends from '@/components/main/Recommends';
 import SearchBar from '@/components/main/SearchBar';
+import Friends from '@/components/main/Friends';
 
 const ChatHome = () => (
   <>
@@ -22,9 +23,7 @@ const ChatHome = () => (
         <div css={titleSectionCSS}>
           <SectionTitle>Friends</SectionTitle>
         </div>
-        <div>친구1</div>
-        <div>친구2</div>
-        <div>친구3</div>
+        <Friends />
       </main>
       <BottomNavigation pageName="Home" />
     </section>
