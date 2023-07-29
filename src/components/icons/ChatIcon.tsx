@@ -5,7 +5,7 @@ interface IconProps {
 }
 
 const ChatIcon: FC<IconProps> = ({ color }) => (
-  <svg width="30" height="30" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width="26" height="26" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M19.5001 9.791C19.5001 14.33 15.4521 17.973 10.5001 17.973C9.8591 17.973 9.2351 17.91 8.6311 17.794" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     <path d="M5.099 16.326C2.92 14.836 1.5 12.474 1.5 9.791" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     <path d="M5.09901 16.326C5.09801 17.18 5.10001 18.332 5.10001 19.541" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

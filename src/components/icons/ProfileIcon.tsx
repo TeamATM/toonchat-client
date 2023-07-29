@@ -4,7 +4,7 @@ interface IconProps {
   color: string
 }
 const ProfileIcon: FC<IconProps> = ({ color }) => (
-  <svg width="30" height="30" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width="26" height="26" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2926 10.0235C22.0826 10.8136 22.0826 12.0944 21.2926 12.8845C20.5026 13.6745 19.2217 13.6745 18.4316 12.8845C17.6416 12.0944 17.6416 10.8136 18.4316 10.0235C19.2217 9.23349 20.5026 9.23349 21.2926 10.0235" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     <path d="M14.7026 6.41236C15.9191 7.62884 15.9191 9.60115 14.7026 10.8176C13.4862 12.0341 11.5139 12.0341 10.2974 10.8176C9.08089 9.60116 9.08089 7.62885 10.2974 6.41236C11.5138 5.19588 13.4862 5.19588 14.7026 6.41236" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     <path d="M6.56846 10.0235C7.35849 10.8136 7.35849 12.0944 6.56846 12.8845C5.77843 13.6745 4.49754 13.6745 3.70751 12.8845C2.91748 12.0944 2.91748 10.8136 3.70751 10.0235C4.49754 9.23349 5.77843 9.23349 6.56846 10.0235" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
