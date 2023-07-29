@@ -63,20 +63,18 @@ const navContainerCSS = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 `;
 
 const lineCSS = css`
-  margin-left: 5px;
-  margin-right: 5px;
   height: 1px;
   background: ${color.lightGray};
-  width: 300px;
+  width: 350px;
 `;
 
 const BottomNavCSS = css`
   bottom: 0;
-  width: 400px;
-  padding: 15px;
+  padding: 10px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 `;
