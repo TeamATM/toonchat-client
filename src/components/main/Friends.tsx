@@ -1,29 +1,19 @@
-import color from '@/styles/color';
 import { css } from '@emotion/react';
-import Image from 'next/image';
+import Friend from './friend/Friend';
 
 const Friends = () => (
   <section css={friendsWrapperCSS}>
     {characterDataSet.map((data, index) => (
       // TODO: 여러 캐릭터가 있을 때 스크롤이 가능한지 확인하기 위함
-      // eslint-disable-next-line react/no-array-index-key
-      <div key={index} css={css`display:flex; flex-direction:row; align-items:center; justify-content:space-between;`}>
-        <div css={css`display:flex; flex-direction:row;`}>
-          <Image
-            src={data.imageUrl}
-            width={52}
-            height={52}
-            alt={data.characterName}
-            style={imageStyle}
-            priority
-          />
-          <div css={css`display:flex; flex-direction:column; align-items:start; justify-content:center;`}>
-            <div css={css`font-size:16px; font-weight:bold; padding-bottom:4px; color:${color.black};`}>{data.characterName}</div>
-            <div css={css`font-size: 12px; color:${color.greenGray};`}>{data.statusMessage}</div>
-          </div>
-        </div>
-        <div css={css`font-size: 12px; color:${color.greenGray}; width:100px; margin-right:10px;`}>{data.hashTag}</div>
-      </div>
+      <Friend
+        // eslint-disable-next-line react/no-array-index-key
+        key={index}
+        characterName={data.characterName}
+        characterId={data.characterId}
+        hashTag={data.hashTag}
+        statusMessage={data.statusMessage}
+        imageUrl={data.imageUrl}
+      />
     ))}
   </section>
 );
@@ -36,11 +26,6 @@ const friendsWrapperCSS = css`
   word-break: keep-all;
   padding: 6px;
 `;
-
-const imageStyle = {
-  borderRadius: '50%',
-  margin: '5px',
-};
 
 // TODO: 이 부분은 API에서 떼와야하는 부분
 const characterDataSet = [
