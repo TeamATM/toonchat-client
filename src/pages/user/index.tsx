@@ -9,7 +9,7 @@ import Friends from '@/components/main/Friends';
 
 const ChatHome = () => (
   <>
-    <ToonChatHead title="Friends" />
+    <ToonChatHead title="Home" />
     <section css={pageCSS}>
       <header css={css`width:100%; padding-top:10px;`}>
         <div css={titleSectionCSS}>

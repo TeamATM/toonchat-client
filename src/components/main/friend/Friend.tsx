@@ -18,7 +18,7 @@ const Friend: FC<FriendProps> = ({
 }) => (
   <Link href={`/chat/${characterId}`} passHref legacyBehavior>
     <ResetLink>
-      <div css={css`display:flex; flex-direction:row; align-items:center; justify-content:space-between;`}>
+      <div css={friendCSS}>
         <div css={css`display:flex; flex-direction:row;`}>
           <Image
             src={imageUrl}
@@ -29,11 +29,11 @@ const Friend: FC<FriendProps> = ({
             priority
           />
           <div css={css`display:flex; flex-direction:column; align-items:start; justify-content:center;`}>
-            <div css={css`font-size:16px; font-weight:bold; padding-bottom:4px; color:${color.black};`}>{characterName}</div>
-            <div css={css`font-size: 12px; color:${color.greenGray};`}>{statusMessage}</div>
+            <div css={characterNameCSS}>{characterName}</div>
+            <div css={statusMessageCSS}>{statusMessage}</div>
           </div>
         </div>
-        <div css={css`font-size: 12px; color:${color.greenGray}; width:100px; margin-right:10px;`}>{hashTag}</div>
+        <div css={hashTagCSS}>{hashTag}</div>
       </div>
     </ResetLink>
   </Link>
@@ -58,4 +58,30 @@ const ResetLink = styled.a`
     text-decoration: none;
     background-color: ${color.offWhite};
   }
+`;
+
+const friendCSS = css`
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:space-between;
+`;
+
+const characterNameCSS = css`
+  font-size:16px;
+  font-weight:bold;
+  padding-bottom:4px;
+  color:${color.black};
+`;
+
+const statusMessageCSS = css`
+  font-size: 12px;
+  color:${color.greenGray};
+`;
+
+const hashTagCSS = css`
+  font-size: 12px;
+  color:${color.greenGray};
+  width:100px;
+  margin-right:10px;
 `;
