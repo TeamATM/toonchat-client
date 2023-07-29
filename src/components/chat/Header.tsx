@@ -1,5 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { css } from '@emotion/react';
+import useSocketStore from '@/store/socket';
+import useChatStore from '@/store/chat';
 import FriendShip from './characterHeader/FriendShip';
 import CharacterInfo from './characterHeader/CharacterInfo';
 
@@ -18,10 +20,19 @@ const Header : FC<CharacterState> = ({
   const [userStatus, setUserStatus] = useState({
     friendShipExp: 0, maxFriendShipExp: 1, friendShipLv: 0,
   });
+  const { connect, setChatStore } = useSocketStore();
+  const chatStore = useChatStore();
   useEffect(() => {
     fetch(`/api/userStatus/${characterId}`)
       .then((res) => res.json())
       .then((data) => { setUserStatus(data); });
+
+    // WebSocket 연결하는 부분
+    // TODO: /chat 페이지가 생기면 거기로 옮기는게 좋아보임
+    //        root페이지에 넣기에는 이후 로그인 기능이 완성되면
+    //        인증정보까지 같이 보내 연결해야 하기에 좋지 않음
+    connect();
+    setChatStore(chatStore);
   }, []);
 
   return (
