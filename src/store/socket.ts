@@ -22,7 +22,7 @@ const useSocketStore = create<SocketState>((set, get) => ({
         stompClient: new Client({
           webSocketFactory: () => new SockJS('http://localhost:8080/ws'),
           onConnect: get().onConnectSuccess,
-          debug: undefined,
+          debug: () => undefined,
           // connectHeaders: {},
           // reconnectDelay: 1000,
           // heartbeatIncoming: 4000,
