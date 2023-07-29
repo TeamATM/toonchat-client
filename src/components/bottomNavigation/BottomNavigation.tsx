@@ -30,33 +30,50 @@ const BottomNavigation: FC<NavProps> = ({ pageName }) => {
   }, []);
 
   return (
-    <div css={BottomNavCSS}>
-      <NavButtonWrapper color={homeColor} linkUrl="/user">
-        <HomeIcon color={homeColor} />
-        Home
-      </NavButtonWrapper>
+    <div css={navContainerCSS}>
+      <div css={lineCSS} />
+      <div css={BottomNavCSS}>
+        <NavButtonWrapper color={homeColor} linkUrl="/user">
+          <HomeIcon color={homeColor} />
+          Home
+        </NavButtonWrapper>
 
-      {/* TODO: 커뮤니티, 프로필 페이지 제작을 해야함 */}
-      <NavButtonWrapper color={chatColor} linkUrl="/chat">
-        <ChatIcon color={chatColor} />
-        Chat
-      </NavButtonWrapper>
-      <NavButtonWrapper color={communityColor} linkUrl="/user">
-        <CommunityIcon color={communityColor} />
-        Community
-      </NavButtonWrapper>
-      <NavButtonWrapper color={profileColor} linkUrl="/user">
-        <ProfileIcon color={profileColor} />
-        Profile
-      </NavButtonWrapper>
+        {/* TODO: 커뮤니티, 프로필 페이지 제작을 해야함 */}
+        <NavButtonWrapper color={chatColor} linkUrl="/chat">
+          <ChatIcon color={chatColor} />
+          Chat
+        </NavButtonWrapper>
+        <NavButtonWrapper color={communityColor} linkUrl="/user">
+          <CommunityIcon color={communityColor} />
+          Community
+        </NavButtonWrapper>
+        <NavButtonWrapper color={profileColor} linkUrl="/user">
+          <ProfileIcon color={profileColor} />
+          Profile
+        </NavButtonWrapper>
+      </div>
     </div>
   );
 };
 
 export default BottomNavigation;
 
-const BottomNavCSS = css`
+const navContainerCSS = css`
   position: sticky;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const lineCSS = css`
+  margin-left: 5px;
+  margin-right: 5px;
+  height: 1px;
+  background: ${color.lightGray};
+  width: 300px;
+`;
+
+const BottomNavCSS = css`
   bottom: 0;
   width: 400px;
   padding: 15px;
