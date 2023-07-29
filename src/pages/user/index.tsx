@@ -4,6 +4,7 @@ import BottomNavigation from '@/components/bottomNavigation/BottomNavigation';
 import SectionTitle from '@/components/main/SectionTitle';
 import SectionLine from '@/components/main/SectionLine';
 import Recommends from '@/components/main/Recommends';
+import SearchBar from '@/components/main/SearchBar';
 
 const ChatHome = () => (
   <>
@@ -12,7 +13,7 @@ const ChatHome = () => (
       <header css={css`width:100%; padding-top:60px;`}>
         <div css={recommendTitleSectionCSS}>
           <SectionTitle>Recommend</SectionTitle>
-          searchbar
+          <SearchBar />
         </div>
         <Recommends />
       </header>
@@ -43,6 +44,7 @@ const recommendTitleSectionCSS = css`
   width:100%;
   display:flex;
   justify-content:space-between;
+  align-items: center;
   padding-left:20px;
-  padding-right: 20px;
+  padding-right: 10px;
 `;
