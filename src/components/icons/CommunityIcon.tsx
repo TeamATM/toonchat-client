@@ -5,7 +5,7 @@ interface IconProps {
 }
 
 const CommunityIcon: FC<IconProps> = ({ color }) => (
-  <svg width="30" height="30" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width="26" height="26" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M12.5 21.5C7.529 21.5 3.5 17.471 3.5 12.5C3.5 7.529 7.529 3.5 12.5 3.5C17.471 3.5 21.5 7.529 21.5 12.5" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     <path d="M4.01001 9.5H20.99" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     <path d="M4.01001 15.5H14.5" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
