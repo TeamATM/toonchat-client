@@ -6,6 +6,7 @@ import { css } from '@emotion/react';
 import Image from 'next/image';
 import color from '@/styles/color';
 import useChatStore from '@/store/chat';
+import useSocketStore from '@/store/socket';
 import Dialog from '../dialog/Dialog';
 
 interface CharacterState {
@@ -19,6 +20,7 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { sendMessage } = useSocketStore();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -40,6 +42,13 @@ const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
 
       // TODO: AI의 대답으로 수정될 부분 (API 호출했다고 가정)
       await callLeeyjAPI(timestamp);
+
+      /**
+       * AI의 대답으로 수정된 부분
+       * addChatContents (speaker: me)와 callLeeyjAPI 기능을 포함하고 있음
+       */
+      sendMessage(message);
+
       setLoading(false);
     }
   };

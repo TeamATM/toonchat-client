@@ -8,7 +8,7 @@ interface NewChatContentState {
   speaker: string, content: string, timestamp: number, loading: boolean,
 }
 
-interface ChatState {
+export interface ChatState {
   chatContents: ChatContentsState[],
   clearChatContents: () => void;
   initChatContents: (history: ChatContentsState[]) => void;
