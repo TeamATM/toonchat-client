@@ -60,7 +60,8 @@ const BottomNavigation: FC<NavProps> = ({ pageName }) => {
 export default BottomNavigation;
 
 const navContainerCSS = css`
-  position: sticky;
+  position: fixed;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,7 +69,6 @@ const navContainerCSS = css`
 `;
 
 const BottomNavCSS = css`
-  bottom: 0;
   padding: 10px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
