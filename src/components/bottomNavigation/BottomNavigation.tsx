@@ -27,7 +27,7 @@ const BottomNavigation: FC<NavProps> = ({ pageName }) => {
     } else {
       setProfileColor(color.black);
     }
-  }, [pageName]);
+  }, []);
 
   return (
     <div css={BottomNavCSS}>
@@ -37,7 +37,7 @@ const BottomNavigation: FC<NavProps> = ({ pageName }) => {
       </NavButtonWrapper>
 
       {/* TODO: 커뮤니티, 프로필 페이지 제작을 해야함 */}
-      <NavButtonWrapper color={chatColor} linkUrl="/user">
+      <NavButtonWrapper color={chatColor} linkUrl="/chat">
         <ChatIcon color={chatColor} />
         Chat
       </NavButtonWrapper>
