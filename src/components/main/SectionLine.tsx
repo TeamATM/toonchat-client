@@ -9,7 +9,7 @@ export default SectionLine;
 
 const lineCSS = css`
   height: 1px;
-  margin: 5px;
+  margin: 10px auto;
   background: ${color.lightGray};
   width: 40%;
 `;
