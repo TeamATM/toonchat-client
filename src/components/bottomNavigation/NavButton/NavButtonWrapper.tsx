@@ -31,7 +31,7 @@ const WrapperCSS = (color: string) => css`
 `;
 
 const ResetLink = styled.a`
-  font-size: 14px;
+  font-size: 12px;
   text-decoration: none;
 
   &:active {

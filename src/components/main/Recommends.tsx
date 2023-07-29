@@ -14,7 +14,7 @@ const characterDataSet = [
     characterName: '김미소',
     characterId: '1',
     hashTag: '#카카오페이지 #김비서가왜그럴까',
-    statusMessage: '저는 김미소입니다. 조만간 퇴사하려구요 :)',
+    statusMessage: '조만간 퇴사하려구요 :)',
     imageUrl: '/kimms.png',
   },
 ];
