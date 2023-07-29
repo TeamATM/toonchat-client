@@ -1,3 +1,4 @@
+import color from '@/styles/color';
 import { css } from '@emotion/react';
 import Image from 'next/image';
 
@@ -22,8 +23,8 @@ const characterDataSet = [
 const Friends = () => (
   <section css={friendsWrapperCSS}>
     {characterDataSet.map((data) => (
-      <div key={data.characterId}>
-        <div>
+      <div key={data.characterId} css={css`display:flex; flex-direction:row; align-items:center; justify-content:space-between;`}>
+        <div css={css`display:flex; flex-direction:row;`}>
           <Image
             src={data.imageUrl}
             width={52}
@@ -32,12 +33,12 @@ const Friends = () => (
             style={imageStyle}
             priority
           />
-          <div>
-            <div>{data.characterName}</div>
-            <div>{data.statusMessage}</div>
+          <div css={css`display:flex; flex-direction:column; align-items:start; justify-content:center;`}>
+            <div css={css`font-size:16px; font-weight:bold; padding-bottom:4px; color:${color.black};`}>{data.characterName}</div>
+            <div css={css`font-size: 12px; color:${color.greenGray};`}>{data.statusMessage}</div>
           </div>
         </div>
-        <div>{data.hashTag}</div>
+        <div css={css`font-size: 12px; color:${color.greenGray}; width:100px; margin-right:10px;`}>{data.hashTag}</div>
       </div>
     ))}
   </section>
@@ -48,6 +49,8 @@ export default Friends;
 const friendsWrapperCSS = css`
   display: flex;
   flex-direction: column;
+  word-break: keep-all;
+  padding: 6px;
 `;
 
 const imageStyle = {
