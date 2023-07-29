@@ -36,10 +36,7 @@ const Login = () => {
       return;
     }
     // 로그인 성공!
-    // TODO: 로그인 성공시 채팅 메인 페이지가 있어야하지만, 지금 존재하지 않아서 아무 채팅에 들어가도록 바꿈.
-    router.push({
-      pathname: `/chat/${Math.floor(Math.random() * 2)}`,
-    });
+    router.push({ pathname: '/user' });
   };
   return (
     <section css={pageCSS}>
