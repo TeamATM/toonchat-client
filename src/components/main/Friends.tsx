@@ -2,28 +2,12 @@ import color from '@/styles/color';
 import { css } from '@emotion/react';
 import Image from 'next/image';
 
-// TODO: 이 부분은 API에서 떼와야하는 부분
-const characterDataSet = [
-  {
-    characterName: '이영준',
-    characterId: '0',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    statusMessage: '난 왜 이렇게 완벽한걸까...',
-    imageUrl: '/leeyj.png',
-
-  }, {
-    characterName: '김미소',
-    characterId: '1',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    statusMessage: '조만간 퇴사하려구요 :)',
-    imageUrl: '/kimms.png',
-  },
-];
-
 const Friends = () => (
   <section css={friendsWrapperCSS}>
-    {characterDataSet.map((data) => (
-      <div key={data.characterId} css={css`display:flex; flex-direction:row; align-items:center; justify-content:space-between;`}>
+    {characterDataSet.map((data, index) => (
+      // TODO: 여러 캐릭터가 있을 때 스크롤이 가능한지 확인하기 위함
+      // eslint-disable-next-line react/no-array-index-key
+      <div key={index} css={css`display:flex; flex-direction:row; align-items:center; justify-content:space-between;`}>
         <div css={css`display:flex; flex-direction:row;`}>
           <Image
             src={data.imageUrl}
@@ -57,3 +41,73 @@ const imageStyle = {
   borderRadius: '50%',
   margin: '5px',
 };
+
+// TODO: 이 부분은 API에서 떼와야하는 부분
+const characterDataSet = [
+  {
+    characterName: '이영준',
+    characterId: '0',
+    hashTag: '#카카오페이지 #김비서가왜그럴까',
+    statusMessage: '난 왜 이렇게 완벽한걸까...',
+    imageUrl: '/leeyj.png',
+
+  }, {
+    characterName: '김미소',
+    characterId: '1',
+    hashTag: '#카카오페이지 #김비서가왜그럴까',
+    statusMessage: '조만간 퇴사하려구요 :)',
+    imageUrl: '/kimms.png',
+  }, {
+    characterName: '이영준',
+    characterId: '0',
+    hashTag: '#카카오페이지 #김비서가왜그럴까',
+    statusMessage: '난 왜 이렇게 완벽한걸까...',
+    imageUrl: '/leeyj.png',
+
+  }, {
+    characterName: '김미소',
+    characterId: '1',
+    hashTag: '#카카오페이지 #김비서가왜그럴까',
+    statusMessage: '조만간 퇴사하려구요 :)',
+    imageUrl: '/kimms.png',
+  }, {
+    characterName: '이영준',
+    characterId: '0',
+    hashTag: '#카카오페이지 #김비서가왜그럴까',
+    statusMessage: '난 왜 이렇게 완벽한걸까...',
+    imageUrl: '/leeyj.png',
+
+  }, {
+    characterName: '김미소',
+    characterId: '1',
+    hashTag: '#카카오페이지 #김비서가왜그럴까',
+    statusMessage: '조만간 퇴사하려구요 :)',
+    imageUrl: '/kimms.png',
+  }, {
+    characterName: '이영준',
+    characterId: '0',
+    hashTag: '#카카오페이지 #김비서가왜그럴까',
+    statusMessage: '난 왜 이렇게 완벽한걸까...',
+    imageUrl: '/leeyj.png',
+
+  }, {
+    characterName: '김미소',
+    characterId: '1',
+    hashTag: '#카카오페이지 #김비서가왜그럴까',
+    statusMessage: '조만간 퇴사하려구요 :)',
+    imageUrl: '/kimms.png',
+  }, {
+    characterName: '이영준',
+    characterId: '0',
+    hashTag: '#카카오페이지 #김비서가왜그럴까',
+    statusMessage: '난 왜 이렇게 완벽한걸까...',
+    imageUrl: '/leeyj.png',
+
+  }, {
+    characterName: '김미소',
+    characterId: '1',
+    hashTag: '#카카오페이지 #김비서가왜그럴까',
+    statusMessage: '조만간 퇴사하려구요 :)',
+    imageUrl: '/kimms.png',
+  },
+];
