@@ -5,6 +5,7 @@ const color = {
   whiteGreen: '#58C3B6',
   greenGray: '#797C7B',
   lightGray: '#CDD1D0',
+  whiteGray: '#F5F8FC',
   offWhite: '#F3F6F6',
 };
 
