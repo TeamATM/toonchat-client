@@ -60,12 +60,13 @@ const BottomNavigation: FC<NavProps> = ({ pageName }) => {
 export default BottomNavigation;
 
 const navContainerCSS = css`
-  position: fixed;
+  position: sticky;
   bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 400px;
+  background-color: #FFFFFF;
 `;
 
 const BottomNavCSS = css`

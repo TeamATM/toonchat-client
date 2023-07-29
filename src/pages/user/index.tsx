@@ -11,7 +11,7 @@ const ChatHome = () => (
   <>
     <ToonChatHead title="Friends" />
     <section css={pageCSS}>
-      <header css={css`width:100%; padding-top:60px;`}>
+      <header css={css`width:100%; padding-top:10px;`}>
         <div css={titleSectionCSS}>
           <SectionTitle>Recommend</SectionTitle>
           <SearchBar />
@@ -33,11 +33,12 @@ const ChatHome = () => (
 export default ChatHome;
 
 const pageCSS = css`
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px;
+  padding-bottom: 0px;
 `;
 
 const titleSectionCSS = css`
