@@ -11,20 +11,22 @@ const ChatHome = () => (
   <>
     <ToonChatHead title="Home" />
     <section css={pageCSS}>
-      <header css={css`width:100%; padding-top:10px;`}>
-        <div css={titleSectionCSS}>
-          <SectionTitle>Recommend</SectionTitle>
-          <SearchBar />
-        </div>
-        <Recommends />
-      </header>
-      <SectionLine />
-      <main css={css`width:100%; display:flex; flex-direction:column;`}>
-        <div css={titleSectionCSS}>
-          <SectionTitle>Friends</SectionTitle>
-        </div>
-        <Friends />
-      </main>
+      <div css={css`height: 600px; overflow-y: auto;`}>
+        <header css={css`width:100%; padding-top:10px;`}>
+          <div css={titleSectionCSS}>
+            <SectionTitle>Recommend</SectionTitle>
+            <SearchBar />
+          </div>
+          <Recommends />
+        </header>
+        <SectionLine />
+        <main css={css`width:100%; display:flex; flex-direction:column;`}>
+          <div css={titleSectionCSS}>
+            <SectionTitle>Friends</SectionTitle>
+          </div>
+          <Friends />
+        </main>
+      </div>
       <BottomNavigation pageName="Home" />
     </section>
   </>
