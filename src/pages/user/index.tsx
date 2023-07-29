@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import ToonChatHead from '@/components/head/ToonChatHead';
 import BottomNavigation from '@/components/bottomNavigation/BottomNavigation';
 import SectionTitle from '@/components/main/SectionTitle';
+import SectionLine from '@/components/main/SectionLine';
 
 const ChatHome = () => (
   <>
@@ -17,8 +18,12 @@ const ChatHome = () => (
           <div>김미소추천섹션</div>
         </div>
       </header>
-      <main>
+      <SectionLine />
+      <main css={css`width:100%; display:flex; flex-direction:column;`}>
         <SectionTitle>Friends</SectionTitle>
+        <div>친구1</div>
+        <div>친구2</div>
+        <div>친구3</div>
       </main>
       <BottomNavigation pageName="Home" />
     </section>
