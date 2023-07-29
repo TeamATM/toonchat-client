@@ -1,33 +1,57 @@
 import { css } from '@emotion/react';
 import color from '@/styles/color';
+import { FC, useEffect, useState } from 'react';
 import HomeIcon from '../icons/HomeIcon';
 import ChatIcon from '../icons/ChatIcon';
 import CommunityIcon from '../icons/CommunityIcon';
 import ProfileIcon from '../icons/ProfileIcon';
 import NavButtonWrapper from './NavButton/NavButtonWrapper';
 
-const BottomNavigation = () => (
-  <div css={BottomNavCSS}>
-    <NavButtonWrapper color={color.greenGray} linkUrl="/user">
-      <HomeIcon color={color.greenGray} />
-      Home
-    </NavButtonWrapper>
+interface NavProps {
+  pageName: 'Home' | 'Chat' | 'Community' | 'Profile'
+}
 
-    {/* TODO: 커뮤니티, 프로필 페이지 제작을 해야함 */}
-    <NavButtonWrapper color={color.greenGray} linkUrl="/user">
-      <ChatIcon color={color.greenGray} />
-      Chat
-    </NavButtonWrapper>
-    <NavButtonWrapper color={color.greenGray} linkUrl="/user">
-      <CommunityIcon color={color.greenGray} />
-      Community
-    </NavButtonWrapper>
-    <NavButtonWrapper color={color.greenGray} linkUrl="/user">
-      <ProfileIcon color={color.greenGray} />
-      Profile
-    </NavButtonWrapper>
-  </div>
-);
+const BottomNavigation: FC<NavProps> = ({ pageName }) => {
+  const [homeColor, setHomeColor] = useState(color.greenGray);
+  const [chatColor, setChatColor] = useState(color.greenGray);
+  const [communityColor, setCommunityColor] = useState(color.greenGray);
+  const [profileColor, setProfileColor] = useState(color.greenGray);
+
+  useEffect(() => {
+    if (pageName === 'Home') {
+      setHomeColor(color.black);
+    } else if (pageName === 'Chat') {
+      setChatColor(color.black);
+    } else if (pageName === 'Community') {
+      setCommunityColor(color.black);
+    } else {
+      setProfileColor(color.black);
+    }
+  }, [pageName]);
+
+  return (
+    <div css={BottomNavCSS}>
+      <NavButtonWrapper color={homeColor} linkUrl="/user">
+        <HomeIcon color={homeColor} />
+        Home
+      </NavButtonWrapper>
+
+      {/* TODO: 커뮤니티, 프로필 페이지 제작을 해야함 */}
+      <NavButtonWrapper color={chatColor} linkUrl="/user">
+        <ChatIcon color={chatColor} />
+        Chat
+      </NavButtonWrapper>
+      <NavButtonWrapper color={communityColor} linkUrl="/user">
+        <CommunityIcon color={communityColor} />
+        Community
+      </NavButtonWrapper>
+      <NavButtonWrapper color={profileColor} linkUrl="/user">
+        <ProfileIcon color={profileColor} />
+        Profile
+      </NavButtonWrapper>
+    </div>
+  );
+};
 
 export default BottomNavigation;
 
