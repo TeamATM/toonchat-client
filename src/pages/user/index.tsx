@@ -7,7 +7,7 @@ const ChatMain = () => (
     <ToonChatHead title="Friends" />
     <section css={pageCSS}>
       index
-      <BottomNavigation />
+      <BottomNavigation pageName="Home" />
     </section>
   </>
 );
