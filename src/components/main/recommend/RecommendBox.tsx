@@ -55,6 +55,14 @@ const boxCSS = css`
   flex-direction: column;
   align-items: center;
   word-break: keep-all;
+
+  &:hover {
+    background-color: ${color.offWhite};
+  }
+
+  &:active {
+    background-color: ${color.offWhite};
+  }
 `;
 
 const imageStyle = {
