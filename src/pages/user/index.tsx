@@ -11,7 +11,7 @@ const ChatHome = () => (
   <>
     <ToonChatHead title="Home" />
     <section css={pageCSS}>
-      <div css={css`height: 600px; overflow-y: auto;`}>
+      <div css={contentsCSS}>
         <header css={css`width:100%; padding-top:10px;`}>
           <div css={titleSectionCSS}>
             <SectionTitle>Recommend</SectionTitle>
@@ -41,6 +41,16 @@ const pageCSS = css`
   align-items: center;
   padding: 10px;
   padding-bottom: 0px;
+`;
+
+const contentsCSS = css`
+  height: 600px;
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 `;
 
 const titleSectionCSS = css`
