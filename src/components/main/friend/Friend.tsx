@@ -22,8 +22,8 @@ const Friend: FC<FriendProps> = ({
         <div css={css`display:flex; flex-direction:row;`}>
           <Image
             src={imageUrl}
-            width={52}
-            height={52}
+            width={48}
+            height={48}
             alt={characterName}
             style={imageStyle}
             priority
@@ -65,6 +65,7 @@ const friendCSS = css`
   flex-direction:row;
   align-items:center;
   justify-content:space-between;
+  padding: 5px 0;
 `;
 
 const characterNameCSS = css`
