@@ -1,5 +1,7 @@
 import { css } from '@emotion/react';
 import FriendWrapper from './friend/FriendWrapper';
+import FriendHashTag from './friend/FriendHashTag';
+import FriendInfo from './friend/FriendInfo';
 
 const Friends = () => (
   <section css={friendsWrapperCSS}>
@@ -13,7 +15,14 @@ const Friends = () => (
         hashTag={data.hashTag}
         statusMessage={data.statusMessage}
         imageUrl={data.imageUrl}
-      />
+      >
+        <FriendInfo
+          characterName={data.characterName}
+          message={data.statusMessage}
+          imageUrl={data.imageUrl}
+        />
+        <FriendHashTag hashTag={data.hashTag} />
+      </FriendWrapper>
     ))}
   </section>
 );

@@ -2,26 +2,20 @@ import color from '@/styles/color';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import { FC } from 'react';
-import FriendInfo from './FriendInfo';
-import FriendHashTag from './FriendHashTag';
+import { FC, ReactNode } from 'react';
 
 interface FriendProps {
-  characterName: string,
+  children: ReactNode,
   characterId: string,
-  hashTag: string,
-  statusMessage: string,
-  imageUrl: string,
 }
 
 const FriendWrapper: FC<FriendProps> = ({
-  characterName, characterId, hashTag, statusMessage, imageUrl,
+  children, characterId,
 }) => (
   <Link href={`/chat/${characterId}`} passHref legacyBehavior>
     <ResetLink>
       <div css={friendCSS}>
-        <FriendInfo characterName={characterName} message={statusMessage} imageUrl={imageUrl} />
-        <FriendHashTag hashTag={hashTag} />
+        {children}
       </div>
     </ResetLink>
   </Link>
