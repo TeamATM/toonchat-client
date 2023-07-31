@@ -57,13 +57,17 @@ const useSocketStore = create<SocketState>((set, get) => ({
       const characterId = getCurrentCharacterId();
       if (!characterId || message.to !== characterId) return;
 
+      // TODO: 서버에서 소켓을 통해 메시지를 보내줄 때 characterName을 받아와야합니다.
+      // 지금은 임시로 하드코딩을 넣어놓겠습니다.
+      const characterName = characterId === '0' ? '이영준' : '김미소';
+
       // 내 메시지 추가
       get().chatStore?.addChatContents({
         speaker: 'me', content: message.content, timestamp: message.createdAt.getTime(), loading: true,
       });
       // 답으로 올 메시지 추가
       get().chatStore?.addChatContents({
-        speaker: message.to, content: '', timestamp: message.createdAt.getTime() + 1, loading: true,
+        speaker: characterName, content: '', timestamp: message.createdAt.getTime() + 1, loading: true,
       });
       // 나중에 답이 왔을때 해당 메시지를 찾기 위해 메시지 ID 값을 키로 가지는 Map에 정보 저장
       get().processingMessagePool.set(message.replyMessageId, [message.createdAt.getTime() + 1, '']);
@@ -139,7 +143,9 @@ interface MessageObject {
     content:string,
     from:string,
     to:string,
-    createdAt:Date
+    createdAt:Date,
+    // TODO: 소켓으로 보내줄 때 캐릭터 이름도 보내주세용.
+    // characterName:string,
 }
 
 export default useSocketStore;
