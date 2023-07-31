@@ -28,6 +28,9 @@ const SearchBar = () => {
   // TODO: 검색을 호출할 API가 필요함.
   const keyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
+      if (!searchText) {
+        return;
+      }
       console.log(searchText);
       setToastKey(toastKey + 1);
       setToastMessages([
@@ -41,6 +44,9 @@ const SearchBar = () => {
   const clickHandler = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     // TODO: 검색창을 누르면 호출할 API가 필요합니다.
+    if (!searchText) {
+      return;
+    }
     console.log(searchText);
     setToastKey(toastKey + 1);
     setToastMessages([
