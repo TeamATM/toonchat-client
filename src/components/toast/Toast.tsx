@@ -1,3 +1,4 @@
+import color from '@/styles/color';
 import { css, keyframes } from '@emotion/react';
 import {
   useState, useEffect, FC, KeyboardEvent,
@@ -52,11 +53,11 @@ const toastCSS = (startAnimation : boolean) => css`
   bottom: 50%;
   right: 50%;
   transform: translateX(50%);
-  background: #333;
+  background: ${color.black};
   opacity: 0.5;
-  color: white;
+  color: ${color.white};
   padding: 1rem;
-  border-radius: 16px;
+  border-radius: 30px;
   animation: ${startAnimation ? css`${slide} 1s ease forwards` : 'none'};
   display: flex;
   align-items: center;
