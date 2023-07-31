@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { FC } from 'react';
 import FriendInfo from './FriendInfo';
+import FriendHashTag from './FriendHashTag';
 
 interface FriendProps {
   characterName: string,
@@ -20,7 +21,7 @@ const FriendWrapper: FC<FriendProps> = ({
     <ResetLink>
       <div css={friendCSS}>
         <FriendInfo characterName={characterName} message={statusMessage} imageUrl={imageUrl} />
-        <div css={hashTagCSS}>{hashTag}</div>
+        <FriendHashTag hashTag={hashTag} />
       </div>
     </ResetLink>
   </Link>
@@ -48,11 +49,4 @@ const friendCSS = css`
   align-items:center;
   justify-content:space-between;
   padding: 5px 0;
-`;
-
-const hashTagCSS = css`
-  font-size: 12px;
-  color:${color.greenGray};
-  width:100px;
-  margin-right:10px;
 `;
