@@ -4,9 +4,21 @@ import {
   ChangeEvent, KeyboardEvent, MouseEvent, useState,
 } from 'react';
 import SearchIcon from '../icons/SearchIcon';
+import Toast from '../toast/Toast';
+
+interface ToastMessage {
+  key: number;
+  message: string;
+}
 
 const SearchBar = () => {
   const [searchText, setSearchText] = useState('');
+  const [toastMessages, setToastMessages] = useState<ToastMessage[]>([]);
+  const [toastKey, setToastKey] = useState(0);
+
+  const handleToastClose = (key: number) => {
+    setToastMessages(toastMessages.filter((toast) => toast.key !== key));
+  };
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -17,6 +29,11 @@ const SearchBar = () => {
   const keyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       console.log(searchText);
+      setToastKey(toastKey + 1);
+      setToastMessages([
+        ...toastMessages,
+        { key: toastKey, message: '검색 기능은 추후에 지원될 예정입니다.' },
+      ]);
       setSearchText('');
     }
   };
@@ -25,6 +42,11 @@ const SearchBar = () => {
     e.preventDefault();
     // TODO: 검색창을 누르면 호출할 API가 필요합니다.
     console.log(searchText);
+    setToastKey(toastKey + 1);
+    setToastMessages([
+      ...toastMessages,
+      { key: toastKey, message: '검색 기능은 추후에 지원될 예정입니다.' },
+    ]);
     setSearchText('');
   };
 
@@ -34,6 +56,13 @@ const SearchBar = () => {
       <button css={buttonCSS} type="button" onClick={clickHandler}>
         <SearchIcon />
       </button>
+      {toastMessages.map((toast) => (
+        <Toast
+          key={toast.key}
+          message={toast.message}
+          handleClose={() => handleToastClose(toast.key)}
+        />
+      ))}
     </div>
   );
 };
