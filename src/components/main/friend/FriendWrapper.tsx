@@ -1,9 +1,9 @@
 import color from '@/styles/color';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
+import FriendInfo from './FriendInfo';
 
 interface FriendProps {
   characterName: string,
@@ -19,20 +19,7 @@ const FriendWrapper: FC<FriendProps> = ({
   <Link href={`/chat/${characterId}`} passHref legacyBehavior>
     <ResetLink>
       <div css={friendCSS}>
-        <div css={css`display:flex; flex-direction:row;`}>
-          <Image
-            src={imageUrl}
-            width={48}
-            height={48}
-            alt={characterName}
-            style={imageStyle}
-            priority
-          />
-          <div css={css`display:flex; flex-direction:column; align-items:start; justify-content:center;`}>
-            <div css={characterNameCSS}>{characterName}</div>
-            <div css={statusMessageCSS}>{statusMessage}</div>
-          </div>
-        </div>
+        <FriendInfo characterName={characterName} message={statusMessage} imageUrl={imageUrl} />
         <div css={hashTagCSS}>{hashTag}</div>
       </div>
     </ResetLink>
@@ -40,11 +27,6 @@ const FriendWrapper: FC<FriendProps> = ({
 );
 
 export default FriendWrapper;
-
-const imageStyle = {
-  borderRadius: '50%',
-  margin: '5px',
-};
 
 const ResetLink = styled.a`
   text-decoration: none;
@@ -66,18 +48,6 @@ const friendCSS = css`
   align-items:center;
   justify-content:space-between;
   padding: 5px 0;
-`;
-
-const characterNameCSS = css`
-  font-size:16px;
-  font-weight:bold;
-  padding-bottom:4px;
-  color:${color.black};
-`;
-
-const statusMessageCSS = css`
-  font-size: 12px;
-  color:${color.greenGray};
 `;
 
 const hashTagCSS = css`
