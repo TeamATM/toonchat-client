@@ -44,11 +44,11 @@ const BottomNavigation: FC<NavProps> = ({ pageName }) => {
           <ChatIcon color={chatColor} />
           Chat
         </NavButtonWrapper>
-        <NavButtonWrapper color={communityColor} linkUrl="/user">
+        <NavButtonWrapper color={communityColor} linkUrl="/community">
           <CommunityIcon color={communityColor} />
           Community
         </NavButtonWrapper>
-        <NavButtonWrapper color={profileColor} linkUrl="/user">
+        <NavButtonWrapper color={profileColor} linkUrl="/profile">
           <ProfileIcon color={profileColor} />
           Profile
         </NavButtonWrapper>
