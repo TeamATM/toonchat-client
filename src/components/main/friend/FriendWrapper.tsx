@@ -13,7 +13,7 @@ interface FriendProps {
   imageUrl: string,
 }
 
-const Friend: FC<FriendProps> = ({
+const FriendWrapper: FC<FriendProps> = ({
   characterName, characterId, hashTag, statusMessage, imageUrl,
 }) => (
   <Link href={`/chat/${characterId}`} passHref legacyBehavior>
@@ -39,7 +39,7 @@ const Friend: FC<FriendProps> = ({
   </Link>
 );
 
-export default Friend;
+export default FriendWrapper;
 
 const imageStyle = {
   borderRadius: '50%',
