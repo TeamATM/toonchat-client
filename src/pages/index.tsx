@@ -2,13 +2,19 @@ import ToonChatHead from '@/components/head/ToonChatHead';
 import Button from '@/components/user/Button';
 import { css } from '@emotion/react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Home = () => (
   <>
     <ToonChatHead title="Home" />
     <section css={pageCSS}>
-      <main css={css`margin: auto;`}>
-        asd
+      <main css={css`justify-content:center; margin:auto 0;`}>
+        <Image
+          src="/thumbnail.png"
+          alt="썸네일"
+          width={441}
+          height={143}
+        />
       </main>
       <footer css={css`width:100%; padding: 24px;`}>
         <Link href="/user/login">
