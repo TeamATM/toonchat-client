@@ -7,23 +7,21 @@ const Home = () => (
   <>
     <ToonChatHead title="Home" />
     <section css={pageCSS}>
-      <main css={css`width: 100%; padding: 24px;`}>
-        <Link href="/chat/0">
-          <Button theme="green">
-            영준이와 대화하기
-          </Button>
-        </Link>
-        <Link href="/chat/1">
-          <Button theme="green">
-            미소와 대화하기
-          </Button>
-        </Link>
+      <main css={css`margin: auto;`}>
+        asd
+      </main>
+      <footer css={css`width:100%; padding: 24px;`}>
         <Link href="/user/login">
-          <Button theme="white">
+          <Button theme="green">
             Log in
           </Button>
         </Link>
-      </main>
+        <Link href="/chat/0">
+          <Button theme="white">
+            영준이와 대화하기
+          </Button>
+        </Link>
+      </footer>
     </section>
   </>
 );
@@ -34,7 +32,7 @@ const pageCSS = css`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
 `;
