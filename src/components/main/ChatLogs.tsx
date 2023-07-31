@@ -18,7 +18,7 @@ const ChatLogs = () => (
           message={data.message}
           imageUrl={data.imageUrl}
         />
-        <div css={css`display:flex; flex-direction:column; align-items: flex-end;`}>
+        <div css={subInfoWrapperCSS}>
           <TimeStamp timestamp={data.timestamp} />
           <ChatBadge unreadCount={data.unreadCount} />
         </div>
@@ -34,6 +34,14 @@ const chatLogsWrapperCSS = css`
   flex-direction: column;
   word-break: keep-all;
   padding: 6px;
+  padding-top: 20px;
+`;
+
+const subInfoWrapperCSS = css`
+  display:flex;
+  flex-direction:column;
+  align-items: flex-end;
+  margin-right: 10px;
 `;
 
 // TODO: 이 부분은 API에서 떼와야하는 부분

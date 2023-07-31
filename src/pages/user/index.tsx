@@ -44,7 +44,6 @@ const pageCSS = css`
 `;
 
 const contentsCSS = css`
-  height: 600px;
   overflow-y: auto;
   ::-webkit-scrollbar {
     display: none;
