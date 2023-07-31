@@ -1,11 +1,11 @@
 import { css } from '@emotion/react';
-import Friend from './friend/Friend';
+import FriendWrapper from './friend/FriendWrapper';
 
 const Friends = () => (
   <section css={friendsWrapperCSS}>
     {characterDataSet.map((data, index) => (
       // TODO: 여러 캐릭터가 있을 때 스크롤이 가능한지 확인하기 위함
-      <Friend
+      <FriendWrapper
         // eslint-disable-next-line react/no-array-index-key
         key={index}
         characterName={data.characterName}
