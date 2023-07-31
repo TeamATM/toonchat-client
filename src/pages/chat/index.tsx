@@ -3,6 +3,7 @@ import ToonChatHead from '@/components/head/ToonChatHead';
 import BottomNavigation from '@/components/bottomNavigation/BottomNavigation';
 import SearchBar from '@/components/main/SearchBar';
 import SectionTitle from '@/components/main/SectionTitle';
+import ChatLogs from '@/components/main/ChatLogs';
 
 const ChatMain = () => (
   <>
@@ -15,6 +16,9 @@ const ChatMain = () => (
             <SearchBar />
           </div>
         </header>
+        <main css={css`width:100%; display:flex; flex-direction:column;`}>
+          <ChatLogs />
+        </main>
       </div>
       <BottomNavigation pageName="Chat" />
     </section>
