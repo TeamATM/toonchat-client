@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import FriendWrapper from './friend/FriendWrapper';
 import FriendInfo from './friend/FriendInfo';
 import TimeStamp from '../chat/messageBox/TimeStamp';
+import ChatBadge from './friend/ChatBadge';
 
 const ChatLogs = () => (
   <section css={chatLogsWrapperCSS}>
@@ -17,9 +18,9 @@ const ChatLogs = () => (
           message={data.message}
           imageUrl={data.imageUrl}
         />
-        <div css={css`text-align: right;`}>
+        <div css={css`display:flex; flex-direction:column; align-items: flex-end;`}>
           <TimeStamp timestamp={data.timestamp} />
-          <div>{data.unreadCount}</div>
+          <ChatBadge unreadCount={data.unreadCount} />
         </div>
       </FriendWrapper>
     ))}
