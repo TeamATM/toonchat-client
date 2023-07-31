@@ -10,11 +10,7 @@ const Friends = () => (
       <FriendWrapper
         // eslint-disable-next-line react/no-array-index-key
         key={index}
-        characterName={data.characterName}
         characterId={data.characterId}
-        hashTag={data.hashTag}
-        statusMessage={data.statusMessage}
-        imageUrl={data.imageUrl}
       >
         <FriendInfo
           characterName={data.characterName}
