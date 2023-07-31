@@ -36,6 +36,7 @@ const MessageInput : FC<CharacterState> = () => {
       /**
        * AI의 대답 호출
       */
+      // TODO: 메시지가 도착할 떄까지 loading이 true여야하는데. 소켓이라 컨트롤이 필요함.
       sendMessage(message);
       setMessage('');
       setLoading(false);

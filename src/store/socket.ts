@@ -20,7 +20,7 @@ const useSocketStore = create<SocketState>((set, get) => ({
     if (!get().stompClient) {
       set(() => ({
         stompClient: new Client({
-          webSocketFactory: () => new SockJS('http://localhost:8080/ws'),
+          webSocketFactory: () => new SockJS(process.env.SOCKET_URL || 'http://localhost:8080/ws'),
           onConnect: get().onConnectSuccess,
           debug: () => undefined,
           // connectHeaders: {},
@@ -63,7 +63,7 @@ const useSocketStore = create<SocketState>((set, get) => ({
 
       // 내 메시지 추가
       get().chatStore?.addChatContents({
-        speaker: 'me', content: message.content, timestamp: message.createdAt.getTime(), loading: true,
+        speaker: 'me', content: message.content, timestamp: message.createdAt.getTime(), loading: false,
       });
       // 답으로 올 메시지 추가
       get().chatStore?.addChatContents({
