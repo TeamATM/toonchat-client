@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import FriendWrapper from './friend/FriendWrapper';
 import FriendInfo from './friend/FriendInfo';
+import TimeStamp from '../chat/messageBox/TimeStamp';
 
 const ChatLogs = () => (
   <section css={chatLogsWrapperCSS}>
@@ -16,6 +17,10 @@ const ChatLogs = () => (
           message={data.message}
           imageUrl={data.imageUrl}
         />
+        <div css={css`text-align: right;`}>
+          <TimeStamp timestamp={data.timestamp} />
+          <div>{data.unreadCount}</div>
+        </div>
       </FriendWrapper>
     ))}
   </section>
@@ -38,64 +43,79 @@ const chatLogDataSet = [
     hashTag: '#카카오페이지 #김비서가왜그럴까',
     message: '(자아도취에 빠진다)',
     imageUrl: '/leeyj.png',
-
+    timestamp: 123123,
+    unreadCount: 1,
   }, {
     characterName: '김미소',
     characterId: '1',
     hashTag: '#카카오페이지 #김비서가왜그럴까',
     message: '조만간 퇴사할 생각이에요.',
     imageUrl: '/kimms.png',
+    timestamp: 123123,
+    unreadCount: 0,
   }, {
     characterName: '이영준',
     characterId: '0',
     hashTag: '#카카오페이지 #김비서가왜그럴까',
     message: '(자아도취에 빠진다))',
     imageUrl: '/leeyj.png',
-
+    timestamp: 123123,
+    unreadCount: 3,
   }, {
     characterName: '김미소',
     characterId: '1',
     hashTag: '#카카오페이지 #김비서가왜그럴까',
     message: '조만간 퇴사할 생각이에요.',
     imageUrl: '/kimms.png',
+    timestamp: 123123,
+    unreadCount: 0,
   }, {
     characterName: '이영준',
     characterId: '0',
     hashTag: '#카카오페이지 #김비서가왜그럴까',
     message: '(자아도취에 빠진다)',
     imageUrl: '/leeyj.png',
-
+    timestamp: 123123,
+    unreadCount: 0,
   }, {
     characterName: '김미소',
     characterId: '1',
     hashTag: '#카카오페이지 #김비서가왜그럴까',
     message: '조만간 퇴사할 생각이에요.',
     imageUrl: '/kimms.png',
+    timestamp: 123123,
+    unreadCount: 0,
   }, {
     characterName: '이영준',
     characterId: '0',
     hashTag: '#카카오페이지 #김비서가왜그럴까',
     message: '(자아도취에 빠진다)',
     imageUrl: '/leeyj.png',
-
+    timestamp: 123123,
+    unreadCount: 0,
   }, {
     characterName: '김미소',
     characterId: '1',
     hashTag: '#카카오페이지 #김비서가왜그럴까',
     message: '조만간 퇴사할 생각이에요.',
     imageUrl: '/kimms.png',
+    timestamp: 123123,
+    unreadCount: 0,
   }, {
     characterName: '이영준',
     characterId: '0',
     hashTag: '#카카오페이지 #김비서가왜그럴까',
     message: '(자아도취에 빠진다)',
     imageUrl: '/leeyj.png',
-
+    timestamp: 123123,
+    unreadCount: 0,
   }, {
     characterName: '김미소',
     characterId: '1',
     hashTag: '#카카오페이지 #김비서가왜그럴까',
     message: '조만간 퇴사할 생각이에요.',
     imageUrl: '/kimms.png',
+    timestamp: 123123,
+    unreadCount: 0,
   },
 ];
