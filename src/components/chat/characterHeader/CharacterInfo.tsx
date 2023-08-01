@@ -12,7 +12,7 @@ interface CharacterInfoProps {
 
 const CharacterInfo: FC<CharacterInfoProps> = ({ characterName, hashTag, imageUrl }) => (
   <>
-    <Link href="/chat">
+    <Link href="/chats">
       <Image
         src="/back.svg"
         alt="back"

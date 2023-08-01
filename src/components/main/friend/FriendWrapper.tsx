@@ -12,7 +12,7 @@ interface FriendProps {
 const FriendWrapper: FC<FriendProps> = ({
   children, characterId,
 }) => (
-  <Link href={`/chat/${characterId}`} passHref legacyBehavior>
+  <Link href={`/chats/${characterId}`} passHref legacyBehavior>
     <ResetLink>
       <div css={friendCSS}>
         {children}

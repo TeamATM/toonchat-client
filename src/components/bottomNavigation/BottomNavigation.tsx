@@ -40,7 +40,7 @@ const BottomNavigation: FC<NavProps> = ({ pageName }) => {
         </NavButtonWrapper>
 
         {/* TODO: 커뮤니티, 프로필 페이지 제작을 해야함 */}
-        <NavButtonWrapper color={chatColor} linkUrl="/chat">
+        <NavButtonWrapper color={chatColor} linkUrl="/chats">
           <ChatIcon color={chatColor} />
           Chat
         </NavButtonWrapper>
