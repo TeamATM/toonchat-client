@@ -30,6 +30,11 @@ const resetCSS = css`
 
   body {
     line-height: 1;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
 
   ol, ul {
