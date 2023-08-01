@@ -17,7 +17,7 @@ const Home = () => (
         />
       </main>
       <footer css={css`width:100%; padding: 24px;`}>
-        <Link href="/user/login">
+        <Link href="/login">
           <Button theme="green">
             Log in
           </Button>

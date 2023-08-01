@@ -36,7 +36,7 @@ const Login = () => {
       return;
     }
     // 로그인 성공!
-    router.push({ pathname: '/user' });
+    router.push({ pathname: '/friends' });
   };
   return (
     <section css={pageCSS}>
@@ -69,7 +69,7 @@ const Login = () => {
       {/* footer : 회원가입 작업 */}
       <footer css={wrapperCSS}>
         <DivideLine />
-        <Link href="/user/signup">
+        <Link href="/signup">
           <Button theme="white">
             Sign up
           </Button>
