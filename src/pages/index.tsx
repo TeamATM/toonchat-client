@@ -22,7 +22,7 @@ const Home = () => (
             Log in
           </Button>
         </Link>
-        <Link href="/chat/0">
+        <Link href="/chats/0">
           <Button theme="white">
             영준이와 대화하기
           </Button>
