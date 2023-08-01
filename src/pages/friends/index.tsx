@@ -9,7 +9,7 @@ import Friends from '@/components/main/Friends';
 
 const ChatHome = () => (
   <>
-    <ToonChatHead title="Home" />
+    <ToonChatHead title="Friends" />
     <section css={pageCSS}>
       <div css={contentsCSS}>
         <header css={css`width:100%; padding-top:10px;`}>
@@ -27,7 +27,7 @@ const ChatHome = () => (
           <Friends />
         </main>
       </div>
-      <BottomNavigation pageName="Home" />
+      <BottomNavigation pageName="Friends" />
     </section>
   </>
 );
