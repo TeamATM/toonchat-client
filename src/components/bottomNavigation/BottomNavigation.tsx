@@ -9,7 +9,7 @@ import NavButtonWrapper from './NavButton/NavButtonWrapper';
 import SectionLine from '../main/SectionLine';
 
 interface NavProps {
-  pageName: 'Home' | 'Chat' | 'Community' | 'Profile'
+  pageName: 'Friends' | 'Chat' | 'Community' | 'Profile'
 }
 
 const BottomNavigation: FC<NavProps> = ({ pageName }) => {
@@ -19,7 +19,7 @@ const BottomNavigation: FC<NavProps> = ({ pageName }) => {
   const [profileColor, setProfileColor] = useState(color.greenGray);
 
   useEffect(() => {
-    if (pageName === 'Home') {
+    if (pageName === 'Friends') {
       setHomeColor(color.black);
     } else if (pageName === 'Chat') {
       setChatColor(color.black);
@@ -34,9 +34,9 @@ const BottomNavigation: FC<NavProps> = ({ pageName }) => {
     <div css={navContainerCSS}>
       <SectionLine />
       <div css={BottomNavCSS}>
-        <NavButtonWrapper color={homeColor} linkUrl="/user">
+        <NavButtonWrapper color={homeColor} linkUrl="/friends">
           <HomeIcon color={homeColor} />
-          Home
+          Friends
         </NavButtonWrapper>
 
         {/* TODO: 커뮤니티, 프로필 페이지 제작을 해야함 */}
