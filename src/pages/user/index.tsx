@@ -35,7 +35,6 @@ const ChatHome = () => (
 export default ChatHome;
 
 const pageCSS = css`
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,12 +43,6 @@ const pageCSS = css`
 `;
 
 const contentsCSS = css`
-  overflow-y: auto;
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
 `;
 
 const titleSectionCSS = css`
