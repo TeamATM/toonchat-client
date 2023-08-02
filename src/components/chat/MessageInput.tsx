@@ -1,6 +1,6 @@
 // 채팅 입력하는 부분이 생길 예정
 import {
-  useState, ChangeEvent, FormEvent, FC, useRef,
+  useState, ChangeEvent, FormEvent, FC, useRef, useEffect,
 } from 'react';
 import { css } from '@emotion/react';
 import Image from 'next/image';
@@ -20,6 +20,22 @@ const MessageInput : FC<CharacterState> = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const { sendMessage } = useSocketStore();
+
+  useEffect(() => {
+    const handleFocus = () => {
+      if (inputRef.current) {
+        window.scrollTo(0, inputRef.current.offsetTop - 100); // 100은 여백 (해보고 바꿔야함)
+      }
+    };
+    if (inputRef.current) {
+      inputRef.current.addEventListener('focus', handleFocus);
+    }
+    return () => {
+      if (inputRef.current) {
+        inputRef.current.removeEventListener('focus', handleFocus);
+      }
+    };
+  }, []);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
