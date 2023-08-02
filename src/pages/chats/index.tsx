@@ -10,7 +10,7 @@ const ChatMain = () => (
     <ToonChatHead title="Chat" />
     <section css={pageCSS}>
       <div css={contentsCSS}>
-        <header css={css`width:100%; padding-top:10px;`}>
+        <header css={css`width:100%; padding-top:0.6rem;`}>
           <div css={titleSectionCSS}>
             <SectionTitle>Friends</SectionTitle>
             <SearchBar />
@@ -28,17 +28,16 @@ const ChatMain = () => (
 export default ChatMain;
 
 const pageCSS = css`
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  padding-bottom: 0px;
+  padding: 0.625rem;
+  padding-bottom: 0;
 `;
 
 const contentsCSS = css`
-  height: 600px;
   width: 100%;
   overflow-y: auto;
   ::-webkit-scrollbar {
@@ -53,7 +52,6 @@ const titleSectionCSS = css`
   display:flex;
   justify-content:space-between;
   align-items: center;
-  padding-left:20px;
-  padding-right: 10px;
-  padding-top: 10px;
-`;
+  padding-left: 1.25rem;
+  padding-right: 0.6rem;
+  padding-top: 0.6rem;`;
