@@ -22,22 +22,22 @@ export default MySpeak;
 
 const mySpeakCSS = css`
   width: 100%;
-  margin-top: 3px;
+  margin-top: 0.25rem;
 `;
 
 const chatContainerCSS = css`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-right:15px;
+  margin-right: 1rem;
 `;
 
 const myChatBoxCSS = css`
-  margin-left: 5%;
+  margin-left: 0.25rem;
   text-align: right;
-  font-size: 12px;
+  font-size: 0.75rem;
   color: #fff;
   background-color: ${color.lightGreen};
-  border-radius: 10px 0px 10px 10px;
-  padding: 12px;
+  border-radius: 0.75rem 0 0.75rem 0.75rem;
+  padding: 0.75rem;
 `;
