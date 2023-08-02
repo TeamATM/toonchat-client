@@ -29,7 +29,7 @@ const friendsWrapperCSS = css`
   display: flex;
   flex-direction: column;
   word-break: keep-all;
-  padding: 6px;
+  padding: 0.375rem;
 `;
 
 // TODO: 이 부분은 API에서 떼와야하는 부분
