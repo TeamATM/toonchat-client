@@ -125,7 +125,7 @@ const useSocketStore = create<SocketState>((set, get) => ({
 }));
 
 function getCurrentCharacterId() {
-  const pathMatcher = window.location.pathname.match(/\/chat\/([\d]+)$/);
+  const pathMatcher = window.location.pathname.match(/\/chats\/([\d]+)$/);
   if (pathMatcher && pathMatcher.length === 2) {
     return pathMatcher[1];
   }
