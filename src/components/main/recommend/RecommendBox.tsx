@@ -19,14 +19,15 @@ const RecommendBox:FC<CharacterProps> = ({
   <Link href={`/chat/${characterId}`} passHref legacyBehavior>
     <ResetLink>
       <div css={boxCSS}>
-        <Image
-          src={imageUrl}
-          alt={characterName}
-          width={56}
-          height={56}
-          style={imageStyle}
-          priority
-        />
+        <div css={imageWrapperCSS}>
+          <Image
+            src={imageUrl}
+            alt={characterName}
+            css={imageCSS}
+            fill
+            priority
+          />
+        </div>
         <div css={characterNameCSS}>{characterName}</div>
         <div css={hashTagCSS}>{hashTag}</div>
         <div css={statusMessageCSS}>{statusMessage}</div>
@@ -46,11 +47,11 @@ const ResetLink = styled.a`
 `;
 
 const boxCSS = css`
-  margin: 8px;
-  padding: 16px;
-  height: 200px;
+  margin: 0.5rem;
+  padding: 1rem;
+  height: 12.5rem;
   background-color: ${color.whiteGray};
-  border-radius: 14px;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,27 +66,33 @@ const boxCSS = css`
   }
 `;
 
-const imageStyle = {
-  borderRadius: '50%',
-  margin: '5px',
-};
+const imageWrapperCSS = css`
+  width: 3rem;
+  height: 3rem;
+  position: relative;
+  margin: 0.25rem;
+`;
+
+const imageCSS = css`
+  border-radius: 50%;
+`;
 
 const characterNameCSS = css`
   color: ${color.black};
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
 `;
 
 const hashTagCSS = css`
   color: ${color.greenGray};
-  font-size: 12px;
+  font-size: 0.75rem;
   padding: 6px;
   text-align: center;
 `;
 
 const statusMessageCSS = css`
   color: ${color.greenGray};
-  font-size: 14px;
-  padding: 6px;
+  font-size: 0.875rem;
+  padding: 0.375rem;
   text-align: center;
 `;
