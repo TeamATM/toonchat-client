@@ -76,10 +76,10 @@ const SearchBar = () => {
 export default SearchBar;
 
 const searchBarCSS = css`
-  border-radius: 14px;
+  border-radius: 0.8rem;
   background-color: ${color.whiteGray};
-  padding: 5px;
-  font-size: 12px;
+  padding: 0.3rem;
+  font-size: 0.75rem;
   font-weight: 400;
   color: ${color.darkGreen};
 `;
@@ -88,9 +88,9 @@ const inputCSS = css`
   outline: none;
   border: none;
   background: none;
-  padding-left: 12px;
-  padding-right: 12px;
-  width: 80px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  width: 5rem;
 `;
 
 const buttonCSS = css`

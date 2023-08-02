@@ -13,7 +13,7 @@ const SectionTitle:FC<SectionTitleProps> = ({ children }) => (
 export default SectionTitle;
 
 const titleCSS = css`
-  font-size: 14px;
+  font-size: 0.9rem;
   font-weight: bold;
   color: ${color.greenGray};
 `;
