@@ -25,13 +25,13 @@ const WrapperCSS = (color: string) => css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 14px;
-  gap: 4px;
+  font-size: 0.875rem;
+  gap: 0.25rem;
   color: ${color};
 `;
 
 const ResetLink = styled.a`
-  font-size: 12px;
+  font-size: 0.75rem;
   text-decoration: none;
 
   &:active {

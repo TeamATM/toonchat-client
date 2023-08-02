@@ -12,7 +12,7 @@ const ChatHome = () => (
     <ToonChatHead title="Friends" />
     <section css={pageCSS}>
       <div css={contentsCSS}>
-        <header css={css`width:100%; padding-top:10px;`}>
+        <header css={css`width:100%; padding-top:0.6rem;`}>
           <div css={titleSectionCSS}>
             <SectionTitle>Recommend</SectionTitle>
             <SearchBar />
@@ -38,8 +38,8 @@ const pageCSS = css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
-  padding-bottom: 0px;
+  padding: 0.6rem;
+  padding-bottom: 0;
 `;
 
 const contentsCSS = css`
@@ -50,7 +50,7 @@ const titleSectionCSS = css`
   display:flex;
   justify-content:space-between;
   align-items: center;
-  padding-left:20px;
-  padding-right: 10px;
-  padding-top: 10px;
+  padding-left: 1.25rem;
+  padding-right: 0.6rem;
+  padding-top: 0.6rem;
 `;
