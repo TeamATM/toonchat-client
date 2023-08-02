@@ -11,14 +11,15 @@ interface FriendInfoProps {
 
 const FriendInfo: FC<FriendInfoProps> = ({ characterName, message, imageUrl }) => (
   <div css={css`display:flex; flex-direction:row;`}>
-    <Image
-      src={imageUrl}
-      width={48}
-      height={48}
-      alt={characterName}
-      style={imageStyle}
-      priority
-    />
+    <div css={imageWrapperCSS}>
+      <Image
+        src={imageUrl}
+        alt={characterName}
+        css={imageCSS}
+        fill
+        priority
+      />
+    </div>
     <div css={css`display:flex; flex-direction:column; align-items:start; justify-content:center;`}>
       <div css={characterNameCSS}>{characterName}</div>
       <div css={messageCSS}>{message}</div>
@@ -28,19 +29,25 @@ const FriendInfo: FC<FriendInfoProps> = ({ characterName, message, imageUrl }) =
 
 export default FriendInfo;
 
-const imageStyle = {
-  borderRadius: '50%',
-  margin: '5px',
-};
+const imageWrapperCSS = css`
+  width: 3rem;
+  height: 3rem;
+  position: relative;
+  margin: 0.375rem;
+`;
+
+const imageCSS = css`
+  border-radius: 50%;
+`;
 
 const characterNameCSS = css`
-  font-size:16px;
+  font-size: 1rem;
   font-weight:bold;
-  padding-bottom:4px;
+  padding-bottom: 0.25rme;
   color:${color.black};
 `;
 
 const messageCSS = css`
-  font-size: 12px;
+  font-size: 0.75rem;
   color:${color.greenGray};
 `;

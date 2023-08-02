@@ -13,8 +13,8 @@ const FriendHashTag:FC<FriendHashTagProps> = ({ hashTag }) => (
 export default FriendHashTag;
 
 const hashTagCSS = css`
-  font-size: 12px;
+  font-size: 0.75rem;
   color:${color.greenGray};
-  width:100px;
-  margin-right:10px;
+  width: 6.25rem;
+  margin-right:0.625rem;
 `;

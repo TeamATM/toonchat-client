@@ -42,5 +42,5 @@ const friendCSS = css`
   flex-direction:row;
   align-items:center;
   justify-content:space-between;
-  padding: 5px 0;
+  padding: 0.25rem 0;
 `;
