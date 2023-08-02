@@ -12,13 +12,14 @@ const CharacterSpeak: FC<CharacterSpeakProps> = ({
   speaker, content, timestamp, imageUrl, loading = false,
 }) => (
   <span css={characterSpeakCSS}>
-    <Image
-      src={imageUrl}
-      width={40}
-      height={40}
-      style={imageStyle}
-      alt={speaker}
-    />
+    <div css={imageWrapperCSS}>
+      <Image
+        src={imageUrl}
+        alt={speaker}
+        css={imageCSS}
+        fill
+      />
+    </div>
     <span css={chatContainerCSS}>
       <span css={characterNameCSS}>{speaker}</span>
       {loading ? <LoadingContent />
@@ -31,23 +32,29 @@ export default CharacterSpeak;
 
 const characterSpeakCSS = css`
   width: 100%;
-  margin-top: 3px;
-  margin-bottom: 10px;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
   display: flex;
 `;
 
 const chatContainerCSS = css`
   display: flex;
   flex-direction: column;
-  margin-right: 5%;
+  margin-right: 0.25rem
 `;
 
 const characterNameCSS = css`
-  font-size: 14px;
-  padding: 1px;
+  font-size: 0.875rem;
+  padding: 0.25rem;
 `;
 
-const imageStyle = {
-  borderRadius: '50%',
-  margin: '5px',
-};
+const imageWrapperCSS = css`
+  margin: 0.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  position: relative;
+`;
+
+const imageCSS = css`
+  border-radius: 50%;
+`;

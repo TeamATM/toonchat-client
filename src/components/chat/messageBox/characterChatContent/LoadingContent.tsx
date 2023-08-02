@@ -18,9 +18,9 @@ export default LoadingContent;
 const characterChatBoxCSS = css`
   float: left;
   text-align: left;
-  font-size: 12px;
+  font-size: 0.75rem;
   color: ${color.black};
   background-color: #F2F7FB;
-  border-radius: 0px 10px 10px 10px;
-  padding: 12px;
+  border-radius: 0.75rem 0.75rem 0.75rem;
+  padding: 0.75rem;
 `;
