@@ -70,7 +70,7 @@ const navContainerCSS = css`
 `;
 
 const BottomNavCSS = css`
-  padding: 10px;
+  padding: 0.75rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 `;
