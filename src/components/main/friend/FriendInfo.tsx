@@ -20,7 +20,7 @@ const FriendInfo: FC<FriendInfoProps> = ({ characterName, message, imageUrl }) =
         priority
       />
     </div>
-    <div css={css`display:flex; flex-direction:column; align-items:start; justify-content:center;`}>
+    <div css={textWrapperCSS}>
       <div css={characterNameCSS}>{characterName}</div>
       <div css={messageCSS}>{message}</div>
     </div>
@@ -38,6 +38,14 @@ const imageWrapperCSS = css`
 
 const imageCSS = css`
   border-radius: 50%;
+`;
+
+const textWrapperCSS = css`
+  display:flex;
+  flex-direction:column;
+  align-items:start;
+  justify-content:center;
+  gap: 0.25rem;
 `;
 
 const characterNameCSS = css`
