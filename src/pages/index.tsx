@@ -12,8 +12,8 @@ const Home = () => (
         <Image
           src="/thumbnail.png"
           alt="썸네일"
-          width={441}
-          height={143}
+          width={295}
+          height={150}
         />
       </main>
       <footer css={css`width:100%; padding: 24px;`}>
