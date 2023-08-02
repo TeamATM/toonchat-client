@@ -27,6 +27,6 @@ const makeDate = (timestamp : number) => {
 
 const timestampCSS = css`
   color: ${color.greenGray};
-  font-size: 10px;
-  padding: 3px;
+  font-size: 0.625rem;
+  padding: 0.25rem;
 `;

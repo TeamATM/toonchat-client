@@ -33,15 +33,15 @@ const chatLogsWrapperCSS = css`
   display: flex;
   flex-direction: column;
   word-break: keep-all;
-  padding: 6px;
-  padding-top: 20px;
+  padding: 0.375rem;
+  padding-top: 1.25rem;
 `;
 
 const subInfoWrapperCSS = css`
   display:flex;
   flex-direction:column;
   align-items: flex-end;
-  margin-right: 10px;
+  margin-right: 0.625rem;
 `;
 
 // TODO: 이 부분은 API에서 떼와야하는 부분
