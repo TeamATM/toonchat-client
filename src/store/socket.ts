@@ -9,7 +9,7 @@ interface SocketState {
     processingMessagePool: Map<string, [number, string]>;
     connect: () => void;
     onConnectSuccess: () => void;
-    onMessageRecieved: (paylod:any) => void;
+    onMessageRecived: (paylod:any) => void;
     sendMessage: (message:string) => void;
     setChatStore: (chatSate:ChatState) => void;
 }
@@ -38,9 +38,9 @@ const useSocketStore = create<SocketState>((set, get) => ({
   },
   onConnectSuccess: () => {
     console.log('WebSocket Connected');
-    get().stompClient!.subscribe('/topic/chat', get().onMessageRecieved);
+    get().stompClient!.subscribe('/topic/chat', get().onMessageRecived);
   },
-  onMessageRecieved: (paylod:any) => {
+  onMessageRecived: (paylod:any) => {
     console.log(typeof paylod, paylod);
     const message:MessageObject = JSON.parse(paylod.body) as MessageObject;
     message.createdAt = new Date(message.createdAt);
