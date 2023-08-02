@@ -37,9 +37,11 @@ export default ChatHome;
 const pageCSS = css`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   padding: 0.6rem;
   padding-bottom: 0;
+  min-height: 100vh;
 `;
 
 const contentsCSS = css`
