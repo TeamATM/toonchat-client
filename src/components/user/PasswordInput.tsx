@@ -31,17 +31,17 @@ const PasswordInput: FC<PasswordInputProps> = ({ text, value, setState }) => {
 export default PasswordInput;
 
 const textCSS = css`
-  font-size: 14px;
+  font-size: 0.875rem;
   color: ${color.lightGreen};
 `;
 
 const inputTagCSS = css`
   display: block;
   width: 100%;
-  margin-top: 14px;
-  margin-bottom: 15px;
-  padding: 5px;
-  font-size: 16px;
+  margin-top: 0.875rem;
+  margin-bottom: 0.875rem;
+  padding: 0.25rem;
+  font-size: 1rem;
   outline: none;
   background: none;
   border: none;
