@@ -31,7 +31,7 @@ const CharacterInfo: FC<CharacterInfoProps> = ({ characterName, hashTag, imageUr
         fill
       />
     </div>
-    <div>
+    <div css={textWrapperCSS}>
       <div css={characterNameCSS}>{characterName}</div>
       <div css={characterBackgroundCSS}>{hashTag}</div>
     </div>
@@ -57,10 +57,15 @@ const imageCSS = css`
   border-radius: 50%;
 `;
 
+const textWrapperCSS = css`
+  padding: 0.25rem;
+`;
+
 const characterNameCSS = css`
   text-align: left;
   font-size: 1rem;
   color: ${color.black};
+  margin-bottom: 0.25rem;
 `;
 
 const characterBackgroundCSS = css`
