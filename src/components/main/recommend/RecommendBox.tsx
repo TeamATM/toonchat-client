@@ -1,9 +1,9 @@
-import color from '@/styles/color';
 import { css } from '@emotion/react';
 import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from '@emotion/styled';
+import color from '@/styles/color';
 
 interface CharacterProps {
   characterName: string,
@@ -16,7 +16,7 @@ interface CharacterProps {
 const RecommendBox:FC<CharacterProps> = ({
   characterName, characterId, hashTag, statusMessage, imageUrl,
 }) => (
-  <Link href={`/chat/${characterId}`} passHref legacyBehavior>
+  <Link href={`/chats/${characterId}`} passHref legacyBehavior>
     <ResetLink>
       <div css={boxCSS}>
         <div css={imageWrapperCSS}>
