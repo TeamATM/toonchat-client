@@ -16,7 +16,7 @@ const Home = () => (
           height={150}
         />
       </main>
-      <footer css={css`width:100%; padding: 24px;`}>
+      <footer css={css`width:100%; padding: 1.5rem;`}>
         <Link href="/login">
           <Button theme="green">
             Log in
@@ -40,5 +40,5 @@ const pageCSS = css`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 0.5rem;
 `;

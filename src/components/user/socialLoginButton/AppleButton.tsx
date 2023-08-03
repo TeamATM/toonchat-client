@@ -15,7 +15,7 @@ const AppleButton = () => {
         alt="Apple"
         width={26}
         height={26}
-        style={imageStyle}
+        css={imageCSS}
       />
     </button>
   );
@@ -25,13 +25,13 @@ export default AppleButton;
 
 const providerButtonCSS = css`
   background: none;
-  height: 48px;
-  width: 48px;
-  border-radius: 24px;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 1.5rem;
   border: 1px solid ${color.black};
-  margin: 10px;
+  margin: 0.5rem;
 `;
 
-const imageStyle = {
-  margin: '9px auto',
-};
+const imageCSS = css`
+  margin: 0.5rem auto;
+`;
