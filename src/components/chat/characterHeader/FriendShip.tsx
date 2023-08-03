@@ -13,11 +13,9 @@ const FriendShip:FC<UserStatusProps> = ({ friendShipExp, maxFriendShipExp, frien
     css={FriendShipCSS}
   >
     <div css={friendShipTextAreaCSS}>
-      <div css={css`padding-right: 5px;`}>친밀도</div>
-      <span css={css`font-size: 12px; color: #20a090;`}>
-        Lv.
-        {' '}
-        {friendShipLv}
+      <div css={css`padding-right: 0.25rem;`}>친밀도</div>
+      <span css={css`font-size: 0.75rem; color: ${color.greenGray}`}>
+        {`Lv. ${friendShipLv}`}
       </span>
     </div>
     <div css={expBarAreaCSS}>
@@ -34,9 +32,9 @@ const FriendShip:FC<UserStatusProps> = ({ friendShipExp, maxFriendShipExp, frien
 export default FriendShip;
 
 const FriendShipCSS = css`
-  height: 23px;
+  height: 1.5rem;
   text-align: left;
-  font-size: 10px;
+  font-size: 0.625rem;
   color:  ${color.greenGray};
   display: flex;
   flex-direction: column;
@@ -50,20 +48,20 @@ align-items: center;
 
 const expBarAreaCSS = css`
   display: flex;
-  padding:5px;
+  padding: 0.25rem;
 `;
 
 const maxExpBarCSS = (friendShipExp : number, maxFriendShipExp : number) => css`
-border-top: 4px solid #cdd1d0;
-width: ${(1 - (friendShipExp / maxFriendShipExp)) * 60}px;
-height: 4px;
+border-top: 0.25rem solid #cdd1d0;
+width: ${(1 - (friendShipExp / maxFriendShipExp)) * 3.75}rem;
+height: 0.25rem;
 opacity: 0.5;
-border-radius: 5px;
+border-radius: 0.25rem;
 `;
 
 const expBarCSS = (friendShipExp : number, maxFriendShipExp : number) => css`
-border-top: 4px solid ${color.lightGreen};
-width: ${(friendShipExp / maxFriendShipExp) * 60}px;
-height: 4px;
-border-radius: 5px;
+border-top: 0.25rem solid ${color.lightGreen};
+width: ${(friendShipExp / maxFriendShipExp) * 3.75}rem;
+height: 0.25rem;
+border-radius: 0.25rem;
 `;
