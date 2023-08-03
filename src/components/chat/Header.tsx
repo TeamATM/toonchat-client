@@ -51,7 +51,7 @@ export default Header;
 
 const headerCSS = css`
   width: 100%;
-  padding: 5px;
+  padding: 0.25rem;
   display: flex;
   flex-direction: row;
   align-items: center;

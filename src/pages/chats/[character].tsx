@@ -21,13 +21,15 @@ const Character = ({
     <>
       <ToonChatHead title={`대화 with ${characterName}`} />
       <section css={pageCSS}>
-        <Header
-          characterId={characterId}
-          imageUrl={imageUrl}
-          characterName={characterName}
-          hashTag={hashTag}
-        />
-        <Main characterId={characterId} characterName={characterName} imageUrl={imageUrl} />
+        <div>
+          <Header
+            characterId={characterId}
+            imageUrl={imageUrl}
+            characterName={characterName}
+            hashTag={hashTag}
+          />
+          <Main characterId={characterId} characterName={characterName} imageUrl={imageUrl} />
+        </div>
         <MessageInput characterId={characterId} characterName={characterName} />
       </section>
     </>
@@ -82,10 +84,11 @@ export const getServerSideProps
 };
 
 const pageCSS = css`
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 0.625rem;
+  padding-bottom: 0;
 `;
