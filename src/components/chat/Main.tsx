@@ -82,5 +82,4 @@ const mainCSS = css`
   overflow: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;
