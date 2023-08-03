@@ -19,7 +19,7 @@ export default ToForgetPassword;
 
 const RedLink = styled.a`
   color: ${color.darkGreen};
-  font-size: 14px;
+  font-size: 1rem;
   text-decoration: none;
 
   &:active {
@@ -31,6 +31,6 @@ const RedLink = styled.a`
 const textCSS = css`
   margin: auto;
   text-align: center;
-  font-size: 14px;
-  padding:10px;
+  font-size: 1rem;
+  padding: 0.5rem;
 `;

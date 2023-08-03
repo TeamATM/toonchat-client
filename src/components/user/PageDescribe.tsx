@@ -14,11 +14,11 @@ export default PageDescribe;
 
 const textCSS = css`
   width: 80%;
-  padding: 16px;
+  padding: 1rem;
   margin: auto;
-  border-radius: 16px;
+  border-radius: 1rem;
   text-align: center;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 700;
   color: ${color.greenGray};
 `;

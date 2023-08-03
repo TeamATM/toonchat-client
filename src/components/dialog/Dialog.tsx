@@ -69,8 +69,8 @@ const dialogContentsCSS = (theme: Theme) => css`
   position: relative;
   z-index: 2;
 
-  border-radius: 16px;
-  padding: 20px;
+  border-radius: 1rem;
+  padding: 1.25rem;
   background-color: ${themeTable[theme].backgroundColor};
   color: ${themeTable[theme].color};
 
@@ -78,9 +78,9 @@ const dialogContentsCSS = (theme: Theme) => css`
 `;
 
 const dialogTextCSS = css`
-  font-size: 14px;
-  padding: 10px;
-  padding-bottom: 20px;
+  font-size: 0.875rem;
+  padding: 0.625rem;
+  padding-bottom: 1.25rem;
 `;
 
 const dialogBackdropCSS = css`
@@ -89,7 +89,7 @@ const dialogBackdropCSS = css`
   left: 0;
   width: 100%;
   height: 100%;
-  font-size: 20px;
+  font-size: 1.25rem;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1;
 `;
@@ -98,11 +98,11 @@ const buttonCSS = (theme: Theme) => css`
   width: 80%;
   background-color: ${themeTable[theme].subBackgroundColor};
   border: none;
-  padding: 10px;
-  margin-top: 30px;
-  border-radius: 12px;
-  margin-top: 10px;
-  font-size: 12px;
+  padding: 0.625rem;
+  margin-top: 1.875rem;
+  border-radius: 0.75rem;
+  margin-top: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 400;
   color: ${themeTable[theme].subColor};
 

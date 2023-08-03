@@ -20,6 +20,6 @@ const pageCSS = css`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  padding-bottom: 0px;
+  padding: 0.5rem;
+  padding-bottom: 0;
 `;

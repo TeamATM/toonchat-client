@@ -86,7 +86,7 @@ const characterNameCSS = css`
 const hashTagCSS = css`
   color: ${color.greenGray};
   font-size: 0.75rem;
-  padding: 6px;
+  padding: 0.375rem;
   text-align: center;
 `;
 

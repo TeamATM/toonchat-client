@@ -16,5 +16,5 @@ export default SocialLoginButtons;
 const socialLoginContainer = css`
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
 `;

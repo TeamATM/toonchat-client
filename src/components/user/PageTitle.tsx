@@ -14,9 +14,9 @@ export default PageTitle;
 
 const textCSS = css`
   margin: auto;
-  border-radius: 16px;
+  border-radius: 1rem;
   text-align: center;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 700;
   color: ${color.black};
 `;
