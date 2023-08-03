@@ -41,7 +41,7 @@ const dialogBackdropCSS = css`
   left: 0;
   width: 100%;
   height: 100%;
-  font-size: 20px;
+  font-size: 1.25rem;
   background: rgba(0, 0, 0, 0.2);
   z-index: 1;
 `;

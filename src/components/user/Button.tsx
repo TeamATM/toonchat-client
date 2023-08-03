@@ -32,10 +32,10 @@ const ButtonCSS = (theme: Theme) => css`
   width: 100%;
   background-color: ${themeTable[theme].backgroundColor};
   border: none;
-  padding: 16px;
-  border-radius: 16px;
-  margin-top: 10px;
-  font-size: 16px;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 0.625rem;
+  font-size: 1rem;
   font-weight: 400;
   color: ${themeTable[theme].color};
 `;
