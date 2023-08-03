@@ -87,10 +87,10 @@ const pageCSS = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 0.5rem;
 `;
 
 const wrapperCSS = css`
   width: 100%;
-  padding: 24px;
+  padding: 1.5rem;
 `;
