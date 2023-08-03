@@ -51,7 +51,7 @@ const textWrapperCSS = css`
 const characterNameCSS = css`
   font-size: 1rem;
   font-weight:bold;
-  padding-bottom: 0.25rme;
+  padding-bottom: 0.25rem;
   color:${color.black};
 `;
 
