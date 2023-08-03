@@ -20,15 +20,15 @@ const lineContainerCSS = css`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
   width: 100%;
   color:  ${color.lightGray};
-  font-size: 14px;
+  font-size: 0.875rem;
 `;
 
 const lineCSS = css`
   display: block;
-  margin: 10px;
+  margin: 0.625rem;
   height: 1px;
   background: ${color.lightGray};
   width: 100%;

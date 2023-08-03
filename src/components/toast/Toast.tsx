@@ -57,7 +57,7 @@ const toastCSS = (startAnimation : boolean) => css`
   opacity: 0.5;
   color: ${color.white};
   padding: 1rem;
-  border-radius: 30px;
+  border-radius: 1.875rem;
   animation: ${startAnimation ? css`${slide} 1s ease forwards` : 'none'};
   display: flex;
   align-items: center;

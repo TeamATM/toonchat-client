@@ -15,13 +15,13 @@ const lineContainerCSS = css`
   align-items: center;
   width: 100%;
   color:  ${color.lightGray};
-  font-size: 14px;
+  font-size: 0.875rem;
 `;
 
 const lineCSS = css`
   display: block;
-  margin: 10px;
-  margin-bottom: 40px;
+  margin: 0.625rem;
+  margin-bottom: 2.5rem;
   height: 1px;
   background: ${color.lightGray};
   width: 100%;
