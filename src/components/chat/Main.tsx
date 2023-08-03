@@ -76,7 +76,7 @@ const Main:FC<MainProps> = ({ characterId, characterName, imageUrl }) => {
 export default Main;
 
 const mainCSS = css`
-  padding: 5px;
+  padding: 0.25rem;
   width: 100%;
   height: 100%;
   overflow: auto;

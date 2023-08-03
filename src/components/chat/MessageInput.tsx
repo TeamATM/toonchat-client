@@ -101,7 +101,7 @@ const footerCSS = css`
   padding-top: 0.5rem;
   background-color: ${color.white};
   text-align: left;
-  font-size: 12px;
+  font-size: 0.75rem;
   color: ${color.black};
 `;
 
@@ -110,8 +110,8 @@ const formCSS = css`
   flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
 `;
 
 const buttonCSS = css`
@@ -122,11 +122,11 @@ const buttonCSS = css`
 const inputCSS = css`
   width: 100%;
   border: none;
-  border-radius: 12px;
+  border-radius: 0.75rem;
   background-color: ${color.offWhite};
-  height: 40px;
-  padding: 12px;
-  margin-right: 10px;
+  height: 2.5rem;
+  padding: 0.75rem;
+  margin-right: 0.625rem;
 
   &:focus {
     outline: none;
