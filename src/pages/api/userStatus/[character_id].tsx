@@ -20,11 +20,9 @@ export default function handler(
   const characterId = req.query.character_id;
 
   console.log(characterId);
-  setTimeout(() => {
-    res.status(200).json({
-      friendShipExp: Math.random() * 200,
-      maxFriendShipExp: 200,
-      friendShipLv: 0,
-    });
-  }, Math.random() * 3000);
+  res.status(200).json({
+    friendShipExp: Math.random() * 200,
+    maxFriendShipExp: 200,
+    friendShipLv: 0,
+  });
 }

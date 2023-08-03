@@ -23,9 +23,7 @@ export default function handler(
 ) {
   const characterId = req.query.character_id;
 
-  setTimeout(() => {
-    res.status(200).json({ history: history(characterId) });
-  }, Math.random() * 5000);
+  res.status(200).json({ history: history(characterId) });
 }
 
 const history = (characterId: string) => {
