@@ -35,6 +35,7 @@ const characterSpeakCSS = css`
   margin-top: 0.25rem;
   margin-bottom: 0.75rem;
   display: flex;
+  align-self: flex-start;
 `;
 
 const chatContainerCSS = css`
