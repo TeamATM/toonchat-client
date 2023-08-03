@@ -29,6 +29,7 @@ const chatContainerCSS = css`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  align-self: flex-end;
   margin-right: 1rem;
 `;
 
