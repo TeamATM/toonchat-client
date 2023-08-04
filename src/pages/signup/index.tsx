@@ -1,4 +1,6 @@
 import { css } from '@emotion/react';
+import { useRouter } from 'next/router';
+import { FormEvent, useState } from 'react';
 import ToonChatHead from '@/components/head/ToonChatHead';
 import PageTitle from '@/components/user/PageTitle';
 import UnderLineText from '@/components/user/pageTitle/UnderLineText';

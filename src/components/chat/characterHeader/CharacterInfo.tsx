@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { css } from '@emotion/react';
-import color from '@/styles/color';
 import { FC } from 'react';
+import color from '@/styles/color';
 
 interface CharacterInfoProps {
   characterName: string,

@@ -1,7 +1,7 @@
-import color from '@/styles/color';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
+import color from '@/styles/color';
 
 const ToForgetPassword = () => (
   // TODO: 비밀번호 찾기 페이지 구현하고 라우팅해야함

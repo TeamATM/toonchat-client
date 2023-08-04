@@ -1,5 +1,5 @@
-import color from '@/styles/color';
 import { css } from '@emotion/react';
+import color from '@/styles/color';
 
 const SectionLine = () => (
   <div css={lineCSS} />

@@ -1,8 +1,8 @@
 import { GetServerSideProps } from 'next';
+import { css } from '@emotion/react';
 import MessageInput from '@/components/chat/MessageInput';
 import Header from '@/components/chat/Header';
 import Main from '@/components/chat/Main';
-import { css } from '@emotion/react';
 import ToonChatHead from '@/components/head/ToonChatHead';
 
 interface CharacterProps {
