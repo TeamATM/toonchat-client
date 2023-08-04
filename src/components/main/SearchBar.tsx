@@ -1,8 +1,8 @@
-import color from '@/styles/color';
 import { css } from '@emotion/react';
 import {
   ChangeEvent, KeyboardEvent, MouseEvent, useState,
 } from 'react';
+import color from '@/styles/color';
 import SearchIcon from '../icons/SearchIcon';
 import Toast from '../toast/Toast';
 

@@ -1,6 +1,6 @@
-import color from '@/styles/color';
 import { css } from '@emotion/react';
 import type { FC } from 'react';
+import color from '@/styles/color';
 
 interface UserStatusProps {
   friendShipExp: number,

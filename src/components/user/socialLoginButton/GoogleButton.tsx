@@ -1,6 +1,6 @@
-import color from '@/styles/color';
 import { css } from '@emotion/react';
 import Image from 'next/image';
+import color from '@/styles/color';
 
 const GoogleButton = () => {
   // TODO: 구글 소셜로그인 절차 구현

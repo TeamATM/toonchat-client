@@ -1,8 +1,8 @@
-import color from '@/styles/color';
 import { css } from '@emotion/react';
 import {
   FC, ReactNode, useEffect, useRef,
 } from 'react';
+import color from '@/styles/color';
 
 type Theme = 'green' | 'white'
 

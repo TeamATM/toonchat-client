@@ -1,6 +1,6 @@
+import { css } from '@emotion/react';
 import BottomNavigation from '@/components/bottomNavigation/BottomNavigation';
 import ToonChatHead from '@/components/head/ToonChatHead';
-import { css } from '@emotion/react';
 
 const Profile = () => (
   <>

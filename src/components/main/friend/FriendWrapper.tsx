@@ -1,8 +1,8 @@
-import color from '@/styles/color';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import { FC, ReactNode } from 'react';
+import color from '@/styles/color';
 
 interface FriendProps {
   children: ReactNode,

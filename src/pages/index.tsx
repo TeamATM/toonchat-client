@@ -1,8 +1,8 @@
-import ToonChatHead from '@/components/head/ToonChatHead';
-import Button from '@/components/user/Button';
 import { css } from '@emotion/react';
 import Link from 'next/link';
 import Image from 'next/image';
+import ToonChatHead from '@/components/head/ToonChatHead';
+import Button from '@/components/user/Button';
 
 const Home = () => (
   <>

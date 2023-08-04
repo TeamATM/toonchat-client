@@ -1,8 +1,8 @@
-import color from '@/styles/color';
 import { css, keyframes } from '@emotion/react';
 import {
   useState, useEffect, FC, KeyboardEvent,
 } from 'react';
+import color from '@/styles/color';
 
 interface ToastProps {
   message: string;
