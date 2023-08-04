@@ -1,4 +1,6 @@
 import { css } from '@emotion/react';
+import { useRouter } from 'next/router';
+import { FormEvent, useState } from 'react';
 import ToonChatHead from '@/components/head/ToonChatHead';
 import PageTitle from '@/components/user/PageTitle';
 import UnderLineText from '@/components/user/pageTitle/UnderLineText';
@@ -8,8 +10,6 @@ import DivideLineText from '@/components/user/DivideLineText';
 import Input from '@/components/user/Input';
 import PasswordInput from '@/components/user/PasswordInput';
 import Button from '@/components/user/Button';
-import { FormEvent, useState } from 'react';
-import { useRouter } from 'next/router';
 
 const Signup = () => {
   const [username, setUsername] = useState('');

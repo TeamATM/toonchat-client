@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
-import color from '@/styles/color';
 import { FC, useEffect, useState } from 'react';
+import color from '@/styles/color';
 import HomeIcon from '../icons/HomeIcon';
 import ChatIcon from '../icons/ChatIcon';
 import CommunityIcon from '../icons/CommunityIcon';

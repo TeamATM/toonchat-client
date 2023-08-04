@@ -1,8 +1,8 @@
-import color from '@/styles/color';
 import { css } from '@emotion/react';
 import {
   FC, ChangeEvent, Dispatch, SetStateAction,
 } from 'react';
+import color from '@/styles/color';
 
 interface PasswordInputProps {
   text: string, value: string, setState: Dispatch<SetStateAction<string>>,

@@ -1,8 +1,8 @@
-import color from '@/styles/color';
 import { css } from '@emotion/react';
 import {
   ChangeEvent, Dispatch, FC, SetStateAction,
 } from 'react';
+import color from '@/styles/color';
 
 interface InputProps {
   text: string, inputType: 'email' | 'text',

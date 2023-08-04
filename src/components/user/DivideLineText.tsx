@@ -1,6 +1,6 @@
-import color from '@/styles/color';
 import { css } from '@emotion/react';
 import { FC, ReactNode } from 'react';
+import color from '@/styles/color';
 
 interface DivideLineTextProps {
   children: ReactNode
