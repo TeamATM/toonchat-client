@@ -77,6 +77,7 @@ export default Main;
 
 const mainCSS = css`
   padding: 0.25rem;
+  max-width: 400px;
   width: 100%;
   height: 100%;
   overflow: auto;
