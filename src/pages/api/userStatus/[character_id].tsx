@@ -17,9 +17,6 @@ export default function handler(
   req: NextApiRequestWithId,
   res: NextApiResponse<Data>,
 ) {
-  const characterId = req.query.character_id;
-
-  console.log(characterId);
   res.status(200).json({
     friendShipExp: Math.random() * 200,
     maxFriendShipExp: 200,
