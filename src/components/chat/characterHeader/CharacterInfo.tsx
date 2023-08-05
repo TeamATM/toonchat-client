@@ -71,4 +71,8 @@ const characterNameCSS = css`
 const characterBackgroundCSS = css`
   font-size: 0.75rem;
   color: ${color.greenGray};
+  overflow: hidden;  // 넘치면 영역을 감추기
+  text-overflow: ellipsis; // ... 으로 마무리
+  white-space: nowrap; // 아래줄로 내려가는 것을 막기
+  max-width: 11rem;
 `;
