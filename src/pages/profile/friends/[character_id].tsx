@@ -25,17 +25,27 @@ const FriendProfile = ({
       <ToonChatHead title={`${characterName}의 프로필`} />
       <div css={backgroundCSS(backgroundImageUrl)} />
       <section css={pageCSS}>
-        <div css={imageWrapperCSS}>
-          <Image
-            src={imageUrl}
-            css={imageCSS}
-            alt={`/${characterName}`}
-            fill
-          />
+        <div css={css`display:flex; flex-direction:column; align-items: center;`}>
+          <div css={imageWrapperCSS}>
+            <Image
+              src={imageUrl}
+              css={imageCSS}
+              alt={`/${characterName}`}
+              fill
+            />
+          </div>
+          <div css={css`font-size:1.25rem; font-weight:700; padding:0.5rem;`}>{characterName}</div>
+          <div css={css`font-size:0.875rem; font-weight:bold; color:${color.greenGray}; padding-top:2rem;`}>{hashTag}</div>
+          <div css={css`font-size:1.125rem; font-weight:bold; padding:1rem;`}>{statusMessage}</div>
         </div>
-        <div css={css`font-size:1.25rem; font-weight:700;`}>{characterName}</div>
-        <div css={css`font-size:0.875rem; font-weight:bold; color:${color.greenGray};`}>{hashTag}</div>
-        <div css={css`font-size:1.125rem; font-weight:bold;`}>{statusMessage}</div>
+        <div css={css`padding:3rem;`}>
+          <div>chatIcon자리</div>
+          <div>communityIcon자리</div>
+        </div>
+        <div>
+          <div>친구 Level</div>
+          <div>친구된지 며칠?</div>
+        </div>
       </section>
     </>
   );
@@ -99,7 +109,7 @@ const pageCSS = css`
   left: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 0.625rem;
   padding-bottom: 0;
