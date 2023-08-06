@@ -1,6 +1,8 @@
 import { GetServerSideProps } from 'next';
 import { css } from '@emotion/react';
+import Image from 'next/image';
 import ToonChatHead from '@/components/head/ToonChatHead';
+import color from '@/styles/color';
 
 interface CharacterProfileProps {
   characterName: string,
@@ -23,9 +25,17 @@ const FriendProfile = ({
       <ToonChatHead title={`${characterName}의 프로필`} />
       <div css={backgroundCSS(backgroundImageUrl)} />
       <section css={pageCSS}>
-        <div>{`캐릭터 이름 : ${characterName}`}</div>
-        <div>{`Hash Tag : ${hashTag}`}</div>
-        <div>{`상태 메시지 : ${statusMessage}`}</div>
+        <div css={imageWrapperCSS}>
+          <Image
+            src={imageUrl}
+            css={imageCSS}
+            alt={`/${characterName}`}
+            fill
+          />
+        </div>
+        <div css={css`font-size:1.25rem; font-weight:700;`}>{characterName}</div>
+        <div css={css`font-size:0.875rem; font-weight:bold; color:${color.greenGray};`}>{hashTag}</div>
+        <div css={css`font-size:1.125rem; font-weight:bold;`}>{statusMessage}</div>
       </section>
     </>
   );
@@ -105,4 +115,14 @@ const backgroundCSS = (backgroundImageUrl: string) => css`
   background-size: cover;
   position: fixed;
   z-index: 1;
+`;
+
+const imageWrapperCSS = css`
+  width: 5.5rem;
+  height: 5.5rem;
+  position: relative;
+`;
+
+const imageCSS = css`
+  border-radius: 50%;
 `;
