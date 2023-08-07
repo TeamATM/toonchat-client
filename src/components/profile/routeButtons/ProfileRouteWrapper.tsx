@@ -3,13 +3,13 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { FC, ReactNode } from 'react';
 
-interface ProfileLinkWrapperProps {
+interface ProfileRouteWrapperProps {
   children: ReactNode,
   linkUrl: string,
   color: string,
 }
 
-const ProfileLinkWrapper: FC<ProfileLinkWrapperProps> = ({ children, linkUrl, color }) => (
+const ProfileRouteWrapper: FC<ProfileRouteWrapperProps> = ({ children, linkUrl, color }) => (
   <Link href={linkUrl} passHref legacyBehavior>
     <ResetLink>
       <div css={WrapperCSS(color)}>
@@ -19,7 +19,7 @@ const ProfileLinkWrapper: FC<ProfileLinkWrapperProps> = ({ children, linkUrl, co
   </Link>
 );
 
-export default ProfileLinkWrapper;
+export default ProfileRouteWrapper;
 
 const WrapperCSS = (color: string) => css`
   display: flex;
