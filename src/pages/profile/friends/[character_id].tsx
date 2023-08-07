@@ -6,6 +6,7 @@ import color from '@/styles/color';
 import ChatIcon from '@/components/icons/ChatIcon';
 import CommunityIcon from '@/components/icons/CommunityIcon';
 import ProfileLinkWrapper from '@/components/profile/ProfileLinkWrapper';
+import ProfileFriendShip from '@/components/profile/ProfileFriendShip';
 
 interface CharacterProfileProps {
   characterName: string,
@@ -52,10 +53,8 @@ const FriendProfile = ({
             Community
           </ProfileLinkWrapper>
         </div>
-        <div>
-          <div>친구 Level</div>
-          <div>친구된지 며칠?</div>
-        </div>
+        <div css={css`margin: 1rem; height: 4px; border-radius: 2px; background: ${color.greenGray}; width: 2.5rem;`} />
+        <ProfileFriendShip />
       </section>
     </>
   );
