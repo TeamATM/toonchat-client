@@ -34,9 +34,9 @@ const FriendProfile = ({
               fill
             />
           </div>
-          <div css={css`font-size:1.25rem; font-weight:700; padding:0.5rem;`}>{characterName}</div>
+          <div css={css`font-size:1.25rem; font-weight:700; padding:0.5rem; color: ${color.black};`}>{characterName}</div>
           <div css={css`font-size:0.875rem; font-weight:bold; color:${color.greenGray}; padding-top:2rem;`}>{hashTag}</div>
-          <div css={css`font-size:1.125rem; font-weight:bold; padding:1rem;`}>{statusMessage}</div>
+          <div css={css`font-size:1.125rem; font-weight:400; padding:1rem;`}>{statusMessage}</div>
         </div>
         <div css={css`padding:3rem;`}>
           <div>chatIcon자리</div>
@@ -119,7 +119,7 @@ const pageCSS = css`
 const backgroundCSS = (backgroundImageUrl: string) => css`
   height: 100vh;
   width: 400px;
-  background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(230, 229, 229, 0.9) ), url(${backgroundImageUrl});
+  background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.9) ), url(${backgroundImageUrl});
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
