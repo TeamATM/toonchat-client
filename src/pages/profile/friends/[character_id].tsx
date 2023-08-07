@@ -4,11 +4,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ToonChatHead from '@/components/head/ToonChatHead';
 import color from '@/styles/color';
-import ChatIcon from '@/components/icons/ChatIcon';
-import CommunityIcon from '@/components/icons/CommunityIcon';
-import ProfileLinkWrapper from '@/components/profile/ProfileLinkWrapper';
 import ProfileFriendShip from '@/components/profile/ProfileFriendShip';
 import BackwordIcon from '@/components/icons/BackwordIcon';
+import ProfileRouteButtons from '@/components/profile/ProfileRouteButtons';
 
 interface CharacterProfileProps {
   characterName: string,
@@ -49,17 +47,7 @@ const FriendProfile = ({
           <div css={css`font-size:0.875rem; font-weight:bold; color:${color.greenGray}; padding-top:2rem;`}>{hashTag}</div>
           <div css={css`font-size:1.125rem; font-weight:400; padding:1rem;`}>{statusMessage}</div>
         </div>
-        <div css={css`width:100%; padding-top:3rem; display: grid; grid-template-columns: repeat(2, 1fr); justify-items: center; justify-content: center;`}>
-          <ProfileLinkWrapper linkUrl={`/chats/${characterId}`} color={color.black}>
-            <ChatIcon color={color.black} />
-            chat
-          </ProfileLinkWrapper>
-          {/* TODO: community가 생기면 아래 링크를 바꿔야합니다. */}
-          <ProfileLinkWrapper linkUrl={`/profile/friends/${characterId}`} color={color.black}>
-            <CommunityIcon color={color.black} />
-            Community
-          </ProfileLinkWrapper>
-        </div>
+        <ProfileRouteButtons characterId={characterId} />
         <div css={css`margin: 1rem; height: 4px; border-radius: 2px; background: ${color.greenGray}; width: 2.5rem;`} />
         <ProfileFriendShip />
       </section>
