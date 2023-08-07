@@ -6,13 +6,13 @@ import color from '@/styles/color';
 
 interface FriendProps {
   children: ReactNode,
-  characterId: string,
+  linkUrl: string,
 }
 
 const FriendWrapper: FC<FriendProps> = ({
-  children, characterId,
+  children, linkUrl,
 }) => (
-  <Link href={`/profile/friends/${characterId}`} passHref legacyBehavior>
+  <Link href={linkUrl} passHref legacyBehavior>
     <ResetLink>
       <div css={friendCSS}>
         {children}

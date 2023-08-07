@@ -11,7 +11,7 @@ const ChatLogs = () => (
       <FriendWrapper
         // eslint-disable-next-line react/no-array-index-key
         key={index}
-        characterId={data.characterId}
+        linkUrl={`/chats/${data.characterId}`}
       >
         <FriendInfo
           characterName={data.characterName}

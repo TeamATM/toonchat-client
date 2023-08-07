@@ -10,7 +10,7 @@ const Friends = () => (
       <FriendWrapper
         // eslint-disable-next-line react/no-array-index-key
         key={index}
-        characterId={data.characterId}
+        linkUrl={`/profile/friends/${data.characterId}`}
       >
         <FriendInfo
           characterName={data.characterName}
