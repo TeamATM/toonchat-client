@@ -16,7 +16,7 @@ interface CharacterProps {
 const RecommendBox:FC<CharacterProps> = ({
   characterName, characterId, hashTag, statusMessage, imageUrl,
 }) => (
-  <Link href={`/chats/${characterId}`} passHref legacyBehavior>
+  <Link href={`/profile/friends/${characterId}`} passHref legacyBehavior>
     <ResetLink>
       <div css={boxCSS}>
         <div css={imageWrapperCSS}>

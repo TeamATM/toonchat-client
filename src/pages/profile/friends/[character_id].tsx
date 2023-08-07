@@ -1,12 +1,14 @@
 import { GetServerSideProps } from 'next';
 import { css } from '@emotion/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import ToonChatHead from '@/components/head/ToonChatHead';
 import color from '@/styles/color';
 import ChatIcon from '@/components/icons/ChatIcon';
 import CommunityIcon from '@/components/icons/CommunityIcon';
 import ProfileLinkWrapper from '@/components/profile/ProfileLinkWrapper';
 import ProfileFriendShip from '@/components/profile/ProfileFriendShip';
+import BackwordIcon from '@/components/icons/BackwordIcon';
 
 interface CharacterProfileProps {
   characterName: string,
@@ -28,6 +30,11 @@ const FriendProfile = ({
     <>
       <ToonChatHead title={`${characterName}의 프로필`} />
       <div css={backgroundCSS(backgroundImageUrl)} />
+      <div css={css`z-index: 100; position: fixed; padding: 4rem 1rem;`}>
+        <Link href="/friends">
+          <BackwordIcon color={color.white} />
+        </Link>
+      </div>
       <section css={pageCSS}>
         <div css={css`display:flex; flex-direction:column; align-items: center;`}>
           <div css={imageWrapperCSS}>
