@@ -1,12 +1,12 @@
 import { GetServerSideProps } from 'next';
 import { css } from '@emotion/react';
-import Image from 'next/image';
 import Link from 'next/link';
 import ToonChatHead from '@/components/head/ToonChatHead';
 import color from '@/styles/color';
 import ProfileFriendShip from '@/components/profile/ProfileFriendShip';
 import BackwordIcon from '@/components/icons/BackwordIcon';
 import ProfileRouteButtons from '@/components/profile/ProfileRouteButtons';
+import CharacterProfileInfo from '@/components/profile/CharacterProfileInfo';
 
 interface CharacterProfileProps {
   characterName: string,
@@ -34,19 +34,12 @@ const FriendProfile = ({
         </Link>
       </div>
       <section css={pageCSS}>
-        <div css={css`display:flex; flex-direction:column; align-items: center;`}>
-          <div css={imageWrapperCSS}>
-            <Image
-              src={imageUrl}
-              css={imageCSS}
-              alt={`/${characterName}`}
-              fill
-            />
-          </div>
-          <div css={css`font-size:1.25rem; font-weight:700; padding:0.5rem; color: ${color.black};`}>{characterName}</div>
-          <div css={css`font-size:0.875rem; font-weight:bold; color:${color.greenGray}; padding-top:2rem;`}>{hashTag}</div>
-          <div css={css`font-size:1.125rem; font-weight:400; padding:1rem;`}>{statusMessage}</div>
-        </div>
+        <CharacterProfileInfo
+          characterName={characterName}
+          hashTag={hashTag}
+          imageUrl={imageUrl}
+          statusMessage={statusMessage}
+        />
         <ProfileRouteButtons characterId={characterId} />
         <div css={css`margin: 1rem; height: 4px; border-radius: 2px; background: ${color.greenGray}; width: 2.5rem;`} />
         <ProfileFriendShip />
@@ -128,14 +121,4 @@ const backgroundCSS = (backgroundImageUrl: string) => css`
   background-size: cover;
   position: fixed;
   z-index: 1;
-`;
-
-const imageWrapperCSS = css`
-  width: 5.5rem;
-  height: 5.5rem;
-  position: relative;
-`;
-
-const imageCSS = css`
-  border-radius: 50%;
 `;
