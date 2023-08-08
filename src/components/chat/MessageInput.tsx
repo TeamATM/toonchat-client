@@ -24,7 +24,7 @@ const MessageInput : FC<CharacterState> = () => {
   useEffect(() => {
     const handleFocus = () => {
       if (inputRef.current) {
-        window.scrollTo(0, inputRef.current.offsetTop - 100); // 100은 여백 (해보고 바꿔야함)
+        inputRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
       }
     };
     if (inputRef.current) {
