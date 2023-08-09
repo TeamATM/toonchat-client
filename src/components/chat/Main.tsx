@@ -83,4 +83,5 @@ const mainCSS = css`
   overflow: auto;
   display: flex;
   flex-direction: column;
+  margin-bottom: 3rem;
 `;
