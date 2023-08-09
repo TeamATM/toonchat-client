@@ -22,17 +22,18 @@ const MessageInput : FC<CharacterState> = () => {
   const { sendMessage } = useSocketStore();
 
   useEffect(() => {
-    const handleResize = () => {
+    const handleFocus = () => {
       if (inputRef.current) {
-        inputRef.current.focus();
-        // inputRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        inputRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
       }
     };
-
-    window.addEventListener('resize', handleResize);
-
+    if (inputRef.current) {
+      inputRef.current.addEventListener('focus', handleFocus);
+    }
     return () => {
-      window.removeEventListener('resize', handleResize);
+      if (inputRef.current) {
+        inputRef.current.removeEventListener('focus', handleFocus);
+      }
     };
   }, []);
 
