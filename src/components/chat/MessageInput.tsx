@@ -97,7 +97,7 @@ export default MessageInput;
 const footerCSS = css`
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 400px;
   padding-top: 0.5rem;
   background-color: ${color.white};
   text-align: left;
@@ -117,6 +117,8 @@ const formCSS = css`
 const buttonCSS = css`
   background: none;
   border: none;
+  padding: 0;
+  margin: 0;
 `;
 
 const inputCSS = css`
