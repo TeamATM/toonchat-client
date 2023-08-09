@@ -24,7 +24,8 @@ const MessageInput : FC<CharacterState> = () => {
   useEffect(() => {
     const handleResize = () => {
       if (inputRef.current) {
-        inputRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        inputRef.current.focus();
+        // inputRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     };
 
