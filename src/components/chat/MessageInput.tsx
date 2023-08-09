@@ -95,7 +95,7 @@ const MessageInput : FC<CharacterState> = () => {
 export default MessageInput;
 
 const footerCSS = css`
-  position: sticky;
+  position: fixed;
   bottom: 0;
   width: 100%;
   padding-top: 0.5rem;
