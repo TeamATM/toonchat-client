@@ -1,8 +1,6 @@
 import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import Link from 'next/link';
 import { FC, ReactNode } from 'react';
-import color from '@/styles/color';
+import LinkWrapper from '@/components/common/link/LinkWrapper';
 
 interface FriendProps {
   children: ReactNode,
@@ -12,30 +10,14 @@ interface FriendProps {
 const FriendWrapper: FC<FriendProps> = ({
   children, linkUrl,
 }) => (
-  <Link href={linkUrl} passHref legacyBehavior>
-    <ResetLink>
-      <div css={friendCSS}>
-        {children}
-      </div>
-    </ResetLink>
-  </Link>
+  <LinkWrapper linkUrl={linkUrl}>
+    <div css={friendCSS}>
+      {children}
+    </div>
+  </LinkWrapper>
 );
 
 export default FriendWrapper;
-
-const ResetLink = styled.a`
-  text-decoration: none;
-
-  &:active {
-    text-decoration: none;
-    background-color: ${color.offWhite};
-  }
-
-  &:hover {
-    text-decoration: none;
-    background-color: ${color.offWhite};
-  }
-`;
 
 const friendCSS = css`
   display:flex;
