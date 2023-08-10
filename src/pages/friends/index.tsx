@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import SEO from '@/components/common/head/SEO';
-import BottomNavigation from '@/components/bottomNavigation/BottomNavigation';
+import BottomNavBar from '@/components/common/bottomNavBar/BottomNavBar';
 import SectionTitle from '@/components/common/sectionTitle/SectionTitle';
 import SectionLine from '@/components/common/sectionLine/SectionLine';
 import Recommends from '@/components/main/Recommends';
@@ -27,7 +27,7 @@ const ChatHome = () => (
           <Friends />
         </main>
       </div>
-      <BottomNavigation pageName="Friends" />
+      <BottomNavBar pageName="Friends" />
     </section>
   </>
 );
