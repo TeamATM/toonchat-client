@@ -1,9 +1,9 @@
 import { css } from '@emotion/react';
 import SEO from '@/components/common/head/SEO';
 import BottomNavigation from '@/components/bottomNavigation/BottomNavigation';
-import SearchBar from '@/components/main/SearchBar';
-import SectionTitle from '@/components/main/SectionTitle';
+import SearchBar from '@/components/common/searchBar/SearchBar';
 import ChatLogs from '@/components/main/ChatLogs';
+import SectionText from '@/components/common/sectionLine/SectionText';
 
 const ChatMain = () => (
   <>
@@ -12,7 +12,7 @@ const ChatMain = () => (
       <div css={contentsCSS}>
         <header css={css`width:100%; padding-top:0.6rem;`}>
           <div css={titleSectionCSS}>
-            <SectionTitle>Friends</SectionTitle>
+            <SectionText>Friends</SectionText>
             <SearchBar />
           </div>
         </header>
