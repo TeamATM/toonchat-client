@@ -3,7 +3,7 @@ import { FC, MouseEvent, useState } from 'react';
 import ChatIcon from '@/components/icons/ChatIcon';
 import CommunityIcon from '@/components/icons/CommunityIcon';
 import color from '@/styles/color';
-import Toast from '../toast/Toast';
+import Toast from '@/components/common/toast/Toast';
 import ProfileRouteWrapper from './routeButtons/ProfileRouteWrapper';
 
 interface RouteProps {

@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
+import TimeStamp from '@/components/common/timeStamp/TimeStamp';
 import FriendWrapper from './friend/FriendWrapper';
 import FriendInfo from './friend/FriendInfo';
-import TimeStamp from '../chat/messageBox/TimeStamp';
 import ChatBadge from './friend/ChatBadge';
 
 const ChatLogs = () => (
