@@ -1,7 +1,7 @@
 ---
-name: 🐝 fix
+name: 🐝 Fix
 about: 트러블 슈팅
-title: '🐝 Fix'
+title: '🐝 Fix: '
 labels: 'fix'
 ---
 
