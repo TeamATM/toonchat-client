@@ -10,8 +10,8 @@ import Input from '@/components/common/input/Input';
 import PageDescribe from '@/components/common/pageText/PageDescribe';
 import PageTitle from '@/components/common/pageText/PageTitle';
 import PasswordInput from '@/components/common/input/PasswordInput';
-import SocialLoginButtons from '@/components/user/SocialLoginButtons';
-import ToForgetPassword from '@/components/user/ToForgetPassword';
+import SocialLoginButtons from '@/components/account/SocialLoginButtons';
+import ToForgetPassword from '@/components/account/ToForgetPassword';
 import UnderLineText from '@/components/common/textUnderLineDeco/UnderLineText';
 
 const Login = () => {
