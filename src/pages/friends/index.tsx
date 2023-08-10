@@ -3,9 +3,9 @@ import SEO from '@/components/common/head/SEO';
 import BottomNavBar from '@/components/common/bottomNavBar/BottomNavBar';
 import SectionTitle from '@/components/common/sectionTitle/SectionTitle';
 import SectionLine from '@/components/common/sectionLine/SectionLine';
-import Recommends from '@/components/main/Recommends';
+import Recommends from '@/components/friends/Recommends';
 import SearchBar from '@/components/common/searchBar/SearchBar';
-import Friends from '@/components/main/Friends';
+import Friends from '@/components/friends/Friends';
 
 const ChatHome = () => (
   <>

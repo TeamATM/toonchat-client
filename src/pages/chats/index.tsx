@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import SEO from '@/components/common/head/SEO';
 import SearchBar from '@/components/common/searchBar/SearchBar';
-import ChatLogs from '@/components/main/ChatLogs';
+import ChatLogs from '@/components/friends/ChatLogs';
 import SectionTitle from '@/components/common/sectionTitle/SectionTitle';
 import BottomNavBar from '@/components/common/bottomNavBar/BottomNavBar';
 
