@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import SEO from '@/components/common/head/SEO';
 import BottomNavigation from '@/components/bottomNavigation/BottomNavigation';
-import SectionText from '@/components/common/sectionLine/SectionText';
+import SectionTitle from '@/components/common/sectionTitle/SectionTitle';
 import SectionLine from '@/components/common/sectionLine/SectionLine';
 import Recommends from '@/components/main/Recommends';
 import SearchBar from '@/components/common/searchBar/SearchBar';
@@ -14,7 +14,7 @@ const ChatHome = () => (
       <div css={contentsCSS}>
         <header css={css`width:100%; padding-top:0.6rem;`}>
           <div css={titleSectionCSS}>
-            <SectionText>Recommend</SectionText>
+            <SectionTitle>Recommend</SectionTitle>
             <SearchBar />
           </div>
           <Recommends />
@@ -22,7 +22,7 @@ const ChatHome = () => (
         <SectionLine />
         <main css={css`width:100%; display:flex; flex-direction:column;`}>
           <div css={titleSectionCSS}>
-            <SectionText>Friends</SectionText>
+            <SectionTitle>Friends</SectionTitle>
           </div>
           <Friends />
         </main>
