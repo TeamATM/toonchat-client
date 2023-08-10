@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import BottomNavigation from '@/components/bottomNavigation/BottomNavigation';
+import BottomNavBar from '@/components/common/bottomNavBar/BottomNavBar';
 import SEO from '@/components/common/head/SEO';
 
 const Community = () => (
@@ -8,7 +8,7 @@ const Community = () => (
     <section css={pageCSS}>
       커뮤니티 기능은 추후 제공될 예정입니다.
     </section>
-    <BottomNavigation pageName="Community" />
+    <BottomNavBar pageName="Community" />
   </>
 );
 

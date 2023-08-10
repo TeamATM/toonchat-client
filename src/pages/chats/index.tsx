@@ -1,9 +1,9 @@
 import { css } from '@emotion/react';
 import SEO from '@/components/common/head/SEO';
-import BottomNavigation from '@/components/bottomNavigation/BottomNavigation';
 import SearchBar from '@/components/common/searchBar/SearchBar';
 import ChatLogs from '@/components/main/ChatLogs';
 import SectionTitle from '@/components/common/sectionTitle/SectionTitle';
+import BottomNavBar from '@/components/common/bottomNavBar/BottomNavBar';
 
 const ChatMain = () => (
   <>
@@ -20,7 +20,7 @@ const ChatMain = () => (
           <ChatLogs />
         </main>
       </div>
-      <BottomNavigation pageName="Chat" />
+      <BottomNavBar pageName="Chat" />
     </section>
   </>
 );
