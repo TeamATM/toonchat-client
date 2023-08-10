@@ -3,7 +3,7 @@ import SEO from '@/components/common/head/SEO';
 import BottomNavigation from '@/components/bottomNavigation/BottomNavigation';
 import SearchBar from '@/components/common/searchBar/SearchBar';
 import ChatLogs from '@/components/main/ChatLogs';
-import SectionText from '@/components/common/sectionLine/SectionText';
+import SectionTitle from '@/components/common/sectionTitle/SectionTitle';
 
 const ChatMain = () => (
   <>
@@ -12,7 +12,7 @@ const ChatMain = () => (
       <div css={contentsCSS}>
         <header css={css`width:100%; padding-top:0.6rem;`}>
           <div css={titleSectionCSS}>
-            <SectionText>Friends</SectionText>
+            <SectionTitle>Friends</SectionTitle>
             <SearchBar />
           </div>
         </header>
