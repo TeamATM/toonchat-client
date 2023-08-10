@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { css } from '@emotion/react';
 import color from '@/styles/color';
-import TimeStamp from './TimeStamp';
+import TimeStamp from '@/components/common/timeStamp/TimeStamp';
 
 interface MySpeakProps {
   content: string, timestamp: number
