@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 import useChatStore from '@/store/chat';
 import MySpeak from './messageBox/MySpeak';
 import CharacterSpeak from './messageBox/CharacterSpeak';
-import Loading from '../dialog/Loading';
+import Loading from '../common/dialog/Loading';
 
 interface MainProps {
   characterId: string,
