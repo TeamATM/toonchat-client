@@ -1,5 +1,6 @@
 module.exports = {
   extends: ['@commitlint/config-conventional'],
+  parserPreset: './custom-parser',
   rules: {
     'type-case': [2, 'always', 'sentence-case'],
     'type-enum': [
@@ -13,8 +14,8 @@ module.exports = {
         'Feat',
         'Fix',
         '🐝 Fix',
-        '🐛 Hot-Fix',
-        'Perf',
+        'Hot-Fix',
+        '🐛 Hot-Fix',
         'Refactor',
         'Revert',
         'Style',
