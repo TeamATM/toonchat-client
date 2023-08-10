@@ -2,17 +2,17 @@ import { css } from '@emotion/react';
 import { FC, useEffect, useState } from 'react';
 import color from '@/styles/color';
 import SectionLine from '@/components/common/sectionLine/SectionLine';
-import HomeIcon from '../icons/HomeIcon';
-import ChatIcon from '../icons/ChatIcon';
-import CommunityIcon from '../icons/CommunityIcon';
-import ProfileIcon from '../icons/ProfileIcon';
-import NavButtonWrapper from './NavButton/NavButtonWrapper';
+import HomeIcon from '@/components/icons/HomeIcon';
+import ChatIcon from '@/components/icons/ChatIcon';
+import CommunityIcon from '@/components/icons/CommunityIcon';
+import ProfileIcon from '@/components/icons/ProfileIcon';
+import NavButtonWrapper from './navButtonWrapper/NavButtonWrapper';
 
 interface NavProps {
   pageName: 'Friends' | 'Chat' | 'Community' | 'Profile'
 }
 
-const BottomNavigation: FC<NavProps> = ({ pageName }) => {
+const BottomNavBar: FC<NavProps> = ({ pageName }) => {
   const [homeColor, setHomeColor] = useState(color.greenGray);
   const [chatColor, setChatColor] = useState(color.greenGray);
   const [communityColor, setCommunityColor] = useState(color.greenGray);
@@ -57,7 +57,7 @@ const BottomNavigation: FC<NavProps> = ({ pageName }) => {
   );
 };
 
-export default BottomNavigation;
+export default BottomNavBar;
 
 const navContainerCSS = css`
   position: sticky;
