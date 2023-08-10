@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import MessageInput from '@/components/chat/MessageInput';
 import Header from '@/components/chat/Header';
 import Main from '@/components/chat/Main';
-import ToonChatHead from '@/components/head/ToonChatHead';
+import SEO from '@/components/common/head/SEO';
 
 interface CharacterProps {
   characterName: string,
@@ -19,7 +19,7 @@ const Character = ({
 }
   : { characterProps: CharacterProps }) => (
     <>
-      <ToonChatHead title={`대화 with ${characterName}`} />
+      <SEO title={`대화 with ${characterName}`} />
       <section css={pageCSS}>
         <div>
           <Header
