@@ -5,11 +5,11 @@ import SEO from '@/components/common/head/SEO';
 import PageTitle from '@/components/common/pageText/PageTitle';
 import UnderLineText from '@/components/common/textUnderLineDeco/UnderLineText';
 import PageDescribe from '@/components/common/pageText/PageDescribe';
-import SocialLoginButtons from '@/components/user/SocialLoginButtons';
+import SocialLoginButtons from '@/components/account/SocialLoginButtons';
 import DivideLineText from '@/components/common/divideLine/DivideLineText';
-import Input from '@/components/user/Input';
-import PasswordInput from '@/components/user/PasswordInput';
-import Button from '@/components/user/Button';
+import Input from '@/components/common/input/Input';
+import PasswordInput from '@/components/common/input/PasswordInput';
+import Button from '@/components/common/button/Button';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
