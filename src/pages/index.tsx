@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import Link from 'next/link';
 import Image from 'next/image';
 import SEO from '@/components/common/head/SEO';
-import Button from '@/components/user/Button';
+import Button from '@/components/common/button/Button';
 
 const Home = () => (
   <>
