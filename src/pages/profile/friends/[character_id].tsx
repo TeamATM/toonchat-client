@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 import { css } from '@emotion/react';
 import Link from 'next/link';
-import ToonChatHead from '@/components/head/ToonChatHead';
+import SEO from '@/components/common/head/SEO';
 import color from '@/styles/color';
 import ProfileFriendShip from '@/components/profile/ProfileFriendShip';
 import BackwordIcon from '@/components/icons/BackwordIcon';
@@ -26,7 +26,7 @@ const FriendProfile = ({
 
   return (
     <>
-      <ToonChatHead title={`${characterName}의 프로필`} />
+      <SEO title={`${characterName}의 프로필`} />
       <div css={backgroundCSS(backgroundImageUrl)} />
       <div css={css`z-index: 100; position: fixed; padding: 4rem 1rem;`}>
         <Link href="/friends">

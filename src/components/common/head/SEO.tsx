@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import { FC } from 'react';
 
-interface ToonChatHeadProps {
+interface SEOProps {
   title: string,
 }
 
-const ToonChatHead: FC<ToonChatHeadProps> = ({ title }) => (
+const SEO: FC<SEOProps> = ({ title }) => (
   <Head>
     <title>
       {`ToonChat | ${title}`}
@@ -13,4 +13,4 @@ const ToonChatHead: FC<ToonChatHeadProps> = ({ title }) => (
   </Head>
 );
 
-export default ToonChatHead;
+export default SEO;

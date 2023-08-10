@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
 import { FormEvent, useState } from 'react';
-import ToonChatHead from '@/components/head/ToonChatHead';
+import SEO from '@/components/common/head/SEO';
 import PageTitle from '@/components/user/PageTitle';
 import UnderLineText from '@/components/user/pageTitle/UnderLineText';
 import PageDescribe from '@/components/user/PageDescribe';
@@ -43,7 +43,7 @@ const Signup = () => {
 
   return (
     <>
-      <ToonChatHead title="Sign up" />
+      <SEO title="Sign up" />
       <section css={pageCSS}>
         {/* header : 회원가입 페이지에 대한 설명 */}
         <header>

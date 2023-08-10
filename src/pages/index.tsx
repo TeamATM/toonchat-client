@@ -1,12 +1,12 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
 import Image from 'next/image';
-import ToonChatHead from '@/components/head/ToonChatHead';
+import SEO from '@/components/common/head/SEO';
 import Button from '@/components/user/Button';
 
 const Home = () => (
   <>
-    <ToonChatHead title="Home" />
+    <SEO title="Home" />
     <section css={pageCSS}>
       <main css={css`justify-content:center; margin:auto 0;`}>
         <Image

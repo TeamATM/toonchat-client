@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import ToonChatHead from '@/components/head/ToonChatHead';
+import SEO from '@/components/common/head/SEO';
 import BottomNavigation from '@/components/bottomNavigation/BottomNavigation';
 import SectionTitle from '@/components/main/SectionTitle';
 import SectionLine from '@/components/main/SectionLine';
@@ -9,7 +9,7 @@ import Friends from '@/components/main/Friends';
 
 const ChatHome = () => (
   <>
-    <ToonChatHead title="Friends" />
+    <SEO title="Friends" />
     <section css={pageCSS}>
       <div css={contentsCSS}>
         <header css={css`width:100%; padding-top:0.6rem;`}>
