@@ -3,8 +3,8 @@ import {
   ChangeEvent, KeyboardEvent, MouseEvent, useState,
 } from 'react';
 import color from '@/styles/color';
+import Toast from '@/components/common/toast/Toast';
 import SearchIcon from '../icons/SearchIcon';
-import Toast from '../toast/Toast';
 
 interface ToastMessage {
   key: number;
