@@ -2,7 +2,7 @@ import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { css } from '@emotion/react';
-import ToonChatHead from '@/components/head/ToonChatHead';
+import SEO from '@/components/common/head/SEO';
 import Button from '@/components/user/Button';
 import DivideLine from '@/components/user/DivideLine';
 import DivideLineText from '@/components/user/DivideLineText';
@@ -41,7 +41,7 @@ const Login = () => {
   return (
     <section css={pageCSS}>
       {/* header : 로그인 페이지에 대한 설명 */}
-      <ToonChatHead title="Log in" />
+      <SEO title="Log in" />
       <header>
         <PageTitle>
           <UnderLineText>Log in</UnderLineText>
