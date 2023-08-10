@@ -1,7 +1,7 @@
 ---
-name: 👔 style
+name: 👔 Style
 about: 디자인적인 요소 변경
-title: '👔 style'
+title: '👔 Style: '
 labels: 'style'
 ---
 
