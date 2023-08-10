@@ -1,12 +1,12 @@
 import { css } from '@emotion/react';
 import { FC, useEffect, useState } from 'react';
 import color from '@/styles/color';
+import SectionLine from '@/components/common/sectionLine/SectionLine';
 import HomeIcon from '../icons/HomeIcon';
 import ChatIcon from '../icons/ChatIcon';
 import CommunityIcon from '../icons/CommunityIcon';
 import ProfileIcon from '../icons/ProfileIcon';
 import NavButtonWrapper from './NavButton/NavButtonWrapper';
-import SectionLine from '../main/SectionLine';
 
 interface NavProps {
   pageName: 'Friends' | 'Chat' | 'Community' | 'Profile'

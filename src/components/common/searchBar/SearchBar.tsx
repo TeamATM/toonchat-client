@@ -4,7 +4,7 @@ import {
 } from 'react';
 import color from '@/styles/color';
 import Toast from '@/components/common/toast/Toast';
-import SearchIcon from '../icons/SearchIcon';
+import SearchIcon from '@/components/icons/SearchIcon';
 
 interface ToastMessage {
   key: number;
