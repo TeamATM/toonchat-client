@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 import Image from 'next/image';
 import color from '@/styles/color';
 import useSocketStore from '@/store/socket';
-import Dialog from '../dialog/Dialog';
+import Dialog from '../common/dialog/Dialog';
 
 interface CharacterState {
   characterId: string,
