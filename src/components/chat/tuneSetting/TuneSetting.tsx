@@ -1,8 +1,14 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import {
+  ChangeEvent, FC, FormEvent, useState,
+} from 'react';
 import Button from '@/components/common/button/Button';
 import useAIParameterStore from '@/store/aiParameter';
 
-const TuneSetting = () => {
+interface tuneSettingProps {
+  closeModal : () => void,
+}
+
+const TuneSetting: FC<tuneSettingProps> = ({ closeModal }) => {
   const [temperature, setTemperature] = useState(0.3);
   const [repetitionPenalty, setRepetitionPenalty] = useState(1.5);
   const { updateParameter } = useAIParameterStore();
@@ -16,6 +22,7 @@ const TuneSetting = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     updateParameter(temperature, repetitionPenalty);
+    closeModal();
   };
 
   return (

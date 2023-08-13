@@ -5,17 +5,19 @@ import useChatStore from '@/store/chat';
 import color from '@/styles/color';
 import FriendShip from './characterHeader/FriendShip';
 import CharacterInfo from './characterHeader/CharacterInfo';
+import SettingIcon from '../icons/SettingIcon';
 
 interface CharacterState {
   characterId: string,
   characterName: string,
   hashTag: string,
   imageUrl: string,
+  settingClick: () => void,
 }
 
 // TODO: Back 버튼을 누르면 지금 홈으로 돌아가지만 채팅 리스트뷰가 완성되면 그쪽으로 Link 될 예정
 const Header : FC<CharacterState> = ({
-  characterId, characterName, hashTag, imageUrl,
+  characterId, characterName, hashTag, imageUrl, settingClick,
 }) => {
   // TODO: 친밀도를 API로 받아와야 작업이 가능함!
   const [userStatus, setUserStatus] = useState({
@@ -44,6 +46,9 @@ const Header : FC<CharacterState> = ({
         maxFriendShipExp={userStatus.maxFriendShipExp}
         friendShipLv={userStatus.friendShipLv}
       />
+      <button type="button" onClick={settingClick}>
+        <SettingIcon color={color.lightGray} />
+      </button>
     </header>
   );
 };
@@ -54,7 +59,7 @@ const headerCSS = css`
   position: sticky;
   top: 0;
   z-index: 100; // 채팅보다 위에 존재해야하기 때문에 필요함
-  width: 100%;
+  width: 400px;
   max-width: 400px;
   padding: 0.25rem;
   display: flex;
