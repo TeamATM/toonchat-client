@@ -4,6 +4,9 @@ import MessageInput from '@/components/chat/MessageInput';
 import Header from '@/components/chat/Header';
 import Main from '@/components/chat/Main';
 import SEO from '@/components/common/head/SEO';
+import Dialog from '@/components/common/dialog/Dialog';
+import TuneSetting from '@/components/chat/tuneSetting/TuneSetting';
+import { useState } from 'react';
 
 interface CharacterProps {
   characterName: string,
@@ -17,7 +20,9 @@ const Character = ({
     characterName, characterId, hashTag, imageUrl,
   },
 }
-  : { characterProps: CharacterProps }) => (
+  : { characterProps: CharacterProps }) => {
+  const [settingModal, setSettingModal] = useState(false);
+  return (
     <>
       <SEO title={`대화 with ${characterName}`} />
       <section css={pageCSS}>
@@ -27,13 +32,20 @@ const Character = ({
             imageUrl={imageUrl}
             characterName={characterName}
             hashTag={hashTag}
+            settingClick={() => setSettingModal(!settingModal)}
           />
           <Main characterId={characterId} characterName={characterName} imageUrl={imageUrl} />
         </div>
         <MessageInput characterId={characterId} characterName={characterName} />
       </section>
+      { settingModal && (
+      <Dialog closeModal={() => { setSettingModal(false); }} theme="white">
+        <TuneSetting closeModal={() => { setSettingModal(false); }} />
+      </Dialog>
+      )}
     </>
-);
+  );
+};
 export default Character;
 
 // TODO: vercel 배포에서 임시API로는 서버사이드 랜더링이
