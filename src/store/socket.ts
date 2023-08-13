@@ -10,7 +10,7 @@ interface SocketState {
     connect: () => void;
     onConnectSuccess: () => void;
     onMessageRecived: (paylod:any) => void;
-    sendMessage: (message:string) => void;
+    sendMessage: (message:string, temperature: number, repetitionPenalty: number) => void;
     setChatStore: (chatSate:ChatState) => void;
 }
 
@@ -101,9 +101,16 @@ const useSocketStore = create<SocketState>((set, get) => ({
        */
     }
   },
-  sendMessage: (message:string) => {
+  sendMessage: (message:string, temperature: number, repetitionPenalty: number) => {
     if (message && get().stompClient!.connected) {
-      const chatMessage = { content: message };
+      const chatMessage = {
+        content: message,
+        generationArgs: {
+          temperature,
+          repetition_penalty: repetitionPenalty,
+        },
+      };
+      console.log('내가 보낸 chatMessage', chatMessage);
 
       // 현재 채팅 페이지에 있는지 확인
       const characterId = getCurrentCharacterId();
