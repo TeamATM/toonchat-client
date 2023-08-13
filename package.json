@@ -12,7 +12,6 @@
     "test:e2e": "playwright test",
     "test:e2e-ui": "playwright test --ui",
     "test:e2e-report": "playwright show-report"
-
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -27,6 +26,7 @@
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
     "@types/sockjs-client": "^1.5.1",
+    "axios": "^1.4.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-next": "13.4.8",
     "next": "13.4.8",
