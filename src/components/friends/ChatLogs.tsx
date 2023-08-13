@@ -1,31 +1,58 @@
 import { css } from '@emotion/react';
 import TimeStamp from '@/components/common/timeStamp/TimeStamp';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import FriendWrapper from './friend/FriendWrapper';
 import FriendInfo from './friend/FriendInfo';
 import ChatBadge from './friend/ChatBadge';
 
-const ChatLogs = () => (
-  <section css={chatLogsWrapperCSS}>
-    {chatLogDataSet.map((data, index) => (
-      // TODO: 여러 캐릭터가 있을 때 스크롤이 가능한지 확인하기 위함
-      <FriendWrapper
-        // eslint-disable-next-line react/no-array-index-key
-        key={index}
-        linkUrl={`/chats/${data.characterId}`}
-      >
-        <FriendInfo
-          characterName={data.characterName}
-          message={data.message}
-          imageUrl={data.imageUrl}
-        />
-        <div css={subInfoWrapperCSS}>
-          <TimeStamp timestamp={data.timestamp} />
-          <ChatBadge unreadCount={data.unreadCount} />
-        </div>
-      </FriendWrapper>
-    ))}
-  </section>
-);
+interface RecentData {
+  content: string,
+  characterName: string,
+  createdAt: number,
+}
+
+const ChatLogs = () => {
+  // TODO: 데이터셋을 한 번에 API로 받아오면 더 편하게 작업할 수 있을 것 같음
+  const [chatLogDataSet, setchatLogDataSet] = useState(chatLogDataSample);
+
+  const callRecentAPI = async (index: number, characterId: string) => {
+    const recentData = await axios.get<RecentData>(`${process.env.SERVER_URL || 'http://localhost:8080'}/chat/${characterId}?recent=true`);
+    chatLogDataSet[index].characterName = recentData.data.characterName;
+    chatLogDataSet[index].message = recentData.data.content;
+    chatLogDataSet[index].timestamp = recentData.data.createdAt;
+    setchatLogDataSet([...chatLogDataSet]);
+  };
+
+  useEffect(() => {
+    for (let i = 0; i < chatLogDataSet.length; i += 1) {
+      callRecentAPI(i, i.toString());
+    }
+  }, []);
+
+  return (
+    <section css={chatLogsWrapperCSS}>
+      {chatLogDataSet.map((data, index) => (
+        // TODO: 여러 캐릭터가 있을 때 스크롤이 가능한지 확인하기 위함
+        <FriendWrapper
+          // eslint-disable-next-line react/no-array-index-key
+          key={index}
+          linkUrl={`/chats/${data.characterId}`}
+        >
+          <FriendInfo
+            characterName={data.characterName}
+            message={data.message}
+            imageUrl={data.imageUrl}
+          />
+          <div css={subInfoWrapperCSS}>
+            <TimeStamp timestamp={data.timestamp} />
+            <ChatBadge unreadCount={data.unreadCount} />
+          </div>
+        </FriendWrapper>
+      ))}
+    </section>
+  );
+};
 
 export default ChatLogs;
 
@@ -44,86 +71,19 @@ const subInfoWrapperCSS = css`
   margin-right: 0.625rem;
 `;
 
-// TODO: 이 부분은 API에서 떼와야하는 부분
-const chatLogDataSet = [
+const chatLogDataSample = [
   {
-    characterName: '이영준',
     characterId: '0',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    message: '(자아도취에 빠진다)',
+    characterName: '이영준',
     imageUrl: '/leeyj.png',
+    message: '.',
     timestamp: 123123,
     unreadCount: 1,
   }, {
-    characterName: '김미소',
     characterId: '1',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    message: '조만간 퇴사할 생각이에요.',
-    imageUrl: '/kimms.png',
-    timestamp: 123123,
-    unreadCount: 0,
-  }, {
-    characterName: '이영준',
-    characterId: '0',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    message: '(자아도취에 빠진다))',
-    imageUrl: '/leeyj.png',
-    timestamp: 123123,
-    unreadCount: 3,
-  }, {
     characterName: '김미소',
-    characterId: '1',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    message: '조만간 퇴사할 생각이에요.',
     imageUrl: '/kimms.png',
-    timestamp: 123123,
-    unreadCount: 0,
-  }, {
-    characterName: '이영준',
-    characterId: '0',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    message: '(자아도취에 빠진다)',
-    imageUrl: '/leeyj.png',
-    timestamp: 123123,
-    unreadCount: 0,
-  }, {
-    characterName: '김미소',
-    characterId: '1',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    message: '조만간 퇴사할 생각이에요.',
-    imageUrl: '/kimms.png',
-    timestamp: 123123,
-    unreadCount: 0,
-  }, {
-    characterName: '이영준',
-    characterId: '0',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    message: '(자아도취에 빠진다)',
-    imageUrl: '/leeyj.png',
-    timestamp: 123123,
-    unreadCount: 0,
-  }, {
-    characterName: '김미소',
-    characterId: '1',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    message: '조만간 퇴사할 생각이에요.',
-    imageUrl: '/kimms.png',
-    timestamp: 123123,
-    unreadCount: 0,
-  }, {
-    characterName: '이영준',
-    characterId: '0',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    message: '(자아도취에 빠진다)',
-    imageUrl: '/leeyj.png',
-    timestamp: 123123,
-    unreadCount: 0,
-  }, {
-    characterName: '김미소',
-    characterId: '1',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    message: '조만간 퇴사할 생각이에요.',
-    imageUrl: '/kimms.png',
+    message: '.',
     timestamp: 123123,
     unreadCount: 0,
   },
