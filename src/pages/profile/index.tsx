@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import BottomNavBar from '@/components/common/bottomNavBar/BottomNavBar';
 import SEO from '@/components/common/head/SEO';
-import TuneSetting from '@/components/common/tuneSetting/TuneSetting';
+import TuneSetting from '@/components/chat/tuneSetting/TuneSetting';
 import Dialog from '@/components/common/dialog/Dialog';
 
 const Profile = () => (
