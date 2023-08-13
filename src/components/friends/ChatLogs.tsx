@@ -1,15 +1,15 @@
 import { css } from '@emotion/react';
 import TimeStamp from '@/components/common/timeStamp/TimeStamp';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import defaultInstance from '@/utils/axiosInstance/defaultInstance';
 import FriendWrapper from './friend/FriendWrapper';
 import FriendInfo from './friend/FriendInfo';
 import ChatBadge from './friend/ChatBadge';
 
 interface RecentData {
-  content: string,
-  characterName: string,
-  createdAt: number,
+  createdAt: number;
+  content: string;
+  characterName: string;
 }
 
 const ChatLogs = () => {
@@ -17,7 +17,7 @@ const ChatLogs = () => {
   const [chatLogDataSet, setchatLogDataSet] = useState(chatLogDataSample);
 
   const callRecentAPI = async (index: number, characterId: string) => {
-    const recentData = await axios.get<RecentData>(`${process.env.SERVER_URL || 'http://localhost:8080'}/chat/${characterId}?recent=true`);
+    const recentData = await defaultInstance.get<RecentData>(`${process.env.SERVER_URL || 'http://localhost:8080'}/chat/${characterId}?recent=true`);
     chatLogDataSet[index].characterName = recentData.data.characterName;
     chatLogDataSet[index].message = recentData.data.content;
     chatLogDataSet[index].timestamp = recentData.data.createdAt;
