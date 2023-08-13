@@ -110,8 +110,6 @@ const useSocketStore = create<SocketState>((set, get) => ({
           repetition_penalty: repetitionPenalty,
         },
       };
-      console.log('내가 보낸 chatMessage', chatMessage);
-
       // 현재 채팅 페이지에 있는지 확인
       const characterId = getCurrentCharacterId();
       if (characterId) {
