@@ -1,10 +1,11 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import Button from '../button/Button';
+import Button from '@/components/common/button/Button';
+import useAIParameterStore from '@/store/aiParameter';
 
 const TuneSetting = () => {
   const [temperature, setTemperature] = useState(0.3);
   const [repetitionPenalty, setRepetitionPenalty] = useState(1.5);
-
+  const { updateParameter } = useAIParameterStore();
   const temperatureHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setTemperature(parseFloat(e.target.value));
   };
@@ -14,7 +15,7 @@ const TuneSetting = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log(temperature, repetitionPenalty);
+    updateParameter(temperature, repetitionPenalty);
   };
 
   return (
