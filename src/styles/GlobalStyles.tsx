@@ -66,6 +66,9 @@ const globalCSS = css`
     font-family: inherit;
   }
 
+  button {
+    cursor:pointer;
+  }
 `;
 
 const GlobalStyles = () => (

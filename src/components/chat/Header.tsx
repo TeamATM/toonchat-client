@@ -46,7 +46,7 @@ const Header : FC<CharacterState> = ({
         maxFriendShipExp={userStatus.maxFriendShipExp}
         friendShipLv={userStatus.friendShipLv}
       />
-      <button type="button" onClick={settingClick}>
+      <button type="button" onClick={settingClick} css={css`border: none; background-color: ${color.white};`}>
         <SettingIcon color={color.lightGray} />
       </button>
     </header>

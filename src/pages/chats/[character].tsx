@@ -101,6 +101,5 @@ const pageCSS = css`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 0.625rem;
-  padding-bottom: 0;
+  padding: 0 0.625rem;
 `;

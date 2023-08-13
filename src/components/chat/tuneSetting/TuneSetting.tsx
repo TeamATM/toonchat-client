@@ -1,8 +1,9 @@
 import {
-  ChangeEvent, FC, FormEvent, useState,
+  ChangeEvent, FC, FormEvent, useEffect, useState,
 } from 'react';
-import Button from '@/components/common/button/Button';
 import useAIParameterStore from '@/store/aiParameter';
+import { css } from '@emotion/react';
+import color from '@/styles/color';
 
 interface tuneSettingProps {
   closeModal : () => void,
@@ -11,7 +12,13 @@ interface tuneSettingProps {
 const TuneSetting: FC<tuneSettingProps> = ({ closeModal }) => {
   const [temperature, setTemperature] = useState(0.3);
   const [repetitionPenalty, setRepetitionPenalty] = useState(1.5);
-  const { updateParameter } = useAIParameterStore();
+  const { temperatureParam, repetitionPenaltyParam, updateParameter } = useAIParameterStore();
+
+  useEffect(() => {
+    setTemperature(temperatureParam);
+    setRepetitionPenalty(repetitionPenaltyParam);
+  }, []);
+
   const temperatureHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setTemperature(parseFloat(e.target.value));
   };
@@ -19,9 +26,11 @@ const TuneSetting: FC<tuneSettingProps> = ({ closeModal }) => {
     setRepetitionPenalty(parseFloat(e.target.value));
   };
 
+  // TODO: AI 파라미터 값을 백엔드에서 저장하고 있어야 할 것 같음.
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     updateParameter(temperature, repetitionPenalty);
+    console.log('AI 파라미터 값:', temperature, repetitionPenalty);
     closeModal();
   };
 
@@ -53,8 +62,22 @@ const TuneSetting: FC<tuneSettingProps> = ({ closeModal }) => {
           step="0.01"
         />
       </div>
-      <Button theme="green">Set up</Button>
+      <button type="submit" css={ButtonCSS}>Save</button>
     </form>
   );
 };
 export default TuneSetting;
+
+const ButtonCSS = () => css`
+  width: 30%;
+  background-color: ${color.lightGray};
+  text-transform: uppercase;
+  border: none;
+  padding: 0.625rem;
+  margin-top: 1.875rem;
+  border-radius: 0.75rem;
+  margin-top: 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: ${color.black};
+`;
