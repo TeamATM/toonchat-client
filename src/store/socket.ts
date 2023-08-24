@@ -20,7 +20,7 @@ const useSocketStore = create<SocketState>((set, get) => ({
     if (!get().stompClient) {
       set(() => ({
         stompClient: new Client({
-          webSocketFactory: () => new SockJS(process.env.SOCKET_URL || 'http://localhost:8080/ws'),
+          webSocketFactory: () => new SockJS(process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:8080/ws'),
           onConnect: get().onConnectSuccess,
           debug: () => undefined,
           // connectHeaders: {},
