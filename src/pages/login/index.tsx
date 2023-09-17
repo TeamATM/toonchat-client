@@ -1,5 +1,4 @@
 import { FormEvent, useState } from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { css } from '@emotion/react';
 import SEO from '@/components/common/head/SEO';
@@ -13,30 +12,19 @@ import PasswordInput from '@/components/common/input/PasswordInput';
 import SocialLoginButtons from '@/components/account/SocialLoginButtons';
 import ToForgetPassword from '@/components/account/ToForgetPassword';
 import UnderLineText from '@/components/common/textUnderLineDeco/UnderLineText';
+import { signIn } from 'next-auth/react';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const router = useRouter();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const loginRes = await fetch('/api/users/login', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+    signIn('credentials', {
+      email,
+      password,
+      callbackUrl: '/friends',
     });
-    const loginData = await loginRes.json();
-
-    if ('error' in loginData) {
-      // TODO: 로그인 실패시 알려주는 UI가 필요함
-      alert('로그인 실패');
-      return;
-    }
-    // 로그인 성공!
-    router.push({ pathname: '/friends' });
   };
   return (
     <section css={pageCSS}>
