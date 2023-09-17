@@ -1,11 +1,11 @@
 import { css } from '@emotion/react';
 import Image from 'next/image';
 import color from '@/styles/color';
+import { signIn } from 'next-auth/react';
 
 const NaverButton = () => {
-  // TODO: 네이버 소셜로그인 절차 구현
   const naverLoginHandler = () => {
-    console.log('네이버 소셜로그인 절차 진행');
+    signIn('naver', { callbackUrl: '/friends' });
   };
 
   return (
