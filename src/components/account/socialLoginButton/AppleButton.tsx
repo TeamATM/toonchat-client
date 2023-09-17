@@ -4,6 +4,7 @@ import color from '@/styles/color';
 
 const AppleButton = () => {
   // TODO: 애플 소셜로그인 절차 구현
+  // TODO: 애플 로그인은 Apple Developer 과금이 되어야 가능한 상태라서 지금은 카카오로 막아놓음
   const appleLoginHandler = () => {
     console.log('애플 소셜로그인 절차 진행');
   };
