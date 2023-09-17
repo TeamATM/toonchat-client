@@ -3,15 +3,15 @@ import Image from 'next/image';
 import color from '@/styles/color';
 import { signIn } from 'next-auth/react';
 
-const GoogleButton = () => {
-  const googleLoginHandler = () => {
-    signIn('google', { callbackUrl: '/friends' });
+const KakaoButton = () => {
+  const kakaoLoginHandler = () => {
+    signIn('kakao', { callbackUrl: '/friends' });
   };
 
   return (
-    <button onClick={googleLoginHandler} type="button" css={providerButtonCSS}>
+    <button onClick={kakaoLoginHandler} type="button" css={providerButtonCSS}>
       <Image
-        src="/providerLogo/google.svg"
+        src="/providerLogo/kakao.svg"
         alt="Google"
         width={26}
         height={26}
@@ -21,10 +21,10 @@ const GoogleButton = () => {
   );
 };
 
-export default GoogleButton;
+export default KakaoButton;
 
 const providerButtonCSS = css`
-  background: none;
+  background: #FEE500;
   height: 3rem;
   width: 3rem;
   border-radius: 1.5rem;
