@@ -10,7 +10,7 @@ const Profile = () => {
 
   useEffect(() => {
     if (session?.accessToken) {
-      fetch('/api/users/test', {
+      fetch('/api/users/testapi', {
         headers: {
           Authorization: `Bearer ${session.accessToken}`,
         },
