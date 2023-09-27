@@ -5,7 +5,7 @@ import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 
 const Profile = () => {
-  const { data: session } = useSession();
+  const { data: session }: any = useSession();
   console.log(session);
 
   useEffect(() => {
