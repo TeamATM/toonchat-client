@@ -1,16 +1,40 @@
 import { css } from '@emotion/react';
 import BottomNavBar from '@/components/common/bottomNavBar/BottomNavBar';
 import SEO from '@/components/common/head/SEO';
+import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
 
-const Profile = () => (
-  <>
-    <SEO title="Profile" />
-    <section css={pageCSS}>
-      프로필 기능은 추후 제공될 예정입니다.
-    </section>
-    <BottomNavBar pageName="Profile" />
-  </>
-);
+const Profile = () => {
+  const { data: session } = useSession();
+  console.log(session);
+
+  useEffect(() => {
+    if (session?.accessToken) {
+      fetch('/api/users/test', {
+        headers: {
+          Authorization: `Bearer ${session.accessToken}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
+    }
+  }, [session]);
+
+  return (
+    <>
+      <SEO title="Profile" />
+      <section css={pageCSS}>
+        <div>
+          <div>{session?.user?.name}</div>
+          <div>{session?.user?.email}</div>
+        </div>
+      </section>
+      <BottomNavBar pageName="Profile" />
+    </>
+  );
+};
 
 export default Profile;
 
