@@ -15,12 +15,12 @@ export default async function handler(req: any, res: any) {
   }
 
   // Access Token 발급
-  const accessToken = jwt.sign({ email, name: '소울치킨' }, process.env.JWT_SECRET || '', {
+  const accessToken = jwt.sign({ email, name: '소울치킨' }, process.env.NEXT_PUBLIC_JWT_SECRET || '', {
     expiresIn: '1h',
   });
 
   // Refresh Token 발급
-  const refreshToken = jwt.sign({ email, name: '소울치킨' }, process.env.REFRESH_TOKEN_SECRET || '', {
+  const refreshToken = jwt.sign({ email, name: '소울치킨' }, process.env.NEXT_PUBLIC_REFRESH_TOKEN_SECRET || '', {
     expiresIn: '7d', // 예를 들어 7일 동안 유효합니다.
   });
 

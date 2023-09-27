@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios';
 
 const clientServerInstance = axios.create({
-  baseURL: process.env.CLIENT_SERVER_URL || 'http://localhost:3000/',
+  baseURL: process.env.NEXT_PUBLIC_CLIENT_SERVER_URL || 'http://localhost:3000/',
 });
 
 clientServerInstance.interceptors.response.use((response) => response, (error: AxiosError) => {
