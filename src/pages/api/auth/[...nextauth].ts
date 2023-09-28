@@ -99,6 +99,12 @@ export const authOptions: NextAuthOptions = {
       (session as CustomSession).refreshToken = token.refreshToken as string | undefined;
       return session;
     },
+
+    async redirect({ url, baseUrl }) {
+      return url.startsWith(baseUrl)
+        ? Promise.resolve(url)
+        : Promise.resolve(baseUrl);
+    },
   },
 };
 
