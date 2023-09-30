@@ -5,7 +5,7 @@ import GoogleProvider from 'next-auth/providers/google';
 import NaverProvider from 'next-auth/providers/naver';
 import KakaoProvider from 'next-auth/providers/kakao';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { credentialsLoginAPI } from '@/utils/api/clientServer';
+// import { credentialsLoginAPI } from '@/utils/api/clientServer';
 
 interface CustomSession extends Session {
   accessToken?: string;
@@ -36,16 +36,41 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
-        username: { label: 'email', type: 'text', placeholder: 'test-email' },
+        email: { label: 'email', type: 'text', placeholder: 'test-email' },
         password: { label: 'Password', type: 'password' },
       },
 
       async authorize(credentials) {
-        const user = await credentialsLoginAPI({
-          username: credentials?.username || '',
-          password: credentials?.password || '',
+        const response = await fetch('https://dev.webtoonchat.com/members/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ...credentials,
+            provider: 'credential',
+          }),
         });
-        if (user.name && user.accessToken) {
+        const data = await response.json();
+
+        // const user = await credentialsLoginAPI({
+        //   email: credentials?.email || '',
+        //   password: credentials?.password || '',
+        //   provider: 'credential',
+        // });
+        if (data.nickname && data.accessToken) {
+          console.log('-----signin-----');
+          console.log(data);
+          const user = {
+            accessToken: data.accessToken,
+            refreshToken: data.refreshToken,
+            name: data.nickname,
+            image: data.profileUrl,
+            email: credentials?.email,
+            id: data.memberId,
+          };
+          console.log(user);
+
           return user;
         }
         return null;
@@ -85,6 +110,9 @@ export const authOptions: NextAuthOptions = {
     },
 
     async jwt({ token, user }) {
+      console.log('--------jwt----------');
+      console.log(token, user);
+
       if (user?.accessToken) {
         token.accessToken = user.accessToken;
       }
@@ -95,16 +123,18 @@ export const authOptions: NextAuthOptions = {
     },
 
     async session({ session, token }: SessionCallback) {
+      console.log('--------session----------');
+      console.log(session, token);
       (session as CustomSession).accessToken = token.accessToken as string | undefined;
       (session as CustomSession).refreshToken = token.refreshToken as string | undefined;
       return session;
     },
 
-    async redirect({ url, baseUrl }) {
-      return url.startsWith(baseUrl)
-        ? Promise.resolve(url)
-        : Promise.resolve(baseUrl);
-    },
+    // async redirect({ url, baseUrl }) {
+    //   return url.startsWith(baseUrl)
+    //     ? Promise.resolve(url)
+    //     : Promise.resolve(baseUrl);
+    // },
   },
 };
 
