@@ -1,7 +1,7 @@
 import clientServerInstance from '@/utils/axiosInstance/clientServerInstance';
 
 interface Credentials {
-  username: string, password: string
+  email: string, password: string, provider: string
 }
 
 interface Socials {
@@ -9,7 +9,16 @@ interface Socials {
 }
 
 export const credentialsLoginAPI = async (credentials : Credentials) => {
-  const result = await clientServerInstance.post('/users/login', credentials);
+  console.log(credentials);
+
+  const result = await clientServerInstance.post('members/login', JSON.stringify(credentials), {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  console.log('-------');
+  console.log(result);
+
   return result.data;
 };
 
