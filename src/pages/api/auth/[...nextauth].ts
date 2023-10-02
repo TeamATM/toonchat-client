@@ -47,6 +47,7 @@ export const authOptions: NextAuthOptions = {
           password: credentials?.password || '',
           provider: 'credential',
         });
+
         if (data.nickname && data.accessToken) {
           const user = {
             accessToken: data.accessToken,
@@ -56,7 +57,6 @@ export const authOptions: NextAuthOptions = {
             email: credentials?.email,
             id: data.memberId,
           };
-
           return user;
         }
         return null;
@@ -75,7 +75,7 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user, account }) {
       if (account?.type === 'credentials') return true;
-      const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_SERVER_URL || 'http://localhost:3000/api'}/users/social-login`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000/api'}/members/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -111,11 +111,14 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
 
-    // async redirect({ url, baseUrl }) {
-    //   return url.startsWith(baseUrl)
-    //     ? Promise.resolve(url)
-    //     : Promise.resolve(baseUrl);
-    // },
+    async redirect({ url, baseUrl }) {
+      if (url.startsWith('/')) {
+        return `${baseUrl}${url}`;
+      } if (new URL(url).origin === baseUrl) {
+        return `${baseUrl}`;
+      }
+      return baseUrl;
+    },
   },
 };
 
