@@ -4,6 +4,10 @@ interface Credentials {
   email: string, password: string, provider: string
 }
 
+interface SignupForm {
+  email: string, name: string, password: string, provider: string
+}
+
 interface Socials {
   email: string, provider: string,
 }
@@ -14,7 +18,15 @@ export const credentialsLoginAPI = async (credentials : Credentials) => {
       'Content-Type': 'application/json',
     },
   });
+  return result.data;
+};
 
+export const credentialsSignupAPI = async (signupForm : SignupForm) => {
+  const result = await clientServerInstance.post('members/signup', JSON.stringify(signupForm), {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
   return result.data;
 };
 
