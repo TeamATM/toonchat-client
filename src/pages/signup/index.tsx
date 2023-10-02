@@ -10,7 +10,7 @@ import DivideLineText from '@/components/common/divideLine/DivideLineText';
 import Input from '@/components/common/input/Input';
 import PasswordInput from '@/components/common/input/PasswordInput';
 import Button from '@/components/common/button/Button';
-import { credentialsSignupAPI } from '@/utils/api/clientServer';
+import { credentialsSignupAPI } from '@/utils/api/accounts';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
