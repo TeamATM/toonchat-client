@@ -1,11 +1,19 @@
 import defaultInstance from '@/utils/axiosInstance/defaultInstance';
+import clientInstance from '../axiosInstance/clientInstance';
 
 interface Credentials {
   email: string, password: string, provider: string
 }
 
+interface NextSignupForm {
+  email: string,
+  username: string,
+  password: string,
+  confirmPassword: string,
+}
+
 interface SignupForm {
-  email: string, username: string, password: string, confirmPassword: string
+  email: string, name: string, password: string,
 }
 
 interface Socials {
@@ -17,16 +25,27 @@ export const credentialsLoginAPI = async (credentials : Credentials) => {
   return result.data;
 };
 
-export const credentialsSignupAPI = async (signupForm : SignupForm) => {
-  if (signupForm.password !== signupForm.confirmPassword) {
-    // TODO: 비밀번호 일치 여부 확인 후 실패시 알려주는 UI가 필요함
-    return { error: '비밀번호를 다시 확인해주세요.' };
-  }
-
+export const credentialNextSignupAPI = async ({
+  email, username, password, confirmPassword,
+} : NextSignupForm) => {
   const sendSignupData = {
-    email: signupForm.email,
-    name: signupForm.username,
-    password: signupForm.password,
+    email,
+    username,
+    password,
+    confirmPassword,
+  };
+
+  const result = await clientInstance.post('users/signup', JSON.stringify(sendSignupData));
+  return result.data;
+};
+
+export const credentialsSignupAPI = async ({
+  email, name, password,
+} : SignupForm) => {
+  const sendSignupData = {
+    email,
+    name,
+    password,
     provider: 'Credential',
   };
 
