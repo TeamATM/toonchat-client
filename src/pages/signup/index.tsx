@@ -10,6 +10,7 @@ import DivideLineText from '@/components/common/divideLine/DivideLineText';
 import Input from '@/components/common/input/Input';
 import PasswordInput from '@/components/common/input/PasswordInput';
 import Button from '@/components/common/button/Button';
+import { credentialsSignupAPI } from '@/utils/api/clientServer';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
@@ -27,21 +28,10 @@ const Signup = () => {
       alert('비밀번호를 다시 확인해주세요!');
       return;
     }
-
-    const signupRes = await fetch('https://dev.webtoonchat.com/members/signup', {
-      method: 'POST',
-      body: JSON.stringify({
-        email,
-        name: username,
-        password,
-        provider: 'credential',
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+    const signupData = await credentialsSignupAPI({
+      email, name: username, password, provider: 'credential',
     });
 
-    const signupData = await signupRes.json();
     console.log(signupData);
 
     if ('error' in signupData) {
