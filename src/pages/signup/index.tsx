@@ -10,7 +10,7 @@ import DivideLineText from '@/components/common/divideLine/DivideLineText';
 import Input from '@/components/common/input/Input';
 import PasswordInput from '@/components/common/input/PasswordInput';
 import Button from '@/components/common/button/Button';
-import { credentialsSignupAPI } from '@/utils/api/accounts';
+import { credentialNextSignupAPI } from '@/utils/api/accounts';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
@@ -21,7 +21,7 @@ const Signup = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const signupData = await credentialsSignupAPI({
+    const signupData = await credentialNextSignupAPI({
       email, username, password, confirmPassword,
     });
 

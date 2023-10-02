@@ -6,7 +6,6 @@ import NaverProvider from 'next-auth/providers/naver';
 import KakaoProvider from 'next-auth/providers/kakao';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { credentialsLoginAPI } from '@/utils/api/accounts';
-// import { credentialsLoginAPI } from '@/utils/api/clientServer';
 
 interface CustomSession extends Session {
   accessToken?: string;
@@ -83,6 +82,7 @@ export const authOptions: NextAuthOptions = {
         body: JSON.stringify({
           email: user.email,
           provider: account?.provider,
+          password: null,
         }),
       });
       const data = await response.json();
