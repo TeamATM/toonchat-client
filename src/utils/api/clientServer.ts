@@ -5,7 +5,7 @@ interface Credentials {
 }
 
 interface SignupForm {
-  email: string, name: string, password: string, provider: string
+  email: string, username: string, password: string, confirmPassword: string
 }
 
 interface Socials {
@@ -13,20 +13,24 @@ interface Socials {
 }
 
 export const credentialsLoginAPI = async (credentials : Credentials) => {
-  const result = await clientServerInstance.post('members/login', JSON.stringify(credentials), {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  const result = await clientServerInstance.post('members/login', JSON.stringify(credentials));
   return result.data;
 };
 
 export const credentialsSignupAPI = async (signupForm : SignupForm) => {
-  const result = await clientServerInstance.post('members/signup', JSON.stringify(signupForm), {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  if (signupForm.password !== signupForm.confirmPassword) {
+    // TODO: 비밀번호 일치 여부 확인 후 실패시 알려주는 UI가 필요함
+    return { error: '비밀번호를 다시 확인해주세요.' };
+  }
+
+  const sendSignupData = {
+    email: signupForm.email,
+    name: signupForm.username,
+    password: signupForm.password,
+    provider: 'Credential',
+  };
+
+  const result = await clientServerInstance.post('members/signup', JSON.stringify(sendSignupData));
   return result.data;
 };
 
