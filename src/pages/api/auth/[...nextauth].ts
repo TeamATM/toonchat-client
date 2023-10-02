@@ -5,7 +5,7 @@ import GoogleProvider from 'next-auth/providers/google';
 import NaverProvider from 'next-auth/providers/naver';
 import KakaoProvider from 'next-auth/providers/kakao';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { credentialsLoginAPI } from '@/utils/api/clientServer';
+import { credentialsLoginAPI } from '@/utils/api/accounts';
 // import { credentialsLoginAPI } from '@/utils/api/clientServer';
 
 interface CustomSession extends Session {

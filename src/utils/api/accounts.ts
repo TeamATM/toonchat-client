@@ -1,4 +1,4 @@
-import clientServerInstance from '@/utils/axiosInstance/clientServerInstance';
+import defaultInstance from '@/utils/axiosInstance/defaultInstance';
 
 interface Credentials {
   email: string, password: string, provider: string
@@ -13,7 +13,7 @@ interface Socials {
 }
 
 export const credentialsLoginAPI = async (credentials : Credentials) => {
-  const result = await clientServerInstance.post('members/login', JSON.stringify(credentials));
+  const result = await defaultInstance.post('members/login', JSON.stringify(credentials));
   return result.data;
 };
 
@@ -30,11 +30,11 @@ export const credentialsSignupAPI = async (signupForm : SignupForm) => {
     provider: 'Credential',
   };
 
-  const result = await clientServerInstance.post('members/signup', JSON.stringify(sendSignupData));
+  const result = await defaultInstance.post('members/signup', JSON.stringify(sendSignupData));
   return result.data;
 };
 
 export const socialLoginAPI = async (socials: Socials) => {
-  const result = await clientServerInstance.post('/users/social-login', socials);
+  const result = await defaultInstance.post('/users/social-login', socials);
   return result.data;
 };
