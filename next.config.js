@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
+    NEXT_PUBLIC_ENV: process.env.NEXT_PUBLIC_ENV,
+
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
 
     NEXT_PUBLIC_SOCKET_URL: process.env.NEXT_PUBLIC_SOCKET_URL,
