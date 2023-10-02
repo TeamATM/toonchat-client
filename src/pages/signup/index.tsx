@@ -21,18 +21,9 @@ const Signup = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(password, confirmPassword);
-
-    if (password !== confirmPassword) {
-      // TODO: 비밀번호 일치 여부 확인 후 실패시 알려주는 UI가 필요함
-      alert('비밀번호를 다시 확인해주세요!');
-      return;
-    }
     const signupData = await credentialsSignupAPI({
-      email, name: username, password, provider: 'credential',
+      email, username, password, confirmPassword,
     });
-
-    console.log(signupData);
 
     if ('error' in signupData) {
       // TODO: 회원가입 실패시 알려주는 UI가 필요함
@@ -41,7 +32,7 @@ const Signup = () => {
     }
     // 회원가입 성공!
     router.push({
-      pathname: '/user/login',
+      pathname: '/login',
     });
   };
 
