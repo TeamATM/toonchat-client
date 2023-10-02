@@ -11,7 +11,10 @@ interface ExtendedNextApiRequest extends NextApiRequest {
 }
 
 export default async function handler(req: ExtendedNextApiRequest, res: NextApiResponse) {
-  const allowedOrigins = ['https://www.webtoonchat.com', 'https://webtoonchat.com', 'http://localhost:3000'];
+  const allowedOrigins = ['https://www.webtoonchat.com', 'https://webtoonchat.com'];
+  const isLocal = process.env.NEXT_PUBLIC_ENV === 'local';
+  if (isLocal) allowedOrigins.push('http://localhost:3000');
+
   const { origin } = req.headers;
 
   if (allowedOrigins.includes(origin || '')) {
