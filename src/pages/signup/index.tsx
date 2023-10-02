@@ -20,16 +20,30 @@ const Signup = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const signupRes = await fetch('/api/users', {
+    console.log(password, confirmPassword);
+
+    if (password !== confirmPassword) {
+      // TODO: 비밀번호 일치 여부 확인 후 실패시 알려주는 UI가 필요함
+      alert('비밀번호를 다시 확인해주세요!');
+      return;
+    }
+
+    const signupRes = await fetch('https://dev.webtoonchat.com/members/signup', {
       method: 'POST',
       body: JSON.stringify({
-        email, username, password, confirmPassword,
+        email,
+        name: username,
+        password,
+        provider: 'credential',
       }),
       headers: {
         'Content-Type': 'application/json',
       },
     });
+
     const signupData = await signupRes.json();
+    console.log(signupData);
+
     if ('error' in signupData) {
       // TODO: 회원가입 실패시 알려주는 UI가 필요함
       alert('회원가입 실패');
