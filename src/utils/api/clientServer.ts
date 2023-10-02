@@ -9,15 +9,11 @@ interface Socials {
 }
 
 export const credentialsLoginAPI = async (credentials : Credentials) => {
-  console.log(credentials);
-
   const result = await clientServerInstance.post('members/login', JSON.stringify(credentials), {
     headers: {
       'Content-Type': 'application/json',
     },
   });
-  console.log('-------');
-  console.log(result);
 
   return result.data;
 };
