@@ -74,7 +74,7 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user, account }) {
       if (account?.type === 'credentials') return true;
-      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000/api'}/members/login`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000/api'}/members/social-login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
