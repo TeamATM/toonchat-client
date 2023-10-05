@@ -47,57 +47,5 @@ const characterDataSet = [
     hashTag: '#카카오페이지 #김비서가왜그럴까',
     statusMessage: '조만간 퇴사하려구요 :)',
     imageUrl: '/kimms.png',
-  }, {
-    characterName: '이영준',
-    characterId: '0',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    statusMessage: '난 왜 이렇게 완벽한걸까...',
-    imageUrl: '/leeyj.png',
-
-  }, {
-    characterName: '김미소',
-    characterId: '1',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    statusMessage: '조만간 퇴사하려구요 :)',
-    imageUrl: '/kimms.png',
-  }, {
-    characterName: '이영준',
-    characterId: '0',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    statusMessage: '난 왜 이렇게 완벽한걸까...',
-    imageUrl: '/leeyj.png',
-
-  }, {
-    characterName: '김미소',
-    characterId: '1',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    statusMessage: '조만간 퇴사하려구요 :)',
-    imageUrl: '/kimms.png',
-  }, {
-    characterName: '이영준',
-    characterId: '0',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    statusMessage: '난 왜 이렇게 완벽한걸까...',
-    imageUrl: '/leeyj.png',
-
-  }, {
-    characterName: '김미소',
-    characterId: '1',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    statusMessage: '조만간 퇴사하려구요 :)',
-    imageUrl: '/kimms.png',
-  }, {
-    characterName: '이영준',
-    characterId: '0',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    statusMessage: '난 왜 이렇게 완벽한걸까...',
-    imageUrl: '/leeyj.png',
-
-  }, {
-    characterName: '김미소',
-    characterId: '1',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    statusMessage: '조만간 퇴사하려구요 :)',
-    imageUrl: '/kimms.png',
   },
 ];
