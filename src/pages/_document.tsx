@@ -7,7 +7,7 @@ const Document = () => (
     <Head>
       <meta charSet="UTF-8" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/logo.png" />
       <meta name="author" content="Team ATM" />
       <meta name="description" content="최애 캐릭터와의 1:1 대화 | ToonChat" />
       <meta name="robots" content="index,nofollow" />
