@@ -5,7 +5,7 @@ interface ChatContentsState {
 }
 
 interface resultData {
-  messageId: string, content: string, createdAt: number, fromUser: string;
+  messageId: string, content: string, createdAt: number, fromUser: string, replyMessageId: string,
 }
 
 type GetHistory = (
@@ -23,7 +23,9 @@ const getHistory: GetHistory = async (setLoading, characterId, characterName, in
     content: data.content,
     timestamp: data.createdAt,
     speaker: data.fromUser ? 'me' : characterName,
+    replyMessageId: data.replyMessageId,
   }));
+
   initChatContents(history);
 };
 
