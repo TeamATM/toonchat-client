@@ -10,19 +10,19 @@ const ChatLogs = () => {
   // TODO: 데이터셋을 한 번에 API로 받아오면 더 편하게 작업할 수 있을 것 같음
   const [chatLogDataSet, setchatLogDataSet] = useState(chatLogDataSample);
 
-  const callRecentAPI = async (index: number, characterId: string) => {
-    const recentData = await recentChatAPI(characterId);
-
-    chatLogDataSet[index].characterName = recentData.characterName;
-    chatLogDataSet[index].message = recentData.content;
-    chatLogDataSet[index].timestamp = recentData.createdAt;
-    setchatLogDataSet([...chatLogDataSet]);
+  const callRecentAPI = async () => {
+    const recentData = await recentChatAPI();
+    console.log(recentData);
+    const tempDataSet = chatLogDataSet.map((chatLog, index) => ({
+      ...chatLog,
+      message: recentData[index].lastMessage.content,
+      timestamp: recentData[index].lastMessage.createdAt,
+    }));
+    setchatLogDataSet([...tempDataSet]);
   };
 
   useEffect(() => {
-    for (let i = 0; i < chatLogDataSet.length; i += 1) {
-      callRecentAPI(i, i.toString());
-    }
+    callRecentAPI();
   }, []);
 
   return (
