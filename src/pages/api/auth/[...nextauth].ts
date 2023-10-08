@@ -5,7 +5,7 @@ import GoogleProvider from 'next-auth/providers/google';
 import NaverProvider from 'next-auth/providers/naver';
 import KakaoProvider from 'next-auth/providers/kakao';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { credentialsLoginAPI } from '@/utils/api/accounts';
+import { credentialsLoginAPI, socialLoginAPI } from '@/utils/api/accounts';
 
 interface CustomSession extends Session {
   accessToken?: string;
@@ -74,18 +74,17 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user, account }) {
       if (account?.type === 'credentials') return true;
-      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000/api'}/members/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: user.email,
-          provider: account?.provider,
-          password: null,
-        }),
+      console.log('user', user);
+      console.log('account', account);
+      const data = await socialLoginAPI({
+        email: user.email || '',
+        name: user.name || '',
+        provider: account?.provider || '',
+        password: null,
       });
-      const data = await response.json();
+
+      console.log('data', data);
+
       if (data?.accessToken && data?.refreshToken) {
         user.accessToken = data.accessToken;
         user.refreshToken = data.refreshToken;
@@ -112,10 +111,12 @@ export const authOptions: NextAuthOptions = {
     },
 
     async redirect({ url, baseUrl }) {
+      console.log('Redirect URL:', url);
+      console.log('Base URL:', baseUrl);
       if (url.startsWith('/')) {
         return `${baseUrl}${url}`;
       } if (new URL(url).origin === baseUrl) {
-        return `${baseUrl}`;
+        return `${url}`;
       }
       return baseUrl;
     },

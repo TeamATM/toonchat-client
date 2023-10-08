@@ -10,6 +10,8 @@ interface NewChatContentState {
 
 export interface ChatState {
   chatContents: ChatContentsState[],
+  chatInfo: { characterName: string, characterId: string } | null;
+  setChatInfo: (characterName: string, characterId: string) => void;
   clearChatContents: () => void;
   initChatContents: (history: ChatContentsState[]) => void;
   addChatContents: (newChat: NewChatContentState) => number;
@@ -19,6 +21,10 @@ export interface ChatState {
 
 const useChatStore = create<ChatState>((set, get) => ({
   chatContents: [],
+  chatInfo: null,
+  setChatInfo: (characterName: string, characterId: string) => set(() => ({
+    chatInfo: { characterId, characterName },
+  })),
   clearChatContents: () => set(() => ({
     chatContents: [],
   })),

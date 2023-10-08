@@ -1,4 +1,5 @@
 import defaultInstance from '@/utils/axiosInstance/defaultInstance';
+import chatInstance from '../axiosInstance/chatInstance';
 
 export const recentChatAPI = async (characterId: string) => {
   const result = await defaultInstance.get(`/chat/${characterId}?recent=true`);
@@ -6,6 +7,6 @@ export const recentChatAPI = async (characterId: string) => {
 };
 
 export const chatHistoryAPI = async (characterId: string) => {
-  const result = await defaultInstance.get(`/chat/${characterId}/history`);
+  const result = await chatInstance.get(`/chat/history/${characterId}`);
   return result.data;
 };
