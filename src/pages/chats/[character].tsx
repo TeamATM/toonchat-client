@@ -6,7 +6,8 @@ import Main from '@/components/chat/Main';
 import SEO from '@/components/common/head/SEO';
 import Dialog from '@/components/common/dialog/Dialog';
 import TuneSetting from '@/components/chat/tuneSetting/TuneSetting';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import useChatStore from '@/store/chat';
 
 interface CharacterProps {
   characterName: string,
@@ -22,6 +23,11 @@ const Character = ({
 }
   : { characterProps: CharacterProps }) => {
   const [settingModal, setSettingModal] = useState(false);
+  const { setChatInfo } = useChatStore();
+  useEffect(() => {
+    setChatInfo(characterName, characterId);
+  }, []);
+
   return (
     <>
       <SEO title={`대화 with ${characterName}`} />

@@ -6,9 +6,7 @@ interface SocketState {
   socket?:Socket<ServerToClientEvents, ClientToServerEvents>;
   chatStore?: ChatState;
   processingmessageTime: Array<number>;
-  processingMessagePool: Map<string, [number, string]>;
   connect: () => void;
-  onMessageRecived: (msg:MessageToClient) => void;
   sendMessage: (characterId: string, characterName:string, message:string) => void;
   setChatStore: (chatSate:ChatState) => void;
 }
@@ -51,8 +49,8 @@ interface ClientToServerEvents {
 }
 
 const useSocketStore = create<SocketState>((set, get) => ({
-  processingMessagePool: new Map<string, [number, string]>(),
   processingmessageTime: [],
+  chatInfo: null,
   connect: () => {
     if (!get().socket) {
       set(() => ({
@@ -73,8 +71,9 @@ const useSocketStore = create<SocketState>((set, get) => ({
               speaker: 'me', content: msg.content, timestamp: msg.createdAt, loading: false,
             });
             const tempTimestamp = msg.createdAt + 1;
+            const characterName = get().chatStore?.chatInfo?.characterName;
             get().chatStore?.addChatContents({
-              speaker: msg.characterId, content: '', timestamp: tempTimestamp, loading: true,
+              speaker: characterName || '', content: '', timestamp: tempTimestamp, loading: true,
             });
             get().processingmessageTime.push(tempTimestamp);
           } else {
@@ -90,9 +89,6 @@ const useSocketStore = create<SocketState>((set, get) => ({
         });
       });
     }
-  },
-  onMessageRecived: () => {
-    throw new Error('구현 안됨 ㅋ');
   },
   sendMessage: (characterId, characterName, message) => {
     if (message && get().socket?.connected) {
