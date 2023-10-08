@@ -58,4 +58,8 @@ const characterNameCSS = css`
 const messageCSS = css`
   font-size: 0.75rem;
   color:${color.greenGray};
+  max-width: 15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
