@@ -5,7 +5,10 @@ import { signIn } from 'next-auth/react';
 
 const GoogleButton = () => {
   const googleLoginHandler = () => {
-    signIn('google', { callbackUrl: '/friends' });
+    signIn('google', {
+      callbackUrl: '/friends',
+      redirect: false,
+    });
   };
 
   return (
