@@ -6,7 +6,6 @@ import { css } from '@emotion/react';
 import Image from 'next/image';
 import color from '@/styles/color';
 import useSocketStore from '@/store/socket';
-import useAIParameterStore from '@/store/aiParameter';
 import Dialog from '../common/dialog/Dialog';
 
 interface CharacterState {
@@ -14,14 +13,13 @@ interface CharacterState {
   characterName: string
 }
 
-// const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
-const MessageInput : FC<CharacterState> = () => {
+const MessageInput : FC<CharacterState> = ({ characterId, characterName }) => {
+// const MessageInput : FC<CharacterState> = () => {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const { sendMessage } = useSocketStore();
-  const { temperatureParam, repetitionPenaltyParam } = useAIParameterStore();
 
   useEffect(() => {
     const handleFocus = () => {
@@ -55,7 +53,7 @@ const MessageInput : FC<CharacterState> = () => {
        * AI의 대답 호출
       */
       // TODO: 메시지가 도착할 떄까지 loading이 true여야하는데. 소켓이라 컨트롤이 필요함.
-      sendMessage(message, temperatureParam, repetitionPenaltyParam);
+      sendMessage(characterId, characterName, message);
       setMessage('');
       setLoading(false);
     }
