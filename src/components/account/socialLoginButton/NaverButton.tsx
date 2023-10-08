@@ -5,7 +5,10 @@ import { signIn } from 'next-auth/react';
 
 const NaverButton = () => {
   const naverLoginHandler = () => {
-    signIn('naver', { callbackUrl: '/friends' });
+    signIn('naver', {
+      callbackUrl: '/friends',
+      redirect: false,
+    });
   };
 
   return (

@@ -5,7 +5,10 @@ import { signIn } from 'next-auth/react';
 
 const KakaoButton = () => {
   const kakaoLoginHandler = () => {
-    signIn('kakao', { callbackUrl: '/friends' });
+    signIn('kakao', {
+      callbackUrl: '/friends',
+      redirect: false,
+    });
   };
 
   return (
