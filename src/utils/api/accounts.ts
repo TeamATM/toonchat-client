@@ -60,3 +60,10 @@ export const credentialsSignupAPI = async ({
   const result = await defaultInstance.post('members/signup', sendSignupData);
   return result.data;
 };
+
+export const refreshAccessToken = async (refreshToken: string) => {
+  const result = await defaultInstance.post('members/refreshToken', { refreshToken });
+  console.log('refresh', result.data.accessToken);
+
+  return result.data.accessToken;
+};
