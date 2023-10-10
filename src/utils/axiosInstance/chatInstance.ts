@@ -8,18 +8,16 @@ const chatInstance = axios.create({
 
 chatInstance.interceptors.response.use((response) => response, (error: AxiosError) => {
   if (error.response && error.response.status === 401) {
-    console.error('ERROR');
+    console.error('ERROR', error.toJSON());
   }
   return Promise.reject(error);
 });
 
 chatInstance.interceptors.request.use(
   async (config) => {
-    // Next-Auth의 getSession을 사용하여 서버측이나 클라이언트 측에서 세션 정보 가져오기
     const session = await getSession();
-    console.log('\n\n\n--------session--------\n\n\n', session);
-    // const token = session?.accessToken;
-    const token = process.env.EXAMPLE_TOKEN;
+
+    const token = session?.accessToken;
 
     if (token) {
       // eslint-disable-next-line no-param-reassign
