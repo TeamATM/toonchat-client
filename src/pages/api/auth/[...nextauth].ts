@@ -8,8 +8,8 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { credentialsLoginAPI, socialLoginAPI } from '@/utils/api/accounts';
 
 interface CustomSession extends Session {
-  accessToken?: string;
-  refreshToken?: string;
+  accessToken: string | null;
+  refreshToken: string | null;
 }
 
 interface SessionCallback {
@@ -117,8 +117,8 @@ export const authOptions: NextAuthOptions = {
     },
 
     async session({ session, token }: SessionCallback) {
-      (session as CustomSession).accessToken = token.accessToken as string | undefined;
-      (session as CustomSession).refreshToken = token.refreshToken as string | undefined;
+      (session as CustomSession).accessToken = token.accessToken as string | null;
+      (session as CustomSession).refreshToken = token.refreshToken as string | null;
       return session;
     },
 
