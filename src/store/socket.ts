@@ -3,10 +3,11 @@ import { Socket, io } from 'socket.io-client';
 import type { ChatState } from './chat';
 
 interface SocketState {
+  accessToken: string | null;
   socket?:Socket<ServerToClientEvents, ClientToServerEvents>;
   chatStore?: ChatState;
   processingmessageTime: Array<number>;
-  connect: () => void;
+  connect: (accessToken: string) => void;
   sendMessage: (characterId: string, characterName:string, message:string) => void;
   setChatStore: (chatSate:ChatState) => void;
 }
@@ -51,13 +52,18 @@ interface ClientToServerEvents {
 const useSocketStore = create<SocketState>((set, get) => ({
   processingmessageTime: [],
   chatInfo: null,
-  connect: () => {
+  accessToken: null,
+  connect: (accessToken) => {
+    if (!get().accessToken) {
+      set({ accessToken });
+    }
+
     if (!get().socket) {
       set(() => ({
         socket: io(process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:3000/', {
           path: '/ws',
           auth: {
-            token: process.env.EXAMPLE_TOKEN,
+            token: accessToken,
           },
         }),
       }));
@@ -103,7 +109,8 @@ const useSocketStore = create<SocketState>((set, get) => ({
         console.error(err);
       }
     } else if (!get().socket?.connected) {
-      get().connect();
+      const accessToekn = get().accessToken;
+      if (accessToekn) get().connect(accessToekn);
     }
   },
   setChatStore: (chatState:ChatState) => {
