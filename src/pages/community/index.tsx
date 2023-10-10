@@ -1,17 +1,25 @@
 import { css } from '@emotion/react';
 import BottomNavBar from '@/components/common/bottomNavBar/BottomNavBar';
 import SEO from '@/components/common/head/SEO';
+import { useEffect } from 'react';
+import { findAllBoards, findBoardsById } from '@/utils/api/boards';
 
-const Community = () => (
-  <>
-    <SEO title="Community" />
-    <section css={pageCSS}>
-      커뮤니티 기능은 추후 제공될 예정입니다.
-    </section>
-    <BottomNavBar pageName="Community" />
-  </>
-);
+const Community = () => {
+  useEffect(() => {
+    findAllBoards('1');
+    findBoardsById('1', '1');
+  }, []);
 
+  return (
+    <>
+      <SEO title="Community" />
+      <section css={pageCSS}>
+        커뮤니티 기능은 추후 제공될 예정입니다.
+      </section>
+      <BottomNavBar pageName="Community" />
+    </>
+  );
+};
 export default Community;
 
 const pageCSS = css`

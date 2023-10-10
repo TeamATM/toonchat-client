@@ -17,18 +17,6 @@ interface SessionCallback {
 }
 
 export const authOptions: NextAuthOptions = {
-  cookies: {
-    sessionToken: {
-      name: 'next-auth.session-token',
-      options: {
-        httpOnly: true,
-        sameSite: 'lax', // 'lax' 또는 'strict' 또는 'none'
-        path: '/',
-        secure: true,
-        domain: '.webtoonchat.com', // 여기에 쿠키를 사용하려는 주 도메인을 입력하세요.
-      },
-    },
-  },
   providers: [
     GoogleProvider({
       clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string,
