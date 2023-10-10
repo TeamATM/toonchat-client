@@ -5,7 +5,8 @@ import GoogleProvider from 'next-auth/providers/google';
 import NaverProvider from 'next-auth/providers/naver';
 import KakaoProvider from 'next-auth/providers/kakao';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { credentialsLoginAPI, socialLoginAPI } from '@/utils/api/accounts';
+import { credentialsLoginAPI, refreshAccessToken, socialLoginAPI } from '@/utils/api/accounts';
+import { isTokenExpired } from '@/utils/services/auth';
 
 interface CustomSession extends Session {
   accessToken: string | null;
@@ -101,12 +102,38 @@ export const authOptions: NextAuthOptions = {
       if (user?.refreshToken) {
         token.refreshToken = user.refreshToken;
       }
+
+      // accessToken 만료를 검사합니다.
+      if (token.accessToken && isTokenExpired(token.accessToken as string)) {
+        // 만료된 경우 refreshToken으로 새 accessToken을 발급
+        const newAccessToken = await refreshAccessToken(token.accessToken as string);
+        if (newAccessToken) {
+          token.accessToken = newAccessToken; // 새로운 accessToken으로 업데이트
+        } else {
+        // TODO: refresh token 만료시 추가 처리
+        // refreshToken도 만료되었거나 문제가 있을 경우
+        // 필요한 추가 처리 (로그아웃)를 여기에다가 작성
+        }
+      }
+
       return token;
     },
 
     async session({ session, token }: SessionCallback) {
       (session as CustomSession).accessToken = token.accessToken as string | null;
       (session as CustomSession).refreshToken = token.refreshToken as string | null;
+
+      if (session.accessToken && isTokenExpired(session.accessToken)) {
+        // 만료된 경우 refreshToken으로 새 accessToken을 발급받습니다.
+        const newAccessToken = await refreshAccessToken(session.refreshToken as string);
+
+        if (newAccessToken) {
+          session.accessToken = newAccessToken;
+        }
+        // TODO: refresh token 만료시 추가 처리
+        // refreshToken도 만료되었거나 문제가 있을 경우
+        // 필요한 추가 처리 (로그아웃)를 여기에다가 작성
+      }
       return session;
     },
 
