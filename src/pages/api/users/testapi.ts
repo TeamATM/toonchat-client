@@ -1,4 +1,3 @@
-import { verifyJwt } from '@/utils/lib/jwt';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 interface NextApiRequestWithId extends NextApiRequest {
@@ -23,7 +22,7 @@ export default function handler(
   const accessToken = req.headers.authorization?.split(' ')[1];
 
   // accessToken이 없거나 유효하지 않은 경우 에러 응답을 반환합니다.
-  if (!accessToken || !verifyJwt(accessToken)) {
+  if (!accessToken) {
     return res.status(401).json({ error: 'Invalid or missing access token.' });
   }
 
