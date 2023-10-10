@@ -3,7 +3,7 @@ module.exports = {
   parserPreset: './custom-parser',
   rules: {
     'type-case': [2, 'always', 'sentence-case'],
-    'subject-case': [2, 'always', ['sentence-case', 'lower-case', 'kebab-case']],
+    'subject-case': [0],
     'type-enum': [
       2,
       'always',
