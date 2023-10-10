@@ -7,7 +7,7 @@ declare module 'next-auth' {
     refreshToken: string;
   }
   interface Session {
-    accessToken: string;
-    refreshToken: string;
+    accessToken: string | null;
+    refreshToken: string | null;
   }
 }
