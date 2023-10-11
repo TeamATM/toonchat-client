@@ -48,6 +48,8 @@ export const authOptions: NextAuthOptions = {
           provider: 'credential',
         });
 
+        console.log('authorize', data);
+
         if (data.nickname && data.accessToken) {
           const user = {
             accessToken: data.accessToken,
@@ -106,9 +108,13 @@ export const authOptions: NextAuthOptions = {
       // accessToken 만료를 검사합니다.
       if (token.accessToken && isTokenExpired(token.accessToken as string)) {
         // 만료된 경우 refreshToken으로 새 accessToken을 발급
-        const newAccessToken = await refreshAccessToken(token.accessToken as string);
-        if (newAccessToken) {
-          token.accessToken = newAccessToken; // 새로운 accessToken으로 업데이트
+        const newToken = await refreshAccessToken(token.accessToken as string);
+
+        console.log('newAccessToken -- jwt', newToken);
+
+        if (newToken) {
+          token.accessToken = newToken.accessToken; // 새로운 accessToken으로 업데이트
+          token.refreshToken = newToken.refreshToken; // 새로운 accessToken으로 업데이트
         } else {
         // TODO: refresh token 만료시 추가 처리
         // refreshToken도 만료되었거나 문제가 있을 경우
@@ -125,10 +131,12 @@ export const authOptions: NextAuthOptions = {
 
       if (session.accessToken && isTokenExpired(session.accessToken)) {
         // 만료된 경우 refreshToken으로 새 accessToken을 발급받습니다.
-        const newAccessToken = await refreshAccessToken(session.refreshToken as string);
+        const newToken = await refreshAccessToken(token.accessToken as string);
+        console.log('newAccessToken -- Session', newToken);
 
-        if (newAccessToken) {
-          session.accessToken = newAccessToken;
+        if (newToken) {
+          token.accessToken = newToken.accessToken; // 새로운 accessToken으로 업데이트
+          token.refreshToken = newToken.refreshToken; // 새로운 refreshToken 업데이트
         }
         // TODO: refresh token 만료시 추가 처리
         // refreshToken도 만료되었거나 문제가 있을 경우
