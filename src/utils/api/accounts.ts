@@ -1,5 +1,5 @@
 import defaultInstance from '@/utils/axiosInstance/defaultInstance';
-import clientInstance from '../axiosInstance/clientInstance';
+import clientInstance from '@/utils/axiosInstance/clientInstance';
 
 interface Credentials {
   email: string, password: string, provider: string
