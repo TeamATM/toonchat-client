@@ -2,25 +2,10 @@ import { css } from '@emotion/react';
 import BottomNavBar from '@/components/common/bottomNavBar/BottomNavBar';
 import SEO from '@/components/common/head/SEO';
 import { useSession } from 'next-auth/react';
-import { useEffect } from 'react';
 
 const Profile = () => {
   const { data: session }: any = useSession();
   console.log(session);
-
-  useEffect(() => {
-    if (session?.accessToken) {
-      fetch('/api/users/testapi', {
-        headers: {
-          Authorization: `Bearer ${session.accessToken}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-        });
-    }
-  }, [session]);
 
   return (
     <>
