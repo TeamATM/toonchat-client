@@ -9,12 +9,12 @@ import color from '@/styles/color';
 import { postDetailDateParse } from '@/utils/services/date';
 
 interface PostData {
-  characterId : number
+  characterId : string
   content : string
   createdAt : string
   id : number
   title : string
-  updatedAt : string
+  updatedAt : string | null
   writerId : number
   writerName : string
 }
@@ -45,8 +45,10 @@ const Post = () => {
                 <div css={writerNameCSS}>{post.writerName}</div>
                 <div css={dateCSS}>{postDetailDateParse(post.createdAt)}</div>
               </div>
-              <div css={titleCSS}>{post.title}</div>
-              <div css={contentCSS}>{post.content}</div>
+              <div css={postMainCSS}>
+                <div css={titleCSS}>{post.title}</div>
+                <div css={contentCSS}>{post.content}</div>
+              </div>
             </div>
           )
             : <Loading />}
@@ -74,6 +76,8 @@ const titleCSS = css`
   font-size: 1rem;
   font-weight:bold;
   color:${color.black};
+
+  padding-bottom: 0.3rem
 `;
 
 const contentCSS = css`
@@ -82,8 +86,7 @@ const contentCSS = css`
 `;
 
 const postInfoCSS = css`
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
+  padding: 0.2rem 0 0.2rem 0;
 `;
 
 const writerNameCSS = css`
@@ -96,4 +99,8 @@ const writerNameCSS = css`
 const dateCSS = css`
   font-size: 0.6rem;
   color:${color.gray};
+`;
+
+const postMainCSS = css`
+  padding: 0.2rem 0 0.2rem 0;
 `;
