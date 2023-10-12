@@ -42,7 +42,7 @@ const Character = ({
           />
           <Main characterId={characterId} characterName={characterName} imageUrl={imageUrl} />
         </div>
-        <MessageInput characterId={characterId} characterName={characterName} />
+        <MessageInput characterId={Number(characterId)} characterName={characterName} />
       </section>
       { settingModal && (
       <Dialog closeModal={() => { setSettingModal(false); }} theme="white">
