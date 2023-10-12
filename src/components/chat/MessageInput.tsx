@@ -9,7 +9,7 @@ import useSocketStore from '@/store/socket';
 import Dialog from '../common/dialog/Dialog';
 
 interface CharacterState {
-  characterId: string,
+  characterId: number,
   characterName: string
 }
 
