@@ -1,12 +1,12 @@
 import axios, { AxiosError } from 'axios';
 import { getSession } from 'next-auth/react';
 
-const boardInstance = axios.create({
+const webServerInstance = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:8080/'}api/`,
   // headers: { 'Content-Type': 'application/json' },
 });
 
-boardInstance.interceptors.response.use((response) => response, (error: AxiosError) => {
+webServerInstance.interceptors.response.use((response) => response, (error: AxiosError) => {
   console.error('ERROR', error.toJSON());
   if (error.response && error.response.status === 401) {
     console.error('ERROR', error.toJSON());
@@ -14,7 +14,7 @@ boardInstance.interceptors.response.use((response) => response, (error: AxiosErr
   return Promise.reject(error);
 });
 
-boardInstance.interceptors.request.use(
+webServerInstance.interceptors.request.use(
   async (config) => {
     const session = await getSession();
     const token = session?.accessToken;
@@ -29,4 +29,4 @@ boardInstance.interceptors.request.use(
   (error) => Promise.reject(error),
 );
 
-export default boardInstance;
+export default webServerInstance;
