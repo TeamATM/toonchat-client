@@ -4,10 +4,11 @@ import SEO from '@/components/common/head/SEO';
 import { useEffect, useState } from 'react';
 import { findAllBoards } from '@/utils/api/boards';
 import { useRouter } from 'next/router';
+import { PostData } from '@/types/post';
 
 const Board = () => {
   const router = useRouter();
-  const [postList, setPostList] = useState([]);
+  const [postList, setPostList] = useState<PostData[]>([]);
   const { character_id: characterId } = router.query;
   useEffect(() => {
     if (characterId && typeof characterId === 'string') {
