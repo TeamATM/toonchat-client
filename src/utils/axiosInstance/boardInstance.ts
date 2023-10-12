@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios';
 import { getSession } from 'next-auth/react';
 
 const boardInstance = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:8080/'}api/boards/`,
+  baseURL: `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:8080/'}api/`,
   // headers: { 'Content-Type': 'application/json' },
 });
 
