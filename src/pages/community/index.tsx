@@ -4,11 +4,18 @@ import SEO from '@/components/common/head/SEO';
 import { useEffect, useState } from 'react';
 import { findAllBoards } from '@/utils/api/boards';
 import { CharacterInfo } from '@/types/characterInfo';
+import Loading from '@/components/common/dialog/Loading';
+import SectionTitle from '@/components/common/sectionTitle/SectionTitle';
+import SearchBar from '@/components/common/searchBar/SearchBar';
 
 const Community = () => {
   const [characterInfoList, setCharacterInfoList] = useState<CharacterInfo[]>([]);
   useEffect(() => {
-    findAllBoards().then((data) => setCharacterInfoList(data));
+    findAllBoards()
+      .then((data) => setCharacterInfoList(data))
+      .catch((error) => {
+        console.error('Error fetching post:', error);
+      });
   }, []);
   console.log(characterInfoList);
 
@@ -16,9 +23,23 @@ const Community = () => {
     <>
       <SEO title="Community" />
       <section css={pageCSS}>
-        커뮤니티 기능은 추후 제공될 예정입니다.
+        <header css={css`width:100%; padding-top:0.6rem;`}>
+          <div css={titleSectionCSS}>
+            <SectionTitle>Community</SectionTitle>
+            <SearchBar />
+          </div>
+        </header>
+        <main>
+          {characterInfoList ? (
+            characterInfoList.map((characterInfo) => (
+              <div key={characterInfo.id}>
+                {characterInfo.name}
+              </div>
+            ))
+          ) : <Loading />}
+        </main>
+        <BottomNavBar pageName="Community" />
       </section>
-      <BottomNavBar pageName="Community" />
     </>
   );
 };
@@ -30,5 +51,16 @@ const pageCSS = css`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0.625rem;
+  padding-bottom: 0;
+`;
+
+const titleSectionCSS = css`
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  padding-left: 1.25rem;
+  padding-right: 0.6rem;
+  padding-top: 0.6rem;
 `;
