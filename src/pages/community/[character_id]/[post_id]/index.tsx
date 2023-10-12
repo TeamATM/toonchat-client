@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { findBoardsById } from '@/utils/api/boards';
 import Loading from '@/components/common/dialog/Loading';
 import color from '@/styles/color';
-import { postDateParse } from '@/utils/services/date';
+import { postDetailDateParse } from '@/utils/services/date';
 
 interface PostData {
   characterId : number
@@ -26,10 +26,7 @@ const Post = () => {
   useEffect(() => {
     if (typeof characterId === 'string' && typeof postId === 'string') {
       findBoardsById(characterId, postId).then((data) => {
-        console.log(data);
         setPost(data);
-        console.log(postDateParse(data.createdAt));
-        console.log(post);
       }).catch((error) => {
         console.error('Error fetching post:', error);
       });
@@ -45,8 +42,8 @@ const Post = () => {
             <div>
               {/* TODO: 게시글 쓴 사람의 이미지가 필요함 */}
               <div css={postInfoCSS}>
-                <div>{post.writerName}</div>
-                <div>{postDateParse(post.createdAt)}</div>
+                <div css={writerNameCSS}>{post.writerName}</div>
+                <div css={dateCSS}>{postDetailDateParse(post.createdAt)}</div>
               </div>
               <div css={titleCSS}>{post.title}</div>
               <div css={contentCSS}>{post.content}</div>
@@ -85,6 +82,18 @@ const contentCSS = css`
 `;
 
 const postInfoCSS = css`
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+`;
+
+const writerNameCSS = css`
   font-size: 0.75rem;
+  font-weight:bold;
+  color:${color.black};
+  padding-bottom: 0.2rem;
+`;
+
+const dateCSS = css`
+  font-size: 0.6rem;
   color:${color.gray};
 `;

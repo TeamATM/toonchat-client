@@ -1,4 +1,23 @@
 // eslint-disable-next-line import/prefer-default-export
+export const postDetailDateParse = (data: string) => {
+  const date = new Date(data);
+  const now = new Date();
+
+  const currentYear = now.getFullYear();
+  const postYear = date.getFullYear();
+
+  const formattedMonth = (date.getMonth() + 1).toString().padStart(2, '0');
+  const formattedDay = date.getDate().toString().padStart(2, '0');
+  const formattedHour = date.getHours().toString().padStart(2, '0');
+  const formattedMinute = date.getMinutes().toString().padStart(2, '0');
+
+  if (currentYear === postYear) {
+    return `${formattedMonth}/${formattedDay} ${formattedHour}:${formattedMinute}`;
+  }
+  const lastTwoDigitsOfYear = postYear.toString().slice(-2); // 연도의 마지막 두 자리
+  return `${lastTwoDigitsOfYear}/${formattedMonth}/${formattedDay} ${formattedHour}:${formattedMinute}`;
+};
+
 export const postDateParse = (data: string) => {
   const now = new Date();
   const date = new Date(data);
