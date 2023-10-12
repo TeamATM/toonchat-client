@@ -8,7 +8,7 @@ interface SocketState {
   chatStore?: ChatState;
   processingmessageTime: Array<number>;
   connect: (accessToken: string) => void;
-  sendMessage: (characterId: string, characterName:string, message:string) => void;
+  sendMessage: (characterId: number, characterName:string, message:string) => void;
   setChatStore: (chatSate:ChatState) => void;
 }
 
@@ -19,14 +19,14 @@ export interface Chat {
 
 export interface MessageFromClient {
   content: string;
-  characterId: string;
+  characterId: number;
   createdAt: number;
   characterName: string;
 }
 
 export interface MessageToClient extends Chat {
   messageId: string;
-  characterId: string;
+  characterId: number;
   createdAt: number;
   characterName: string;
   /**
@@ -71,7 +71,7 @@ const useSocketStore = create<SocketState>((set, get) => ({
       get().socket!.on('connect', async () => {
         get().socket!.on('subscribe', (msg) => {
           const characterId = getCurrentCharacterId();
-          if (!characterId || msg.characterId === characterId) return;
+          if (characterId === null || msg.characterId !== characterId) return;
           if (msg.fromUser) {
             get().chatStore?.addChatContents({
               speaker: 'me', content: msg.content, timestamp: msg.createdAt, loading: false,
@@ -123,7 +123,11 @@ const useSocketStore = create<SocketState>((set, get) => ({
 function getCurrentCharacterId() {
   const pathMatcher = window.location.pathname.match(/\/chats\/([\d]+)$/);
   if (pathMatcher && pathMatcher.length === 2) {
-    return pathMatcher[1];
+    try {
+      return Number(pathMatcher[1]);
+    } catch (error) {
+      return null;
+    }
   }
   return null;
 }
