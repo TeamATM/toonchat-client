@@ -1,13 +1,16 @@
 import { css } from '@emotion/react';
 import BottomNavBar from '@/components/common/bottomNavBar/BottomNavBar';
 import SEO from '@/components/common/head/SEO';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { findAllBoards } from '@/utils/api/boards';
+import { CharacterInfo } from '@/types/characterInfo';
 
 const Community = () => {
+  const [characterInfoList, setCharacterInfoList] = useState<CharacterInfo[]>([]);
   useEffect(() => {
-    findAllBoards().then((data) => console.log(data));
+    findAllBoards().then((data) => setCharacterInfoList(data));
   }, []);
+  console.log(characterInfoList);
 
   return (
     <>
