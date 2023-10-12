@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import BottomNavBar from '@/components/common/bottomNavBar/BottomNavBar';
 import SEO from '@/components/common/head/SEO';
 import { useEffect, useState } from 'react';
-import { findAllBoards } from '@/utils/api/boards';
+import { findBoardById } from '@/utils/api/boards';
 import { useRouter } from 'next/router';
 import { PostData } from '@/types/post';
 
@@ -12,7 +12,7 @@ const Board = () => {
   const { character_id: characterId } = router.query;
   useEffect(() => {
     if (characterId && typeof characterId === 'string') {
-      findAllBoards(characterId).then((data) => {
+      findBoardById(characterId).then((data) => {
         setPostList(data);
         console.log(data);
         console.log(postList);

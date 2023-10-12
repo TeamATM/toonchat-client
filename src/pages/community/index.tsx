@@ -2,12 +2,11 @@ import { css } from '@emotion/react';
 import BottomNavBar from '@/components/common/bottomNavBar/BottomNavBar';
 import SEO from '@/components/common/head/SEO';
 import { useEffect } from 'react';
-import { findAllBoards, findBoardsById } from '@/utils/api/boards';
+import { findAllBoards } from '@/utils/api/boards';
 
 const Community = () => {
   useEffect(() => {
-    findAllBoards('1');
-    findBoardsById('1', '1');
+    findAllBoards().then((data) => console.log(data));
   }, []);
 
   return (
