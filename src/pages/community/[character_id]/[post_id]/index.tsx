@@ -7,17 +7,7 @@ import { findBoardsById } from '@/utils/api/boards';
 import Loading from '@/components/common/dialog/Loading';
 import color from '@/styles/color';
 import { postDetailDateParse } from '@/utils/services/date';
-
-interface PostData {
-  characterId : string
-  content : string
-  createdAt : string
-  id : number
-  title : string
-  updatedAt : string | null
-  writerId : number
-  writerName : string
-}
+import { PostData } from '@/types/post';
 
 const Post = () => {
   const router = useRouter();
