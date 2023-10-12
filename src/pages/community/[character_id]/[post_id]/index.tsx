@@ -3,7 +3,7 @@ import BottomNavBar from '@/components/common/bottomNavBar/BottomNavBar';
 import SEO from '@/components/common/head/SEO';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { findBoardsById } from '@/utils/api/boards';
+import { findPostById } from '@/utils/api/boards';
 import Loading from '@/components/common/dialog/Loading';
 import color from '@/styles/color';
 import { postDetailDateParse } from '@/utils/services/date';
@@ -15,7 +15,7 @@ const Post = () => {
   const [post, setPost] = useState<PostData>();
   useEffect(() => {
     if (typeof characterId === 'string' && typeof postId === 'string') {
-      findBoardsById(characterId, postId).then((data) => {
+      findPostById(characterId, postId).then((data) => {
         setPost(data);
       }).catch((error) => {
         console.error('Error fetching post:', error);
