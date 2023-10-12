@@ -1,48 +1,28 @@
 import { css } from '@emotion/react';
 import BottomNavBar from '@/components/common/bottomNavBar/BottomNavBar';
 import SEO from '@/components/common/head/SEO';
-import { useEffect, useState } from 'react';
-import { findAllBoards } from '@/utils/api/boards';
-import { CharacterInfo } from '@/types/characterInfo';
-import Loading from '@/components/common/dialog/Loading';
 import SectionTitle from '@/components/common/sectionTitle/SectionTitle';
 import SearchBar from '@/components/common/searchBar/SearchBar';
+import BoardList from '@/components/community/BoardList';
 
-const Community = () => {
-  const [characterInfoList, setCharacterInfoList] = useState<CharacterInfo[]>([]);
-  useEffect(() => {
-    findAllBoards()
-      .then((data) => setCharacterInfoList(data))
-      .catch((error) => {
-        console.error('Error fetching post:', error);
-      });
-  }, []);
-  console.log(characterInfoList);
+const Community = () => (
+  <>
+    <SEO title="Community" />
+    <section css={pageCSS}>
+      <header css={css`width:100%; padding-top:0.6rem;`}>
+        <div css={titleSectionCSS}>
+          <SectionTitle>Community</SectionTitle>
+          <SearchBar />
+        </div>
+      </header>
+      <main>
+        <BoardList />
+      </main>
+      <BottomNavBar pageName="Community" />
+    </section>
+  </>
+);
 
-  return (
-    <>
-      <SEO title="Community" />
-      <section css={pageCSS}>
-        <header css={css`width:100%; padding-top:0.6rem;`}>
-          <div css={titleSectionCSS}>
-            <SectionTitle>Community</SectionTitle>
-            <SearchBar />
-          </div>
-        </header>
-        <main>
-          {characterInfoList ? (
-            characterInfoList.map((characterInfo) => (
-              <div key={characterInfo.id}>
-                {characterInfo.name}
-              </div>
-            ))
-          ) : <Loading />}
-        </main>
-        <BottomNavBar pageName="Community" />
-      </section>
-    </>
-  );
-};
 export default Community;
 
 const pageCSS = css`
