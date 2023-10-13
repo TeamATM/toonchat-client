@@ -15,7 +15,7 @@ const Community = () => (
           <SearchBar />
         </div>
       </header>
-      <main>
+      <main css={mainCSS}>
         <BoardList />
       </main>
       <BottomNavBar pageName="Community" />
@@ -43,4 +43,9 @@ const titleSectionCSS = css`
   padding-left: 1.25rem;
   padding-right: 0.6rem;
   padding-top: 0.6rem;
+`;
+
+const mainCSS = css`
+  width: 100%;
+  height: 100%;
 `;
