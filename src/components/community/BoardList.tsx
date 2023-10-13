@@ -8,7 +8,6 @@ import FriendWrapper from '../friends/friend/FriendWrapper';
 
 const BoardList = () => {
   const [characterInfoList, setCharacterInfoList] = useState<CharacterInfo[]>([]);
-  console.log(characterInfoList);
 
   useEffect(() => {
     findAllBoards()
