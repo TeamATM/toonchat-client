@@ -1,37 +1,18 @@
 import { css } from '@emotion/react';
 import BottomNavBar from '@/components/common/bottomNavBar/BottomNavBar';
 import SEO from '@/components/common/head/SEO';
-import { useEffect, useState } from 'react';
-import { findBoardById } from '@/utils/api/boards';
-import { useRouter } from 'next/router';
-import { PostData } from '@/types/post';
+import PostList from '@/components/community/PostList';
 
-const Board = () => {
-  const router = useRouter();
-  const [postList, setPostList] = useState<PostData[]>([]);
-  const { character_id: characterId } = router.query;
-  useEffect(() => {
-    if (characterId && typeof characterId === 'string') {
-      findBoardById(characterId).then((data) => {
-        setPostList(data);
-        console.log(data);
-        console.log(postList);
-      }).catch((error) => {
-        console.error('Error fetching boards:', error);
-      });
-    }
-  }, [characterId]);
+const Board = () => (
+  <>
+    <SEO title="Community - Board" />
+    <section css={pageCSS}>
+      <PostList />
+    </section>
+    <BottomNavBar pageName="Community" />
+  </>
+);
 
-  return (
-    <>
-      <SEO title="Community - Board" />
-      <section css={pageCSS}>
-        게시판이 만들어질 예정입니다.
-      </section>
-      <BottomNavBar pageName="Community" />
-    </>
-  );
-};
 export default Board;
 
 const pageCSS = css`
