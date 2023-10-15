@@ -28,7 +28,14 @@ const CommunityHeader = () => {
       <span css={characterInfoCSS}>
         {
           characterInfo
-            ? <CharacterInfo imageUrl="/leeyj.png" characterName={characterInfo.name} hashTag={characterInfo.hashtags} />
+            ? (
+              <CharacterInfo
+                imageUrl="/leeyj.png"
+                characterName={characterInfo.name}
+                hashTag={characterInfo.hashtags}
+                link="/community"
+              />
+            )
             : <Loading />
         }
       </span>
