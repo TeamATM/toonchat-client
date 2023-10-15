@@ -7,8 +7,8 @@ import CommunityHeader from '@/components/community/CommunityHeader';
 const Board = () => (
   <>
     <SEO title="Community - Board" />
-    <CommunityHeader />
     <section css={pageCSS}>
+      <CommunityHeader />
       <PostList />
     </section>
     <BottomNavBar pageName="Community" />
@@ -21,7 +21,6 @@ const pageCSS = css`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0.625rem;
 `;
