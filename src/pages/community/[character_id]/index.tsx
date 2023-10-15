@@ -2,10 +2,12 @@ import { css } from '@emotion/react';
 import BottomNavBar from '@/components/common/bottomNavBar/BottomNavBar';
 import SEO from '@/components/common/head/SEO';
 import PostList from '@/components/community/PostList';
+import CommunityHeader from '@/components/community/CommunityHeader';
 
 const Board = () => (
   <>
     <SEO title="Community - Board" />
+    <CommunityHeader />
     <section css={pageCSS}>
       <PostList />
     </section>
