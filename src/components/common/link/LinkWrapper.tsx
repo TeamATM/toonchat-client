@@ -1,3 +1,4 @@
+import color from '@/styles/color';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import { FC, ReactNode } from 'react';
@@ -20,7 +21,7 @@ export default LinkWrapper;
 const ResetLink = styled.a`
   font-size: 0.75rem;
   text-decoration: none;
-
+  color: ${color.black};
   &:active {
     text-decoration: none;
   }
