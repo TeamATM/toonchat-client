@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export const postDetailDateParse = (data: string) => {
   const date = new Date(data);
   const now = new Date();

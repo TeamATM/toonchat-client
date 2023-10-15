@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { PostData } from '@/types/post';
 import { useRouter } from 'next/router';
 import { findBoardById } from '@/utils/api/boards';
+import { postDateParse } from '@/utils/services/date';
 import Loading from '../common/dialog/Loading';
-import FriendInfo from '../friends/friend/FriendInfo';
 import FriendWrapper from '../friends/friend/FriendWrapper';
 
 const PostList = () => {
@@ -31,13 +31,8 @@ const PostList = () => {
               key={post.id}
               linkUrl={`/community/${characterId}/${post.id}`}
             >
-              <FriendInfo
-                characterName={post.writerName}
-                // TODO: 백엔드는 이미지를 뿌려라!
-                // imageUrl={characterInfo.profileUrl}
-                message={`임시 정보 입니다. ${post.title}`}
-                imageUrl="/leeyj.png"
-              />
+              <div>{post.title}</div>
+              <div>{`${postDateParse(post.createdAt)} | ${post.writerName}`}</div>
             </FriendWrapper>
           </div>
         ))
