@@ -44,7 +44,7 @@ const Header : FC<CharacterState> = ({
   }, [session]);
   return (
     <header css={headerCSS}>
-      <CharacterInfo imageUrl={imageUrl} characterName={characterName} hashTag={hashTag} />
+      <CharacterInfo imageUrl={imageUrl} characterName={characterName} hashTag={hashTag} link="/chats" />
       <FriendShip
         friendShipExp={userStatus.friendShipExp}
         maxFriendShipExp={userStatus.maxFriendShipExp}

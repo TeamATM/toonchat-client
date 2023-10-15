@@ -8,11 +8,14 @@ interface CharacterInfoProps {
   characterName: string,
   hashTag: string,
   imageUrl: string,
+  link: string,
 }
 
-const CharacterInfo: FC<CharacterInfoProps> = ({ characterName, hashTag, imageUrl }) => (
+const CharacterInfo: FC<CharacterInfoProps> = ({
+  characterName, hashTag, imageUrl, link,
+}) => (
   <>
-    <Link href="/chats">
+    <Link href={link}>
       <div css={backWrapperCSS}>
         <Image
           src="/back.svg"
