@@ -4,8 +4,9 @@ import { PostData } from '@/types/post';
 import { useRouter } from 'next/router';
 import { findBoardById } from '@/utils/api/boards';
 import { postDateParse } from '@/utils/services/date';
-import Loading from '../common/dialog/Loading';
-import FriendWrapper from '../friends/friend/FriendWrapper';
+import Loading from '@/components/common/dialog/Loading';
+import FriendWrapper from '@/components/friends/friend/FriendWrapper';
+import color from '@/styles/color';
 
 const PostList = () => {
   const router = useRouter();
@@ -26,15 +27,15 @@ const PostList = () => {
     <section css={boardListWrapperCSS}>
       {postList ? (
         postList.map((post) => (
-          <div key={post.id}>
-            <FriendWrapper
-              key={post.id}
-              linkUrl={`/community/${characterId}/${post.id}`}
-            >
-              <div>{post.title}</div>
-              <div>{`${postDateParse(post.createdAt)} | ${post.writerName}`}</div>
-            </FriendWrapper>
-          </div>
+          <FriendWrapper
+            key={post.id}
+            linkUrl={`/community/${characterId}/${post.id}`}
+          >
+            <div css={postCSS}>
+              <div css={titleCSS}>{post.title}</div>
+              <div css={contentCSS}>{`${postDateParse(post.createdAt)} | ${post.writerName}`}</div>
+            </div>
+          </FriendWrapper>
         ))
       ) : <Loading />}
     </section>
@@ -49,4 +50,22 @@ const boardListWrapperCSS = css`
   word-break: keep-all;
   padding: 0.375rem;
   padding-top: 1.25rem;
+  width: 100%;
+`;
+
+const postCSS = css`
+  padding: 0.2rem 0 0.2rem 0;
+  width: 100%;
+`;
+
+const titleCSS = css`
+  font-size: 1rem;
+  font-weight:bold;
+  color:${color.black};
+  padding-bottom: 0.3rem;
+`;
+
+const contentCSS = css`
+  font-size: 0.75rem;
+  color:${color.gray};
 `;
