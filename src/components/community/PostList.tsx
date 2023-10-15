@@ -7,6 +7,8 @@ import { postDateParse } from '@/utils/services/date';
 import Loading from '@/components/common/dialog/Loading';
 import FriendWrapper from '@/components/friends/friend/FriendWrapper';
 import color from '@/styles/color';
+import HeartIcon from '../icons/HeartIcon';
+import CommentIcon from '../icons/CommentIcon';
 
 const PostList = () => {
   const router = useRouter();
@@ -35,6 +37,17 @@ const PostList = () => {
               <div css={titleCSS}>{post.title}</div>
               <div css={contentCSS}>{`${postDateParse(post.createdAt)} | ${post.writerName}`}</div>
             </div>
+            {/* TODO: 댓글, 좋아요를 받아와야합니다! */}
+            <ul css={liCSS}>
+              <li title="좋아요" css={liCSS}>
+                <HeartIcon color={color.black} />
+                <div css={statusCSS}>1</div>
+              </li>
+              <li title="댓글" css={liCSS}>
+                <CommentIcon color={color.black} />
+                <div css={statusCSS}>3</div>
+              </li>
+            </ul>
           </FriendWrapper>
         ))
       ) : <Loading />}
@@ -68,4 +81,17 @@ const titleCSS = css`
 const contentCSS = css`
   font-size: 0.75rem;
   color:${color.gray};
+`;
+
+const liCSS = css`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem;
+`;
+
+const statusCSS = css`
+  font-size: 0.625rem;
+  font-weight: bold;
+  color: ${color.black};
 `;
