@@ -77,9 +77,6 @@ export const getServerSideProps
       notFound: true,
     };
   }
-  // TODO: 서버가 구축되면 이 부분을 살릴 예정
-  // const res = await fetch(`/api/character/info/${characterId}`);
-  // const dataSet = await res.json();
 
   const idNumber = parseInt(characterId, 10);
   if (Number.isNaN(idNumber) || idNumber < 0 || idNumber >= characterDataSet.length) {
