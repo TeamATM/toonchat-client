@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    minimumCacheTTL: 86400, // 60*60*24 : 1일
+  },
   env: {
     EXAMPLE_TOKEN: process.env.EXAMPLE_TOKEN,
     NEXT_PUBLIC_ENV: process.env.NEXT_PUBLIC_ENV,
