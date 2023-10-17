@@ -1,6 +1,6 @@
 export interface CharacterInfo {
   backgroundUrl: string,
-  characterId: string,
+  code: string,
   hashtags: string,
   id: number,
   name: string,
