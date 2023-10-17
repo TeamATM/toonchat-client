@@ -109,7 +109,7 @@ export const authOptions: NextAuthOptions = {
       // accessToken 만료를 검사합니다.
       if (token.accessToken && isTokenExpired(token.accessToken as string)) {
         // 만료된 경우 refreshToken으로 새 accessToken을 발급
-        const newToken = await refreshAccessToken(token.accessToken as string);
+        const newToken = await refreshAccessToken(token.refreshToken as string);
 
         console.log('newAccessToken -- jwt', newToken);
 
@@ -132,7 +132,7 @@ export const authOptions: NextAuthOptions = {
 
       if (session.accessToken && isTokenExpired(session.accessToken)) {
         // 만료된 경우 refreshToken으로 새 accessToken을 발급받습니다.
-        const newToken = await refreshAccessToken(token.accessToken as string);
+        const newToken = await refreshAccessToken(token.refreshToken as string);
         console.log('newAccessToken -- Session', newToken);
 
         if (newToken) {
