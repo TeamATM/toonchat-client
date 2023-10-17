@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { useEffect, useState } from 'react';
 import { CharacterInfo } from '@/types/characterInfo';
-import { findAllBoards } from '@/utils/api/boards';
+import { findAllCharacters } from '@/utils/api/character';
 import Loading from '../common/dialog/Loading';
 import FriendInfo from '../friends/friend/FriendInfo';
 import FriendWrapper from '../friends/friend/FriendWrapper';
@@ -10,7 +10,7 @@ const BoardList = () => {
   const [characterInfoList, setCharacterInfoList] = useState<CharacterInfo[]>([]);
 
   useEffect(() => {
-    findAllBoards()
+    findAllCharacters()
       .then((data) => setCharacterInfoList(data))
       .catch((error) => {
         console.error('Error fetching post:', error);
@@ -23,8 +23,8 @@ const BoardList = () => {
         characterInfoList.map((characterInfo) => (
           <div key={characterInfo.id}>
             <FriendWrapper
-              key={characterInfo.characterId}
-              linkUrl={`/community/${characterInfo.characterId}`}
+              key={characterInfo.code}
+              linkUrl={`/community/${characterInfo.code}`}
             >
               <FriendInfo
                 characterName={characterInfo.name}
