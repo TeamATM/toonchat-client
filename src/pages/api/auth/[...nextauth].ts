@@ -20,18 +20,18 @@ interface SessionCallback {
 export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
-      clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET as string,
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
 
     NaverProvider({
-      clientId: process.env.NEXT_PUBLIC_NAVER_CLIENT_ID as string,
-      clientSecret: process.env.NEXT_PUBLIC_NAVER_CLIENT_SECRET as string,
+      clientId: process.env.NAVER_CLIENT_ID as string,
+      clientSecret: process.env.NAVER_CLIENT_SECRET as string,
     }),
 
     KakaoProvider({
-      clientId: process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID as string,
-      clientSecret: process.env.NEXT_PUBLIC_KAKAO_CLIENT_SECRET as string,
+      clientId: process.env.KAKAO_CLIENT_ID as string,
+      clientSecret: process.env.KAKAO_CLIENT_SECRET as string,
     }),
 
     CredentialsProvider({
