@@ -10,6 +10,7 @@ import { postDetailDateParse } from '@/utils/services/date';
 import { PostData } from '@/types/post';
 import PostHeader from '@/components/community/PostHeader';
 import Image from 'next/image';
+import PostStatus from '@/components/community/postDetail/PostStatus';
 
 const Post = () => {
   const router = useRouter();
@@ -37,7 +38,7 @@ const Post = () => {
               {/* TODO: 게시글 쓴 사람의 이미지가 필요함 */}
               <div css={postInfoCSS}>
                 <Image src="/default-user.png" alt="user-profile" width={26} height={26} />
-                <div css={css`padding-left: 0.3rem;`}>
+                <div css={css`padding-left: 0.5rem;`}>
                   <div css={writerNameCSS}>{post.writerName}</div>
                   <div css={dateCSS}>{postDetailDateParse(post.createdAt)}</div>
                 </div>
@@ -46,6 +47,7 @@ const Post = () => {
                 <div css={titleCSS}>{post.title}</div>
                 <div css={contentCSS}>{post.content}</div>
               </div>
+              <PostStatus />
             </div>
           )
             : <Loading />}
@@ -67,7 +69,7 @@ const pageCSS = css`
 
 const postCSS = css`
   width: 100%;
-  padding: 0.5rem 1.25rem;
+  padding: 1rem 3rem;
 `;
 
 const titleCSS = css`
@@ -75,7 +77,7 @@ const titleCSS = css`
   font-weight: bold;
   color:${color.black};
 
-  padding-bottom: 0.3rem
+  padding-bottom: 1rem;
 `;
 
 const contentCSS = css`
