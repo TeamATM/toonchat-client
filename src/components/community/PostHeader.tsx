@@ -49,9 +49,8 @@ const headerCSS = css`
   z-index: 100; // 채팅보다 위에 존재해야하기 때문에 필요함
   width: 100%;
   max-width: 400px;
-  padding-left: 1.25rem;
-  padding-right: 0.6rem;
-  padding-top: 0.6rem;  display: flex;
+  padding: 1rem 1rem;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
