@@ -10,7 +10,7 @@ import PageDescribe from '@/components/common/pageText/PageDescribe';
 import PageTitle from '@/components/common/pageText/PageTitle';
 import PasswordInput from '@/components/common/input/PasswordInput';
 import SocialLoginButtons from '@/components/account/SocialLoginButtons';
-import ToForgetPassword from '@/components/account/ToForgetPassword';
+// import ToForgetPassword from '@/components/account/ToForgetPassword';
 import UnderLineText from '@/components/common/textUnderLineDeco/UnderLineText';
 import { signIn } from 'next-auth/react';
 
@@ -51,7 +51,7 @@ const Login = () => {
           <Button theme="green">
             Log in
           </Button>
-          <ToForgetPassword />
+          {/* <ToForgetPassword /> */}
         </form>
       </main>
       {/* footer : 회원가입 작업 */}
