@@ -27,7 +27,7 @@ const BoardList = () => {
               linkUrl={`/community/${characterInfo.code}`}
             >
               <FriendInfo
-                characterName={characterInfo.name}
+                characterName={`${characterInfo.name} 게시판`}
                 // TODO: 백엔드는 이미지를 뿌려라!
                 // imageUrl={characterInfo.profileUrl}
                 message={`임시 정보 입니다. ${characterInfo.hashtags}`}
