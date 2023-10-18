@@ -60,7 +60,7 @@ const SearchBar = () => {
     <div css={searchBarCSS}>
       <input css={inputCSS} value={searchText} onChange={changeHandler} onKeyPress={keyPressHandler} type="text" placeholder="search" />
       <button css={buttonCSS} type="button" onClick={clickHandler}>
-        <SearchIcon />
+        <SearchIcon color={color.greenGray} />
       </button>
       {toastMessages.map((toast) => (
         <Toast
