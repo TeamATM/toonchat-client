@@ -1,8 +1,6 @@
 import { FC } from 'react';
+import { IconProps } from '@/types/icon';
 
-interface IconProps {
-  color: string
-}
 const ProfileIcon: FC<IconProps> = ({ color }) => (
   <svg width="26" height="26" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.2926 10.0235C22.0826 10.8136 22.0826 12.0944 21.2926 12.8845C20.5026 13.6745 19.2217 13.6745 18.4316 12.8845C17.6416 12.0944 17.6416 10.8136 18.4316 10.0235C19.2217 9.23349 20.5026 9.23349 21.2926 10.0235" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
