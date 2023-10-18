@@ -9,6 +9,7 @@ import color from '@/styles/color';
 import { postDetailDateParse } from '@/utils/services/date';
 import { PostData } from '@/types/post';
 import PostHeader from '@/components/community/PostHeader';
+import Image from 'next/image';
 
 const Post = () => {
   const router = useRouter();
@@ -18,6 +19,7 @@ const Post = () => {
     if (typeof characterId === 'string' && typeof postId === 'string') {
       findPostById(characterId, postId).then((data) => {
         setPost(data);
+        console.log(data);
       }).catch((error) => {
         console.error('Error fetching post:', error);
       });
@@ -34,8 +36,11 @@ const Post = () => {
             <div>
               {/* TODO: 게시글 쓴 사람의 이미지가 필요함 */}
               <div css={postInfoCSS}>
-                <div css={writerNameCSS}>{post.writerName}</div>
-                <div css={dateCSS}>{postDetailDateParse(post.createdAt)}</div>
+                <Image src="/default-user.png" alt="user-profile" width={26} height={26} />
+                <div css={css`padding-left: 0.3rem;`}>
+                  <div css={writerNameCSS}>{post.writerName}</div>
+                  <div css={dateCSS}>{postDetailDateParse(post.createdAt)}</div>
+                </div>
               </div>
               <div css={postMainCSS}>
                 <div css={titleCSS}>{post.title}</div>
@@ -61,11 +66,13 @@ const pageCSS = css`
 `;
 
 const postCSS = css`
+  width: 100%;
+  padding: 0.5rem 1.25rem;
 `;
 
 const titleCSS = css`
   font-size: 1rem;
-  font-weight:bold;
+  font-weight: bold;
   color:${color.black};
 
   padding-bottom: 0.3rem
@@ -78,6 +85,8 @@ const contentCSS = css`
 
 const postInfoCSS = css`
   padding: 0.2rem 0 0.2rem 0;
+  display: flex;
+  flex-direction: row;
 `;
 
 const writerNameCSS = css`
@@ -93,5 +102,5 @@ const dateCSS = css`
 `;
 
 const postMainCSS = css`
-  padding: 0.2rem 0 0.2rem 0;
+  padding: 1.25rem 0 0.2rem 0;
 `;
