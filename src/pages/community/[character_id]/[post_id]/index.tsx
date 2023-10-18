@@ -11,6 +11,7 @@ import { PostData } from '@/types/post';
 import PostHeader from '@/components/community/PostHeader';
 import Image from 'next/image';
 import PostStatus from '@/components/community/postDetail/PostStatus';
+import DivideLine from '@/components/common/divideLine/DivideLine';
 
 const Post = () => {
   const router = useRouter();
@@ -30,8 +31,8 @@ const Post = () => {
   return (
     <>
       <SEO title="Community - Post" />
+      <PostHeader />
       <section css={pageCSS}>
-        <PostHeader />
         <div css={postCSS}>
           {post ? (
             <div>
@@ -52,6 +53,8 @@ const Post = () => {
           )
             : <Loading />}
         </div>
+        <DivideLine />
+        <div>덧글은 추후에 제공될 예정입니다 :)</div>
       </section>
       <BottomNavBar pageName="Community" />
     </>
@@ -64,12 +67,12 @@ const pageCSS = css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0 3rem;
 `;
 
 const postCSS = css`
   width: 100%;
-  padding: 1rem 3rem;
+  padding: 1rem 0;
 `;
 
 const titleCSS = css`
