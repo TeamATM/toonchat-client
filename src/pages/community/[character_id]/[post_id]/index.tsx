@@ -8,6 +8,7 @@ import Loading from '@/components/common/dialog/Loading';
 import color from '@/styles/color';
 import { postDetailDateParse } from '@/utils/services/date';
 import { PostData } from '@/types/post';
+import PostHeader from '@/components/community/PostHeader';
 
 const Post = () => {
   const router = useRouter();
@@ -27,6 +28,7 @@ const Post = () => {
     <>
       <SEO title="Community - Post" />
       <section css={pageCSS}>
+        <PostHeader />
         <div css={postCSS}>
           {post ? (
             <div>
@@ -54,7 +56,6 @@ const pageCSS = css`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
 `;
