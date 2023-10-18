@@ -15,6 +15,7 @@ const Toast: FC<ToastProps> = ({ message, handleClose }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setStartAnimation(true);
+      handleClose();
     }, 3000);
     return () => clearTimeout(timer);
   }, []);

@@ -1,14 +1,22 @@
 import { css } from '@emotion/react';
 import Image from 'next/image';
 import color from '@/styles/color';
-import { signIn } from 'next-auth/react';
+// import { signIn } from 'next-auth/react';
+import { useState } from 'react';
+import Toast from '@/components/common/toast/Toast';
 
 const GoogleButton = () => {
+  // TODO: 구글로그인 절차가 성공하면 꼭 돌아올게...
+  const [toastMessage, setToastMessage] = useState('');
+  const handleToastClose = () => {
+    setToastMessage('');
+  };
   const googleLoginHandler = () => {
-    signIn('google', {
-      callbackUrl: '/friends',
-      redirect: false,
-    });
+    setToastMessage('소셜로그인은 추후에 제공될 예정입니다. :)');
+    // signIn('google', {
+    //   callbackUrl: '/friends',
+    //   redirect: false,
+    // });
   };
 
   return (
@@ -20,6 +28,11 @@ const GoogleButton = () => {
         height={26}
         css={imageCSS}
       />
+      {
+        toastMessage
+          ? <Toast message={toastMessage} handleClose={handleToastClose} />
+          : null
+      }
     </button>
   );
 };
