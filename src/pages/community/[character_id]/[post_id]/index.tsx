@@ -54,7 +54,7 @@ const Post = () => {
             : <Loading />}
         </div>
         <DivideLine />
-        <div>덧글은 추후에 제공될 예정입니다 :)</div>
+        <div css={css`font-size:0.8rem;`}>덧글은 추후에 제공될 예정입니다 :)</div>
       </section>
       <BottomNavBar pageName="Community" />
     </>
@@ -95,8 +95,7 @@ const postInfoCSS = css`
 `;
 
 const writerNameCSS = css`
-  font-size: 0.75rem;
-  font-weight:bold;
+  font-size: 0.9rem;
   color:${color.black};
   padding-bottom: 0.2rem;
 `;
