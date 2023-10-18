@@ -129,20 +129,6 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }: SessionCallback) {
       (session as CustomSession).accessToken = token.accessToken as string | null;
       (session as CustomSession).refreshToken = token.refreshToken as string | null;
-
-      if (session.accessToken && isTokenExpired(session.accessToken)) {
-        // 만료된 경우 refreshToken으로 새 accessToken을 발급받습니다.
-        const newToken = await refreshAccessToken(token.refreshToken as string);
-        console.log('newAccessToken -- Session', newToken);
-
-        if (newToken) {
-          token.accessToken = newToken.accessToken; // 새로운 accessToken으로 업데이트
-          token.refreshToken = newToken.refreshToken; // 새로운 refreshToken 업데이트
-        }
-        // TODO: refresh token 만료시 추가 처리
-        // refreshToken도 만료되었거나 문제가 있을 경우
-        // 필요한 추가 처리 (로그아웃)를 여기에다가 작성
-      }
       return session;
     },
 
