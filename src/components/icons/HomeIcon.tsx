@@ -1,8 +1,5 @@
 import { FC } from 'react';
-
-interface IconProps {
-  color: string
-}
+import { IconProps } from '@/types/icon';
 
 const HomeIcon: FC<IconProps> = ({ color }) => (
   <svg width="26" height="26" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
