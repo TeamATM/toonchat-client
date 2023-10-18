@@ -22,11 +22,11 @@ datadogRum.init({
 
 datadogRum.startSessionReplayRecording();
 
-const App = ({ Component, pageProps }: AppProps) => (
+const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => (
   <>
     <GlobalStyles />
     <GA />
-    <SessionProvider>
+    <SessionProvider session={session}>
       <Component {...pageProps} />
     </SessionProvider>
   </>

@@ -5,6 +5,9 @@ import { useSession } from 'next-auth/react';
 
 const Profile = () => {
   const { data: session }: any = useSession();
+  console.log(session);
+  console.log(session?.accessToken);
+  console.log(session?.refreshToken);
 
   return (
     <>
