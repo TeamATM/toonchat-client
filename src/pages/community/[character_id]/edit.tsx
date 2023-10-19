@@ -4,24 +4,41 @@ import { FormEvent, useState } from 'react';
 import PostHeader from '@/components/community/PostHeader';
 import DivideLine from '@/components/common/divideLine/DivideLine';
 import Button from '@/components/common/button/Button';
-// import { useRouter } from 'next/router';
+import { createPost } from '@/utils/api/boards';
+import { useRouter } from 'next/router';
 
 const Post = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  // const router = useRouter();
+  const router = useRouter();
+  const { character_id: characterId } = router.query;
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (characterId && typeof characterId === 'string') {
+      if (title === '' || title.length > 30) {
+        alert('제목을 30자 이내로 작성해주세요! :)');
+        return;
+      }
 
-    // TODO: 게시글 유효성 검사를 해야함
+      if (content === '' || content.length > 3000) {
+        alert('내용은 3000자 이내로 작성해주세요! :)');
+        return;
+      }
 
-    alert(`${title}, ${content}`);
+      const result = await createPost(characterId, title, content);
 
-    // 게시글 작성 성공!
-    // router.push({
-    //   pathname: '/community',
-    // });
+      if (result.status === 201) {
+        router.push({
+          pathname: `/community/${characterId}`,
+        });
+        return;
+      }
+      alert('게시글 작성에 실패했습니다 :(');
+    }
+    router.push({
+      pathname: '/community',
+    });
   };
 
   return (
