@@ -1,29 +1,27 @@
 import { css } from '@emotion/react';
 import SEO from '@/components/common/head/SEO';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import PostHeader from '@/components/community/PostHeader';
 import DivideLine from '@/components/common/divideLine/DivideLine';
 import Button from '@/components/common/button/Button';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 
 const Post = () => {
   const [title, setTitle] = useState('');
-  // const [content, setContent] = useState('');
-  const router = useRouter();
+  const [content, setContent] = useState('');
+  // const router = useRouter();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // TODO: 게시글 유효성 검사를 해야함
 
-    // 게시글 작성 성공!
-    router.push({
-      pathname: '/community',
-    });
-  };
+    alert(`${title}, ${content}`);
 
-  const titleHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
+    // 게시글 작성 성공!
+    // router.push({
+    //   pathname: '/community',
+    // });
   };
 
   return (
@@ -32,7 +30,11 @@ const Post = () => {
       <PostHeader />
       <section css={pageCSS}>
         <form onSubmit={handleSubmit} css={css`width: 100%;`}>
-          <input type="text" placeholder="제목" css={inputTagCSS} value={title} onChange={titleHandler} required />
+          <input type="text" placeholder="제목" css={inputTagCSS} value={title} onChange={(e) => setTitle(e.target.value)} required />
+          <textarea
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
           <DivideLine />
           <Button theme="green">글 작성</Button>
         </form>
