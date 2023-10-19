@@ -2,7 +2,6 @@ import { postDateParse } from '@/utils/services/date';
 import FriendWrapper from '@/components/friends/friend/FriendWrapper';
 import HeartIcon from '@/components/icons/HeartIcon';
 import CommentIcon from '@/components/icons/CommentIcon';
-import DivideLine from '@/components/common/divideLine/DivideLine';
 import color from '@/styles/color';
 import { css } from '@emotion/react';
 import { FC } from 'react';
@@ -35,7 +34,9 @@ const Post: FC<PostStates> = ({ characterId, post }) => (
         </li>
       </ul>
     </FriendWrapper>
-    <DivideLine />
+    <div css={lineContainerCSS}>
+      <div css={lineCSS} />
+    </div>
   </>
 );
 
@@ -69,4 +70,21 @@ const statusCSS = css`
   font-size: 0.625rem;
   font-weight: bold;
   color: ${color.black};
+`;
+
+const lineContainerCSS = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color:  ${color.lightGray};
+  font-size: 0.875rem;
+`;
+
+const lineCSS = css`
+  display: block;
+  margin: 0.625rem;
+  height: 1px;
+  background: ${color.lightGray};
+  width: 100%;
 `;
