@@ -38,6 +38,7 @@ const config = {
 const nextConfig = withPWA({
   dest: 'public',
   runtimeCaching: [],
+  disableDevLogs: true,
 })(config);
 
 module.exports = nextConfig;
