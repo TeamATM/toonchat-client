@@ -39,14 +39,14 @@ const Character = () => {
               <div>
                 <Header
                   characterId={characterInfo.characterId}
-                  imageUrl={characterInfo.profileImageUrl}
+                  profileImageUrl={characterInfo.profileImageUrl}
                   characterName={characterInfo.characterName}
                   hashTag={characterInfo.hashTag}
                 />
                 <Main
                   characterId={characterInfo.characterId}
                   characterName={characterInfo.characterName}
-                  imageUrl={characterInfo.profileImageUrl}
+                  profileImageUrl={characterInfo.profileImageUrl}
                 />
               </div>
               <MessageInput

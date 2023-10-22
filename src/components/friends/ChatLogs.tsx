@@ -40,7 +40,7 @@ const ChatLogs = () => {
           <FriendInfo
             characterName={characterInfo.characterName}
             message={lastMessage.content}
-            imageUrl={characterInfo.profileImageUrl}
+            profileImageUrl={characterInfo.profileImageUrl}
           />
           <div css={subInfoWrapperCSS}>
             <TimeStamp timestamp={lastMessage.createdAt} />

@@ -7,12 +7,12 @@ import color from '@/styles/color';
 interface CharacterInfoProps {
   characterName: string,
   hashTag: string,
-  imageUrl: string,
+  profileImageUrl: string,
   link: string,
 }
 
 const CharacterInfo: FC<CharacterInfoProps> = ({
-  characterName, hashTag, imageUrl, link,
+  characterName, hashTag, profileImageUrl, link,
 }) => (
   <>
     <Link href={link}>
@@ -28,7 +28,7 @@ const CharacterInfo: FC<CharacterInfoProps> = ({
     </Link>
     <div css={imageWrapperCSS}>
       <Image
-        src={imageUrl}
+        src={profileImageUrl}
         css={imageCSS}
         alt={`/${characterName}`}
         fill

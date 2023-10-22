@@ -5,16 +5,16 @@ import LoadingContent from './characterChatContent/LoadingContent';
 import ChatContent from './characterChatContent/ChatContent';
 
 interface CharacterSpeakProps {
-  speaker:string, content: string, timestamp: number, imageUrl: string, loading: boolean,
+  speaker:string, content: string, timestamp: number, profileImageUrl: string, loading: boolean,
 }
 
 const CharacterSpeak: FC<CharacterSpeakProps> = ({
-  speaker, content, timestamp, imageUrl, loading = false,
+  speaker, content, timestamp, profileImageUrl, loading = false,
 }) => (
   <span css={characterSpeakCSS}>
     <div css={imageWrapperCSS}>
       <Image
-        src={imageUrl}
+        src={profileImageUrl}
         alt={speaker}
         css={imageCSS}
         fill
