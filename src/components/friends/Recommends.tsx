@@ -26,7 +26,7 @@ const Recommends = () => {
           characterId={characterInfo.characterId}
           hashTag={characterInfo.hashTag}
           statusMessage={characterInfo.statusMessage}
-          imageUrl={characterInfo.profileImageUrl}
+          profileImageUrl={characterInfo.profileImageUrl}
         />
       ))}
     </div>

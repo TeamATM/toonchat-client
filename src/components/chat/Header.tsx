@@ -4,19 +4,13 @@ import useSocketStore from '@/store/socket';
 import useChatStore from '@/store/chat';
 import color from '@/styles/color';
 import { useSession } from 'next-auth/react';
+import { CharacterStateProps } from '@/types/characterInfo';
 import FriendShip from './characterHeader/FriendShip';
 import CharacterInfo from './characterHeader/CharacterInfo';
 
-interface CharacterState {
-  characterId: number,
-  characterName: string,
-  hashTag: string,
-  imageUrl: string,
-}
-
 // TODO: Back 버튼을 누르면 지금 홈으로 돌아가지만 채팅 리스트뷰가 완성되면 그쪽으로 Link 될 예정
-const Header : FC<CharacterState> = ({
-  characterId, characterName, hashTag, imageUrl,
+const Header : FC<CharacterStateProps> = ({
+  characterId, characterName, hashTag, profileImageUrl,
 }) => {
   // TODO: 친밀도를 API로 받아와야 작업이 가능함!
   const [userStatus, setUserStatus] = useState({
@@ -42,7 +36,7 @@ const Header : FC<CharacterState> = ({
   }, [session]);
   return (
     <header css={headerCSS}>
-      <CharacterInfo imageUrl={imageUrl} characterName={characterName} hashTag={hashTag} link="/chats" />
+      <CharacterInfo profileImageUrl={profileImageUrl} characterName={characterName} hashTag={hashTag} link="/chats" />
       <FriendShip
         friendShipExp={userStatus.friendShipExp}
         maxFriendShipExp={userStatus.maxFriendShipExp}

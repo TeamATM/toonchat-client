@@ -44,7 +44,7 @@ const FriendProfile = () => {
               <CharacterProfileInfo
                 characterName={characterInfo.characterName}
                 hashTag={characterInfo.hashTag}
-                imageUrl={characterInfo.profileImageUrl}
+                profileImageUrl={characterInfo.profileImageUrl}
                 statusMessage={characterInfo.statusMessage}
               />
               <ProfileRouteButtons characterId={characterInfo.characterId} />

@@ -30,10 +30,8 @@ const BoardList = () => {
             >
               <FriendInfo
                 characterName={`${characterInfo.characterName} 게시판`}
-                // TODO: 백엔드는 이미지를 뿌려라!
-                // imageUrl={characterInfo.profileUrl}
                 message={characterInfo.hashTag}
-                imageUrl={characterInfo.profileImageUrl}
+                profileImageUrl={characterInfo.profileImageUrl}
               />
             </FriendWrapper>
           </div>
