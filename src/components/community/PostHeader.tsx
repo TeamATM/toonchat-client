@@ -30,8 +30,8 @@ const PostHeader = () => {
               <CharacterInfo
                 imageUrl="/leeyj.png"
                 characterName={`${characterInfo.characterName} 게시판`}
-                hashTag={characterInfo.hashtags}
-                link={`/community/${characterInfo.code}`}
+                hashTag={characterInfo.hashTag}
+                link={`/community/${characterInfo.characterId}`}
               />
             )
             : <Loading />
