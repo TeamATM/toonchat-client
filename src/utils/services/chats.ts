@@ -10,7 +10,7 @@ interface resultData {
 
 type GetHistory = (
   setLoading: (isLoading: boolean) => void,
-  characterId: string,
+  characterId: number,
   characterName: string,
   initChatContents: (history:ChatContentsState[]) => void
 ) => void
