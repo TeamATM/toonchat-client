@@ -7,7 +7,7 @@ import color from '@/styles/color';
 
 interface CharacterProps {
   characterName: string,
-  characterId: string,
+  characterId: number,
   hashTag: string,
   statusMessage: string,
   imageUrl: string,
