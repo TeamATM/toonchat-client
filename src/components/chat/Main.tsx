@@ -12,10 +12,10 @@ import Loading from '../common/dialog/Loading';
 interface MainProps {
   characterId: number,
   characterName: string,
-  imageUrl: string
+  profileImageUrl: string
 }
 
-const Main:FC<MainProps> = ({ characterId, characterName, imageUrl }) => {
+const Main:FC<MainProps> = ({ characterId, characterName, profileImageUrl }) => {
   const { chatContents, clearChatContents, initChatContents } = useChatStore();
   const messageEndRef = useRef<HTMLDivElement | null>(null);
   const [loadingHistory, setLoadingHistory] = useState(false);
@@ -42,7 +42,7 @@ const Main:FC<MainProps> = ({ characterId, characterName, imageUrl }) => {
             <CharacterSpeak
               key={chat.id}
               speaker={chat.speaker}
-              imageUrl={imageUrl}
+              profileImageUrl={profileImageUrl}
               content={chat.content}
               timestamp={chat.timestamp}
               loading={chat.loading}

@@ -6,14 +6,14 @@ import color from '@/styles/color';
 interface FriendInfoProps {
   characterName: string,
   message: string,
-  imageUrl: string,
+  profileImageUrl: string,
 }
 
-const FriendInfo: FC<FriendInfoProps> = ({ characterName, message, imageUrl }) => (
+const FriendInfo: FC<FriendInfoProps> = ({ characterName, message, profileImageUrl }) => (
   <div css={css`display:flex; flex-direction:row;`}>
     <div css={imageWrapperCSS}>
       <Image
-        src={imageUrl}
+        src={profileImageUrl}
         alt={characterName}
         css={imageCSS}
         fill

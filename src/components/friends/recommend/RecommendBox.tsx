@@ -4,10 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import color from '@/styles/color';
-import { CharacterInfo } from '@/types/characterInfo';
+import { RecommendCharacterProps } from '@/types/characterInfo';
 
-const RecommendBox:FC<CharacterInfo> = ({
-  characterName, characterId, hashTag, statusMessage, imageUrl,
+const RecommendBox:FC<RecommendCharacterProps> = ({
+  characterName, characterId, hashTag, statusMessage, profileImageUrl: imageUrl,
 }) => (
   <Link href={`/profile/friends/${characterId}`} passHref legacyBehavior>
     <ResetLink>

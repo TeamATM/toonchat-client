@@ -31,7 +31,7 @@ const Friends = () => {
           <FriendInfo
             characterName={characterInfo.characterName}
             message={characterInfo.statusMessage}
-            imageUrl={characterInfo.profileImageUrl}
+            profileImageUrl={characterInfo.profileImageUrl}
           />
           <FriendHashTag hashTag={characterInfo.hashTag} />
         </FriendWrapper>

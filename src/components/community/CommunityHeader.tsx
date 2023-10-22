@@ -30,7 +30,7 @@ const CommunityHeader = () => {
           characterInfo
             ? (
               <CharacterInfo
-                imageUrl={characterInfo.profileImageUrl}
+                profileImageUrl={characterInfo.profileImageUrl}
                 characterName={`${characterInfo.characterName} 게시판`}
                 hashTag={characterInfo.hashTag}
                 link="/community"

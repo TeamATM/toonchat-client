@@ -6,3 +6,7 @@ export interface CharacterInfo {
   profileImageUrl: string,
   backgroundImageUrl: string,
 }
+
+export type CharacterStateProps = Omit<CharacterInfo, 'backgroundImageUrl' | 'statusMessage'>;
+
+export type RecommendCharacterProps = Omit<CharacterInfo, 'backgroundImageUrl'>;
