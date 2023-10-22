@@ -1,39 +1,37 @@
 import { css } from '@emotion/react';
+import { findAllCharacters } from '@/utils/api/character';
+import { CharacterInfo } from '@/types/characterInfo';
+import { useEffect, useState } from 'react';
 import RecommendBox from './recommend/RecommendBox';
 
-// TODO: 이 부분은 API에서 떼와야하는 부분
-const characterDataSet = [
-  {
-    characterName: '이영준',
-    characterId: '0',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    statusMessage: '난 왜 이렇게 완벽한걸까...',
-    imageUrl: '/leeyj.png',
+const Recommends = () => {
+  const [characterInfoList, setCharacterInfoList] = useState<CharacterInfo[]>([]);
 
-  }, {
-    characterName: '김미소',
-    characterId: '1',
-    hashTag: '#카카오페이지 #김비서가왜그럴까',
-    statusMessage: '조만간 퇴사하려구요 :)',
-    imageUrl: '/kimms.png',
-  },
-];
+  useEffect(() => {
+    findAllCharacters()
+      .then((data) => {
+        setCharacterInfoList(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching post:', error);
+      });
+  }, []);
 
-const Recommends = () => (
-  <div css={recommendsCSS}>
-    {characterDataSet.map((data) => (
-      <RecommendBox
-        key={data.characterId}
-        characterName={data.characterName}
-        characterId={data.characterId}
-        hashTag={data.hashTag}
-        statusMessage={data.statusMessage}
-        imageUrl={data.imageUrl}
-      />
-    ))}
-  </div>
-);
-
+  return (
+    <div css={recommendsCSS}>
+      {characterInfoList.map((characterInfo) => (
+        <RecommendBox
+          key={characterInfo.characterId}
+          characterName={characterInfo.characterName}
+          characterId={characterInfo.characterId}
+          hashTag={characterInfo.hashTag}
+          statusMessage={characterInfo.statusMessage}
+          imageUrl={characterInfo.profileImageUrl}
+        />
+      ))}
+    </div>
+  );
+};
 export default Recommends;
 
 const recommendsCSS = css`
