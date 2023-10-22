@@ -1,4 +1,3 @@
-import { GetServerSideProps } from 'next';
 import { css } from '@emotion/react';
 import Link from 'next/link';
 import SEO from '@/components/common/head/SEO';
@@ -7,97 +6,59 @@ import ProfileFriendShip from '@/components/profile/ProfileFriendShip';
 import BackwordIcon from '@/components/icons/BackwordIcon';
 import ProfileRouteButtons from '@/components/profile/ProfileRouteButtons';
 import CharacterProfileInfo from '@/components/profile/CharacterProfileInfo';
+import { findCharacterById } from '@/utils/api/character';
+import { CharacterInfo } from '@/types/characterInfo';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Loading from '@/components/common/dialog/Loading';
 
-interface CharacterProfileProps {
-  characterName: string,
-  characterId: string,
-  hashTag: string,
-  imageUrl: string,
-  backgroundImageUrl: string,
-  statusMessage: string,
-}
-
-const FriendProfile = ({
-  characterProfileProps: {
-    characterName, characterId, hashTag, imageUrl, backgroundImageUrl, statusMessage,
-  },
-} : {characterProfileProps: CharacterProfileProps }) => {
-  console.log(characterName, characterId, hashTag, imageUrl, backgroundImageUrl, statusMessage);
+const FriendProfile = () => {
+  const router = useRouter();
+  const { character_id: characterId } = router.query;
+  const [characterInfo, setCharacterInfo] = useState<CharacterInfo>();
+  useEffect(() => {
+    if (characterId && typeof characterId === 'string') {
+      findCharacterById(characterId)
+        .then((data) => {
+          setCharacterInfo(data);
+        })
+        .catch((error) => {
+          console.error('Error fetching post:', error);
+        });
+    }
+  }, [characterId]);
 
   return (
     <>
-      <SEO title={`${characterName}의 프로필`} />
-      <div css={backgroundCSS(backgroundImageUrl)} />
-      <div css={css`z-index: 100; position: fixed; padding: 4rem 1rem;`}>
-        <Link href="/friends">
-          <BackwordIcon color={color.white} />
-        </Link>
-      </div>
-      <section css={pageCSS}>
-        <CharacterProfileInfo
-          characterName={characterName}
-          hashTag={hashTag}
-          imageUrl={imageUrl}
-          statusMessage={statusMessage}
-        />
-        <ProfileRouteButtons characterId={characterId} />
-        <div css={css`margin: 1rem; height: 4px; border-radius: 2px; background: ${color.greenGray}; width: 2.5rem;`} />
-        <ProfileFriendShip />
-      </section>
+      <SEO title={characterInfo ? `${characterInfo.characterName}의 프로필` : '프로필 로딩 중'} />
+      {characterInfo
+        ? (
+          <>
+            <div css={backgroundCSS(characterInfo.backgroundImageUrl)} />
+            <div css={css`z-index: 100; position: fixed; padding: 4rem 1rem;`}>
+              <Link href="/friends">
+                <BackwordIcon color={color.white} />
+              </Link>
+            </div>
+            <section css={pageCSS}>
+              <CharacterProfileInfo
+                characterName={characterInfo.characterName}
+                hashTag={characterInfo.hashTag}
+                imageUrl={characterInfo.profileImageUrl}
+                statusMessage={characterInfo.statusMessage}
+              />
+              <ProfileRouteButtons characterId={characterInfo.characterId} />
+              <div css={css`margin: 1rem; height: 4px; border-radius: 2px; background: ${color.greenGray}; width: 2.5rem;`} />
+              <ProfileFriendShip />
+            </section>
+          </>
+        )
+        : <Loading />}
     </>
   );
 };
 
 export default FriendProfile;
-
-const characterProfileDataSet = [
-  {
-    'bot-name': '이영준',
-    'hash-tag': '#카카오페이지 #김비서가왜그럴까',
-    'image-url': '/leeyj.png',
-    'background-image-url': '/leeyjback.png',
-    'status-message': '난 왜 이렇게 완벽한걸까...',
-  }, {
-    'bot-name': '김미소',
-    'hash-tag': '#카카오페이지 #김비서가왜그럴까',
-    'image-url': '/kimms.png',
-    'background-image-url': '/kimmsback.png',
-    'status-message': '퇴사할 예정입니다. :)',
-  },
-];
-
-export const getServerSideProps
-: GetServerSideProps<{characterProfileProps: CharacterProfileProps}> = async (context) => {
-  const characterId = context.query.character_id;
-  // TODO: 서버에서 캐릭터 profile을 얻게되면 API 호출을 할 예정
-  if (Array.isArray(characterId) || !characterId) {
-    return {
-      notFound: true,
-    };
-  }
-
-  const idNumber = parseInt(characterId, 10);
-  if (Number.isNaN(idNumber) || idNumber < 0 || idNumber >= characterProfileDataSet.length) {
-    return {
-      notFound: true,
-    };
-  }
-
-  const dataSet = characterProfileDataSet[idNumber];
-
-  return {
-    props: {
-      characterProfileProps: {
-        characterName: dataSet['bot-name'],
-        characterId,
-        hashTag: dataSet['hash-tag'],
-        imageUrl: dataSet['image-url'],
-        backgroundImageUrl: dataSet['background-image-url'],
-        statusMessage: dataSet['status-message'],
-      },
-    },
-  };
-};
 
 const pageCSS = css`
   height: 100vh;
