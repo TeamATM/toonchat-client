@@ -7,5 +7,6 @@ export const findAllCharacters = async () => {
 
 export const findCharacterById = async (characterId: string) => {
   const result = await webServerInstance.get(`/characters/${characterId}`);
+  console.log(`find By Id characters : ${result.data}`);
   return result.data;
 };

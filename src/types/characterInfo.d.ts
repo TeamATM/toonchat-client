@@ -1,9 +1,8 @@
 export interface CharacterInfo {
-  backgroundUrl: string,
-  code: string,
-  hashtags: string,
-  id: number,
-  name: string,
-  profileUrl: string,
-  stateMessage: string
+  characterId: number,
+  characterName: string,
+  hashTag: string,
+  statusMessage: string
+  profileImageUrl: string,
+  backgroundImageUrl: string,
 }

@@ -11,7 +11,9 @@ const BoardList = () => {
 
   useEffect(() => {
     findAllCharacters()
-      .then((data) => setCharacterInfoList(data))
+      .then((data) => {
+        setCharacterInfoList(data);
+      })
       .catch((error) => {
         console.error('Error fetching post:', error);
       });
@@ -21,17 +23,17 @@ const BoardList = () => {
     <section css={boardListWrapperCSS}>
       {characterInfoList ? (
         characterInfoList.map((characterInfo) => (
-          <div key={characterInfo.id}>
+          <div key={characterInfo.characterId}>
             <FriendWrapper
-              key={characterInfo.code}
-              linkUrl={`/community/${characterInfo.code}`}
+              key={characterInfo.characterId}
+              linkUrl={`/community/${characterInfo.characterId}`}
             >
               <FriendInfo
-                characterName={`${characterInfo.name} 게시판`}
+                characterName={`${characterInfo.characterName} 게시판`}
                 // TODO: 백엔드는 이미지를 뿌려라!
                 // imageUrl={characterInfo.profileUrl}
-                message={`임시 정보 입니다. ${characterInfo.hashtags}`}
-                imageUrl="/leeyj.png"
+                message={characterInfo.hashTag}
+                imageUrl={characterInfo.profileImageUrl}
               />
             </FriendWrapper>
           </div>
