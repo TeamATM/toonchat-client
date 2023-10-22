@@ -1,102 +1,65 @@
-import { GetServerSideProps } from 'next';
 import { css } from '@emotion/react';
 import MessageInput from '@/components/chat/MessageInput';
 import Header from '@/components/chat/Header';
 import Main from '@/components/chat/Main';
 import SEO from '@/components/common/head/SEO';
-import Dialog from '@/components/common/dialog/Dialog';
-import TuneSetting from '@/components/chat/tuneSetting/TuneSetting';
 import { useEffect, useState } from 'react';
 import useChatStore from '@/store/chat';
+import { useRouter } from 'next/router';
+import { CharacterInfo } from '@/types/characterInfo';
+import { findCharacterById } from '@/utils/api/character';
+import Loading from '@/components/common/dialog/Loading';
 
-interface CharacterProps {
-  characterName: string,
-  characterId: string,
-  hashTag: string,
-  imageUrl: string,
-}
-
-const Character = ({
-  characterProps: {
-    characterName, characterId, hashTag, imageUrl,
-  },
-}
-  : { characterProps: CharacterProps }) => {
-  const [settingModal, setSettingModal] = useState(false);
+const Character = () => {
+  const router = useRouter();
+  const { character: characterId } = router.query;
+  const [characterInfo, setCharacterInfo] = useState<CharacterInfo>();
   const { setChatInfo } = useChatStore();
+
   useEffect(() => {
-    setChatInfo(characterName, characterId);
-  }, []);
+    if (characterId && typeof characterId === 'string') {
+      findCharacterById(characterId)
+        .then((data) => {
+          setCharacterInfo(data);
+          setChatInfo(data.characterName, data.characterId);
+        })
+        .catch((error) => {
+          console.error('Error fetching post:', error);
+        });
+    }
+  }, [characterId]);
 
   return (
     <>
-      <SEO title={`대화 with ${characterName}`} />
+      <SEO title={characterInfo ? `대화 with ${characterInfo.characterName}` : '로딩 중'} />
       <section css={pageCSS}>
-        <div>
-          <Header
-            characterId={characterId}
-            imageUrl={imageUrl}
-            characterName={characterName}
-            hashTag={hashTag}
-            settingClick={() => setSettingModal(!settingModal)}
-          />
-          <Main characterId={characterId} characterName={characterName} imageUrl={imageUrl} />
-        </div>
-        <MessageInput characterId={Number(characterId)} characterName={characterName} />
+        {characterInfo
+          ? (
+            <>
+              <div>
+                <Header
+                  characterId={characterInfo.characterId}
+                  imageUrl={characterInfo.profileImageUrl}
+                  characterName={characterInfo.characterName}
+                  hashTag={characterInfo.hashTag}
+                />
+                <Main
+                  characterId={characterInfo.characterId}
+                  characterName={characterInfo.characterName}
+                  imageUrl={characterInfo.profileImageUrl}
+                />
+              </div>
+              <MessageInput
+                characterId={Number(characterId)}
+                characterName={characterInfo.characterName}
+              />
+            </>
+          ) : <Loading />}
       </section>
-      { settingModal && (
-      <Dialog closeModal={() => { setSettingModal(false); }} theme="white">
-        <TuneSetting closeModal={() => { setSettingModal(false); }} />
-      </Dialog>
-      )}
     </>
   );
 };
 export default Character;
-
-// TODO: vercel 배포에서 임시API로는 서버사이드 랜더링이
-// 잘 안되는 상황이었음. 더미데이터를 여기에서 따로 뽑고 이후 서버 연결하면 지울 예정
-const characterDataSet = [
-  {
-    'bot-name': '이영준',
-    'hash-tag': '#카카오페이지 #김비서가왜그럴까',
-    'image-url': '/leeyj.png',
-  }, {
-    'bot-name': '김미소',
-    'hash-tag': '#카카오페이지 #김비서가왜그럴까',
-    'image-url': '/kimms.png',
-  },
-];
-
-export const getServerSideProps
-:GetServerSideProps<{characterProps:CharacterProps}> = async (context) => {
-  const characterId = context.query.character;
-
-  if (Array.isArray(characterId) || !characterId) {
-    return {
-      notFound: true,
-    };
-  }
-
-  const idNumber = parseInt(characterId, 10);
-  if (Number.isNaN(idNumber) || idNumber < 0 || idNumber >= characterDataSet.length) {
-    return {
-      notFound: true,
-    };
-  }
-  const dataSet = characterDataSet[idNumber];
-
-  return {
-    props: {
-      characterProps: {
-        characterName: dataSet['bot-name'],
-        characterId,
-        hashTag: dataSet['hash-tag'],
-        imageUrl: dataSet['image-url'],
-      },
-    },
-  };
-};
 
 const pageCSS = css`
   min-height: 100vh;
