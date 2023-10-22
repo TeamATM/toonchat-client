@@ -89,8 +89,7 @@ const inputCSS = css`
   border: none;
   background: none;
   padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  width: 5rem;
+  width: 4rem;
 `;
 
 const buttonCSS = css`
