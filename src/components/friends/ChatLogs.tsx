@@ -2,23 +2,27 @@ import { css } from '@emotion/react';
 import TimeStamp from '@/components/common/timeStamp/TimeStamp';
 import { useEffect, useState } from 'react';
 import { recentChatAPI } from '@/utils/api/chats';
+import { CharacterInfo } from '@/types/characterInfo';
 import FriendWrapper from './friend/FriendWrapper';
 import FriendInfo from './friend/FriendInfo';
 import ChatBadge from './friend/ChatBadge';
 
+interface recentMessageWithCharacterInfo {
+  characterInfo: CharacterInfo;
+  lastMessage: {
+    content: string;
+    createdAt: number;
+    fromUser: boolean;
+  };
+}
+
 const ChatLogs = () => {
   // TODO: 데이터셋을 한 번에 API로 받아오면 더 편하게 작업할 수 있을 것 같음
-  const [chatLogDataSet, setchatLogDataSet] = useState(chatLogDataSample);
+  const [recentChatList, setRecentChatList] = useState<recentMessageWithCharacterInfo[]>([]);
 
   const callRecentAPI = async () => {
-    const recentData = await recentChatAPI();
-    console.log(recentData);
-    const tempDataSet = chatLogDataSet.map((chatLog, index) => ({
-      ...chatLog,
-      message: recentData[index].lastMessage.content,
-      timestamp: recentData[index].lastMessage.createdAt,
-    }));
-    setchatLogDataSet([...tempDataSet]);
+    const recentChatData = await recentChatAPI();
+    setRecentChatList([...recentChatData]);
   };
 
   useEffect(() => {
@@ -27,21 +31,20 @@ const ChatLogs = () => {
 
   return (
     <section css={chatLogsWrapperCSS}>
-      {chatLogDataSet.map((data, index) => (
-        // TODO: 여러 캐릭터가 있을 때 스크롤이 가능한지 확인하기 위함
+      {recentChatList.map(({ characterInfo, lastMessage }, index) => (
         <FriendWrapper
           // eslint-disable-next-line react/no-array-index-key
           key={index}
-          linkUrl={`/chats/${data.characterId}`}
+          linkUrl={`/chats/${characterInfo.characterId}`}
         >
           <FriendInfo
-            characterName={data.characterName}
-            message={data.message}
-            imageUrl={data.imageUrl}
+            characterName={characterInfo.characterName}
+            message={lastMessage.content}
+            imageUrl={characterInfo.profileImageUrl}
           />
           <div css={subInfoWrapperCSS}>
-            <TimeStamp timestamp={data.timestamp} />
-            <ChatBadge unreadCount={data.unreadCount} />
+            <TimeStamp timestamp={lastMessage.createdAt} />
+            <ChatBadge unreadCount={lastMessage.fromUser} />
           </div>
         </FriendWrapper>
       ))}
@@ -65,21 +68,3 @@ const subInfoWrapperCSS = css`
   align-items: flex-end;
   margin-right: 0.625rem;
 `;
-
-const chatLogDataSample = [
-  {
-    characterId: '0',
-    characterName: '이영준',
-    imageUrl: '/leeyj.png',
-    message: '.',
-    timestamp: 123123,
-    unreadCount: 1,
-  }, {
-    characterId: '1',
-    characterName: '김미소',
-    imageUrl: '/kimms.png',
-    message: '.',
-    timestamp: 123123,
-    unreadCount: 0,
-  },
-];
