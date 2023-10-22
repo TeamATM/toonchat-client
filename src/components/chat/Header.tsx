@@ -6,19 +6,17 @@ import color from '@/styles/color';
 import { useSession } from 'next-auth/react';
 import FriendShip from './characterHeader/FriendShip';
 import CharacterInfo from './characterHeader/CharacterInfo';
-import SettingIcon from '../icons/SettingIcon';
 
 interface CharacterState {
-  characterId: string,
+  characterId: number,
   characterName: string,
   hashTag: string,
   imageUrl: string,
-  settingClick: () => void,
 }
 
 // TODO: Back 버튼을 누르면 지금 홈으로 돌아가지만 채팅 리스트뷰가 완성되면 그쪽으로 Link 될 예정
 const Header : FC<CharacterState> = ({
-  characterId, characterName, hashTag, imageUrl, settingClick,
+  characterId, characterName, hashTag, imageUrl,
 }) => {
   // TODO: 친밀도를 API로 받아와야 작업이 가능함!
   const [userStatus, setUserStatus] = useState({
@@ -50,9 +48,6 @@ const Header : FC<CharacterState> = ({
         maxFriendShipExp={userStatus.maxFriendShipExp}
         friendShipLv={userStatus.friendShipLv}
       />
-      <button type="button" onClick={settingClick} css={css`border: none; background-color: ${color.white};`}>
-        <SettingIcon color={color.lightGray} />
-      </button>
     </header>
   );
 };

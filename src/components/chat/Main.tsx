@@ -10,7 +10,7 @@ import CharacterSpeak from './messageBox/CharacterSpeak';
 import Loading from '../common/dialog/Loading';
 
 interface MainProps {
-  characterId: string,
+  characterId: number,
   characterName: string,
   imageUrl: string
 }

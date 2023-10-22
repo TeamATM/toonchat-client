@@ -5,7 +5,7 @@ export const recentChatAPI = async () => {
   return result.data;
 };
 
-export const chatHistoryAPI = async (characterId: string) => {
+export const chatHistoryAPI = async (characterId: number) => {
   const result = await chatInstance.get(`/chat/history/${characterId}`);
   return result.data;
 };
