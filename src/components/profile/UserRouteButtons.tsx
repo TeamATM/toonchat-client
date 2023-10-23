@@ -1,9 +1,8 @@
 import { css } from '@emotion/react';
-import CommunityIcon from '@/components/icons/CommunityIcon';
 import color from '@/styles/color';
 import { signOut } from 'next-auth/react';
-import ProfileRouteWrapper from './routeButtons/ProfileRouteWrapper';
-import SettingIcon from '../icons/SettingIcon';
+import LogOutIcon from '../icons/LogoutIcon';
+import ProfileSettingIcon from '../icons/ProfileSettingIcon';
 
 const ProfileRouteButtons = () => {
   // TODO: 미들웨어로 로그인 여부를 컨트롤할 예정
@@ -13,14 +12,19 @@ const ProfileRouteButtons = () => {
     // logOutAPI(session?.accessToken);
     signOut({ callbackUrl: '/' });
   };
+
+  const profileEditHandler = () => {
+    console.log(1);
+  };
+
   return (
     <div css={ButtonsWrapperCSS}>
-      <ProfileRouteWrapper linkUrl="/chats/1" color={color.black}>
-        <SettingIcon color={color.black} />
+      <button onClick={profileEditHandler} css={buttonCSS} type="button">
+        <ProfileSettingIcon color={color.black} />
         Profile Edit
-      </ProfileRouteWrapper>
+      </button>
       <button onClick={signOutHandler} css={buttonCSS} type="button">
-        <CommunityIcon color={color.black} />
+        <LogOutIcon color={color.black} />
         Log Out
       </button>
     </div>
