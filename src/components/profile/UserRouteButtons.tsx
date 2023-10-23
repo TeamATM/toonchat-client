@@ -6,8 +6,12 @@ import ProfileRouteWrapper from './routeButtons/ProfileRouteWrapper';
 import SettingIcon from '../icons/SettingIcon';
 
 const ProfileRouteButtons = () => {
+  // TODO: 미들웨어로 로그인 여부를 컨트롤할 예정
+  // TODO: 백엔드 로그아웃 로직이 변경되고 있는 중이라 아직 쓸 수 없는 코드가 있음
+  // const { data: session }: any = useSession();
   const signOutHandler = () => {
-    signOut();
+    // logOutAPI(session?.accessToken);
+    signOut({ callbackUrl: '/' });
   };
   return (
     <div css={ButtonsWrapperCSS}>
