@@ -28,7 +28,7 @@ const PostHeader = () => {
           characterInfo
             ? (
               <CharacterInfo
-                profileImageUrl="/leeyj.png"
+                profileImageUrl={characterInfo.profileImageUrl}
                 characterName={`${characterInfo.characterName} 게시판`}
                 hashTag={characterInfo.hashTag}
                 link={`/community/${characterInfo.characterId}`}
