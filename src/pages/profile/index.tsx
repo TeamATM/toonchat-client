@@ -9,7 +9,6 @@ import UserRouteButtons from '@/components/profile/UserRouteButtons';
 
 const Profile = () => {
   const { data: session }: any = useSession();
-  console.log(session);
 
   return (
     <>
