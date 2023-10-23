@@ -3,12 +3,14 @@ import BottomNavBar from '@/components/common/bottomNavBar/BottomNavBar';
 import SEO from '@/components/common/head/SEO';
 import PostList from '@/components/community/PostList';
 import CommunityHeader from '@/components/community/CommunityHeader';
+import WriteButton from '@/components/community/WriteButton';
 
 const Board = () => (
   <>
     <SEO title="Community - Board" />
     <section css={pageCSS}>
       <CommunityHeader />
+      <WriteButton />
       <PostList />
     </section>
     <BottomNavBar pageName="Community" />
