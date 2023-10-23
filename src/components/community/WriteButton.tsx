@@ -1,10 +1,16 @@
 import color from '@/styles/color';
 import PostWriteIcon from '@/components/icons/PostWriteIcon';
 import { css } from '@emotion/react';
+import { useRouter } from 'next/router';
 
 const WriteButton = () => {
+  const router = useRouter();
+  const { character_id: characterId } = router.query;
+
   const buttonHandler = () => {
-    console.log(1);
+    if (characterId && typeof characterId === 'string') {
+      router.push(`/community/${characterId}/edit`);
+    }
   };
 
   return (
