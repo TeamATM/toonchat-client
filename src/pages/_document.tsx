@@ -14,6 +14,9 @@ const Document = () => (
 
       <meta name="apple-mobile-web-app-title" content="ToonChat" />
 
+      {/* PWA */}
+      <link rel="manifest" href="/manifest.json" />
+      <meta name="theme-color" content="#FFFFFF" />
       {/* OG */}
       <meta property="og:site_name" content="ToonChat" />
       <meta property="og:title" content="ToonChat" />
