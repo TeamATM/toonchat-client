@@ -14,7 +14,7 @@ const KakaoButton = () => {
   const kakaoLoginHandler = () => {
     setToastMessage('소셜로그인은 추후에 제공될 예정입니다. :)');
     // signIn('kakao', {
-    //   callbackUrl: '/friends',
+    //   callbackUrl: '/',
     //   redirect: false,
     // });
   };

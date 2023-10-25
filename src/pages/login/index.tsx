@@ -23,7 +23,7 @@ const Login = () => {
     signIn('credentials', {
       email,
       password,
-      callbackUrl: '/friends',
+      callbackUrl: '/',
     });
   };
   return (

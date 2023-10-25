@@ -14,7 +14,7 @@ const NaverButton = () => {
   const naverLoginHandler = () => {
     setToastMessage('소셜로그인은 추후에 제공될 예정입니다. :)');
     // signIn('naver', {
-    //   callbackUrl: '/friends',
+    //   callbackUrl: '/',
     //   redirect: false,
     // });
   };
