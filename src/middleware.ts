@@ -39,7 +39,7 @@ const withOutAuth = async (req:NextRequest, token: boolean) => {
   const url = req.nextUrl.clone();
 
   if (token) {
-    url.pathname = '/friends';
+    url.pathname = '/';
 
     return NextResponse.redirect(url);
   }
