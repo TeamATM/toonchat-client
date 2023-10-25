@@ -48,8 +48,6 @@ export const authOptions: NextAuthOptions = {
           provider: 'credential',
         });
 
-        console.log('authorize', data);
-
         if (data.nickname && data.accessToken) {
           const user = {
             accessToken: data.accessToken,
@@ -78,16 +76,12 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user, account }) {
       if (account?.type === 'credentials') return true;
-      console.log('user', user);
-      console.log('account', account);
       const data = await socialLoginAPI({
         email: user.email || '',
         name: user.name || '',
         provider: account?.provider || '',
         password: null,
       });
-
-      console.log('data', data);
 
       if (data?.accessToken && data?.refreshToken) {
         user.accessToken = data.accessToken;
@@ -111,8 +105,6 @@ export const authOptions: NextAuthOptions = {
         // 만료된 경우 refreshToken으로 새 accessToken을 발급
         const newToken = await refreshAccessToken(token.refreshToken as string);
 
-        console.log('newAccessToken -- jwt', newToken);
-
         if (newToken) {
           token.accessToken = newToken.accessToken; // 새로운 accessToken으로 업데이트
           token.refreshToken = newToken.refreshToken; // 새로운 accessToken으로 업데이트
@@ -133,8 +125,6 @@ export const authOptions: NextAuthOptions = {
     },
 
     async redirect({ url, baseUrl }) {
-      console.log('Redirect URL:', url);
-      console.log('Base URL:', baseUrl);
       if (url.startsWith('/')) {
         return `${baseUrl}${url}`;
       } if (new URL(url).origin === baseUrl) {

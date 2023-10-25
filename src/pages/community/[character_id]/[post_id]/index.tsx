@@ -21,7 +21,6 @@ const Post = () => {
     if (typeof characterId === 'string' && typeof postId === 'string') {
       findPostById(characterId, postId).then((data) => {
         setPost(data);
-        console.log(data);
       }).catch((error) => {
         console.error('Error fetching post:', error);
       });
