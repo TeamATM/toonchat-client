@@ -3,6 +3,19 @@ const withPWA = require('next-pwa');
 
 /** @type {import('next').NextConfig} */
 const config = {
+  async headers() {
+    return [
+      {
+        source: '/_next/image',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, immutable',
+          },
+        ],
+      },
+    ];
+  },
   images: {
     minimumCacheTTL: 86400, // 60*60*24 : 1일
   },
