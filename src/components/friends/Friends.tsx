@@ -5,27 +5,36 @@ import { findAllCharacters } from '@/utils/api/character';
 import FriendWrapper from './friend/FriendWrapper';
 import FriendHashTag from './friend/FriendHashTag';
 import FriendInfo from './friend/FriendInfo';
+import SkeletonList from '../common/skeleton/SkeletonList';
 
 const Friends = () => {
   const [characterInfoList, setCharacterInfoList] = useState<CharacterInfo[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     findAllCharacters()
       .then((data) => {
-        setCharacterInfoList(data);
+        setTimeout(() => {
+          setCharacterInfoList(data);
+          setLoading(false);
+        }, 5000);
       })
       .catch((error) => {
         console.error('Error fetching post:', error);
       });
   }, []);
-
+  if (loading) {
+    return (
+      <section css={friendsWrapperCSS}>
+        <SkeletonList />
+      </section>
+    );
+  }
   return (
     <section css={friendsWrapperCSS}>
-      {characterInfoList.map((characterInfo, index) => (
-        // TODO: 여러 캐릭터가 있을 때 스크롤이 가능한지 확인하기 위함
+      {characterInfoList.map((characterInfo) => (
         <FriendWrapper
-          // eslint-disable-next-line react/no-array-index-key
-          key={index}
+          key={characterInfo.characterId}
           linkUrl={`/profile/friends/${characterInfo.characterId}`}
         >
           <FriendInfo
