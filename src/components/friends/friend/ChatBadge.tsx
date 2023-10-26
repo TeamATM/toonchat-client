@@ -13,7 +13,7 @@ const ChatBadge: FC<ChatBadgeProps> = ({ unreadCount }) => (
 export default ChatBadge;
 
 const countCSS = (unreadCount : boolean) => css`
-  visibility : ${unreadCount ? 'hidden' : 'visible'};
+  visibility : ${unreadCount ? 'visible' : 'hidden'};
   background-color: #F04A4C;
   border-radius: 50%;
   height: 1rem;
