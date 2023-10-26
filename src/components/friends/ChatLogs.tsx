@@ -6,6 +6,7 @@ import { CharacterInfo } from '@/types/characterInfo';
 import FriendWrapper from './friend/FriendWrapper';
 import FriendInfo from './friend/FriendInfo';
 import ChatBadge from './friend/ChatBadge';
+import FriendSkeleton from './friend/FriendSkeleton';
 
 interface recentMessageWithCharacterInfo {
   characterInfo: CharacterInfo;
@@ -17,24 +18,32 @@ interface recentMessageWithCharacterInfo {
 }
 
 const ChatLogs = () => {
-  // TODO: 데이터셋을 한 번에 API로 받아오면 더 편하게 작업할 수 있을 것 같음
   const [recentChatList, setRecentChatList] = useState<recentMessageWithCharacterInfo[]>([]);
-
-  const callRecentAPI = async () => {
-    const recentChatData = await recentChatAPI();
-    setRecentChatList([...recentChatData]);
-  };
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    callRecentAPI();
+    recentChatAPI()
+      .then((recentChatData) => {
+        setRecentChatList([...recentChatData]);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching post:', error);
+      });
   }, []);
+  if (loading) {
+    return (
+      <section css={chatLogsWrapperCSS}>
+        <FriendSkeleton />
+      </section>
+    );
+  }
 
   return (
     <section css={chatLogsWrapperCSS}>
-      {recentChatList.map(({ characterInfo, lastMessage }, index) => (
+      {recentChatList.map(({ characterInfo, lastMessage }) => (
         <FriendWrapper
-          // eslint-disable-next-line react/no-array-index-key
-          key={index}
+          key={characterInfo.characterId}
           linkUrl={`/chats/${characterInfo.characterId}`}
         >
           <FriendInfo
