@@ -76,3 +76,23 @@ const GlobalStyles = () => (
 );
 
 export default GlobalStyles;
+
+export const loadingCSS = css`
+  @keyframes loading {
+    0% {
+    background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+
+  animation: loading 4s infinite;
+  background: linear-gradient(
+    to right,
+    rgba(230, 233, 238, 0.9), 
+    rgba(215, 218, 224, 0.95) 50%, 
+    rgba(230, 233, 238, 0.9) 100%
+  ); 
+  background-size: 200% 100%;
+`;
