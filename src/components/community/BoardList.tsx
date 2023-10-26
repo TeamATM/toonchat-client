@@ -5,19 +5,29 @@ import { findAllCharacters } from '@/utils/api/character';
 import Loading from '../common/dialog/Loading';
 import FriendInfo from '../friends/friend/FriendInfo';
 import FriendWrapper from '../friends/friend/FriendWrapper';
+import FriendSkeleton from '../friends/friend/FriendSkeleton';
 
 const BoardList = () => {
   const [characterInfoList, setCharacterInfoList] = useState<CharacterInfo[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     findAllCharacters()
       .then((data) => {
         setCharacterInfoList(data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error('Error fetching post:', error);
       });
   }, []);
+  if (loading) {
+    return (
+      <section css={boardListWrapperCSS}>
+        <FriendSkeleton />
+      </section>
+    );
+  }
 
   return (
     <section css={boardListWrapperCSS}>
