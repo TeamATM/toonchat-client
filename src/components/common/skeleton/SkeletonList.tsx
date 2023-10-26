@@ -1,13 +1,13 @@
 import { css } from '@emotion/react';
 
-const FriendSkeleton = () => (
+const SkeletonList = () => (
   <>
     <SingleSkeleton />
     <SingleSkeleton />
   </>
 );
 
-export default FriendSkeleton;
+export default SkeletonList;
 
 const SingleSkeleton = () => (
   <div css={friendCSS}>
