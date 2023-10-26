@@ -1,3 +1,4 @@
+import { loadingCSS } from '@/styles/GlobalStyles';
 import { css } from '@emotion/react';
 
 const SkeletonList = () => (
@@ -19,22 +20,6 @@ const SingleSkeleton = () => (
   </div>
 );
 
-const load = css`
-  @keyframes loading {
-    0% {
-      background-position: 0;
-    }
-    100% {
-      background-position: 480px;
-    }
-  }
-
-  animation: loading 10s infinite;
-  background: linear-gradient(to right, #f2f2f2, #ddd, #f2f2f2);
-
-  background-size: 200% 100%;
-`;
-
 const friendCSS = css`
   display:flex;
   flex-direction:row;
@@ -47,7 +32,7 @@ const imageWrapperCSS = css`
   position: relative;
   margin: 0.375rem;
   border-radius: 50%;
-  ${load};
+  ${loadingCSS};
 `;
 
 const textWrapperCSS = css`
@@ -63,12 +48,12 @@ const characterNameCSS = css`
   width: 5rem;
   height: 1rem;
   border-radius: 1rem;
-  ${load};
+  ${loadingCSS};
 `;
 
 const messageCSS = css`
   width: 15rem;
   height: 0.75rem;
   border-radius: 0.75rem;
-  ${load};
+  ${loadingCSS};
 `;
