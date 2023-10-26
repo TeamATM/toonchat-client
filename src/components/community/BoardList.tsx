@@ -5,7 +5,7 @@ import { findAllCharacters } from '@/utils/api/character';
 import Loading from '../common/dialog/Loading';
 import FriendInfo from '../friends/friend/FriendInfo';
 import FriendWrapper from '../friends/friend/FriendWrapper';
-import FriendSkeleton from '../friends/friend/FriendSkeleton';
+import SkeletonList from '../common/skeleton/SkeletonList';
 
 const BoardList = () => {
   const [characterInfoList, setCharacterInfoList] = useState<CharacterInfo[]>([]);
@@ -24,7 +24,7 @@ const BoardList = () => {
   if (loading) {
     return (
       <section css={boardListWrapperCSS}>
-        <FriendSkeleton />
+        <SkeletonList />
       </section>
     );
   }

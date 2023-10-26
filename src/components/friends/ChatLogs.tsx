@@ -6,7 +6,7 @@ import { CharacterInfo } from '@/types/characterInfo';
 import FriendWrapper from './friend/FriendWrapper';
 import FriendInfo from './friend/FriendInfo';
 import ChatBadge from './friend/ChatBadge';
-import FriendSkeleton from './friend/FriendSkeleton';
+import SkeletonList from '../common/skeleton/SkeletonList';
 
 interface recentMessageWithCharacterInfo {
   characterInfo: CharacterInfo;
@@ -34,7 +34,7 @@ const ChatLogs = () => {
   if (loading) {
     return (
       <section css={chatLogsWrapperCSS}>
-        <FriendSkeleton />
+        <SkeletonList />
       </section>
     );
   }
