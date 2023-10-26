@@ -14,10 +14,8 @@ const Friends = () => {
   useEffect(() => {
     findAllCharacters()
       .then((data) => {
-        setTimeout(() => {
-          setCharacterInfoList(data);
-          setLoading(false);
-        }, 5000);
+        setCharacterInfoList(data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error('Error fetching post:', error);
