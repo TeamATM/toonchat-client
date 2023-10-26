@@ -12,7 +12,7 @@ const ChatMain = () => (
       <div css={contentsCSS}>
         <header css={css`width:100%; padding-top:0.6rem;`}>
           <div css={titleSectionCSS}>
-            <SectionTitle>Friends</SectionTitle>
+            <SectionTitle>Chats</SectionTitle>
             <SearchBar />
           </div>
         </header>
