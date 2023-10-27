@@ -6,8 +6,8 @@ const Loading = () => (
     <div css={loadingContentsCSS}>
       <Image
         src="/spinnig-loading.gif"
-        width={100}
-        height={100}
+        width={50}
+        height={50}
         alt="로딩"
         priority
       />
@@ -42,6 +42,5 @@ const dialogBackdropCSS = css`
   width: 100%;
   height: 100%;
   font-size: 1.25rem;
-  background: rgba(0, 0, 0, 0.2);
   z-index: 1;
 `;
