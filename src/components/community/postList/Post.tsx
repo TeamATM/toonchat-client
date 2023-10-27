@@ -34,16 +34,14 @@ const Post: FC<PostStates> = ({ characterId, post }) => (
         </li>
       </ul>
     </FriendWrapper>
-    <div css={lineContainerCSS}>
-      <div css={lineCSS} />
-    </div>
+    <div css={lineCSS} />
   </>
 );
 
 export default Post;
 
 const postCSS = css`
-  padding: 0.2rem 0 0.2rem 0;
+  padding: 0.2rem 0 0.2rem 0.5rem;
   width: 100%;
 `;
 
@@ -64,6 +62,7 @@ const liCSS = css`
   flex-direction: row;
   align-items: center;
   gap: 0.25rem;
+  padding-right: 0.3rem;
 `;
 
 const statusCSS = css`
@@ -72,19 +71,10 @@ const statusCSS = css`
   color: ${color.black};
 `;
 
-const lineContainerCSS = css`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  color:  ${color.lightGray};
-  font-size: 0.875rem;
-`;
-
 const lineCSS = css`
   display: block;
-  margin: 0.625rem;
   height: 1px;
-  background: ${color.lightGray};
   width: 100%;
+  background: ${color.lightGray};
+  margin: 0.2rem 0;
 `;
