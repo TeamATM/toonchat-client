@@ -41,7 +41,7 @@ const boardListWrapperCSS = css`
   display: flex;
   flex-direction: column;
   word-break: keep-all;
-  padding: 2rem;
+  padding: 2rem 0.5rem;
   padding-top: 1.25rem;
   width: 100%;
 `;
