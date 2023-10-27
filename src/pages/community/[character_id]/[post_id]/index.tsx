@@ -12,10 +12,17 @@ import PostHeader from '@/components/community/PostHeader';
 import Image from 'next/image';
 import PostStatus from '@/components/community/postDetail/PostStatus';
 import DivideLine from '@/components/common/divideLine/DivideLine';
+import CommentList from '@/components/community/postDetail/Comment';
+
+type postParams = {
+  character_id?: string;
+  post_id?: string;
+};
 
 const Post = () => {
   const router = useRouter();
-  const { character_id: characterId, post_id: postId } = router.query;
+  const { character_id: characterId, post_id: postId }: postParams = router.query;
+
   const [post, setPost] = useState<PostData>();
   useEffect(() => {
     if (typeof characterId === 'string' && typeof postId === 'string') {
@@ -53,7 +60,7 @@ const Post = () => {
             : <Loading />}
         </div>
         <DivideLine />
-        <div css={css`font-size:0.8rem;`}>덧글은 추후에 제공될 예정입니다 :)</div>
+        <CommentList characterId={characterId} postId={postId} />
       </section>
       <BottomNavBar pageName="Community" />
     </>
