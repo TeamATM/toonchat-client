@@ -16,3 +16,5 @@ export interface CommentData {
   createdDate: number
   modifiedDate: number
 }
+
+export type CommentProps = Omit<CommentData, 'modifiedDate'>;
