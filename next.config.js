@@ -24,7 +24,7 @@ const config = {
     NEXT_PUBLIC_ENV: process.env.NEXT_PUBLIC_ENV,
 
     // 필요할 때 끌어다 쓴 토큰
-    EXAMPLE_TOKEN: process.env.EXAMPLE_TOKEN,
+    SSR_TOKEN: process.env.SSR_TOKEN,
 
     // NEXT-AUTH 설정에 필요한 값
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
