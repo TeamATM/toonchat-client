@@ -3,63 +3,65 @@ import MessageInput from '@/components/chat/MessageInput';
 import Header from '@/components/chat/Header';
 import Main from '@/components/chat/Main';
 import SEO from '@/components/common/head/SEO';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import useChatStore from '@/store/chat';
-import { useRouter } from 'next/router';
 import { CharacterInfo } from '@/types/characterInfo';
-import { findCharacterById } from '@/utils/api/character';
-import Loading from '@/components/common/dialog/Loading';
+import { ssrFindAllCharacters, ssrFindCharacterById } from '@/utils/api/character';
+import { GetStaticPaths, GetStaticProps } from 'next';
 
-const Character = () => {
-  const router = useRouter();
-  const { character: characterId } = router.query;
-  const [characterInfo, setCharacterInfo] = useState<CharacterInfo>();
+const Character = ({ characterInfo }: { characterInfo: CharacterInfo }) => {
   const { setChatInfo } = useChatStore();
 
   useEffect(() => {
-    if (characterId && typeof characterId === 'string') {
-      findCharacterById(characterId)
-        .then((data) => {
-          setCharacterInfo(data);
-          setChatInfo(data.characterName, data.characterId);
-        })
-        .catch((error) => {
-          console.error('Error fetching post:', error);
-        });
-    }
-  }, [characterId]);
+    setChatInfo(characterInfo.characterName, characterInfo.characterId);
+  }, []);
 
   return (
     <>
-      <SEO title={characterInfo ? `대화 with ${characterInfo.characterName}` : '로딩 중'} />
+      <SEO title={`대화 with ${characterInfo.characterName}`} />
       <section css={pageCSS}>
-        {characterInfo
-          ? (
-            <>
-              <div>
-                <Header
-                  characterId={characterInfo.characterId}
-                  profileImageUrl={characterInfo.profileImageUrl}
-                  characterName={characterInfo.characterName}
-                  hashTag={characterInfo.hashTag}
-                />
-                <Main
-                  characterId={characterInfo.characterId}
-                  characterName={characterInfo.characterName}
-                  profileImageUrl={characterInfo.profileImageUrl}
-                />
-              </div>
-              <MessageInput
-                characterId={Number(characterId)}
-                characterName={characterInfo.characterName}
-              />
-            </>
-          ) : <Loading />}
+        <div>
+          <Header
+            characterId={characterInfo.characterId}
+            profileImageUrl={characterInfo.profileImageUrl}
+            characterName={characterInfo.characterName}
+            hashTag={characterInfo.hashTag}
+          />
+          <Main
+            characterId={characterInfo.characterId}
+            characterName={characterInfo.characterName}
+            profileImageUrl={characterInfo.profileImageUrl}
+          />
+        </div>
+        <MessageInput
+          characterId={characterInfo.characterId}
+          characterName={characterInfo.characterName}
+        />
       </section>
     </>
   );
 };
 export default Character;
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const characterIds = await ssrFindAllCharacters();
+
+  return {
+    paths: characterIds.map((data) => ({ params: { character: data.characterId.toString() } })),
+    fallback: 'blocking', // 존재하지 않는 경로의 경우, 서버에서 렌더링하도록 설정
+  };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { character } = context.params!;
+
+  try {
+    const characterInfo = await ssrFindCharacterById(character as string);
+    return { props: { characterInfo } };
+  } catch (error) {
+    return { notFound: true };
+  }
+};
 
 const pageCSS = css`
   min-height: 100vh;
