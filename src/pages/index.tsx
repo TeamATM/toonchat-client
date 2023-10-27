@@ -31,7 +31,7 @@ const Home = () => {
                       시작하기
                     </Button>
                   </Link>
-                  <Link href="/chats/0">
+                  <Link href="/chats/2">
                     <Button theme="white">
                       영준이와 대화하기
                     </Button>
