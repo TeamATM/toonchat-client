@@ -1,5 +1,6 @@
 import defaultInstance from '@/utils/axiosInstance/defaultInstance';
 import clientInstance from '@/utils/axiosInstance/clientInstance';
+import ssrInstance from '@/utils/axiosInstance/ssrInstance';
 
 interface Credentials {
   email: string, password: string, provider: string
@@ -57,7 +58,7 @@ export const credentialsSignupAPI = async ({
     provider: 'Credential',
   };
 
-  const result = await defaultInstance.post('members/signup', sendSignupData);
+  const result = await ssrInstance.post('members/signup', sendSignupData);
   return result.data;
 };
 
