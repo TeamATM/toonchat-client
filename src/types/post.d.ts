@@ -8,3 +8,11 @@ export interface PostData {
   writerId : number
   writerName : string
 }
+
+export interface CommentData {
+  id: number
+  comment: string
+  nickname: number
+  createdDate: number
+  modifiedDate: number
+}
