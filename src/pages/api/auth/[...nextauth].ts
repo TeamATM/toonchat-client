@@ -4,6 +4,7 @@ import { JWT } from 'next-auth/jwt';
 import GoogleProvider from 'next-auth/providers/google';
 import NaverProvider from 'next-auth/providers/naver';
 import KakaoProvider from 'next-auth/providers/kakao';
+import AppleProvider from 'next-auth/providers/apple';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { credentialsLoginAPI, refreshAccessToken, socialLoginAPI } from '@/utils/api/accounts';
 import { isTokenExpired } from '@/utils/services/auth';
@@ -32,6 +33,10 @@ export const authOptions: NextAuthOptions = {
     KakaoProvider({
       clientId: process.env.KAKAO_CLIENT_ID as string,
       clientSecret: process.env.KAKAO_CLIENT_SECRET as string,
+    }),
+    AppleProvider({
+      clientId: process.env.APPLE_CLIENT_ID as string,
+      clientSecret: process.env.APPLE_CLIENT_SECRET as string,
     }),
 
     CredentialsProvider({
@@ -76,6 +81,8 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user, account }) {
       if (account?.type === 'credentials') return true;
+      console.log(user.email, user.name, account?.provider);
+
       const data = await socialLoginAPI({
         email: user.email || '',
         name: user.name || '',
