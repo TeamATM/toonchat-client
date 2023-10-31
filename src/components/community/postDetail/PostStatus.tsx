@@ -3,23 +3,28 @@ import HeartIcon from '@/components/icons/HeartIcon';
 import CommentIcon from '@/components/icons/CommentIcon';
 import ReportIcon from '@/components/icons/ReportIcon';
 import color from '@/styles/color';
+import useCommentStore from '@/store/comment';
 
-const PostStatus = () => (
-  <ul css={ulCSS}>
-    <li title="좋아요" css={liCSS}>
-      <HeartIcon color={color.black} />
-      <div css={statusCSS}>1</div>
-    </li>
-    <li title="댓글" css={liCSS}>
-      <CommentIcon color={color.black} />
-      <div css={statusCSS}>3</div>
-    </li>
-    <li title="신고" css={liCSS}>
-      <ReportIcon color={color.black} />
-      <div css={statusCSS}>신고</div>
-    </li>
-  </ul>
-);
+const PostStatus = () => {
+  const { comments } = useCommentStore();
+
+  return (
+    <ul css={ulCSS}>
+      <li title="좋아요" css={liCSS}>
+        <HeartIcon color={color.black} />
+        <div css={statusCSS}>1</div>
+      </li>
+      <li title="댓글" css={liCSS}>
+        <CommentIcon color={color.black} />
+        <div css={statusCSS}>{comments.length}</div>
+      </li>
+      <li title="신고" css={liCSS}>
+        <ReportIcon color={color.black} />
+        <div css={statusCSS}>신고</div>
+      </li>
+    </ul>
+  );
+};
 
 export default PostStatus;
 
