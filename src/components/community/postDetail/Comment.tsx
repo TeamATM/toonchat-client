@@ -1,9 +1,10 @@
+import Loading from '@/components/common/dialog/Loading';
+import useCommentStore from '@/store/comment';
 import color from '@/styles/color';
-import { CommentData, CommentProps } from '@/types/post';
-import { findCommentsByPostAndCharacterId } from '@/utils/api/boards';
+import { CommentProps } from '@/types/post';
 import { postDetailDateParse } from '@/utils/services/date';
 import { css } from '@emotion/react';
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 
 type postProps = {
   characterId: string | undefined;
@@ -11,23 +12,16 @@ type postProps = {
 };
 
 const CommentList: FC<postProps> = ({ characterId, postId }) => {
-  const [loading, setLoading] = useState(false);
-  const [commentList, setCommentList] = useState<CommentData[]>([]);
+  const { loading, comments, fetchComments } = useCommentStore();
   useEffect(() => {
     if (characterId && postId) {
-      findCommentsByPostAndCharacterId(characterId, postId).then((data) => {
-        console.log(data);
-        setCommentList([...data]);
-        setLoading(true);
-      }).catch((error) => {
-        console.error('Error fetching comments:', error);
-      });
+      fetchComments(characterId, postId);
     }
-  }, [characterId, postId]);
+  }, [characterId, postId, fetchComments]);
 
   if (loading) {
     return (
-      commentList.map(({
+      comments.map(({
         id, comment, createdAt, nickname,
       }) => (
         <Comment
@@ -41,7 +35,7 @@ const CommentList: FC<postProps> = ({ characterId, postId }) => {
     );
   }
   return (
-    <div>Comment</div>
+    <Loading />
   );
 };
 export default CommentList;

@@ -45,7 +45,6 @@ export default PostHeader;
 
 const headerCSS = css`
   grid-row: 1;
-  z-index: 100; // 채팅보다 위에 존재해야하기 때문에 필요함
   width: 100%;
   max-width: 400px;
   padding: 1rem 1rem;
