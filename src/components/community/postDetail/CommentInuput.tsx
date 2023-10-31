@@ -6,6 +6,7 @@ import { css } from '@emotion/react';
 import Image from 'next/image';
 import color from '@/styles/color';
 import { createComment } from '@/utils/api/boards';
+import useCommentStore from '@/store/comment';
 
 type postProps = {
   characterId: string | undefined;
@@ -14,11 +15,14 @@ type postProps = {
 
 const CommentInput : FC<postProps> = ({ characterId, postId }) => {
   const [message, setMessage] = useState('');
+  const { fetchComments } = useCommentStore();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (message && characterId && postId) {
-      createComment(characterId, postId, message);
+      createComment(characterId, postId, message).then(() => {
+        fetchComments(characterId, postId);
+      });
       setMessage('');
     }
   };
