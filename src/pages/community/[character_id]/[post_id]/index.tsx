@@ -1,5 +1,4 @@
 import { css } from '@emotion/react';
-import BottomNavBar from '@/components/common/bottomNavBar/BottomNavBar';
 import SEO from '@/components/common/head/SEO';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
@@ -13,6 +12,7 @@ import Image from 'next/image';
 import PostStatus from '@/components/community/postDetail/PostStatus';
 import DivideLine from '@/components/common/divideLine/DivideLine';
 import CommentList from '@/components/community/postDetail/Comment';
+import CommentInput from '@/components/community/postDetail/CommentInuput';
 
 type postParams = {
   character_id?: string;
@@ -37,39 +37,41 @@ const Post = () => {
   return (
     <>
       <SEO title="Community - Post" />
-      <PostHeader />
-      <section css={pageCSS}>
-        <div css={postCSS}>
-          {post ? (
-            <div>
-              {/* TODO: 게시글 쓴 사람의 이미지가 필요함 */}
-              <div css={postInfoCSS}>
-                <Image src="/default-user.png" alt="user-profile" width={26} height={26} />
-                <div css={css`padding-left: 0.5rem;`}>
-                  <div css={writerNameCSS}>{post.writerName}</div>
-                  <div css={dateCSS}>{postDetailDateParse(post.createdAt)}</div>
+      <div css={css`height: 100vh; display: grid; grid-template-rows: auto 1fr auto;`}>
+        <PostHeader />
+        <section css={pageCSS}>
+          <div css={postCSS}>
+            {post ? (
+              <div>
+                {/* TODO: 게시글 쓴 사람의 이미지가 필요함 */}
+                <div css={postInfoCSS}>
+                  <Image src="/default-user.png" alt="user-profile" width={26} height={26} />
+                  <div css={css`padding-left: 0.5rem;`}>
+                    <div css={writerNameCSS}>{post.writerName}</div>
+                    <div css={dateCSS}>{postDetailDateParse(post.createdAt)}</div>
+                  </div>
                 </div>
+                <div css={postMainCSS}>
+                  <div css={titleCSS}>{post.title}</div>
+                  <div css={contentCSS}>{post.content}</div>
+                </div>
+                <PostStatus />
               </div>
-              <div css={postMainCSS}>
-                <div css={titleCSS}>{post.title}</div>
-                <div css={contentCSS}>{post.content}</div>
-              </div>
-              <PostStatus />
-            </div>
-          )
-            : <Loading />}
-        </div>
-        <DivideLine />
-        <CommentList characterId={characterId} postId={postId} />
-      </section>
-      <BottomNavBar pageName="Community" />
+            )
+              : <Loading />}
+          </div>
+          <DivideLine />
+          <CommentList characterId={characterId} postId={postId} />
+        </section>
+        <CommentInput characterId={characterId} postId={postId} />
+      </div>
     </>
   );
 };
 export default Post;
 
 const pageCSS = css`
-  height: 100vh;
+  grid-row: 2;
   display: flex;
   flex-direction: column;
   align-items: center;

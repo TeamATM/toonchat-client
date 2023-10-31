@@ -48,8 +48,7 @@ const CommentInput : FC<postProps> = ({ characterId, postId }) => {
 export default CommentInput;
 
 const footerCSS = css`
-  position: sticky;
-  bottom: 0;
+  grid-row: 3;
   width: 400px;
   padding-top: 0.5rem;
   background-color: ${color.white};
