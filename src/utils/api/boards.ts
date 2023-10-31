@@ -30,3 +30,8 @@ export const deleteComment = async (commentId: string) => {
   const result = await webServerInstance.put(`comments/${commentId}`);
   return result.data;
 };
+
+export const postLike = async (postId: string) => {
+  const result = await webServerInstance.post(`likes/${postId}`);
+  return result.data;
+};
