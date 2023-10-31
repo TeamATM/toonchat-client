@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    jest: true,
   },
   extends: [
     'eslint:recommended',
@@ -35,8 +36,25 @@ module.exports = {
     'react',
   ],
   rules: {
+    'no-use-before-define': 'off',
+    '@emotion/jsx-import': 'off',
+    'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-props-no-spreading': 'off',
-    'react/jsx-filename-extension': ['warn', { extensions: ['.tsx'] }],
+    'react/jsx-filename-extension': ['warn', { extensions: ['.ts', '.tsx'] }],
+    'react/function-component-definition': [
+      'error',
+      { namedComponents: 'arrow-function', unnamedComponents: 'arrow-function' },
+    ],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'import/extensions': [
+      'error',
+      'ignorePackages', // 패키지는 무시하도록 설정
+      {
+        js: 'never', jsx: 'never', ts: 'never', tsx: 'never',
+      },
+    ],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
   },
 };
