@@ -13,8 +13,8 @@ export interface CommentData {
   id: number
   comment: string
   nickname: number
-  createdDate: number
-  modifiedDate: number
+  createdAt: string
+  updatedAt: string
 }
 
-export type CommentProps = Omit<CommentData, 'modifiedDate'>;
+export type CommentProps = Omit<CommentData, 'updatedAt'>;

@@ -1,6 +1,7 @@
 import color from '@/styles/color';
 import { CommentData, CommentProps } from '@/types/post';
 import { findCommentsByPostAndCharacterId } from '@/utils/api/boards';
+import { postDetailDateParse } from '@/utils/services/date';
 import { css } from '@emotion/react';
 import { FC, useEffect, useState } from 'react';
 
@@ -27,13 +28,13 @@ const CommentList: FC<postProps> = ({ characterId, postId }) => {
   if (loading) {
     return (
       commentList.map(({
-        id, comment, createdDate, nickname,
+        id, comment, createdAt, nickname,
       }) => (
         <Comment
           key={id}
           id={id}
           comment={comment}
-          createdDate={createdDate}
+          createdAt={createdAt}
           nickname={nickname}
         />
       ))
@@ -46,7 +47,7 @@ const CommentList: FC<postProps> = ({ characterId, postId }) => {
 export default CommentList;
 
 const Comment: FC<CommentProps> = ({
-  comment, createdDate, nickname,
+  comment, createdAt, nickname,
 }) => (
   <div css={css`width:100%;`}>
     <div css={contentWrapperCSS}>
@@ -55,7 +56,7 @@ const Comment: FC<CommentProps> = ({
     </div>
     <div css={contentWrapperCSS}>
       <div css={contentCSS}>{comment}</div>
-      <div css={dateCSS}>{createdDate}</div>
+      <div css={dateCSS}>{postDetailDateParse(createdAt)}</div>
     </div>
     <div css={lineCSS} />
 
