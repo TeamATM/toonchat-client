@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import Image from 'next/image';
 import color from '@/styles/color';
-// import { signIn } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 import Toast from '@/components/common/toast/Toast';
 import { useState } from 'react';
 
@@ -12,11 +12,11 @@ const NaverButton = () => {
     setToastMessage('');
   };
   const naverLoginHandler = () => {
-    setToastMessage('소셜로그인은 추후에 제공될 예정입니다. :)');
-    // signIn('naver', {
-    //   callbackUrl: '/',
-    //   redirect: false,
-    // });
+    // setToastMessage('소셜로그인은 추후에 제공될 예정입니다. :)');
+    signIn('naver', {
+      callbackUrl: '/',
+      redirect: false,
+    });
   };
 
   return (
