@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios';
 
 const ssrInstance = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:8080/'}api/`,
+  baseURL: `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:8080/'}`,
 });
 
 ssrInstance.interceptors.response.use((response) => response, (error: AxiosError) => {
