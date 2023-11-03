@@ -8,9 +8,9 @@ import WriteButton from '@/components/community/WriteButton';
 const Board = () => (
   <>
     <SEO title="Community - Board" />
+    <WriteButton />
     <section css={pageCSS}>
       <CommunityHeader />
-      <WriteButton />
       <PostList />
     </section>
     <BottomNavBar pageName="Community" />
