@@ -10,15 +10,9 @@ const InApp = () => {
 
   // 인앱 브라우저인지 확인하는 함수
   const isInAppBrowser = () => {
-    if (typeof window !== 'undefined') {
-      const userAgent = window.navigator.userAgent.toLowerCase();
-      if (userAgent.indexOf('kakao') >= 0) return true;
-      if (userAgent.indexOf('[fb') >= 0) return true;
-      if (userAgent.indexOf('instagram') >= 0) return true;
-      if (userAgent.indexOf('trill') >= 0) return true;
-      if (userAgent.indexOf('line') >= 0) return true;
-    }
-    return false;
+    const agents = ['kakao', '[fb', 'instagram', 'trill', 'line'];
+    const userAgent = (typeof window !== 'undefined') ? window.navigator.userAgent.toLowerCase() : '';
+    return agents.some((agent) => userAgent.includes(agent));
   };
 
   // 인앱 브라우저가 아니라면 null을 반환하여 컴포넌트를 렌더링하지 않습니다.
