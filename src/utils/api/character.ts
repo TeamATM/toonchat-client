@@ -13,11 +13,11 @@ export const findCharacterById = async (characterId: string) => {
 };
 
 export const ssrFindAllCharacters = async () => {
-  const result = await ssrInstance.get<CharacterInfo[]>('/api/characters');
+  const result = await ssrInstance.get<CharacterInfo[]>('/characters');
   return result.data;
 };
 
 export const ssrFindCharacterById = async (characterId: string) => {
-  const result = await ssrInstance.get<CharacterInfo>(`/api/characters/${characterId}`);
+  const result = await ssrInstance.get<CharacterInfo>(`/characters/${characterId}`);
   return result.data;
 };

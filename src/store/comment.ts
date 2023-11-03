@@ -1,20 +1,20 @@
 import { CommentData } from '@/types/post';
-import { findCommentsByPostAndCharacterId } from '@/utils/api/boards';
+import { readComment } from '@/utils/api/boards';
 import { create } from 'zustand';
 
 interface CommentState {
   comments: CommentData[],
   loading: boolean,
-  fetchComments: (characterId: string, postId: string) => void;
+  fetchComments: (postId: string) => void;
 }
 
 const useCommentStore = create<CommentState>((set) => ({
   comments: [],
   loading: true,
-  fetchComments: async (characterId, postId) => {
+  fetchComments: async (postId) => {
     set({ loading: false });
     try {
-      const response = await findCommentsByPostAndCharacterId(characterId, postId);
+      const response = await readComment(postId);
       console.log(response);
       set({ comments: response, loading: true });
     } catch (error) {

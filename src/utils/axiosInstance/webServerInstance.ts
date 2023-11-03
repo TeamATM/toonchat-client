@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios';
 import { getSession } from 'next-auth/react';
 
 const webServerInstance = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:8080/'}api/`,
+  baseURL: `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:8080/'}/`,
   // headers: { 'Content-Type': 'application/json' },
 });
 
