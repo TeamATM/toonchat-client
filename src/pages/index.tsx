@@ -4,6 +4,7 @@ import Image from 'next/image';
 import SEO from '@/components/common/head/SEO';
 import Button from '@/components/common/button/Button';
 import { useSession } from 'next-auth/react';
+import InApp from '@/components/common/inApp/InApp';
 
 const Home = () => {
   console.log();
@@ -22,6 +23,7 @@ const Home = () => {
           />
         </main>
         <footer css={css`width:100%; padding: 1.5rem;`}>
+          <InApp />
           {
             session
               ? (
