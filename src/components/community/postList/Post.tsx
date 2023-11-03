@@ -22,14 +22,13 @@ const Post: FC<PostStates> = ({ characterId, post }) => (
         <div css={titleCSS}>{post.title}</div>
         <div css={contentCSS}>{`${postDateParse(post.createdAt)} | ${post.writerName}`}</div>
       </div>
-      {/* TODO: 댓글, 좋아요를 받아와야합니다! */}
       <ul css={liCSS}>
         <li title="좋아요" css={liCSS}>
-          <HeartIcon color={color.black} />
+          <HeartIcon color={color.gray} />
           <div css={statusCSS}>{post.likeCount}</div>
         </li>
         <li title="댓글" css={liCSS}>
-          <CommentIcon color={color.black} />
+          <CommentIcon color={color.gray} />
           <div css={statusCSS}>{post.comments.length}</div>
         </li>
       </ul>
@@ -46,7 +45,7 @@ const postCSS = css`
 `;
 
 const titleCSS = css`
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight:bold;
   color:${color.black};
   padding-bottom: 0.3rem;
@@ -68,7 +67,7 @@ const liCSS = css`
 const statusCSS = css`
   font-size: 0.625rem;
   font-weight: bold;
-  color: ${color.black};
+  color: ${color.gray};
 `;
 
 const lineCSS = css`
