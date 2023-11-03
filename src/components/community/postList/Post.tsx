@@ -26,11 +26,11 @@ const Post: FC<PostStates> = ({ characterId, post }) => (
       <ul css={liCSS}>
         <li title="좋아요" css={liCSS}>
           <HeartIcon color={color.black} />
-          <div css={statusCSS}>1</div>
+          <div css={statusCSS}>{post.likeCount}</div>
         </li>
         <li title="댓글" css={liCSS}>
           <CommentIcon color={color.black} />
-          <div css={statusCSS}>3</div>
+          <div css={statusCSS}>{post.comments.length}</div>
         </li>
       </ul>
     </FriendWrapper>
