@@ -20,8 +20,8 @@ const CommentInput : FC<postProps> = ({ characterId, postId }) => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (message && characterId && postId) {
-      createComment(characterId, postId, message).then(() => {
-        fetchComments(characterId, postId);
+      createComment(postId, message).then(() => {
+        fetchComments(postId);
       });
       setMessage('');
     }

@@ -24,7 +24,7 @@ interface SocialLoginForm {
 }
 
 export const credentialsLoginAPI = async (credentials : Credentials) => {
-  const result = await ssrInstance.post('members/login', JSON.stringify(credentials));
+  const result = await ssrInstance.post('members/login', credentials);
   return result.data;
 };
 
@@ -63,7 +63,7 @@ export const credentialsSignupAPI = async ({
 };
 
 export const refreshAccessToken = async (refreshToken: string) => {
-  const result = await ssrInstance.post('members/refreshToken', { refreshToken });
+  const result = await ssrInstance.post('members/refreshtoken', { refreshToken });
   return result.data;
 };
 

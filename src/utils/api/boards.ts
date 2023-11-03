@@ -16,18 +16,23 @@ export const createPost = async (characterId: string, title: string, content: st
   return result;
 };
 
-export const findCommentsByPostAndCharacterId = async (characterId: string, postId: string) => {
-  const result = await webServerInstance.get<CommentData[]>(`boards/${characterId}/${postId}/comments`);
+export const readComment = async (postId: string) => {
+  const result = await webServerInstance.get<CommentData[]>(`comments/${postId}`);
   return result.data;
 };
 
-export const createComment = async (characterId: string, postId: string, comment: string) => {
-  const result = await webServerInstance.post(`boards/${characterId}/${postId}/comments`, { comment });
+export const createComment = async (postId: string, comment: string) => {
+  const result = await webServerInstance.post(`comments/${postId}`, { comment });
   return result.data;
 };
 
-export const deleteComment = async (commentId: string) => {
-  const result = await webServerInstance.put(`comments/${commentId}`);
+export const deleteComment = async (postId: string, commentId: string) => {
+  const result = await webServerInstance.delete(`comments/${postId}/${commentId}`);
+  return result.data;
+};
+
+export const updateComment = async (postId: string, commentId: string) => {
+  const result = await webServerInstance.put(`comments/${postId}/${commentId}`);
   return result.data;
 };
 
