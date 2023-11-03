@@ -76,6 +76,13 @@ const pageCSS = css`
   flex-direction: column;
   align-items: center;
   padding: 0 3rem;
+
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 `;
 
 const postCSS = css`
