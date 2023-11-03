@@ -23,7 +23,8 @@ const Post = () => {
   const { character_id: characterId, post_id: postId }: postParams = router.query;
 
   const [post, setPost] = useState<PostData>();
-  useEffect(() => {
+
+  const fetchPost = () => {
     if (typeof characterId === 'string' && typeof postId === 'string') {
       findPostById(characterId, postId).then((data) => {
         setPost(data);
@@ -31,6 +32,10 @@ const Post = () => {
         console.error('Error fetching post:', error);
       });
     }
+  };
+
+  useEffect(() => {
+    fetchPost();
   }, [characterId, postId]);
 
   return (
@@ -58,6 +63,7 @@ const Post = () => {
                   postId={post.id}
                   commentLength={post.comments.length}
                   likeCount={post.likeCount}
+                  fetchPost={fetchPost}
                 />
               </div>
             )

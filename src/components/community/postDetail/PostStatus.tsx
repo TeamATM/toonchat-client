@@ -10,12 +10,14 @@ interface PostStatusProps {
   postId: number
   commentLength: number
   likeCount: number
+  fetchPost: () => void
 }
 
-const PostStatus: FC<PostStatusProps> = ({ postId, commentLength, likeCount }) => {
-  const likeButtonHandler = async () => {
-    const result = await postLike(postId);
-    console.log(postId, likeCount, result);
+const PostStatus: FC<PostStatusProps> = ({
+  postId, commentLength, likeCount, fetchPost,
+}) => {
+  const likeButtonHandler = () => {
+    postLike(postId).then(fetchPost);
   };
 
   return (
