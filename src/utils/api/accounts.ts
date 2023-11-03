@@ -1,4 +1,3 @@
-import defaultInstance from '@/utils/axiosInstance/defaultInstance';
 import clientInstance from '@/utils/axiosInstance/clientInstance';
 import ssrInstance from '@/utils/axiosInstance/ssrInstance';
 
@@ -25,7 +24,7 @@ interface SocialLoginForm {
 }
 
 export const credentialsLoginAPI = async (credentials : Credentials) => {
-  const result = await defaultInstance.post('members/login', JSON.stringify(credentials));
+  const result = await ssrInstance.post('members/login', JSON.stringify(credentials));
   return result.data;
 };
 
@@ -64,14 +63,13 @@ export const credentialsSignupAPI = async ({
 };
 
 export const refreshAccessToken = async (refreshToken: string) => {
-  const result = await defaultInstance.post('members/refreshToken', { refreshToken });
+  const result = await ssrInstance.post('members/refreshToken', { refreshToken });
   return result.data;
 };
 
 export const logOutAPI = async (refreshToken: string) => {
   // TODO: 백엔드 로그아웃 로직이 바뀌는 중
-  const result = await defaultInstance.delete('members/logout');
   console.log(refreshToken);
-  // const result = await defaultInstance.delete('members/logout', { refreshToken });
+  const result = await ssrInstance.post('members/logout', { refreshToken });
   return result.data;
 };
