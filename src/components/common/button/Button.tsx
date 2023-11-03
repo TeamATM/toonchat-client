@@ -1,24 +1,11 @@
 import { FC, ReactNode } from 'react';
 import { css } from '@emotion/react';
-import color from '@/styles/color';
-
-type Theme = 'green' | 'white'
+import { Theme, themeTable } from '@/styles/color';
 
 interface ButtonProps {
   children: ReactNode,
   theme: Theme
 }
-
-const themeTable = {
-  green: {
-    backgroundColor: color.darkGreen,
-    color: color.offWhite,
-  },
-  white: {
-    backgroundColor: color.offWhite,
-    color: color.greenGray,
-  },
-};
 
 const Button: FC<ButtonProps> = ({ children, theme }) => (
   <button css={ButtonCSS(theme)} type="submit">
