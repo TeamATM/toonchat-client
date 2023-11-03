@@ -12,7 +12,7 @@ import Image from 'next/image';
 import PostStatus from '@/components/community/postDetail/PostStatus';
 import DivideLine from '@/components/common/divideLine/DivideLine';
 import CommentList from '@/components/community/postDetail/Comment';
-import CommentInput from '@/components/community/postDetail/CommentInuput';
+import CommentInput from '@/components/community/postDetail/CommentInput';
 
 type postParams = {
   character_id?: string;
