@@ -5,17 +5,18 @@ import ReportIcon from '@/components/icons/ReportIcon';
 import color from '@/styles/color';
 import { FC } from 'react';
 import { postLike } from '@/utils/api/boards';
+import useCommentStore from '@/store/comment';
 
 interface PostStatusProps {
   postId: number
-  commentLength: number
   likeCount: number
   fetchPost: () => void
 }
 
 const PostStatus: FC<PostStatusProps> = ({
-  postId, commentLength, likeCount, fetchPost,
+  postId, likeCount, fetchPost,
 }) => {
+  const { comments } = useCommentStore();
   const likeButtonHandler = () => {
     postLike(postId).then(fetchPost);
   };
@@ -30,7 +31,7 @@ const PostStatus: FC<PostStatusProps> = ({
       </li>
       <li title="댓글" css={liCSS}>
         <CommentIcon color={color.black} />
-        <div css={statusCSS}>{commentLength}</div>
+        <div css={statusCSS}>{comments.length}</div>
       </li>
       <li title="신고" css={liCSS}>
         <ReportIcon color={color.black} />
