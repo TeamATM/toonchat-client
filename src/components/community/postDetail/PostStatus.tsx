@@ -4,6 +4,7 @@ import CommentIcon from '@/components/icons/CommentIcon';
 import ReportIcon from '@/components/icons/ReportIcon';
 import color from '@/styles/color';
 import { FC } from 'react';
+import { postLike } from '@/utils/api/boards';
 
 interface PostStatusProps {
   postId: number
@@ -12,8 +13,9 @@ interface PostStatusProps {
 }
 
 const PostStatus: FC<PostStatusProps> = ({ postId, commentLength, likeCount }) => {
-  const likeButtonHandler = () => {
-    console.log(postId, likeCount);
+  const likeButtonHandler = async () => {
+    const result = await postLike(postId);
+    console.log(postId, likeCount, result);
   };
 
   return (

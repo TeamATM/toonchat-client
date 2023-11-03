@@ -31,7 +31,7 @@ export const deleteComment = async (commentId: string) => {
   return result.data;
 };
 
-export const postLike = async (postId: string) => {
+export const postLike = async (postId: number) => {
   const result = await webServerInstance.post(`likes/${postId}`);
   return result.data;
 };
