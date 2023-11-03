@@ -7,6 +7,8 @@ export interface PostData {
   updatedAt : string | null
   writerId : number
   writerName : string
+  likeCount: number
+  comments: CommentData[]
 }
 
 export interface CommentData {
