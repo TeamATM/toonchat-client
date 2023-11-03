@@ -30,7 +30,7 @@ export const credentialsLoginAPI = async (credentials : Credentials) => {
 };
 
 export const socialLoginAPI = async (socialLoginForm : SocialLoginForm) => {
-  const result = await defaultInstance.post('members/social-login', socialLoginForm);
+  const result = await ssrInstance.post('members/social-login', socialLoginForm);
   return result.data;
 };
 
