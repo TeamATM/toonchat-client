@@ -61,7 +61,6 @@ const Post = () => {
                 </div>
                 <PostStatus
                   postId={post.id}
-                  commentLength={post.comments.length}
                   likeCount={post.likeCount}
                   fetchPost={fetchPost}
                 />
