@@ -11,4 +11,17 @@ const color = {
   white: '#FFFFFF',
 };
 
+export type Theme = 'green' | 'white'
+
+export const themeTable = {
+  green: {
+    backgroundColor: color.darkGreen,
+    color: color.offWhite,
+  },
+  white: {
+    backgroundColor: color.offWhite,
+    color: color.greenGray,
+  },
+};
+
 export default color;

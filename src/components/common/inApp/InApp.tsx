@@ -1,18 +1,5 @@
-import color from '@/styles/color';
+import { Theme, themeTable } from '@/styles/color';
 import { css } from '@emotion/react';
-
-type Theme = 'green' | 'white'
-
-const themeTable = {
-  green: {
-    backgroundColor: color.darkGreen,
-    color: color.offWhite,
-  },
-  white: {
-    backgroundColor: color.offWhite,
-    color: color.greenGray,
-  },
-};
 
 const InApp = () => {
   const handleButtonClick = () => {
