@@ -10,7 +10,6 @@ import { PostData } from '@/types/post';
 import PostHeader from '@/components/community/PostHeader';
 import Image from 'next/image';
 import PostStatus from '@/components/community/postDetail/PostStatus';
-import DivideLine from '@/components/common/divideLine/DivideLine';
 import CommentList from '@/components/community/postDetail/Comment';
 import CommentInput from '@/components/community/postDetail/CommentInput';
 
@@ -55,12 +54,18 @@ const Post = () => {
                   <div css={titleCSS}>{post.title}</div>
                   <div css={contentCSS}>{post.content}</div>
                 </div>
-                <PostStatus />
+                <PostStatus
+                  postId={post.id}
+                  commentLength={post.comments.length}
+                  likeCount={post.likeCount}
+                />
               </div>
             )
               : <Loading />}
           </div>
-          <DivideLine />
+          <div css={lineContainerCSS}>
+            <div css={lineCSS} />
+          </div>
           <CommentList characterId={characterId} postId={postId} />
         </section>
         <CommentInput characterId={characterId} postId={postId} />
@@ -122,4 +127,19 @@ const dateCSS = css`
 
 const postMainCSS = css`
   padding: 1.25rem 0 0.2rem 0;
+`;
+
+const lineContainerCSS = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
+
+const lineCSS = css`
+  display: block;
+  margin: 0.5rem;
+  height: 1px;
+  background: ${color.lightGray};
+  width: 100%;
 `;

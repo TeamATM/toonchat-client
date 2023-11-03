@@ -3,20 +3,30 @@ import HeartIcon from '@/components/icons/HeartIcon';
 import CommentIcon from '@/components/icons/CommentIcon';
 import ReportIcon from '@/components/icons/ReportIcon';
 import color from '@/styles/color';
-import useCommentStore from '@/store/comment';
+import { FC } from 'react';
 
-const PostStatus = () => {
-  const { comments } = useCommentStore();
+interface PostStatusProps {
+  postId: number
+  commentLength: number
+  likeCount: number
+}
+
+const PostStatus: FC<PostStatusProps> = ({ postId, commentLength, likeCount }) => {
+  const likeButtonHandler = () => {
+    console.log(postId, likeCount);
+  };
 
   return (
     <ul css={ulCSS}>
       <li title="좋아요" css={liCSS}>
-        <HeartIcon color={color.black} />
-        <div css={statusCSS}>1</div>
+        <button onClick={likeButtonHandler} type="button" css={buttonCSS}>
+          <HeartIcon color={color.black} />
+          <div css={statusCSS}>{likeCount}</div>
+        </button>
       </li>
       <li title="댓글" css={liCSS}>
         <CommentIcon color={color.black} />
-        <div css={statusCSS}>{comments.length}</div>
+        <div css={statusCSS}>{commentLength}</div>
       </li>
       <li title="신고" css={liCSS}>
         <ReportIcon color={color.black} />
@@ -47,4 +57,13 @@ const statusCSS = css`
   font-size: 0.75rem;
   font-weight: bold;
   color: ${color.black};
+`;
+
+const buttonCSS = css`
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
 `;
