@@ -15,7 +15,7 @@ const CommentList: FC<postProps> = ({ characterId, postId }) => {
   const { loading, comments, fetchComments } = useCommentStore();
   useEffect(() => {
     if (characterId && postId) {
-      fetchComments(characterId, postId);
+      fetchComments(postId);
     }
   }, [characterId, postId, fetchComments]);
 
