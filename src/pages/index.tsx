@@ -1,14 +1,22 @@
 import { css } from '@emotion/react';
-import Link from 'next/link';
 import Image from 'next/image';
 import SEO from '@/components/common/head/SEO';
-import Button from '@/components/common/button/Button';
-import { useSession } from 'next-auth/react';
 import InApp from '@/components/common/inApp/InApp';
+import SessionButtons from '@/components/account/SessionButtons';
+import { useEffect, useState } from 'react';
 
 const Home = () => {
-  console.log();
-  const { data: session }: any = useSession();
+  const [isInApp, setIsInApp] = useState<boolean>(false);
+
+  const isInAppBrowser = () => {
+    const agents = ['kakao', '[fb', 'instagram', 'trill', 'line'];
+    const userAgent = (typeof window !== 'undefined') ? window.navigator.userAgent.toLowerCase() : '';
+    return agents.some((agent) => userAgent.includes(agent));
+  };
+
+  useEffect(() => {
+    setIsInApp(isInAppBrowser());
+  }, []);
 
   return (
     <>
@@ -23,30 +31,7 @@ const Home = () => {
           />
         </main>
         <footer css={css`width:100%; padding: 1.5rem;`}>
-          <InApp />
-          {
-            session
-              ? (
-                <>
-                  <Link href="/friends">
-                    <Button theme="green">
-                      시작하기
-                    </Button>
-                  </Link>
-                  <Link href="/chats/2">
-                    <Button theme="white">
-                      영준이와 대화하기
-                    </Button>
-                  </Link>
-                </>
-              ) : (
-                <Link href="/login">
-                  <Button theme="green">
-                    Log in
-                  </Button>
-                </Link>
-              )
-          }
+          {isInApp ? <InApp /> : <SessionButtons />}
         </footer>
       </section>
     </>
