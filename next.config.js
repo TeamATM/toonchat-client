@@ -18,6 +18,14 @@ const config = {
   },
   images: {
     minimumCacheTTL: 86400, // 60*60*24 : 1일
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'static.webtoonchat.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
   env: {
     // ENV는 ['local', 'development', 'production'] 중 하나
