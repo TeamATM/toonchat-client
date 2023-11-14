@@ -12,7 +12,14 @@ const Recommends = () => {
   useEffect(() => {
     findAllCharacters()
       .then((data) => {
-        setCharacterInfoList(data);
+        const index1 = Math.floor(Math.random() * data.length);
+        let index2 = Math.floor(Math.random() * data.length);
+        // 중복 방지
+        while (index1 === index2) {
+          index2 = Math.floor(Math.random() * data.length);
+        }
+
+        setCharacterInfoList([data[index1], data[index2]]);
         setLoading(false);
       })
       .catch((error) => {
