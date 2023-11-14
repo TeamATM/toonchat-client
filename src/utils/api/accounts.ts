@@ -68,8 +68,6 @@ export const refreshAccessToken = async (refreshToken: string) => {
 };
 
 export const logOutAPI = async (refreshToken: string) => {
-  // TODO: 백엔드 로그아웃 로직이 바뀌는 중
-  console.log(refreshToken);
   const result = await ssrInstance.post('members/logout', { refreshToken });
   return result.data;
 };
