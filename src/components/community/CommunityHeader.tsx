@@ -24,7 +24,6 @@ const CommunityHeader = () => {
   }, [characterId]);
   return (
     <header css={headerCSS}>
-      {/* TODO: 캐릭터의 정보, 이미지가 필요합니다. */}
       <span css={characterInfoCSS}>
         {
           characterInfo

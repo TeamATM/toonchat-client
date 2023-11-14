@@ -29,6 +29,4 @@ const getHistory: GetHistory = async (setLoading, characterId, characterName, in
   initChatContents(history);
 };
 
-// TODO: history 관련 service 레이어 함수가 더 많아지면 아래 eslint 막은 것 풀기
-// eslint-disable-next-line import/no-anonymous-default-export
 export default getHistory;
