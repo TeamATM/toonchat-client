@@ -38,8 +38,6 @@ const BottomNavBar: FC<NavProps> = ({ pageName }) => {
           <HomeIcon color={homeColor} />
           Friends
         </NavButtonWrapper>
-
-        {/* TODO: 커뮤니티, 프로필 페이지 제작을 해야함 */}
         <NavButtonWrapper color={chatColor} linkUrl="/chats">
           <ChatIcon color={chatColor} />
           Chat

@@ -1,19 +1,18 @@
 import { css } from '@emotion/react';
 import color from '@/styles/color';
-import { signOut } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import Toast from '@/components/common/toast/Toast';
 import { useState } from 'react';
+import { logOutAPI } from '@/utils/api/accounts';
 import LogOutIcon from '../icons/LogoutIcon';
 import ProfileSettingIcon from '../icons/ProfileSettingIcon';
 
 const ProfileRouteButtons = () => {
   const [toastMessage, setToastMessage] = useState('');
 
-  // TODO: 미들웨어로 로그인 여부를 컨트롤할 예정
-  // TODO: 백엔드 로그아웃 로직이 변경되고 있는 중이라 아직 쓸 수 없는 코드가 있음
-  // const { data: session }: any = useSession();
+  const { data: session }: any = useSession();
   const signOutHandler = () => {
-    // logOutAPI(session?.accessToken);
+    logOutAPI(session?.accessToken);
     signOut({ callbackUrl: '/' });
   };
 
