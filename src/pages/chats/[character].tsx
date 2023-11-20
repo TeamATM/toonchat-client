@@ -57,7 +57,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   try {
     const characterInfo = await ssrFindCharacterById(character as string);
-    return { props: { characterInfo } };
+    return { props: { characterInfo }, revalidate: 60 };
   } catch (error) {
     return { notFound: true };
   }
